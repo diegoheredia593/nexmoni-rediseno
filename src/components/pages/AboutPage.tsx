@@ -1,29 +1,5 @@
-import type { Metadata } from "next";
-import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
-import { getDictionary, isLocale, locales } from "@/content/dictionary";
-
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  if (!isLocale(locale)) return {};
-  const dict = getDictionary(locale);
-  return {
-    title: dict.pages.about.title,
-    description: dict.pages.about.description,
-    alternates: {
-      canonical: `/${locale}/acerca`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/acerca`])),
-    },
-  };
-}
+import type { Dictionary, Locale } from "@/content/dictionary";
 
 /** Filas etiqueta / valor separadas por filete: el patrón del tarifario. */
 function DataRows({ rows }: { rows: readonly { label: string; value: string }[] }) {
@@ -58,10 +34,8 @@ function DataRows({ rows }: { rows: readonly { label: string; value: string }[] 
   );
 }
 
-export default async function AcercaPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  if (!isLocale(locale)) notFound();
-  const t = getDictionary(locale).about;
+export function AboutPage({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+  const t = dict.about;
 
   return (
     <>

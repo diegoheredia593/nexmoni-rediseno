@@ -1,36 +1,11 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
 import { email } from "@/content/brand";
-import { getDictionary, href, isLocale, locales } from "@/content/dictionary";
+import type { Dictionary, Locale } from "@/content/dictionary";
+import { href } from "@/content/routes";
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  if (!isLocale(locale)) return {};
-  const dict = getDictionary(locale);
-  return {
-    title: dict.pages.faq.title,
-    description: dict.pages.faq.description,
-    alternates: {
-      canonical: `/${locale}/preguntas-frecuentes`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/preguntas-frecuentes`])),
-    },
-  };
-}
-
-export default async function FaqPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  if (!isLocale(locale)) notFound();
-  const t = getDictionary(locale).faq;
+export function FaqPage({ locale, dict }: { locale: Locale; dict: Dictionary }) {
+  const t = dict.faq;
 
   return (
     <>

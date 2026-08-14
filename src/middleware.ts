@@ -1,10 +1,12 @@
 import { NextResponse, type NextRequest } from "next/server";
-import { defaultLocale, isLocale, locales } from "@/content/dictionary";
+import { defaultLocale, isLocale } from "@/content/dictionary";
+import { pathFor, resolveSlug } from "@/content/routes";
 
 /**
- * Todas las páginas viven bajo /<idioma>. Este middleware atiende las rutas sin
- * idioma — la raíz, o un enlace antiguo tipo /tarifas — y redirige al idioma
- * que mejor encaje con el navegador del visitante.
+ * Todas las páginas viven bajo /<idioma>/<slug traducido>. Este middleware
+ * atiende las rutas sin idioma — la raíz, o un enlace antiguo como /tarifas —
+ * y redirige al idioma que mejor encaje con el navegador del visitante,
+ * traduciendo también el slug.
  */
 
 /** Mejor idioma según Accept-Language; el español si no hay coincidencia. */
@@ -32,21 +34,28 @@ function negotiate(header: string | null) {
 export function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
-  // ¿Ya lleva idioma? Entonces no hay nada que hacer.
-  const first = pathname.split("/")[1];
+  // ¿Ya lleva idioma? Entonces la ruta [locale]/[slug] se encarga del resto,
+  // incluida la redirección de un slug de otro idioma.
+  const [, first] = pathname.split("/");
   if (isLocale(first)) return NextResponse.next();
 
   const locale = negotiate(request.headers.get("accept-language"));
   const url = request.nextUrl.clone();
-  url.pathname = `/${locale}${pathname === "/" ? "" : pathname}`;
+
+  if (pathname === "/") {
+    url.pathname = `/${locale}`;
+  } else {
+    // /tarifas → /en/fees si el visitante viene en inglés.
+    const segment = pathname.split("/")[1];
+    const resolved = resolveSlug(locale, segment);
+    url.pathname = resolved ? pathFor(resolved.key, locale) : `/${locale}${pathname}`;
+  }
 
   return NextResponse.redirect(url);
 }
 
 export const config = {
   // Se excluyen la API, los archivos internos de Next y cualquier ruta con
-  // extensión (icon.svg, robots.txt…), que no se traducen.
+  // extensión (icon.svg, robots.txt, sitemap.xml…), que no se traducen.
   matcher: ["/((?!api|_next|.*\\..*).*)"],
 };
-
-export { locales };

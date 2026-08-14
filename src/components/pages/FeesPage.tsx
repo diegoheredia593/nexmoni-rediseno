@@ -1,36 +1,10 @@
-import type { Metadata } from "next";
 import Link from "next/link";
-import { notFound } from "next/navigation";
 import { Calculator } from "@/components/Calculator";
 import { withTerms } from "@/components/glossary/withTerms";
-import { getDictionary, href, isLocale, locales } from "@/content/dictionary";
+import type { Dictionary, Locale } from "@/content/dictionary";
+import { href } from "@/content/routes";
 
-export function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
-
-export async function generateMetadata({
-  params,
-}: {
-  params: Promise<{ locale: string }>;
-}): Promise<Metadata> {
-  const { locale } = await params;
-  if (!isLocale(locale)) return {};
-  const dict = getDictionary(locale);
-  return {
-    title: dict.pages.fees.title,
-    description: dict.pages.fees.description,
-    alternates: {
-      canonical: `/${locale}/tarifas`,
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/tarifas`])),
-    },
-  };
-}
-
-export default async function TarifasPage({ params }: { params: Promise<{ locale: string }> }) {
-  const { locale } = await params;
-  if (!isLocale(locale)) notFound();
-  const dict = getDictionary(locale);
+export function FeesPage({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const t = dict.fees;
 
   return (

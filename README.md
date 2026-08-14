@@ -22,16 +22,26 @@ tipos que aparezcan en los otros tres.
 
 ## Rutas
 
-| Ruta | Contenido |
-|---|---|
-| `/<idioma>` | Landing: hero, cómo funciona, cuenta, cifras, precios, testimonio, alta |
-| `/<idioma>/tarifas` | Tarifario completo + calculadora de conversión + terminología |
-| `/<idioma>/acerca` | Datos societarios, misión, estado regulatorio, servicios, contacto |
-| `/<idioma>/preguntas-frecuentes` | Las ocho preguntas, en acordeón nativo |
-| `/api/lead` | Recepción del formulario de alta (sin destino final aún) |
+Los *slugs* se traducen. El mapa está en `src/content/routes.ts`, que es lo
+único que hay que tocar para renombrar una ruta.
 
-Los *slugs* son los mismos en los cuatro idiomas (`/en/tarifas`, no
-`/en/fees`). Traducirlos es posible pero pide un mapa de rutas por idioma.
+| Página | ES | EN | PT | LT |
+|---|---|---|---|---|
+| Portada | `/es` | `/en` | `/pt` | `/lt` |
+| Tarifas | `/es/tarifas` | `/en/fees` | `/pt/tarifas` | `/lt/ikainiai` |
+| Acerca | `/es/acerca` | `/en/about` | `/pt/sobre-nos` | `/lt/apie-mus` |
+| FAQ | `/es/preguntas-frecuentes` | `/en/faq` | `/pt/perguntas-frequentes` | `/lt/duk` |
+
+`/api/lead` recibe el formulario de alta (sin destino final aún) y no se traduce.
+
+Un slug de otro idioma o uno antiguo (`/en/tarifas`) redirige con 308 al
+canónico, para no servir el mismo contenido en dos direcciones. **Cambiar un
+slug ya publicado tira el posicionamiento de esa página**: si hay que hacerlo,
+añadir el viejo a `legacySlugs` para que siga redirigiendo.
+
+Cada página emite su canónico, `hreflang` para los cuatro idiomas y un
+`x-default` que apunta a la ruta sin prefijo, la que negocia por navegador.
+`sitemap.xml` lista las 16 con sus alternativas.
 
 ## Dónde se edita cada cosa
 
@@ -40,6 +50,7 @@ Ningún componente lleva cifras ni copy dentro. Todo vive en `src/content/`:
 - **`locales/es.ts`** — todo el texto en español, y la forma del diccionario.
 - **`locales/en.ts`, `pt.ts`, `lt.ts`** — las traducciones.
 - **`brand.ts`** — lo que no se traduce: nombre societario y direcciones.
+- **`routes.ts`** — slugs por idioma y redirecciones de los antiguos.
 - **`pricing.ts`** — **tipos de cambio, diferenciales y corredores.** Es lo que
   alimenta la calculadora. Lleva marcado en comentarios qué falta por definir.
   Los nombres de las monedas se traducen y viven en cada diccionario.
@@ -75,6 +86,10 @@ poder sumarlo al coste total.
    un jurista en las partes regulatorias.
 9. **Variante del portugués.** Ahora es pt-PT. Si el público son brasileños en
    Europa, hay que cambiar vocabulario y `numberLocale` a pt-BR.
+10. **Dominio real.** `NEXT_PUBLIC_SITE_URL` decide el dominio del canónico, el
+    `hreflang` y el sitemap. Por defecto asume `https://nexmoni.com`, deducido
+    del dominio de correo. Con un dominio equivocado el buscador emparejaría
+    mal las cuatro versiones de cada página: fijarlo en el despliegue.
 
 ## Handoff original
 

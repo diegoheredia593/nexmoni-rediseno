@@ -57,18 +57,3 @@ export const localeNames: Record<Locale, string> = {
   pt: "Português",
   lt: "Lietuvių",
 };
-
-/**
- * Antepone el idioma a una ruta interna.
- *
- *   href("en", "/")         → "/en"
- *   href("en", "/#precios") → "/en#precios"
- *   href("en", "/tarifas")  → "/en/tarifas"
- *
- * Los `mailto:` y las URL absolutas pasan sin tocar.
- */
-export function href(locale: Locale, path: string): string {
-  if (!path.startsWith("/")) return path;
-  if (path === "/") return `/${locale}`;
-  return `/${locale}${path}`;
-}

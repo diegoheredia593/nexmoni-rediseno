@@ -5,6 +5,7 @@ import { GlossaryProvider } from "@/components/glossary/GlossaryProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { getDictionary, isLocale, locales, type Locale } from "@/content/dictionary";
+import { siteUrl } from "@/lib/site-url";
 import "../globals.css";
 
 // next/font descarga y auto-hospeda las familias en build: sin peticiones a
@@ -38,12 +39,19 @@ export async function generateMetadata({
   const dict = getDictionary(locale);
 
   return {
+    // Sin esto, el canónico y el hreflang saldrían como rutas relativas.
+    metadataBase: siteUrl,
     title: dict.pages.home.title,
     description: dict.pages.home.description,
     alternates: {
       canonical: `/${locale}`,
       // Le dice al buscador que las cuatro son la misma página en otro idioma.
-      languages: Object.fromEntries(locales.map((l) => [l, `/${l}`])),
+      // "x-default" apunta a la raíz sin idioma, que es la que negocia según
+      // el navegador del visitante.
+      languages: {
+        ...Object.fromEntries(locales.map((l) => [l, `/${l}`])),
+        "x-default": "/",
+      },
     },
   };
 }

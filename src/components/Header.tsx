@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { brand } from "@/content/brand";
-import { href, type Dictionary, type Locale } from "@/content/dictionary";
+import type { Dictionary, Locale } from "@/content/dictionary";
+import { href } from "@/content/routes";
 import { LocaleSwitch } from "./LocaleSwitch";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {

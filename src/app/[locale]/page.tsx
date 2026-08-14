@@ -8,7 +8,8 @@ import {
   HeroFigure,
   UseTriptych,
 } from "@/components/Placeholders";
-import { getDictionary, href, isLocale, locales } from "@/content/dictionary";
+import { getDictionary, isLocale, locales } from "@/content/dictionary";
+import { href } from "@/content/routes";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
