@@ -869,3 +869,184 @@ a {
     gap: 8px;
   }
 }
+
+/* ── Preguntas frecuentes ─────────────────────────────────────────────────── */
+
+.faq {
+  border-top: 1px solid var(--hairline-strong);
+}
+
+.faq__item {
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.faq__q {
+  display: grid;
+  grid-template-columns: 44px 1fr 24px;
+  gap: 16px;
+  align-items: baseline;
+  padding: 20px 12px;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.25s ease;
+}
+
+.faq__q::-webkit-details-marker {
+  display: none;
+}
+
+.faq__q:hover {
+  background-color: var(--row-hover);
+}
+
+.faq__n {
+  font: 400 10px/1.6 var(--mono);
+  letter-spacing: 0.14em;
+  color: var(--accent-light);
+}
+
+.faq__q-text {
+  font: 500 18px/1.35 var(--sans);
+  letter-spacing: -0.02em;
+  text-wrap: pretty;
+}
+
+/* Cruz que gira a "×" al abrir: dos filetes, coherente con el sistema. */
+.faq__marker {
+  position: relative;
+  width: 13px;
+  height: 13px;
+  justify-self: end;
+  align-self: center;
+  transition: transform 0.28s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.faq__marker::before,
+.faq__marker::after {
+  content: "";
+  position: absolute;
+  background: var(--ink-55);
+}
+
+.faq__marker::before {
+  left: 0;
+  right: 0;
+  top: 6px;
+  height: 1px;
+}
+
+.faq__marker::after {
+  top: 0;
+  bottom: 0;
+  left: 6px;
+  width: 1px;
+}
+
+.faq__item[open] .faq__marker {
+  transform: rotate(135deg);
+}
+
+.faq__a {
+  padding: 0 12px 26px 72px;
+  max-width: 66ch;
+}
+
+.faq__a p {
+  font: 400 15px/1.65 var(--sans);
+  color: var(--ink-64);
+  margin: 0 0 12px;
+  text-wrap: pretty;
+}
+
+.faq__a p:last-child {
+  margin-bottom: 0;
+}
+
+.faq__list {
+  margin: 18px 0 0;
+  border-top: 1px solid var(--hairline);
+}
+
+.faq__list > div {
+  display: grid;
+  grid-template-columns: 200px 1fr;
+  gap: 20px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--hairline-soft);
+}
+
+.faq__list dt {
+  font: 400 10.5px/1.5 var(--mono);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-50);
+}
+
+.faq__list dd {
+  margin: 0;
+  font: 400 14px/1.5 var(--sans);
+  color: var(--ink-72);
+}
+
+@media (max-width: 760px) {
+  .faq__q {
+    grid-template-columns: 30px 1fr 20px;
+    gap: 10px;
+  }
+
+  .faq__q-text {
+    font-size: 16px;
+  }
+
+  .faq__a {
+    padding-left: 40px;
+  }
+
+  .faq__list > div,
+  .data-row,
+  .compliance-row {
+    grid-template-columns: 1fr !important;
+    gap: 6px !important;
+  }
+
+  .data-row > div:last-child {
+    text-align: left !important;
+  }
+
+  .page-head {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-head > div:first-child {
+    border-right: none !important;
+    border-bottom: 1px solid var(--hairline);
+  }
+}
+
+@media (max-width: 1100px) {
+  .page-head {
+    grid-template-columns: 1fr !important;
+  }
+
+  .page-head > div:first-child {
+    border-right: none !important;
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .page-head > div:last-child {
+    padding-top: 40px !important;
+  }
+}
+
+/* Rejilla con número de celdas irregular: si la última fila queda incompleta,
+   el fondo del contenedor asoma como un bloque gris. Aquí el filete lo pinta
+   cada celda con su propia sombra, así que los huecos quedan en superficie. */
+.grid-hairline--ragged {
+  gap: 0;
+  background: transparent;
+  border-top: none;
+}
+
+.grid-hairline--ragged > * {
+  box-shadow: 0 0 0 1px var(--hairline);
+}

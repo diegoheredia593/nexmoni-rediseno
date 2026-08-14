@@ -191,9 +191,10 @@ export const footerColumns = [
   {
     title: "EMPRESA",
     links: [
-      { label: "Sobre nosotros", href: "#abrir" },
-      { label: "Preguntas frecuentes", href: "#abrir" },
-      { label: "Contacto", href: "#abrir" },
+      { label: "Sobre nosotros", href: "/acerca" },
+      { label: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
+      { label: "Contacto", href: "/acerca#contacto" },
+      // ⚠ Dominio inconsistente con el de las páginas nuevas (nexmoni.com).
       { label: "support@nextmoni.com", href: "mailto:support@nextmoni.com" },
     ],
   },
