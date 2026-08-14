@@ -5,7 +5,7 @@ import { GlossaryProvider } from "@/components/glossary/GlossaryProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
 import { getDictionary, isLocale, locales, type Locale } from "@/content/dictionary";
-import { siteUrl } from "@/lib/site-url";
+import { robotsPolicy, siteUrl } from "@/lib/site-url";
 import "../globals.css";
 
 // next/font descarga y auto-hospeda las familias en build: sin peticiones a
@@ -41,6 +41,7 @@ export async function generateMetadata({
   return {
     // Sin esto, el canónico y el hreflang saldrían como rutas relativas.
     metadataBase: siteUrl,
+    robots: robotsPolicy,
     title: dict.pages.home.title,
     description: dict.pages.home.description,
     alternates: {

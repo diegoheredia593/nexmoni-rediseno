@@ -5,6 +5,7 @@ import { FaqPage } from "@/components/pages/FaqPage";
 import { FeesPage } from "@/components/pages/FeesPage";
 import { defaultLocale, getDictionary, isLocale, locales } from "@/content/dictionary";
 import { allRoutes, pathFor, resolveSlug, slugFor, type RouteKey } from "@/content/routes";
+import { robotsPolicy } from "@/lib/site-url";
 
 /**
  * Todas las páginas interiores pasan por aquí: el slug viene traducido
@@ -43,6 +44,7 @@ export async function generateMetadata({
   const page = dict.pages[metaKey[resolved.key]];
 
   return {
+    robots: robotsPolicy,
     title: page.title,
     description: page.description,
     alternates: {

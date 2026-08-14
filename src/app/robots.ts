@@ -1,7 +1,13 @@
 import type { MetadataRoute } from "next";
-import { siteUrl } from "@/lib/site-url";
+import { isPreview, siteUrl } from "@/lib/site-url";
 
 export default function robots(): MetadataRoute.Robots {
+  // En vista previa se bloquea el rastreo entero: una demo con tipos de cambio
+  // orientativos no debe llegar a los buscadores.
+  if (isPreview) {
+    return { rules: { userAgent: "*", disallow: "/" } };
+  }
+
   return {
     rules: {
       userAgent: "*",
