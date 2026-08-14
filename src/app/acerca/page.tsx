@@ -132,7 +132,7 @@ export default function AcercaPage() {
           <div>
             <DataRows rows={about.regulatory.rows} />
 
-            <div className="grid-hairline" style={{ gridTemplateColumns: "1fr 1fr", marginTop: 40 }}>
+            <div className="grid-hairline cols-2" style={{ marginTop: 40 }}>
               {about.regulatory.directives.map((directive) => (
                 <div key={directive.code} className="row" style={{ padding: "20px 20px 24px" }}>
                   <div
@@ -253,7 +253,7 @@ export default function AcercaPage() {
           </div>
         </div>
 
-        <div className="grid-hairline" style={{ gridTemplateColumns: "repeat(2, 1fr)" }}>
+        <div className="grid-hairline cols-2">
           {about.contact.items.map((item) => (
             <div key={item.address} className="row" style={{ padding: "24px 22px 28px" }}>
               <a

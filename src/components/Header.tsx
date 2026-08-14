@@ -22,7 +22,7 @@ export function Header() {
       <div style={{ display: "flex", alignItems: "center", gap: 14 }}>
         <a
           href={site.whatsapp}
-          className="mono"
+          className="mono header__whatsapp"
           style={{ font: "400 10.5px/1 var(--mono)", letterSpacing: ".1em", color: "var(--ink-55)" }}
         >
           WhatsApp

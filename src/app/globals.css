@@ -1050,3 +1050,56 @@ a {
 .grid-hairline--ragged > * {
   box-shadow: 0 0 0 1px var(--hairline);
 }
+
+/* ── Correcciones de ancho en móvil ───────────────────────────────────────── */
+
+/* Los campos de formulario traen un ancho intrínseco (~20 caracteres) que no
+   cede: dentro de una rejilla obligan a la pista a crecer y desbordan la
+   página. Hay que anularlo explícitamente. */
+.field input,
+.field select {
+  width: 100%;
+  min-width: 0;
+}
+
+.field,
+.calc,
+.calc__inputs > .field {
+  min-width: 0;
+}
+
+/* Rejilla de dos columnas que colapsa. Se usa en las direcciones de correo y
+   en las directivas de /acerca: sin colapsar, una dirección larga no parte y
+   desborda. */
+.cols-2 {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media (max-width: 760px) {
+  .cols-2 {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ── Cabecera fija: anclas y desbordes ────────────────────────────────────── */
+
+/* Sin esto, saltar a #precios deja el título debajo de la cabecera fija.
+   El margen cubre la cabecera más alta (79px en móvil) con holgura. */
+section[id],
+[id^="calc"],
+#contacto {
+  scroll-margin-top: 96px;
+}
+
+/* "ABRIR CUENTA" partía en dos líneas por debajo de 400px. */
+.btn {
+  white-space: nowrap;
+}
+
+/* El enlace de WhatsApp de la cabecera es redundante en pantallas estrechas:
+   el hero y el formulario ya lo ofrecen. */
+@media (max-width: 480px) {
+  .header__whatsapp {
+    display: none;
+  }
+}

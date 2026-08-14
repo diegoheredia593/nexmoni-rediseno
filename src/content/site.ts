@@ -18,7 +18,7 @@ export const site = {
   legal: "NEXMONI OÜ · DINERO ELECTRÓNICO EMITIDO POR CONNECTPAY UAB (EMI N.º 24)",
   compliance: "PSD2 · GDPR",
   version: "v1c-f1a — ACERO",
-  whatsapp: "#abrir",
+  whatsapp: "/#abrir",
 } as const;
 
 export const nav = [
@@ -213,10 +213,12 @@ export const footerColumns = [
   {
     title: "TÉRMINOS LEGALES",
     links: [
-      { label: "Privacidad", href: "#abrir" },
-      { label: "Términos legales", href: "#abrir" },
-      { label: "AML / KYC", href: "#abrir" },
-      { label: "Quejas y reclamaciones", href: "#abrir" },
+      // ⚠ Las cuatro apuntan al formulario de alta porque las páginas no
+      //   existen todavía. Son obligatorias antes de publicar (ver README).
+      { label: "Privacidad", href: "/#abrir" },
+      { label: "Términos legales", href: "/#abrir" },
+      { label: "AML / KYC", href: "/#abrir" },
+      { label: "Quejas y reclamaciones", href: "/#abrir" },
     ],
   },
 ] as const;

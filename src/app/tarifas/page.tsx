@@ -18,7 +18,8 @@ export default function TarifasPage() {
         <div className="section-head" style={{ marginBottom: 54 }}>
           <div className="eyebrow">{feesPage.eyebrow}</div>
           <div>
-            <h2 className="h2">{feesPage.title}</h2>
+            {/* h1 de la página: se estiliza como h2 para no romper la escala. */}
+            <h1 className="h2">{feesPage.title}</h1>
             <p className="lead" style={{ fontSize: 16 }}>
               {feesPage.lead}
             </p>
