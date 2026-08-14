@@ -1,32 +1,57 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { Calculator } from "@/components/Calculator";
 import { withTerms } from "@/components/glossary/withTerms";
-import { feeSchedule, feesPage, terminology } from "@/content/fees";
+import { getDictionary, href, isLocale, locales } from "@/content/dictionary";
 
-export const metadata: Metadata = {
-  title: "Tarifas y calculadora de envíos — NexMoni",
-  description:
-    "Tarifario completo de NexMoni y calculadora de conversión: comisión, diferencial de cambio y cuánto recibe el destinatario. Sin comisiones ocultas.",
-};
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
-export default function TarifasPage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const dict = getDictionary(locale);
+  return {
+    title: dict.pages.fees.title,
+    description: dict.pages.fees.description,
+    alternates: {
+      canonical: `/${locale}/tarifas`,
+      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/tarifas`])),
+    },
+  };
+}
+
+export default async function TarifasPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const dict = getDictionary(locale);
+  const t = dict.fees;
+
   return (
     <>
       {/* ── § 01 Tarifas ───────────────────────────────────────────────── */}
       <section className="section">
         <div className="section-head" style={{ marginBottom: 54 }}>
-          <div className="eyebrow">{feesPage.eyebrow}</div>
+          <div className="eyebrow">{t.eyebrow}</div>
           <div>
             {/* h1 de la página: se estiliza como h2 para no romper la escala. */}
-            <h1 className="h2">{feesPage.title}</h1>
+            <h1 className="h2">{t.title}</h1>
             <p className="lead" style={{ fontSize: 16 }}>
-              {feesPage.lead}
+              {t.lead}
             </p>
           </div>
         </div>
 
-        <div className="fees-block" style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}>
+        <div
+          className="fees-block"
+          style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}
+        >
           <div
             style={{
               font: "400 10px/1.7 var(--mono)",
@@ -35,13 +60,13 @@ export default function TarifasPage() {
               textTransform: "uppercase",
             }}
           >
-            {feesPage.sidenote[0]}
+            {t.sidenote[0]}
             <br />
-            {feesPage.sidenote[1]}
+            {t.sidenote[1]}
           </div>
 
           <div style={{ borderTop: "1px solid var(--hairline-strong)" }}>
-            {feeSchedule.map((fee) => (
+            {t.schedule.map((fee) => (
               <div
                 key={fee.label}
                 className="row"
@@ -55,12 +80,7 @@ export default function TarifasPage() {
                 }}
               >
                 <div>
-                  <div
-                    style={{
-                      font: "500 17px/1.3 var(--sans)",
-                      letterSpacing: "-.015em",
-                    }}
-                  >
+                  <div style={{ font: "500 17px/1.3 var(--sans)", letterSpacing: "-.015em" }}>
                     {withTerms(fee.label)}
                   </div>
                   <div
@@ -91,16 +111,19 @@ export default function TarifasPage() {
       {/* ── § 02 Calculadora ───────────────────────────────────────────── */}
       <section id="calculadora" className="section">
         <div className="section-head" style={{ marginBottom: 40 }}>
-          <div className="eyebrow">{feesPage.calculator.eyebrow}</div>
+          <div className="eyebrow">{dict.calculator.eyebrow}</div>
           <div>
-            <h2 className="h2">{feesPage.calculator.title}</h2>
+            <h2 className="h2">{dict.calculator.title}</h2>
             <p className="lead" style={{ maxWidth: "56ch" }}>
-              {feesPage.calculator.lead}
+              {dict.calculator.lead}
             </p>
           </div>
         </div>
 
-        <div className="fees-block" style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}>
+        <div
+          className="fees-block"
+          style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}
+        >
           <div
             style={{
               font: "400 10px/1.7 var(--mono)",
@@ -109,21 +132,24 @@ export default function TarifasPage() {
               textTransform: "uppercase",
             }}
           >
-            Cálculo orientativo
+            {dict.calculator.sidenote[0]}
             <br />
-            Tarifas del listado superior
+            {dict.calculator.sidenote[1]}
           </div>
-          <Calculator />
+          <Calculator dict={dict} />
         </div>
       </section>
 
       {/* ── Terminología estandarizada ─────────────────────────────────── */}
       <section className="section">
-        <div className="fees-block" style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}>
+        <div
+          className="fees-block"
+          style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}
+        >
           <div className="eyebrow" style={{ paddingTop: 8 }}>
-            TERMINOLOGÍA
+            {t.terminologyEyebrow[0]}
             <br />
-            ESTANDARIZADA
+            {t.terminologyEyebrow[1]}
           </div>
           <div>
             <p
@@ -135,11 +161,11 @@ export default function TarifasPage() {
                 textWrap: "pretty",
               }}
             >
-              {feesPage.terminologyIntro}
+              {t.terminologyIntro}
             </p>
 
             <div className="term-grid">
-              {terminology.map((term) => (
+              {t.terminology.map((term) => (
                 <div key={term.en} className="row">
                   <div
                     style={{
@@ -159,21 +185,18 @@ export default function TarifasPage() {
                       textWrap: "pretty",
                     }}
                   >
-                    {withTerms(term.es)}
+                    {withTerms(term.local)}
                   </div>
                 </div>
               ))}
             </div>
 
-            <div
-              style={{
-                marginTop: 30,
-                font: "400 12px/1.5 var(--mono)",
-                color: "var(--ink-50)",
-              }}
-            >
-              <Link href="/#precios" style={{ borderBottom: "1px solid rgba(20,24,29,.35)" }}>
-                Ver planes
+            <div style={{ marginTop: 30, font: "400 12px/1.5 var(--mono)", color: "var(--ink-50)" }}>
+              <Link
+                href={href(locale, "/#precios")}
+                style={{ borderBottom: "1px solid rgba(20,24,29,.35)" }}
+              >
+                {t.plansLink}
               </Link>
             </div>
           </div>

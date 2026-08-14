@@ -1,28 +1,49 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
-import { brand } from "@/content/about";
-import { faq, faqPage } from "@/content/faq";
+import { email } from "@/content/brand";
+import { getDictionary, href, isLocale, locales } from "@/content/dictionary";
 
-export const metadata: Metadata = {
-  title: "Preguntas frecuentes — NexMoni",
-  description:
-    "Cómo enviar dinero, quién emite las tarjetas, plazos SEPA y SWIFT, verificación de identidad, comisiones, seguridad de los fondos y cómo presentar una reclamación.",
-};
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
 
-export default function FaqPage() {
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const dict = getDictionary(locale);
+  return {
+    title: dict.pages.faq.title,
+    description: dict.pages.faq.description,
+    alternates: {
+      canonical: `/${locale}/preguntas-frecuentes`,
+      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/preguntas-frecuentes`])),
+    },
+  };
+}
+
+export default async function FaqPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const t = getDictionary(locale).faq;
+
   return (
     <>
       {/* ── Portada ────────────────────────────────────────────────────── */}
       <section className="section" style={{ paddingBottom: 0 }}>
         <div className="section-head" style={{ marginBottom: 48 }}>
-          <div className="eyebrow">{faqPage.eyebrow}</div>
+          <div className="eyebrow">{t.eyebrow}</div>
           <div>
             <h1 className="h2" style={{ marginBottom: 20 }}>
-              {faqPage.h1}
+              {t.h1}
             </h1>
             <p className="lead" style={{ fontSize: 17 }}>
-              {faqPage.subtitle}
+              {t.subtitle}
             </p>
           </div>
         </div>
@@ -30,7 +51,10 @@ export default function FaqPage() {
 
       {/* ── Preguntas ──────────────────────────────────────────────────── */}
       <section className="section" style={{ paddingTop: 0 }}>
-        <div className="fees-block" style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}>
+        <div
+          className="fees-block"
+          style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}
+        >
           <div
             style={{
               font: "400 10px/1.7 var(--mono)",
@@ -39,13 +63,13 @@ export default function FaqPage() {
               textTransform: "uppercase",
             }}
           >
-            {faq.length} preguntas
+            {t.items.length} {t.sidenoteCount}
             <br />
-            Pulsa para desplegar
+            {t.sidenoteHint}
           </div>
 
           <div className="faq">
-            {faq.map((item, i) => (
+            {t.items.map((item, i) => (
               // Acordeón nativo: sin JavaScript, y el navegador ya lo hace
               // accesible y buscable con Ctrl+F al abrirlo.
               <details key={item.q} className="faq__item" name="faq">
@@ -60,7 +84,7 @@ export default function FaqPage() {
                     <p key={paragraph}>{withTerms(paragraph)}</p>
                   ))}
 
-                  {item.list && (
+                  {item.list.length > 0 && (
                     <dl className="faq__list">
                       {item.list.map((entry) => (
                         <div key={entry.label}>
@@ -74,23 +98,20 @@ export default function FaqPage() {
               </details>
             ))}
 
-            <p
-              style={{
-                marginTop: 30,
-                font: "400 12px/1.7 var(--mono)",
-                color: "var(--ink-50)",
-              }}
-            >
-              {faqPage.footnote}{" "}
+            <p style={{ marginTop: 30, font: "400 12px/1.7 var(--mono)", color: "var(--ink-50)" }}>
+              {t.footnote}{" "}
               <a
-                href={`mailto:support@${brand.emailDomain}`}
+                href={`mailto:${email.support}`}
                 style={{ borderBottom: "1px solid rgba(20,24,29,.35)" }}
               >
-                support@{brand.emailDomain}
+                {email.support}
               </a>{" "}
               ·{" "}
-              <Link href="/tarifas" style={{ borderBottom: "1px solid rgba(20,24,29,.35)" }}>
-                Ver tarifas
+              <Link
+                href={href(locale, "/tarifas")}
+                style={{ borderBottom: "1px solid rgba(20,24,29,.35)" }}
+              >
+                {t.feesLink}
               </Link>
             </p>
           </div>

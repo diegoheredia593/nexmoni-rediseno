@@ -14,7 +14,7 @@ const dot = (extra: React.CSSProperties = {}): React.CSSProperties => ({
   ...extra,
 });
 
-export function HeroFigure() {
+export function HeroFigure({ label, coords, brief }: { label: string; coords: string; brief: string }) {
   return (
     <div
       style={{
@@ -37,10 +37,8 @@ export function HeroFigure() {
           zIndex: 2,
         }}
       >
-        <span style={{ background: "var(--surface-alt)", padding: "4px 6px" }}>FIG. 01 — HERO</span>
-        <span style={{ background: "var(--surface-alt)", padding: "4px 6px" }}>
-          40.4168 N / 3.7038 W
-        </span>
+        <span style={{ background: "var(--surface-alt)", padding: "4px 6px" }}>{label}</span>
+        <span style={{ background: "var(--surface-alt)", padding: "4px 6px" }}>{coords}</span>
       </div>
 
       <div className="halftone" style={{ height: "100%", minHeight: 640 }}>
@@ -96,17 +94,13 @@ export function HeroFigure() {
             style={dot({ background: "var(--accent)", animation: "nm-pulse 2.6s ease-in-out infinite" })}
           />
         </div>
-        <div className="halftone__caption">
-          REFERENCIA HERO · COLUMNA VERTICAL A SANGRE, RECORTE CENTRAL ~1:1,9 (ENCUADRA SEGURO EN
-          3:4) · UNA SOLA FIGURA DE MEDIO CUERPO SOSTENIENDO EL MÓVIL, MIRADA FUERA DE CÁMARA, LUZ
-          LATERAL DURA, FONDO LISO. HALFTONE GRUESO, SIN COLOR.
-        </div>
+        <div className="halftone__caption">{brief}</div>
       </div>
     </div>
   );
 }
 
-export function UseTriptych() {
+export function UseTriptych({ label, format, briefs }: { label: string; format: string; briefs: readonly string[] }) {
   return (
     <section style={{ borderBottom: "1px solid var(--hairline)", padding: "0 var(--pad-x) 40px" }}>
       <div
@@ -119,8 +113,8 @@ export function UseTriptych() {
           color: "var(--ink-45)",
         }}
       >
-        <span>FIG. 02 — TRÍPTICO DE USO</span>
-        <span>HALFTONE · 3 × 4:5</span>
+        <span>{label}</span>
+        <span>{format}</span>
       </div>
 
       <div className="triptych" style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 20 }}>
@@ -149,9 +143,7 @@ export function UseTriptych() {
               animation: "nm-rise 3.2s ease-in-out infinite",
             }}
           />
-          <div className="halftone__caption">
-            4:5 · MANOS + MÓVIL EN PRIMER PLANO, GESTO DE ENVIAR. ENCUADRE CERRADO, SIN CARA.
-          </div>
+          <div className="halftone__caption">{briefs[0]}</div>
         </div>
 
         <div className="halftone" style={{ aspectRatio: "4/5" }}>
@@ -191,9 +183,7 @@ export function UseTriptych() {
           >
             <div style={dot({ background: "var(--accent)", animation: "nm-pulse 2.2s ease-in-out infinite" })} />
           </div>
-          <div className="halftone__caption">
-            4:5 · DOS PERSONAS RECIBIENDO LA NOTICIA (MADRE E HIJA), PLANO MEDIO, INTERIOR DE CASA.
-          </div>
+          <div className="halftone__caption">{briefs[1]}</div>
         </div>
 
         <div className="halftone" style={{ aspectRatio: "4/5" }}>
@@ -250,16 +240,14 @@ export function UseTriptych() {
               />
             </div>
           </div>
-          <div className="halftone__caption">
-            4:5 · TARJETA VISA SOSTENIDA EN LA MANO, ÁNGULO LIGERO, FONDO NEUTRO. SIN BRILLOS 3D.
-          </div>
+          <div className="halftone__caption">{briefs[2]}</div>
         </div>
       </div>
     </section>
   );
 }
 
-export function ClosingFigure() {
+export function ClosingFigure({ label, format, brief }: { label: string; format: string; brief: string }) {
   return (
     <section style={{ borderBottom: "1px solid var(--hairline)", padding: "0 var(--pad-x) 40px" }}>
       <div
@@ -272,8 +260,8 @@ export function ClosingFigure() {
           color: "var(--ink-45)",
         }}
       >
-        <span>FIG. 03 — CIERRE</span>
-        <span>HALFTONE · 3:1</span>
+        <span>{label}</span>
+        <span>{format}</span>
       </div>
       <div className="halftone" style={{ aspectRatio: "3/1" }}>
         {["14%", "86%"].map((left) => (
@@ -313,10 +301,7 @@ export function ClosingFigure() {
             animation: "nm-scan 5s linear infinite",
           }}
         />
-        <div className="halftone__caption">
-          3:1 · PANORÁMICA DE CIERRE: DOS LUGARES EN UNA MISMA IMAGEN (CALLE EUROPEA / CALLE
-          LATINOAMERICANA) O UNA MESA COMPARTIDA POR VIDEOLLAMADA.
-        </div>
+        <div className="halftone__caption">{brief}</div>
       </div>
     </section>
   );

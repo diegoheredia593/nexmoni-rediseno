@@ -1,26 +1,21 @@
 import Link from "next/link";
-import { footerColumns, site } from "@/content/site";
+import { brand } from "@/content/brand";
+import { href, type Dictionary, type Locale } from "@/content/dictionary";
 
-export function Footer() {
+export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <footer
+      className="footer"
       style={{
         padding: "70px var(--pad-x) 34px",
         display: "grid",
         gridTemplateColumns: "1.3fr repeat(3, .9fr)",
         gap: 40,
       }}
-      className="footer"
     >
       <div>
-        <div
-          style={{
-            font: "600 17px/1 var(--sans)",
-            letterSpacing: "-.02em",
-            marginBottom: 16,
-          }}
-        >
-          {site.name}
+        <div style={{ font: "600 17px/1 var(--sans)", letterSpacing: "-.02em", marginBottom: 16 }}>
+          {brand.name}
         </div>
         <p
           style={{
@@ -30,15 +25,13 @@ export function Footer() {
             margin: 0,
           }}
         >
-          Tu vida está en dos países. Tu cuenta también. Cuenta europea, transferencias directas y
-          cero papeleo para que manejes tu dinero a tu manera.
+          {dict.footer.blurb}
         </p>
         <div style={{ display: "flex", gap: 10, marginTop: 24 }}>
           {["APP STORE", "GOOGLE PLAY"].map((store) => (
             <a
               key={store}
-              href="/#abrir"
-              className="footer__store"
+              href={href(locale, "/#abrir")}
               style={{
                 border: "1px solid var(--ink-30)",
                 padding: "10px 14px",
@@ -52,7 +45,7 @@ export function Footer() {
         </div>
       </div>
 
-      {footerColumns.map((col) => (
+      {dict.footer.columns.map((col) => (
         <div key={col.title}>
           <div
             style={{
@@ -68,7 +61,7 @@ export function Footer() {
             {col.links.map((link) => (
               <Link
                 key={link.label}
-                href={link.href}
+                href={href(locale, link.href)}
                 style={{ font: "400 13px/1.3 var(--sans)", color: "var(--ink-72)" }}
               >
                 {link.label}
@@ -92,9 +85,9 @@ export function Footer() {
           color: "var(--ink-42)",
         }}
       >
-        <span>{site.legal}</span>
-        <span>{site.compliance}</span>
-        <span>{site.version}</span>
+        <span>{dict.site.legal}</span>
+        <span>{dict.site.compliance}</span>
+        <span>{dict.site.version}</span>
       </div>
     </footer>
   );

@@ -1,0 +1,605 @@
+/**
+ * Español — fuente de la forma del diccionario.
+ *
+ * Al añadir una clave aquí, los otros tres idiomas dejan de compilar hasta que
+ * se traduce. Es intencionado.
+ */
+
+export const es = {
+  meta: {
+    /** Atributo lang del documento. */
+    htmlLang: "es",
+    /** Locale para Intl: separadores de miles y decimales. */
+    numberLocale: "es-ES",
+  },
+
+  site: {
+    tag: "EUR · EE · UE",
+    legal: "NEXMONI OÜ · DINERO ELECTRÓNICO EMITIDO POR CONNECTPAY UAB (EMI N.º 24)",
+    compliance: "PSD2 · GDPR",
+    version: "v1c-f1a — ACERO",
+    whatsapp: "WhatsApp",
+    openAccount: "Abrir cuenta",
+    menu: "Menú",
+    languageLabel: "Idioma",
+  },
+
+  nav: [
+    { label: "Cómo funciona", href: "/#como" },
+    { label: "Cuenta", href: "/#cuenta" },
+    { label: "Precios", href: "/#precios" },
+    { label: "Tarifas", href: "/tarifas" },
+    { label: "Seguridad", href: "/#seguridad" },
+  ],
+
+  pages: {
+    home: {
+      title: "NexMoni — Tu vida está en dos países. Tu cuenta también.",
+      description:
+        "Cuenta europea en euros para enviar dinero a Latinoamérica. IBAN a tu nombre, transferencias SEPA y SWIFT, tarjeta Visa. Dinero electrónico emitido por ConnectPay UAB, licencia EMI n.º 24 del Banco de Lituania.",
+    },
+    fees: {
+      title: "Tarifas y calculadora de envíos — NexMoni",
+      description:
+        "Tarifario completo de NexMoni y calculadora de conversión: comisión, diferencial de cambio y cuánto recibe el destinatario. Sin comisiones ocultas.",
+    },
+    about: {
+      title: "Acerca de NexMoni — NexMoni OÜ, Estonia",
+      description:
+        "NexMoni OÜ, código de registro 17303472, Tallinn (Estonia). Distribuidor autorizado de ConnectPay UAB, entidad de dinero electrónico con licencia EMI n.º 24 del Banco de Lituania.",
+    },
+    faq: {
+      title: "Preguntas frecuentes — NexMoni",
+      description:
+        "Cómo enviar dinero, quién emite las tarjetas, plazos SEPA y SWIFT, verificación de identidad, comisiones, seguridad de los fondos y cómo presentar una reclamación.",
+    },
+  },
+
+  hero: {
+    kicker: ["CUENTA EUROPEA", "100% REMOTO", "EMISOR REGULADO EN LA UE"],
+    titleTop: "Tu vida está en dos países.",
+    titleBottom: "Tu cuenta también.",
+    lead:
+      "Maneja euros, cambia divisas y envía dinero a los tuyos desde una sola cuenta abierta en la Unión Europea. Sin sucursales, sin letra pequeña.",
+    cta: "Abrir cuenta gratis",
+    secondaryCta: "Habla con nosotros por WhatsApp",
+    trust: [
+      "Dinero electrónico emitido por ConnectPay UAB — licencia EMI n.º 24 del Banco de Lituania",
+      "Fondos salvaguardados y segregados según normativa UE",
+    ],
+    figureLabel: "FIG. 01 — HERO",
+    figureCoords: "40.4168 N / 3.7038 W",
+    figureBrief:
+      "REFERENCIA HERO · COLUMNA VERTICAL A SANGRE, RECORTE CENTRAL ~1:1,9 (ENCUADRA SEGURO EN 3:4) · UNA SOLA FIGURA DE MEDIO CUERPO SOSTENIENDO EL MÓVIL, MIRADA FUERA DE CÁMARA, LUZ LATERAL DURA, FONDO LISO. HALFTONE GRUESO, SIN COLOR.",
+  },
+
+  steps: {
+    eyebrow: "§ 02 — CÓMO FUNCIONA",
+    title: "Tres pasos, no tres semanas.",
+    lead: "Sin papeleo, sin sucursales, sin esperar días para tener una cuenta a tu nombre.",
+    items: [
+      {
+        title: "Abre tu cuenta",
+        body:
+          "Regístrate con tu documento y una selfie. Obtén tu IBAN europeo propio en minutos, sin visitar ninguna sucursal.",
+      },
+      {
+        title: "Verifica tu identidad",
+        body:
+          "La verificación (KYC) la procesa ConnectPay UAB, entidad autorizada por el Banco de Lituania. Desbloquea todas las funciones y límites más altos.",
+      },
+      {
+        title: "Envía y controla tu dinero",
+        body:
+          "Transferencias desde tu cuenta y hacia Latinoamérica, tarjetas Visa y cambio de divisas — todo desde una sola app.",
+      },
+    ],
+  },
+
+  triptych: {
+    label: "FIG. 02 — TRÍPTICO DE USO",
+    format: "HALFTONE · 3 × 4:5",
+    briefs: [
+      "4:5 · MANOS + MÓVIL EN PRIMER PLANO, GESTO DE ENVIAR. ENCUADRE CERRADO, SIN CARA.",
+      "4:5 · DOS PERSONAS RECIBIENDO LA NOTICIA (MADRE E HIJA), PLANO MEDIO, INTERIOR DE CASA.",
+      "4:5 · TARJETA VISA SOSTENIDA EN LA MANO, ÁNGULO LIGERO, FONDO NEUTRO. SIN BRILLOS 3D.",
+    ],
+  },
+
+  features: {
+    title: "Una cuenta, dos países, cero fricción.",
+    eyebrow: "TODO EN UN SOLO LUGAR",
+    items: [
+      {
+        tag: "SEPA / SWIFT",
+        title: "Transferencias sin fronteras",
+        body: "SEPA directo desde la UE sin límites. SWIFT y más de 200 países cuando lo necesites.",
+      },
+      {
+        tag: "EUR / USD / GBP",
+        title: "Multidivisa real",
+        body:
+          "Guarda y cambia entre EUR, USD, GBP y muchas otras monedas en un mismo saldo, sin abrir otra cuenta.",
+      },
+      {
+        tag: "IBAN",
+        title: "IBAN a tu nombre",
+        body:
+          "Un número de cuenta europeo propio, para recibir tu nómina o pagos como cualquier residente de la UE.",
+      },
+      {
+        tag: "VISA",
+        title: "Tarjeta Visa",
+        body: "Visa de débito para pagar hoy mismo. Física y/o virtual para retirar o pagar en persona.",
+      },
+      {
+        tag: "KYC / E2E",
+        title: "Seguridad verificable",
+        body:
+          "Verificación reforzada en cada acceso y cifrado de extremo a extremo. Cumplimos la normativa europea.",
+      },
+      {
+        tag: "FX",
+        title: "Cambio de divisa claro",
+        body: "Ve la tasa y la comisión antes de confirmar. Nunca sorpresa, nunca escondida.",
+      },
+    ],
+  },
+
+  stats: [
+    { figure: "200+", label: "países alcanzables por transferencia o SWIFT" },
+    { figure: "N.º 24", label: "licencia EMI de ConnectPay UAB, nuestra entidad emisora" },
+    { figure: "PSD2 · GDPR", label: "cumplimiento regulatorio en la Unión Europea" },
+  ],
+
+  pricing: {
+    eyebrow: "§ 05 — PRECIOS",
+    title: "Simple y transparente.",
+    lead: "Elige según tu criterio actual. Puedes cambiar de plan cuando quieras.",
+    includes: "INCLUYE",
+    popular: "MÁS POPULAR",
+    feesLink: "Tarifas detalladas",
+    feesNote: "Sin comisiones ocultas — todo lo que cobramos, en un solo lugar.",
+    plans: [
+      {
+        name: "Standard",
+        price: "Gratis",
+        pitch: "Todo lo esencial para enviar dinero a casa de forma sencilla.",
+        cta: "Elegir Standard",
+        items: [
+          "Cuenta IBAN EUR",
+          "Transferencias SEPA",
+          "Monedero multidivisa",
+          "Tarjeta Visa virtual + física",
+        ],
+      },
+      {
+        name: "Plus",
+        price: "€4,99/mes",
+        pitch: "Para quienes envían con frecuencia y quieren mejores tarifas.",
+        cta: "Elegir Plus",
+        items: [
+          "Todo lo de Standard",
+          "Transferencias SWIFT",
+          "Tasas de cambio reducidas",
+          "Límites ampliados",
+        ],
+      },
+      {
+        name: "Premium",
+        price: "€9,99/mes",
+        pitch: "Un máximo nivel y las mejores condiciones para tu dinero.",
+        cta: "Elegir Premium",
+        items: [
+          "Todo lo de Plus",
+          "Envíos ilimitados",
+          "Gestor de cuenta dedicado",
+          "Prioridad en soporte",
+        ],
+      },
+    ],
+  },
+
+  testimonial: {
+    eyebrow: "§ 06 — TESTIMONIO",
+    quote:
+      "Antes tardaba días en mandarle dinero a mi mamá y pagaba comisiones que no entendía. Ahora lo hago en minutos y sé exactamente cuánto le llega.",
+    author: "Usuaria de NexMoni",
+    detail: "Vive en España, envía a Colombia",
+    security: [
+      {
+        title: "Envíos protegidos",
+        body: "Conexión cifrada y seguimiento de cada operación de principio a fin.",
+      },
+      {
+        title: "Fondos protegidos",
+        body:
+          "Tu dinero queda salvaguardado y segregado en ConnectPay UAB, conforme a la normativa de la UE.",
+      },
+      {
+        title: "Verificación reforzada",
+        body: "KYC para mantener tu cuenta segura, identificando cada operación.",
+      },
+    ],
+  },
+
+  closing: {
+    label: "FIG. 03 — CIERRE",
+    format: "HALFTONE · 3:1",
+    brief:
+      "3:1 · PANORÁMICA DE CIERRE: DOS LUGARES EN UNA MISMA IMAGEN (CALLE EUROPEA / CALLE LATINOAMERICANA) O UNA MESA COMPARTIDA POR VIDEOLLAMADA.",
+  },
+
+  signup: {
+    eyebrow: "EMPIEZA HOY",
+    title: "Abre tu cuenta en minutos.",
+    leadBefore: "Sin sucursales, sin papeleo. Solo tu documento, una selfie, y tu ",
+    leadAfter: " europeo listo para usar.",
+    fields: [
+      { name: "nombre", label: "NOMBRE COMPLETO", placeholder: "¿Cómo te llamas?" },
+      { name: "telefono", label: "TELÉFONO", placeholder: "+34 600 000 000" },
+      { name: "email", label: "CORREO ELECTRÓNICO", placeholder: "tu@correo.com" },
+    ],
+    submit: "Crear mi cuenta",
+    sending: "Enviando…",
+    whatsappNote: "¿Prefieres hablar primero? Escríbenos por WhatsApp.",
+    errors: {
+      name: "Escribe tu nombre.",
+      phoneMissing: "Escribe tu teléfono.",
+      phoneInvalid: "Revisa el número, con prefijo del país.",
+      emailMissing: "Escribe tu correo.",
+      emailInvalid: "Revisa el correo.",
+      submit: "No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp.",
+    },
+    success: {
+      eyebrow: "SOLICITUD RECIBIDA",
+      title: "Gracias. Te escribimos en breve.",
+      body:
+        "Revisa tu correo — ahí llegan los siguientes pasos para verificar tu identidad y activar tu cuenta.",
+    },
+  },
+
+  footer: {
+    blurb:
+      "Tu vida está en dos países. Tu cuenta también. Cuenta europea, transferencias directas y cero papeleo para que manejes tu dinero a tu manera.",
+    columns: [
+      {
+        title: "PRODUCTOS",
+        links: [
+          { label: "Funciones", href: "/#cuenta" },
+          { label: "Precios", href: "/#precios" },
+          { label: "Comisiones", href: "/tarifas" },
+          { label: "Seguridad", href: "/#seguridad" },
+        ],
+      },
+      {
+        title: "EMPRESA",
+        links: [
+          { label: "Sobre nosotros", href: "/acerca" },
+          { label: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
+          { label: "Contacto", href: "/acerca#contacto" },
+          { label: "support@nexmoni.com", href: "mailto:support@nexmoni.com" },
+        ],
+      },
+      {
+        // ⚠ Las cuatro apuntan al alta porque las páginas no existen todavía.
+        title: "TÉRMINOS LEGALES",
+        links: [
+          { label: "Privacidad", href: "/#abrir" },
+          { label: "Términos legales", href: "/#abrir" },
+          { label: "AML / KYC", href: "/#abrir" },
+          { label: "Quejas y reclamaciones", href: "/#abrir" },
+        ],
+      },
+    ],
+  },
+
+  glossary: {
+    SEPA:
+      "Zona Única de Pagos en Euros: transferencias en euros entre países de la UE, con las mismas condiciones que una nacional.",
+    SWIFT:
+      "Red internacional de mensajería bancaria. Se usa para enviar dinero fuera de la zona euro, a más de 200 países.",
+    IBAN:
+      "Número de cuenta bancaria internacional. El tuyo es europeo y va a tu nombre: sirve para recibir tu nómina o pagos.",
+    KYC:
+      "«Conoce a tu cliente»: la verificación de identidad que exige la normativa europea antes de operar con tu cuenta.",
+    AML:
+      "Prevención de blanqueo de capitales: los controles legales que aseguran el origen lícito del dinero.",
+    E2E: "Cifrado de extremo a extremo: solo tú y el destino pueden leer los datos; nadie por el camino.",
+    FX: "Cambio de divisa (foreign exchange): la tasa a la que se convierte tu dinero de una moneda a otra.",
+    PSD2:
+      "Directiva europea de servicios de pago: fija reglas de seguridad y autenticación reforzada en cada operación.",
+    GDPR:
+      "Reglamento europeo de protección de datos: controla cómo se guardan y usan tus datos personales.",
+  },
+
+  fees: {
+    eyebrow: "§ 01 — TARIFAS",
+    title: "Tarifas detalladas.",
+    lead:
+      "Sin comisiones ocultas. Cada concepto que cobramos, con su importe, tal y como aparecerá en tu extracto.",
+    sidenote: ["Importes en EUR", "Vigentes desde 2026"],
+    schedule: [
+      {
+        label: "Cambio de moneda (FX)",
+        note: "Diferencial aplicado sobre la tasa de mercado",
+        price: "Spread 1–3% por par",
+      },
+      {
+        label: "Transferencia SEPA",
+        note: "Envíos en euros dentro de la zona SEPA",
+        price: "1,5% · mín. 0,50 €",
+      },
+      {
+        label: "Transferencia SWIFT",
+        note: "Envíos internacionales fuera de la zona euro",
+        price: "25,00 €",
+      },
+      {
+        label: "Recarga con tarjeta",
+        note: "Añadir fondos con tarjeta de débito o crédito",
+        price: "2% del monto",
+      },
+      { label: "Retiro bancario", note: "Retirada a una cuenta bancaria externa", price: "1,00 €" },
+      { label: "Transferencia interna", note: "Entre cuentas NexMoni", price: "Gratis" },
+      {
+        label: "Mantenimiento de cuenta",
+        note: "Cargo periódico por cuenta activa",
+        price: "1,00 € / 30 días",
+      },
+    ],
+    terminologyEyebrow: ["TERMINOLOGÍA", "ESTANDARIZADA"],
+    terminologyIntro:
+      "Usamos el glosario estandarizado del Banco de Lituania, para que puedas comparar nuestras tarifas con las de cualquier otra entidad europea.",
+    terminology: [
+      { en: "Account management", local: "Mantenimiento de cuenta" },
+      { en: "Issuance of a debit card", local: "Emisión de tarjeta de débito" },
+      { en: "Cash withdrawal", local: "Retirada de efectivo" },
+      { en: "Credit transfer — SEPA", local: "Transferencia SEPA en euros" },
+      { en: "Credit transfer — non-SEPA", local: "Transferencia SWIFT fuera de la zona SEPA" },
+      {
+        en: "Settlement of received payments",
+        local: "Abono de pagos recibidos — en euros y en otras monedas",
+      },
+      { en: "Currency conversion", local: "Cambio de divisa (FX)" },
+    ],
+    plansLink: "Ver planes",
+  },
+
+  calculator: {
+    eyebrow: "§ 02 — CALCULADORA",
+    title: "Calcula lo que llega.",
+    lead:
+      "Introduce un importe y verás el desglose completo: nuestra comisión, el diferencial de cambio y cuánto recibe el destinatario. Las mismas tarifas de la tabla de arriba, aplicadas a tu caso.",
+    sidenote: ["Cálculo orientativo", "Tarifas del listado superior"],
+    noticeStrong: "Tipos de cambio orientativos",
+    noticeRest:
+      ". No constituyen una oferta en firme: el importe definitivo se fija al confirmar el envío. Las comisiones son las del tarifario publicado arriba.",
+    amount: "CANTIDAD",
+    from: "DE",
+    to: "A",
+    amountAria: "Cantidad a enviar",
+    comingSoon: "(próximamente)",
+    receives: "El destinatario recibe",
+    receivesNote: "Total después de comisiones",
+    rate: "Tipo de cambio",
+    spread: "Sobreprecio en el tipo de cambio",
+    spreadNoFx: "Sin cambio de divisa",
+    spreadNoteBefore: "Diferencial de ",
+    spreadNoteAfter: " sobre la tasa media",
+    fee: "Comisión por transferencia",
+    total: "Coste total de la transferencia",
+    totalNote: "Comisión más sobreprecio de cambio",
+    foot: "Cálculo orientativo sobre el tarifario publicado. Consulta la tabla de arriba para el resto de conceptos.",
+    badAmount: "Revisa el importe",
+    unavailable: "Corredor no disponible",
+    sepaOnlyBefore: "Hoy cotizamos envíos en euros dentro de la zona ",
+    sepaOnlyAfter: ". El resto de destinos se activará en cuanto cerremos su precio.",
+    rails: { sepa: "Transferencia SEPA", swift: "Transferencia SWIFT", internal: "Transferencia interna" },
+    quoteErrors: {
+      invalidAmount: "Introduce un importe mayor que cero.",
+      noCorridor: "Todavía no operamos este envío.",
+      corridorPending: "Este corredor abre próximamente. Estamos cerrando su precio.",
+      belowFee: "El importe no cubre la comisión mínima de envío.",
+    },
+  },
+
+  currencies: {
+    EUR: "Euro",
+    USD: "Dólar estadounidense",
+    GBP: "Libra esterlina",
+    COP: "Peso colombiano",
+    PEN: "Sol peruano",
+    DOP: "Peso dominicano",
+    MXN: "Peso mexicano",
+    BRL: "Real brasileño",
+    CLP: "Peso chileno",
+    ARS: "Peso argentino",
+    BOB: "Boliviano",
+    PYG: "Guaraní paraguayo",
+    UYU: "Peso uruguayo",
+    VES: "Bolívar venezolano",
+  },
+
+  about: {
+    eyebrow: "§ 01 — ACERCA DE",
+    h1: "Acerca de NexMoni",
+    subtitle: "NexMoni OÜ — Estonia, Unión Europea",
+    companyEyebrow: "DATOS DE LA EMPRESA",
+    company: [
+      { label: "Razón social", value: "NexMoni OÜ" },
+      { label: "Código de registro", value: "17303472" },
+      { label: "Domicilio social", value: "Tornimäe tn 5, 10145 Tallinn" },
+      { label: "Jurisdicción", value: "República de Estonia, Unión Europea" },
+    ],
+    missionEyebrow: "§ 02 — NUESTRA MISIÓN",
+    missionTitle: "Enviar dinero a casa debería ser tan sencillo como una conversación.",
+    missionBody:
+      "NexMoni nació para simplificar las transferencias internacionales de dinero para los migrantes y sus familias. Creemos que enviar dinero a casa debería ser tan sencillo como mantener una conversación. Nuestra plataforma conecta Europa con América Latina, permitiendo transferencias rápidas, seguras y asequibles impulsadas por inteligencia artificial.",
+    regulatoryEyebrow: "§ 03 — ESTADO REGULATORIO",
+    regulatoryTitle: "Quién custodia tu dinero.",
+    regulatoryBody:
+      "NexMoni OÜ opera como distribuidor autorizado de ConnectPay UAB, entidad de dinero electrónico supervisada por el Banco de Lituania. Los fondos de los clientes se mantienen salvaguardados y segregados conforme a la normativa de la Unión Europea.",
+    regulatorySidenote: ["Entidad emisora", "y licencia"],
+    regulatory: [
+      { label: "Entidad emisora", value: "ConnectPay UAB" },
+      { label: "Licencia EMI", value: "N.º 24 — Bank of Lithuania" },
+      { label: "Domicilio del emisor", value: "Algirdo str. 38, Vilna" },
+      { label: "Papel de NexMoni OÜ", value: "Distribuidor autorizado" },
+    ],
+    directives: [
+      { code: "PSD2", detail: "Directiva UE 2015/2366 de servicios de pago" },
+      { code: "EMD2", detail: "Directiva UE 2009/110/CE de dinero electrónico" },
+    ],
+    servicesEyebrow: "§ 04 — SERVICIOS",
+    servicesTitle: "Lo que puedes hacer con la cuenta.",
+    services: [
+      {
+        tag: "EUR / USD / GBP",
+        title: "Monedero multidivisa",
+        body: "Euros, dólares, libras y las principales monedas de América Latina en un mismo saldo.",
+      },
+      {
+        tag: "IBAN",
+        title: "Cuenta IBAN europea",
+        body: "Un número de cuenta europeo a tu nombre, operativo en la zona SEPA.",
+      },
+      {
+        tag: "SEPA / SWIFT",
+        title: "Transferencias internacionales",
+        body: "Envíos SEPA dentro de la zona euro y SWIFT a más de 200 países.",
+      },
+      {
+        tag: "FX",
+        title: "Cambio de divisas",
+        body: "Conversión entre las monedas del monedero a tasas competitivas.",
+      },
+      {
+        tag: "VISA",
+        title: "Tarjetas Visa",
+        body: "Tarjetas virtuales y físicas para pagar y retirar efectivo.",
+      },
+      {
+        tag: "IA / WHATSAPP",
+        title: "Asistente por WhatsApp",
+        body: "Ordena transferencias por voz a través de un asistente de inteligencia artificial.",
+      },
+      {
+        tag: "iOS / ANDROID / WEB",
+        title: "Aplicaciones",
+        body: "Acceso desde móvil y escritorio, con la misma cuenta y el mismo saldo.",
+      },
+    ],
+    complianceEyebrow: "§ 05 — CUMPLIMIENTO",
+    complianceTitle: "Marcos que nos obligan.",
+    compliance: [
+      { code: "AMLD4 / AMLD5", detail: "Directivas europeas de prevención de blanqueo de capitales" },
+      {
+        code: "RahaPTS",
+        detail: "Ley estonia de prevención de blanqueo y financiación del terrorismo",
+      },
+      { code: "GDPR", detail: "Reglamento europeo de protección de datos" },
+      {
+        code: "REGLAMENTO (UE) 2015/847",
+        detail: "Información que acompaña a las transferencias de fondos",
+      },
+      {
+        code: "SANCIONES INTERNACIONALES",
+        detail: "Listas de la Unión Europea, Naciones Unidas y OFAC",
+      },
+    ],
+    contactEyebrow: "§ 06 — CONTACTO",
+    contactTitle: "A quién escribir.",
+    contact: [
+      { address: "support@nexmoni.com", purpose: "Consultas generales y soporte" },
+      { address: "legal@nexmoni.com", purpose: "Asuntos legales" },
+      { address: "compliance@nexmoni.com", purpose: "Cumplimiento normativo" },
+      { address: "privacy@nexmoni.com", purpose: "Protección de datos y privacidad" },
+    ],
+  },
+
+  faq: {
+    eyebrow: "§ 01 — PREGUNTAS FRECUENTES",
+    h1: "Preguntas frecuentes",
+    subtitle: "Respuestas a las dudas más comunes.",
+    sidenoteCount: "preguntas",
+    sidenoteHint: "Pulsa para desplegar",
+    footnote: "¿No encuentras lo que buscabas? Escríbenos y te respondemos por el mismo canal.",
+    feesLink: "Ver tarifas",
+    items: [
+      {
+        q: "¿Cómo bloqueo mi cuenta o congelo mi tarjeta?",
+        a: [
+          "Desde la propia aplicación, en Tarjetas o en Ajustes, en cualquier momento del día. El bloqueo es inmediato y puedes revertirlo tú mismo.",
+          "Si has perdido el acceso a la app, escribe a support@nexmoni.com y lo bloqueamos nosotros.",
+        ],
+        list: [],
+      },
+      {
+        q: "¿Quién emite el dinero y las tarjetas?",
+        a: [
+          "NexMoni OÜ actúa como distribuidor. El dinero electrónico y las tarjetas los emiten entidades autorizadas:",
+        ],
+        list: [
+          { label: "Dinero electrónico", value: "ConnectPay UAB — Licencia EMI N.º 24" },
+          { label: "Tarjetas Visa", value: "Wallester AS" },
+          { label: "NexMoni OÜ", value: "Distribuidor autorizado" },
+        ],
+      },
+      {
+        q: "¿Cómo envío dinero?",
+        a: [
+          "Desde Enviar: eliges destinatario, indicas el importe y confirmas. Antes de confirmar ves el desglose completo.",
+          "Los plazos dependen de la vía:",
+        ],
+        list: [
+          { label: "SEPA", value: "De minutos a 1 día hábil" },
+          { label: "SWIFT", value: "De 1 a 5 días hábiles" },
+        ],
+      },
+      {
+        q: "¿Cuáles son las comisiones?",
+        a: [
+          "Todas las comisiones se muestran antes de confirmar la operación: nunca se descubren después.",
+          "El listado completo está en la sección de precios y te llega también en el correo de bienvenida.",
+        ],
+        list: [],
+      },
+      {
+        q: "¿Está seguro mi dinero?",
+        a: [
+          "Los fondos se mantienen salvaguardados y segregados en ConnectPay UAB, conforme a la normativa europea de dinero electrónico.",
+          "Las comunicaciones van cifradas en doble capa y cada operación exige autenticación reforzada de cliente (SCA), tal y como obliga la PSD2.",
+        ],
+        list: [],
+      },
+      {
+        q: "¿Cómo verifico mi identidad (KYC)?",
+        a: [
+          "Durante el registro, aportando un documento de identidad y una selfie. La verificación la procesa ConnectPay, no NexMoni.",
+        ],
+        list: [],
+      },
+      {
+        q: "¿Cómo presento una reclamación?",
+        a: [
+          "Escribe a complaints@nexmoni.com. Respondemos en un plazo máximo de 15 días hábiles.",
+          "Si la respuesta no te satisface, puedes dirigirte directamente a ConnectPay UAB como entidad emisora, o al Banco de Lituania como supervisor.",
+        ],
+        list: [
+          { label: "NexMoni OÜ", value: "complaints@nexmoni.com — 15 días hábiles" },
+          { label: "Entidad emisora", value: "ConnectPay UAB" },
+          { label: "Supervisor", value: "Banco de Lituania — lb.lt" },
+        ],
+      },
+      {
+        q: "¿Cómo contacto con soporte?",
+        a: [
+          "Por el asistente dentro de la aplicación o escribiendo a support@nexmoni.com.",
+          "Si detectas un fraude o un cargo que no reconoces, avisa cuanto antes a fraud@nexmoni.com.",
+        ],
+        list: [],
+      },
+    ],
+  },
+} as const;

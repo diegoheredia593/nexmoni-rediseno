@@ -1103,3 +1103,59 @@ section[id],
     display: none;
   }
 }
+
+/* ── Selector de idioma ───────────────────────────────────────────────────── */
+
+.locales {
+  display: flex;
+  border: 1px solid var(--hairline);
+}
+
+.locales__item {
+  padding: 7px 8px;
+  font: 500 10px/1 var(--mono);
+  letter-spacing: 0.1em;
+  color: var(--ink-45);
+  border-right: 1px solid var(--hairline);
+  transition: background-color 0.22s ease, color 0.22s ease;
+}
+
+.locales__item:last-child {
+  border-right: none;
+}
+
+.locales__item:hover {
+  background: var(--row-hover);
+  color: var(--ink);
+}
+
+/* El idioma activo se marca invirtiendo, no con color: el sistema solo admite
+   dos fondos y el ámbar está reservado a las acciones. */
+.locales__item--on {
+  background: var(--ink);
+  color: var(--on-dark);
+}
+
+.locales__item--on:hover {
+  background: var(--ink);
+  color: var(--on-dark);
+}
+
+/* Por debajo de 1100px la cabecera ya va justa: el selector pasa al menú. */
+@media (max-width: 1100px) {
+  .header .locales {
+    display: none;
+  }
+
+  .menu__panel .locales {
+    display: flex;
+    border: none;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .menu__panel .locales__item {
+    flex: 1;
+    text-align: center;
+    padding: 13px 8px;
+  }
+}

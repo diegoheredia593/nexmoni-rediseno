@@ -1,12 +1,29 @@
 import type { Metadata } from "next";
+import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
-import { about } from "@/content/about";
+import { getDictionary, isLocale, locales } from "@/content/dictionary";
 
-export const metadata: Metadata = {
-  title: "Acerca de NexMoni — NexMoni OÜ, Estonia",
-  description:
-    "NexMoni OÜ, código de registro 17303472, Tallinn (Estonia). Distribuidor autorizado de ConnectPay UAB, entidad de dinero electrónico con licencia EMI N.º 24 del Banco de Lituania.",
-};
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}): Promise<Metadata> {
+  const { locale } = await params;
+  if (!isLocale(locale)) return {};
+  const dict = getDictionary(locale);
+  return {
+    title: dict.pages.about.title,
+    description: dict.pages.about.description,
+    alternates: {
+      canonical: `/${locale}/acerca`,
+      languages: Object.fromEntries(locales.map((l) => [l, `/${l}/acerca`])),
+    },
+  };
+}
 
 /** Filas etiqueta / valor separadas por filete: el patrón del tarifario. */
 function DataRows({ rows }: { rows: readonly { label: string; value: string }[] }) {
@@ -25,9 +42,7 @@ function DataRows({ rows }: { rows: readonly { label: string; value: string }[] 
             borderBottom: "1px solid var(--hairline-soft)",
           }}
         >
-          <div style={{ font: "400 13px/1.4 var(--sans)", color: "var(--ink-62)" }}>
-            {row.label}
-          </div>
+          <div style={{ font: "400 13px/1.4 var(--sans)", color: "var(--ink-62)" }}>{row.label}</div>
           <div
             style={{
               font: "700 13px/1.4 var(--mono)",
@@ -43,17 +58,21 @@ function DataRows({ rows }: { rows: readonly { label: string; value: string }[] 
   );
 }
 
-export default function AcercaPage() {
+export default async function AcercaPage({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const t = getDictionary(locale).about;
+
   return (
     <>
       {/* ── Portada ────────────────────────────────────────────────────── */}
       <section className="split page-head" style={{ gridTemplateColumns: "1.05fr .95fr" }}>
         <div style={{ padding: "78px var(--pad-x)", borderRight: "1px solid var(--hairline)" }}>
           <div className="eyebrow" style={{ marginBottom: 44 }}>
-            {about.eyebrow}
+            {t.eyebrow}
           </div>
           <h1 className="h1" style={{ marginBottom: 24 }}>
-            {about.h1}
+            {t.h1}
           </h1>
           <p
             style={{
@@ -63,7 +82,7 @@ export default function AcercaPage() {
               maxWidth: "40ch",
             }}
           >
-            {about.subtitle}
+            {t.subtitle}
           </p>
         </div>
 
@@ -76,19 +95,19 @@ export default function AcercaPage() {
           }}
         >
           <div className="eyebrow" style={{ marginBottom: 20 }}>
-            {about.company.eyebrow}
+            {t.companyEyebrow}
           </div>
-          <DataRows rows={about.company.rows} />
+          <DataRows rows={t.company} />
         </div>
       </section>
 
       {/* ── Misión ─────────────────────────────────────────────────────── */}
       <section className="section">
         <div className="section-head" style={{ marginBottom: 0 }}>
-          <div className="eyebrow">{about.mission.eyebrow}</div>
+          <div className="eyebrow">{t.missionEyebrow}</div>
           <div>
             <h2 className="h2" style={{ maxWidth: "18ch" }}>
-              {about.mission.title}
+              {t.missionTitle}
             </h2>
             <p
               style={{
@@ -99,7 +118,7 @@ export default function AcercaPage() {
                 textWrap: "pretty",
               }}
             >
-              {about.mission.body}
+              {t.missionBody}
             </p>
           </div>
         </div>
@@ -108,16 +127,19 @@ export default function AcercaPage() {
       {/* ── Estado regulatorio ─────────────────────────────────────────── */}
       <section className="section">
         <div className="section-head" style={{ marginBottom: 40 }}>
-          <div className="eyebrow">{about.regulatory.eyebrow}</div>
+          <div className="eyebrow">{t.regulatoryEyebrow}</div>
           <div>
-            <h2 className="h2">{about.regulatory.title}</h2>
+            <h2 className="h2">{t.regulatoryTitle}</h2>
             <p className="lead" style={{ maxWidth: "58ch" }}>
-              {withTerms(about.regulatory.body)}
+              {withTerms(t.regulatoryBody)}
             </p>
           </div>
         </div>
 
-        <div className="fees-block" style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}>
+        <div
+          className="fees-block"
+          style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}
+        >
           <div
             style={{
               font: "400 10px/1.7 var(--mono)",
@@ -126,14 +148,15 @@ export default function AcercaPage() {
               textTransform: "uppercase",
             }}
           >
-            Entidad emisora
-            <br />y licencia
+            {t.regulatorySidenote[0]}
+            <br />
+            {t.regulatorySidenote[1]}
           </div>
           <div>
-            <DataRows rows={about.regulatory.rows} />
+            <DataRows rows={t.regulatory} />
 
             <div className="grid-hairline cols-2" style={{ marginTop: 40 }}>
-              {about.regulatory.directives.map((directive) => (
+              {t.directives.map((directive) => (
                 <div key={directive.code} className="row" style={{ padding: "20px 20px 24px" }}>
                   <div
                     style={{
@@ -145,11 +168,7 @@ export default function AcercaPage() {
                     {withTerms(directive.code)}
                   </div>
                   <div
-                    style={{
-                      font: "400 14px/1.5 var(--sans)",
-                      color: "var(--ink-72)",
-                      marginTop: 8,
-                    }}
+                    style={{ font: "400 14px/1.5 var(--sans)", color: "var(--ink-72)", marginTop: 8 }}
                   >
                     {directive.detail}
                   </div>
@@ -163,15 +182,15 @@ export default function AcercaPage() {
       {/* ── Servicios ──────────────────────────────────────────────────── */}
       <section className="section">
         <div className="section-head" style={{ marginBottom: 40 }}>
-          <div className="eyebrow">{about.services.eyebrow}</div>
+          <div className="eyebrow">{t.servicesEyebrow}</div>
           <div>
-            <h2 className="h2">{about.services.title}</h2>
+            <h2 className="h2">{t.servicesTitle}</h2>
           </div>
         </div>
 
         <div className="grid-hairline grid-hairline--ragged cols-3">
-          {about.services.items.map((item) => (
-            <div key={item.n} className="row" style={{ padding: "28px 26px 40px" }}>
+          {t.services.map((item, i) => (
+            <div key={item.title} className="row" style={{ padding: "28px 26px 40px" }}>
               <div
                 style={{
                   display: "flex",
@@ -183,7 +202,7 @@ export default function AcercaPage() {
                   marginBottom: 38,
                 }}
               >
-                <span>{item.n}</span>
+                <span>{`0${i + 1}`}</span>
                 <span>{item.tag}</span>
               </div>
               <h3
@@ -206,14 +225,14 @@ export default function AcercaPage() {
       {/* ── Cumplimiento ───────────────────────────────────────────────── */}
       <section className="section">
         <div className="section-head" style={{ marginBottom: 40 }}>
-          <div className="eyebrow">{about.compliance.eyebrow}</div>
+          <div className="eyebrow">{t.complianceEyebrow}</div>
           <div>
-            <h2 className="h2">{about.compliance.title}</h2>
+            <h2 className="h2">{t.complianceTitle}</h2>
           </div>
         </div>
 
         <div style={{ borderTop: "1px solid var(--hairline-strong)" }}>
-          {about.compliance.items.map((item) => (
+          {t.compliance.map((item) => (
             <div
               key={item.code}
               className="row compliance-row"
@@ -247,14 +266,14 @@ export default function AcercaPage() {
       {/* ── Contacto ───────────────────────────────────────────────────── */}
       <section id="contacto" className="section">
         <div className="section-head" style={{ marginBottom: 40 }}>
-          <div className="eyebrow">{about.contact.eyebrow}</div>
+          <div className="eyebrow">{t.contactEyebrow}</div>
           <div>
-            <h2 className="h2">{about.contact.title}</h2>
+            <h2 className="h2">{t.contactTitle}</h2>
           </div>
         </div>
 
         <div className="grid-hairline cols-2">
-          {about.contact.items.map((item) => (
+          {t.contact.map((item) => (
             <div key={item.address} className="row" style={{ padding: "24px 22px 28px" }}>
               <a
                 href={`mailto:${item.address}`}
@@ -268,11 +287,7 @@ export default function AcercaPage() {
                 {item.address}
               </a>
               <div
-                style={{
-                  font: "400 13px/1.5 var(--sans)",
-                  color: "var(--ink-50)",
-                  marginTop: 10,
-                }}
+                style={{ font: "400 13px/1.5 var(--sans)", color: "var(--ink-50)", marginTop: 10 }}
               >
                 {item.purpose}
               </div>

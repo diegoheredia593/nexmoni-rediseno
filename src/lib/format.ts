@@ -1,11 +1,15 @@
 import { currencyByCode, type CurrencyCode } from "@/content/pricing";
 
-const LOCALE = "es-ES";
+/**
+ * Formateo numérico. Cada función recibe el locale de Intl del idioma activo
+ * (`meta.numberLocale` del diccionario): el español agrupa con punto y decide
+ * con coma, el inglés al revés.
+ */
 
-/** Importe con separadores españoles y el código ISO detrás: "1.234,56 EUR". */
-export function formatMoney(value: number, code: CurrencyCode): string {
+/** Importe con los separadores del idioma y el código ISO detrás. */
+export function formatMoney(value: number, code: CurrencyCode, locale: string): string {
   const decimals = currencyByCode.get(code)?.decimals ?? 2;
-  const amount = new Intl.NumberFormat(LOCALE, {
+  const amount = new Intl.NumberFormat(locale, {
     minimumFractionDigits: decimals,
     maximumFractionDigits: decimals,
   }).format(value);
@@ -13,21 +17,25 @@ export function formatMoney(value: number, code: CurrencyCode): string {
 }
 
 /** Tasa de cambio: más decimales, porque el diferencial vive en los últimos. */
-export function formatRate(value: number): string {
-  return new Intl.NumberFormat(LOCALE, {
+export function formatRate(value: number, locale: string): string {
+  return new Intl.NumberFormat(locale, {
     minimumFractionDigits: 2,
     maximumFractionDigits: 5,
   }).format(value);
 }
 
-export function formatPercent(fraction: number): string {
-  return `${new Intl.NumberFormat(LOCALE, {
+export function formatPercent(fraction: number, locale: string): string {
+  return new Intl.NumberFormat(locale, {
+    style: "percent",
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
-  }).format(fraction * 100)} %`;
+  }).format(fraction);
 }
 
-/** Acepta "1.234,56" y "1234.56" — el usuario teclea en cualquiera de los dos. */
+/**
+ * Acepta "1.234,56" y "1234.56": el usuario teclea con la convención que
+ * conoce, y no siempre coincide con el idioma en el que está la página.
+ */
 export function parseAmount(input: string): number {
   const cleaned = input.replace(/\s/g, "");
   if (!cleaned) return NaN;

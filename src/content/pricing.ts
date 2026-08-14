@@ -17,26 +17,27 @@ export type CurrencyCode =
 
 export interface Currency {
   code: CurrencyCode;
-  name: string;
   /** Decimales con los que se muestra. Los pesos chilenos y guaraníes no usan céntimos. */
   decimals: number;
 }
 
+/* El nombre de cada moneda se traduce: vive en `currencies` de cada diccionario. */
+
 export const currencies: Currency[] = [
-  { code: "EUR", name: "Euro", decimals: 2 },
-  { code: "USD", name: "Dólar estadounidense", decimals: 2 },
-  { code: "GBP", name: "Libra esterlina", decimals: 2 },
-  { code: "COP", name: "Peso colombiano", decimals: 0 },
-  { code: "PEN", name: "Sol peruano", decimals: 2 },
-  { code: "DOP", name: "Peso dominicano", decimals: 2 },
-  { code: "MXN", name: "Peso mexicano", decimals: 2 },
-  { code: "BRL", name: "Real brasileño", decimals: 2 },
-  { code: "CLP", name: "Peso chileno", decimals: 0 },
-  { code: "ARS", name: "Peso argentino", decimals: 2 },
-  { code: "BOB", name: "Boliviano", decimals: 2 },
-  { code: "PYG", name: "Guaraní paraguayo", decimals: 0 },
-  { code: "UYU", name: "Peso uruguayo", decimals: 2 },
-  { code: "VES", name: "Bolívar venezolano", decimals: 2 },
+  { code: "EUR", decimals: 2 },
+  { code: "USD", decimals: 2 },
+  { code: "GBP", decimals: 2 },
+  { code: "COP", decimals: 0 },
+  { code: "PEN", decimals: 2 },
+  { code: "DOP", decimals: 2 },
+  { code: "MXN", decimals: 2 },
+  { code: "BRL", decimals: 2 },
+  { code: "CLP", decimals: 0 },
+  { code: "ARS", decimals: 2 },
+  { code: "BOB", decimals: 2 },
+  { code: "PYG", decimals: 0 },
+  { code: "UYU", decimals: 2 },
+  { code: "VES", decimals: 2 },
 ];
 
 export const currencyByCode = new Map(currencies.map((c) => [c.code, c]));
@@ -127,41 +128,20 @@ export type Rail = "sepa" | "swift" | "internal";
 
 export interface RailFee {
   id: Rail;
-  label: string;
   /** Porcentaje sobre el importe enviado, en fracción decimal. */
   percent: number;
   /** Comisión fija en EUR, sumada al porcentaje. */
   flat: number;
   /** Mínimo en EUR aplicado al total de la comisión. */
   min: number;
-  note: string;
 }
 
+/* El nombre visible de cada vía se traduce: `calculator.rails` del diccionario. */
+
 export const railFees: Record<Rail, RailFee> = {
-  sepa: {
-    id: "sepa",
-    label: "Transferencia SEPA",
-    percent: 0.015,
-    flat: 0,
-    min: 0.5,
-    note: "Envíos en euros dentro de la zona SEPA",
-  },
-  swift: {
-    id: "swift",
-    label: "Transferencia SWIFT",
-    percent: 0,
-    flat: 25,
-    min: 0,
-    note: "Envíos internacionales fuera de la zona euro",
-  },
-  internal: {
-    id: "internal",
-    label: "Transferencia interna",
-    percent: 0,
-    flat: 0,
-    min: 0,
-    note: "Entre cuentas NexMoni",
-  },
+  sepa: { id: "sepa", percent: 0.015, flat: 0, min: 0.5 },
+  swift: { id: "swift", percent: 0, flat: 25, min: 0 },
+  internal: { id: "internal", percent: 0, flat: 0, min: 0 },
 };
 
 /**

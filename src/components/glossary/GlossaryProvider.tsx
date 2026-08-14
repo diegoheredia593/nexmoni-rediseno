@@ -12,7 +12,6 @@ import {
   type ReactNode,
 } from "react";
 import { createPortal } from "react-dom";
-import { glossary } from "@/content/site";
 
 export type Tone = "light" | "dark";
 
@@ -38,7 +37,14 @@ export function useGlossary(): GlossaryContextValue {
 const EDGE = 14;
 const OFFSET = 10;
 
-export function GlossaryProvider({ children }: { children: ReactNode }) {
+export function GlossaryProvider({
+  children,
+  glossary,
+}: {
+  children: ReactNode;
+  /** Definiciones del idioma activo: las claves son las siglas. */
+  glossary: Record<string, string>;
+}) {
   const [active, setActive] = useState<ActiveTerm | null>(null);
   const [pos, setPos] = useState<{ left: number; top: number } | null>(null);
   const tipRef = useRef<HTMLDivElement>(null);
@@ -47,7 +53,7 @@ export function GlossaryProvider({ children }: { children: ReactNode }) {
     if (!glossary[key]) return;
     setPos(null);
     setActive({ key, anchor, tone });
-  }, []);
+  }, [glossary]);
 
   const hide = useCallback(() => {
     setActive(null);

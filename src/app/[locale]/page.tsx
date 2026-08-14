@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
 import { LeadForm } from "@/components/LeadForm";
 import {
@@ -7,18 +8,19 @@ import {
   HeroFigure,
   UseTriptych,
 } from "@/components/Placeholders";
-import {
-  featuredPlan,
-  features,
-  hero,
-  plans,
-  security,
-  stats,
-  steps,
-  testimonial,
-} from "@/content/site";
+import { getDictionary, href, isLocale, locales } from "@/content/dictionary";
 
-export default function Home() {
+export function generateStaticParams() {
+  return locales.map((locale) => ({ locale }));
+}
+
+export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
+  const { locale } = await params;
+  if (!isLocale(locale)) notFound();
+  const dict = getDictionary(locale);
+
+  const featuredPlan = "Plus";
+
   return (
     <>
       {/* ── Hero ───────────────────────────────────────────────────────── */}
@@ -38,7 +40,7 @@ export default function Home() {
               className="eyebrow"
               style={{ display: "flex", gap: 10, flexWrap: "wrap", marginBottom: 44 }}
             >
-              {hero.kicker.map((k, i) => (
+              {dict.hero.kicker.map((k, i) => (
                 <span key={k}>
                   {i > 0 && <span style={{ marginRight: 10 }}>·</span>}
                   {k}
@@ -47,9 +49,9 @@ export default function Home() {
             </div>
 
             <h1 className="h1">
-              {hero.titleTop}
+              {dict.hero.titleTop}
               <br />
-              <span style={{ color: "var(--ink-42)" }}>{hero.titleBottom}</span>
+              <span style={{ color: "var(--ink-42)" }}>{dict.hero.titleBottom}</span>
             </h1>
 
             <p
@@ -61,7 +63,7 @@ export default function Home() {
                 textWrap: "pretty",
               }}
             >
-              {hero.lead}
+              {dict.hero.lead}
             </p>
 
             <div
@@ -73,13 +75,13 @@ export default function Home() {
                 marginTop: 40,
               }}
             >
-              <Link href="#abrir" className="btn btn--amber">
+              <Link href={href(locale, "/#abrir")} className="btn btn--amber">
                 <span>
-                  {hero.cta} <b className="arrow">→</b>
+                  {dict.hero.cta} <b className="arrow">→</b>
                 </span>
               </Link>
-              <Link href="#abrir" className="link-underline">
-                {hero.secondaryCta}
+              <Link href={href(locale, "/#abrir")} className="link-underline">
+                {dict.hero.secondaryCta}
               </Link>
             </div>
           </div>
@@ -93,9 +95,9 @@ export default function Home() {
               borderTop: "1px solid var(--hairline)",
             }}
           >
-            {hero.trust.map((item, i) => (
+            {dict.hero.trust.map((body, i) => (
               <div
-                key={item.n}
+                key={body}
                 style={{
                   background: "var(--surface)",
                   padding: i === 0 ? "20px 0 0" : "20px 0 0 22px",
@@ -109,34 +111,36 @@ export default function Home() {
                     marginBottom: 9,
                   }}
                 >
-                  {item.n}
+                  {`0${i + 1}`}
                 </div>
                 <div style={{ font: "400 12.5px/1.45 var(--sans)", color: "var(--ink-70)" }}>
-                  {item.body}
+                  {body}
                 </div>
               </div>
             ))}
           </div>
         </div>
 
-        <HeroFigure />
+        <HeroFigure
+          label={dict.hero.figureLabel}
+          coords={dict.hero.figureCoords}
+          brief={dict.hero.figureBrief}
+        />
       </section>
 
       {/* ── § 02 Cómo funciona ─────────────────────────────────────────── */}
       <section id="como" className="section">
         <div className="section-head">
-          <div className="eyebrow">§ 02 — CÓMO FUNCIONA</div>
+          <div className="eyebrow">{dict.steps.eyebrow}</div>
           <div>
-            <h2 className="h2">Tres pasos, no tres semanas.</h2>
-            <p className="lead">
-              Sin papeleo, sin sucursales, sin esperar días para tener una cuenta a tu nombre.
-            </p>
+            <h2 className="h2">{dict.steps.title}</h2>
+            <p className="lead">{dict.steps.lead}</p>
           </div>
         </div>
 
         <div className="grid-hairline cols-3">
-          {steps.map((step) => (
-            <div key={step.n} className="row" style={{ padding: "30px 26px 34px" }}>
+          {dict.steps.items.map((step, i) => (
+            <div key={step.title} className="row" style={{ padding: "30px 26px 34px" }}>
               <div
                 style={{
                   font: "500 10px/1 var(--mono)",
@@ -145,7 +149,7 @@ export default function Home() {
                   marginBottom: 46,
                 }}
               >
-                {step.n}
+                {`0${i + 1}`}
               </div>
               <h3
                 style={{
@@ -164,7 +168,11 @@ export default function Home() {
         </div>
       </section>
 
-      <UseTriptych />
+      <UseTriptych
+        label={dict.triptych.label}
+        format={dict.triptych.format}
+        briefs={dict.triptych.briefs}
+      />
 
       {/* ── Cuenta ─────────────────────────────────────────────────────── */}
       <section id="cuenta" className="section">
@@ -179,25 +187,26 @@ export default function Home() {
           }}
         >
           <h2 className="h2--wide" style={{ maxWidth: "20ch" }}>
-            Una cuenta, dos países, cero fricción.
+            {dict.features.title}
           </h2>
-          <div className="eyebrow">TODO EN UN SOLO LUGAR</div>
+          <div className="eyebrow">{dict.features.eyebrow}</div>
         </div>
 
         <div className="grid-hairline cols-3">
-          {features.map((feature) => (
-            <div key={feature.n} className="row" style={{ padding: "28px 26px 40px" }}>
+          {dict.features.items.map((feature, i) => (
+            <div key={feature.title} className="row" style={{ padding: "28px 26px 40px" }}>
               <div
                 style={{
                   display: "flex",
                   justifyContent: "space-between",
+                  gap: 12,
                   font: "400 9.5px/1 var(--mono)",
                   letterSpacing: ".14em",
                   color: "var(--ink-42)",
                   marginBottom: 38,
                 }}
               >
-                <span>{feature.n}</span>
+                <span>{`0${i + 1}`}</span>
                 <span>{feature.tag}</span>
               </div>
               <h3
@@ -230,7 +239,7 @@ export default function Home() {
           gap: 40,
         }}
       >
-        {stats.map((stat) => (
+        {dict.stats.map((stat) => (
           <div key={stat.figure}>
             <div
               style={{
@@ -259,17 +268,17 @@ export default function Home() {
       {/* ── § 05 Precios ───────────────────────────────────────────────── */}
       <section id="precios" className="section">
         <div className="section-head" style={{ marginBottom: 54 }}>
-          <div className="eyebrow">§ 05 — PRECIOS</div>
+          <div className="eyebrow">{dict.pricing.eyebrow}</div>
           <div>
-            <h2 className="h2">Simple y transparente.</h2>
+            <h2 className="h2">{dict.pricing.title}</h2>
             <p className="lead" style={{ maxWidth: "48ch" }}>
-              Elige según tu criterio actual. Puedes cambiar de plan cuando quieras.
+              {dict.pricing.lead}
             </p>
           </div>
         </div>
 
         <div className="grid-hairline cols-3">
-          {plans.map((plan) => {
+          {dict.pricing.plans.map((plan) => {
             const isFeatured = plan.name === featuredPlan;
             return (
               <div key={plan.name} className="plan">
@@ -287,6 +296,7 @@ export default function Home() {
                       display: "flex",
                       justifyContent: "space-between",
                       alignItems: "baseline",
+                      gap: 12,
                       marginBottom: 34,
                     }}
                   >
@@ -307,9 +317,10 @@ export default function Home() {
                           color: "var(--accent-light)",
                           border: "1px solid var(--accent-light)",
                           padding: "4px 7px",
+                          whiteSpace: "nowrap",
                         }}
                       >
-                        MÁS POPULAR
+                        {dict.pricing.popular}
                       </span>
                     )}
                   </div>
@@ -342,7 +353,7 @@ export default function Home() {
                       marginBottom: 14,
                     }}
                   >
-                    INCLUYE
+                    {dict.pricing.includes}
                   </div>
                   <ul
                     style={{
@@ -371,7 +382,7 @@ export default function Home() {
                     ))}
                   </ul>
 
-                  <Link href="#abrir" className="btn btn--outline">
+                  <Link href={href(locale, "/#abrir")} className="btn btn--outline">
                     <span>{plan.cta}</span>
                   </Link>
                 </div>
@@ -391,18 +402,22 @@ export default function Home() {
             color: "var(--ink-50)",
           }}
         >
-          <Link href="/tarifas" style={{ borderBottom: "1px solid rgba(20,24,29,.35)" }}>
-            Tarifas detalladas
+          <Link href={href(locale, "/tarifas")} style={{ borderBottom: "1px solid rgba(20,24,29,.35)" }}>
+            {dict.pricing.feesLink}
           </Link>
-          <span>Sin comisiones ocultas — todo lo que cobramos, en un solo lugar.</span>
+          <span>{dict.pricing.feesNote}</span>
         </div>
       </section>
 
       {/* ── § 06 Testimonio ────────────────────────────────────────────── */}
-      <section id="seguridad" className="split testimonial" style={{ gridTemplateColumns: "1.15fr .85fr" }}>
+      <section
+        id="seguridad"
+        className="split testimonial"
+        style={{ gridTemplateColumns: "1.15fr .85fr" }}
+      >
         <div style={{ padding: "78px var(--pad-x)", borderRight: "1px solid var(--hairline)" }}>
           <div className="eyebrow" style={{ marginBottom: 40 }}>
-            § 06 — TESTIMONIO
+            {dict.testimonial.eyebrow}
           </div>
           <blockquote
             style={{
@@ -412,20 +427,20 @@ export default function Home() {
               textWrap: "pretty",
             }}
           >
-            “{testimonial.quote}”
+            “{dict.testimonial.quote}”
           </blockquote>
           <div style={{ marginTop: 34, display: "flex", gap: 16, alignItems: "center" }}>
             <AvatarPlaceholder />
             <div style={{ font: "400 11.5px/1.6 var(--mono)", color: "var(--ink-60)" }}>
-              {testimonial.attribution[0]}
+              {dict.testimonial.author}
               <br />
-              {testimonial.attribution[1]}
+              {dict.testimonial.detail}
             </div>
           </div>
         </div>
 
         <div style={{ padding: "78px var(--pad-x)", display: "flex", flexDirection: "column" }}>
-          {security.map((item) => (
+          {dict.testimonial.security.map((item) => (
             <div key={item.title} style={{ padding: "22px 0", borderTop: "1px solid var(--hairline)" }}>
               <h3 style={{ font: "600 16px/1.2 var(--sans)", margin: "0 0 8px" }}>{item.title}</h3>
               <p style={{ font: "400 13px/1.55 var(--sans)", color: "var(--ink-62)", margin: 0 }}>
@@ -436,16 +451,17 @@ export default function Home() {
         </div>
       </section>
 
-      <ClosingFigure />
+      <ClosingFigure
+        label={dict.closing.label}
+        format={dict.closing.format}
+        brief={dict.closing.brief}
+      />
 
       {/* ── Abrir cuenta ───────────────────────────────────────────────── */}
       <section id="abrir" className="split cta" style={{ gridTemplateColumns: "1fr 1fr" }}>
         <div style={{ padding: "88px var(--pad-x)", borderRight: "1px solid var(--hairline)" }}>
-          <div
-            className="eyebrow"
-            style={{ color: "var(--accent-light)", marginBottom: 30 }}
-          >
-            EMPIEZA HOY
+          <div className="eyebrow" style={{ color: "var(--accent-light)", marginBottom: 30 }}>
+            {dict.signup.eyebrow}
           </div>
           <h2
             style={{
@@ -454,7 +470,7 @@ export default function Home() {
               margin: "0 0 22px",
             }}
           >
-            Abre tu cuenta en minutos.
+            {dict.signup.title}
           </h2>
           <p
             style={{
@@ -464,13 +480,14 @@ export default function Home() {
               margin: 0,
             }}
           >
-            Sin sucursales, sin papeleo. Solo tu documento, una selfie, y tu {withTerms("IBAN")}{" "}
-            europeo listo para usar.
+            {dict.signup.leadBefore}
+            {withTerms("IBAN")}
+            {dict.signup.leadAfter}
           </p>
         </div>
 
         <div style={{ padding: "88px var(--pad-x)" }}>
-          <LeadForm />
+          <LeadForm dict={dict} />
         </div>
       </section>
     </>

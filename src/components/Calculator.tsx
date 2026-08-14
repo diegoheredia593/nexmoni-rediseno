@@ -1,9 +1,9 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import type { Dictionary } from "@/content/dictionary";
 import {
   corridors,
-  currencyByCode,
   defaultAmount,
   defaultFrom,
   defaultTo,
@@ -16,14 +16,15 @@ import { formatMoney, formatPercent, formatRate, parseAmount } from "@/lib/forma
 import { quote } from "@/lib/quote";
 import { Term } from "./glossary/Term";
 
-/** Destinos alcanzables desde una moneda de origen, activos primero. */
+/** Destinos alcanzables desde una moneda de origen. */
 function destinationsFor(from: CurrencyCode) {
-  return corridors
-    .filter((c) => c.from === from)
-    .map((c) => ({ code: c.to, status: c.status }));
+  return corridors.filter((c) => c.from === from).map((c) => ({ code: c.to, status: c.status }));
 }
 
-export function Calculator() {
+export function Calculator({ dict }: { dict: Dictionary }) {
+  const t = dict.calculator;
+  const numberLocale = dict.meta.numberLocale;
+
   const [rawAmount, setRawAmount] = useState(String(defaultAmount));
   const [from, setFrom] = useState<CurrencyCode>(defaultFrom);
   const [to, setTo] = useState<CurrencyCode>(defaultTo);
@@ -36,42 +37,41 @@ export function Calculator() {
     <div className="calc">
       {ratesArePlaceholder && (
         <p className="calc__notice" role="note">
-          <strong>Tipos de cambio orientativos</strong>, con fecha {ratesUpdatedAt}. No constituyen
-          una oferta en firme: el importe definitivo se fija al confirmar el envío. Las comisiones
-          son las del tarifario publicado arriba.
+          <strong>{t.noticeStrong}</strong>
+          {t.noticeRest}
         </p>
       )}
 
       {/* ── Entradas ─────────────────────────────────────────────────── */}
       <div className="calc__inputs">
         <label className="field">
-          <span className="field__label">CANTIDAD</span>
+          <span className="field__label">{t.amount}</span>
           <input
             inputMode="decimal"
             value={rawAmount}
             onChange={(e) => setRawAmount(e.target.value)}
-            aria-label="Cantidad a enviar"
+            aria-label={t.amountAria}
           />
         </label>
 
         <label className="field">
-          <span className="field__label">DE</span>
+          <span className="field__label">{t.from}</span>
           <select value={from} onChange={(e) => setFrom(e.target.value as CurrencyCode)}>
             {sourceCurrencies.map((code) => (
               <option key={code} value={code}>
-                {code} — {currencyByCode.get(code)?.name}
+                {code} — {dict.currencies[code]}
               </option>
             ))}
           </select>
         </label>
 
         <label className="field">
-          <span className="field__label">A</span>
+          <span className="field__label">{t.to}</span>
           <select value={to} onChange={(e) => setTo(e.target.value as CurrencyCode)}>
             {destinations.map((dest) => (
               <option key={dest.code} value={dest.code}>
-                {dest.code} — {currencyByCode.get(dest.code)?.name}
-                {dest.status === "pending" ? " (próximamente)" : ""}
+                {dest.code} — {dict.currencies[dest.code]}
+                {dest.status === "pending" ? ` ${t.comingSoon}` : ""}
               </option>
             ))}
           </select>
@@ -83,57 +83,59 @@ export function Calculator() {
         <div className="calc__result">
           <div className="calc__headline">
             <div>
-              <div className="calc__headline-label">El destinatario recibe</div>
-              <div className="calc__headline-note">Total después de comisiones</div>
+              <div className="calc__headline-label">{t.receives}</div>
+              <div className="calc__headline-note">{t.receivesNote}</div>
             </div>
-            <div className="calc__headline-figure">{formatMoney(result.receives, to)}</div>
+            <div className="calc__headline-figure">
+              {formatMoney(result.receives, to, numberLocale)}
+            </div>
           </div>
 
           <dl className="calc__rows">
             <CalcRow
-              label="Tipo de cambio"
+              label={t.rate}
               note={`1 ${from} → ${to}`}
-              value={formatRate(result.effectiveRate)}
+              value={formatRate(result.effectiveRate, numberLocale)}
             />
             <CalcRow
-              label="Sobreprecio en el tipo de cambio"
+              label={t.spread}
               note={
                 result.spread === 0
-                  ? "Sin cambio de divisa"
-                  : `Diferencial de ${formatPercent(result.spread)} sobre la tasa media (${formatRate(result.midRate)})`
+                  ? t.spreadNoFx
+                  : `${t.spreadNoteBefore}${formatPercent(result.spread, numberLocale)}${t.spreadNoteAfter} (${formatRate(result.midRate, numberLocale)})`
               }
-              value={formatMoney(result.spreadCost, from)}
+              value={formatMoney(result.spreadCost, from, numberLocale)}
             />
             <CalcRow
-              label="Comisión por transferencia"
-              note={result.railLabel}
-              value={formatMoney(result.transferFee, from)}
+              label={t.fee}
+              note={t.rails[result.rail]}
+              value={formatMoney(result.transferFee, from, numberLocale)}
             />
             <CalcRow
-              label="Coste total de la transferencia"
-              note="Comisión más sobreprecio de cambio"
-              value={formatMoney(result.totalCost, from)}
+              label={t.total}
+              note={t.totalNote}
+              value={formatMoney(result.totalCost, from, numberLocale)}
               strong
             />
           </dl>
 
           <p className="calc__foot">
-            Cálculo orientativo sobre el tarifario publicado. Consulta la tabla de arriba para el
-            resto de conceptos.
+            {t.foot} <span className="mono">{ratesUpdatedAt}</span>
           </p>
         </div>
       ) : (
         <div className="calc__pending" role="status">
           <div className="calc__pending-label">
-            {result.reason === "invalid-amount" || result.reason === "amount-below-fee"
-              ? "Revisa el importe"
-              : "Corredor no disponible"}
+            {result.reason === "invalidAmount" || result.reason === "belowFee"
+              ? t.badAmount
+              : t.unavailable}
           </div>
-          <p className="calc__pending-body">{result.message}</p>
-          {(result.reason === "corridor-pending" || result.reason === "no-spread") && (
+          <p className="calc__pending-body">{t.quoteErrors[result.reason]}</p>
+          {result.reason === "corridorPending" && (
             <p className="calc__pending-body">
-              Hoy cotizamos envíos en euros dentro de la zona <Term term="SEPA" />. El resto de
-              destinos se activará en cuanto cerremos su precio.
+              {t.sepaOnlyBefore}
+              <Term term="SEPA" />
+              {t.sepaOnlyAfter}
             </p>
           )}
         </div>
