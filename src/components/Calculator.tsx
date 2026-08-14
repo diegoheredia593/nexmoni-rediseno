@@ -3,9 +3,10 @@
 import { useMemo, useState } from "react";
 import {
   corridors,
-  currencies,
   currencyByCode,
   defaultAmount,
+  defaultFrom,
+  defaultTo,
   ratesArePlaceholder,
   ratesUpdatedAt,
   sourceCurrencies,
@@ -24,8 +25,8 @@ function destinationsFor(from: CurrencyCode) {
 
 export function Calculator() {
   const [rawAmount, setRawAmount] = useState(String(defaultAmount));
-  const [from, setFrom] = useState<CurrencyCode>("EUR");
-  const [to, setTo] = useState<CurrencyCode>("EUR");
+  const [from, setFrom] = useState<CurrencyCode>(defaultFrom);
+  const [to, setTo] = useState<CurrencyCode>(defaultTo);
 
   const amount = parseAmount(rawAmount);
   const destinations = useMemo(() => destinationsFor(from), [from]);
@@ -35,9 +36,9 @@ export function Calculator() {
     <div className="calc">
       {ratesArePlaceholder && (
         <p className="calc__notice" role="note">
-          <strong>Cifras provisionales.</strong> Los tipos de cambio de esta calculadora aún no son
-          los definitivos y no deben usarse como referencia. Las comisiones sí corresponden al
-          tarifario publicado.
+          <strong>Tipos de cambio orientativos</strong>, con fecha {ratesUpdatedAt}. No constituyen
+          una oferta en firme: el importe definitivo se fija al confirmar el envío. Las comisiones
+          son las del tarifario publicado arriba.
         </p>
       )}
 
@@ -117,8 +118,8 @@ export function Calculator() {
           </dl>
 
           <p className="calc__foot">
-            Tipos de referencia con fecha {ratesUpdatedAt}. El importe final se fija al confirmar la
-            operación. Consulta el tarifario completo arriba para el resto de conceptos.
+            Cálculo orientativo sobre el tarifario publicado. Consulta la tabla de arriba para el
+            resto de conceptos.
           </p>
         </div>
       ) : (

@@ -46,30 +46,40 @@ export const currencyByCode = new Map(currencies.map((c) => [c.code, c]));
  * Unidades de cada moneda por 1 EUR. Tasa media de mercado, SIN nuestro
  * diferencial (el diferencial se aplica aparte, en `spreads`).
  *
- * ⚠ CIFRAS PROVISIONALES, PUESTAS SOLO PARA QUE LA CALCULADORA FUNCIONE.
- *   No proceden de ningún proveedor y no son válidas para publicar.
- *   Sustituir por las tasas reales antes de lanzar y actualizar `ratesUpdatedAt`.
- *   Mientras `ratesArePlaceholder` sea `true`, la interfaz muestra un aviso
- *   visible de que las cifras no son definitivas.
+ * ⚠ CIFRAS ORIENTATIVAS PARA LA DEMO. Recogidas de prensa financiera el
+ *   14-08-2026 y cruzadas vía USD (EUR/USD 1,153). Sirven para que el cliente
+ *   vea la calculadora funcionando; NO son cotizaciones de un proveedor y no
+ *   deben publicarse como oferta.
+ *
+ *   Al recibir las tasas reales: sustituir los valores, poner
+ *   `ratesArePlaceholder = false` y actualizar `ratesUpdatedAt`.
+ *
+ *   Procedencia de cada valor:
+ *     USD, GBP        — cotización directa EUR/X.
+ *     COP, PEN, MXN,
+ *     BRL, ARS, DOP   — USD/X publicado ese día, cruzado por EUR/USD.
+ *     CLP, BOB, PYG,
+ *     UYU, VES        — ESTIMACIÓN. No encontré cotización del día; son órdenes
+ *                       de magnitud. Verificar antes de enseñarlas a nadie.
  */
 export const ratesArePlaceholder = true;
 export const ratesUpdatedAt = "2026-08-14";
 
 export const midRates: Record<CurrencyCode, number> = {
   EUR: 1,
-  USD: 1.16,
-  GBP: 0.85,
-  COP: 4550,
-  PEN: 4.15,
-  DOP: 70.5,
-  MXN: 21.4,
-  BRL: 6.35,
-  CLP: 1090,
-  ARS: 1480,
-  BOB: 8.05,
-  PYG: 8600,
-  UYU: 46.5,
-  VES: 215,
+  USD: 1.153,
+  GBP: 0.8536,
+  COP: 3605,
+  PEN: 3.874,
+  DOP: 67.14,
+  MXN: 19.63,
+  BRL: 6.025,
+  CLP: 1038, // estimación
+  ARS: 1715,
+  BOB: 7.97, // estimación — el boliviano está anclado al dólar
+  PYG: 8244, // estimación
+  UYU: 45.5, // estimación
+  VES: 215, // estimación poco fiable — ver el corredor VES, que sigue cerrado
 };
 
 /**
@@ -77,20 +87,31 @@ export const midRates: Record<CurrencyCode, number> = {
  * Fracción decimal sobre la tasa media (0.015 = 1,5 %). El tarifario publica
  * "Spread 1–3 % por par", así que cada par necesita su valor real.
  *
- * ⏳ PENDIENTE: falta la tabla por par. Un par sin entrada aquí NO se cotiza;
- *    la calculadora lo marca como no disponible en lugar de inventar un número.
+ * ⚠ VALORES DE DEMO. El diferencial es una decisión comercial vuestra, no un
+ *   dato de mercado: no hay forma de buscarlo. Los de abajo están repartidos
+ *   dentro de la banda 1–3 % que ya anuncia el tarifario, más estrechos en los
+ *   pares líquidos y más amplios en los exóticos, que es la práctica habitual.
+ *   Sustituir por la tabla real cuando la haya.
  *
- * Formato de clave: "ORIGEN>DESTINO".
- *
- *   export const spreads: Record<string, number> = {
- *     "EUR>COP": 0.018,
- *     "EUR>PEN": 0.021,
- *     ...
- *   };
+ * Formato de clave: "ORIGEN>DESTINO". Un par sin entrada aquí NO se cotiza: la
+ * calculadora lo anuncia como próximo en lugar de inventar un número.
  */
 export const spreads: Record<string, number> = {
   // Mismo par = sin cambio de divisa, sin diferencial.
   "EUR>EUR": 0,
+
+  "EUR>USD": 0.01,
+  "EUR>GBP": 0.012,
+  "EUR>MXN": 0.015,
+  "EUR>BRL": 0.018,
+  "EUR>COP": 0.02,
+  "EUR>PEN": 0.02,
+  "EUR>CLP": 0.022,
+  "EUR>DOP": 0.022,
+  "EUR>BOB": 0.025,
+  "EUR>UYU": 0.025,
+  "EUR>PYG": 0.028,
+  "EUR>ARS": 0.03,
 };
 
 export function spreadFor(from: CurrencyCode, to: CurrencyCode): number | null {
@@ -150,8 +171,12 @@ export const railFees: Record<Rail, RailFee> = {
  * `status: "live"`     → la calculadora devuelve cifras.
  * `status: "pending"`  → aparece en el selector pero anunciado como próximo.
  *
- * Hoy solo EUR→EUR por SEPA tiene precio cerrado. Para activar un corredor:
- * añadir su diferencial en `spreads`, fijar el `rail` y poner `status: "live"`.
+ * Abiertos para la demo con la vía SWIFT del tarifario (25 € fijos), que es el
+ * único precio publicado para envíos fuera de la zona euro. Ojo: 25 € fijos
+ * pesan mucho en importes de remesa pequeños — ver la nota del README.
+ *
+ * Para activar un corredor: añadir su diferencial en `spreads`, fijar el `rail`
+ * y poner `status: "live"`.
  */
 export interface Corridor {
   from: CurrencyCode;
@@ -163,19 +188,22 @@ export interface Corridor {
 export const corridors: Corridor[] = [
   { from: "EUR", to: "EUR", rail: "sepa", status: "live" },
 
-  // Pendientes de precio. El `rail` es una previsión, no un precio cerrado.
-  { from: "EUR", to: "USD", rail: "swift", status: "pending" },
-  { from: "EUR", to: "GBP", rail: "swift", status: "pending" },
-  { from: "EUR", to: "COP", rail: "swift", status: "pending" },
-  { from: "EUR", to: "PEN", rail: "swift", status: "pending" },
-  { from: "EUR", to: "DOP", rail: "swift", status: "pending" },
-  { from: "EUR", to: "MXN", rail: "swift", status: "pending" },
-  { from: "EUR", to: "BRL", rail: "swift", status: "pending" },
-  { from: "EUR", to: "CLP", rail: "swift", status: "pending" },
-  { from: "EUR", to: "ARS", rail: "swift", status: "pending" },
-  { from: "EUR", to: "BOB", rail: "swift", status: "pending" },
-  { from: "EUR", to: "PYG", rail: "swift", status: "pending" },
-  { from: "EUR", to: "UYU", rail: "swift", status: "pending" },
+  { from: "EUR", to: "COP", rail: "swift", status: "live" },
+  { from: "EUR", to: "PEN", rail: "swift", status: "live" },
+  { from: "EUR", to: "DOP", rail: "swift", status: "live" },
+  { from: "EUR", to: "MXN", rail: "swift", status: "live" },
+  { from: "EUR", to: "BRL", rail: "swift", status: "live" },
+  { from: "EUR", to: "CLP", rail: "swift", status: "live" },
+  { from: "EUR", to: "ARS", rail: "swift", status: "live" },
+  { from: "EUR", to: "BOB", rail: "swift", status: "live" },
+  { from: "EUR", to: "PYG", rail: "swift", status: "live" },
+  { from: "EUR", to: "UYU", rail: "swift", status: "live" },
+  { from: "EUR", to: "USD", rail: "swift", status: "live" },
+  { from: "EUR", to: "GBP", rail: "swift", status: "live" },
+
+  // Cerrado a propósito: el bolívar se mueve demasiado y tiene control de
+  // cambios. Sin cotización de un proveedor real, cualquier cifra que pusiera
+  // aquí estaría mal. Se abre cuando haya fuente.
   { from: "EUR", to: "VES", rail: "swift", status: "pending" },
 ];
 
@@ -188,5 +216,7 @@ export const sourceCurrencies: CurrencyCode[] = Array.from(
   new Set(corridors.map((c) => c.from)),
 );
 
-/** Importe por defecto de la calculadora, en la moneda de origen. */
+/** Estado inicial de la calculadora: el corredor más representativo del producto. */
 export const defaultAmount = 1000;
+export const defaultFrom: CurrencyCode = "EUR";
+export const defaultTo: CurrencyCode = "COP";

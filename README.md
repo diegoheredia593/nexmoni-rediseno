@@ -32,17 +32,25 @@ poder sumarlo al coste total.
 
 ## Pendientes antes de publicar
 
-1. **Tipos de cambio reales.** Los de `pricing.ts` son provisionales. Mientras
-   `ratesArePlaceholder` sea `true`, la calculadora muestra un aviso visible.
-2. **Diferenciales por par.** Sin su entrada en `spreads`, un corredor no se
-   cotiza: se anuncia como próximo en lugar de inventar una cifra.
-3. **Corredores fuera de SEPA.** Solo EUR→EUR tiene precio cerrado. Para activar
-   otro: añadir su diferencial, fijar la vía y poner `status: "live"`.
-4. **Destino del formulario.** `src/app/api/lead/route.ts` valida y registra;
+1. **Tipos de cambio reales.** Los de `pricing.ts` son orientativos, recogidos de
+   prensa financiera el 14-08-2026 para poder enseñar la calculadora. Cinco
+   (CLP, BOB, PYG, UYU, VES) son estimaciones sin cotización del día. Al tener
+   los definitivos: sustituir y poner `ratesArePlaceholder = false`.
+2. **Diferenciales por par.** Los de `spreads` están repartidos dentro de la
+   banda 1–3 % que anuncia el tarifario, pero son invención: el diferencial es
+   una decisión comercial. Sin entrada en `spreads`, un corredor no se cotiza.
+3. **Precio de las remesas.** Los corredores fuera de SEPA usan el SWIFT de
+   25 € fijos del tarifario, que es el único precio publicado. En importes de
+   remesa pequeños eso pesa mucho: en un envío de 200 € a Colombia el coste
+   total sale 28,50 € — un 14 %. Conviene una tarifa escalonada antes de
+   publicar, o el propio tarifario delata el problema.
+4. **Bolívar venezolano.** Corredor cerrado a propósito: sin fuente fiable de
+   cotización, cualquier cifra sería inventada.
+5. **Destino del formulario.** `src/app/api/lead/route.ts` valida y registra;
    falta enviar a donde corresponda (y dejar de escribir datos personales al log).
-5. **Fotografía.** Los seis marcadores animados llevan su briefing en la leyenda
+6. **Fotografía.** Los seis marcadores animados llevan su briefing en la leyenda
    y deben sustituirse por foto real con halftone grueso en blanco y negro.
-6. **Verificación legal** de importes y definiciones del glosario.
+7. **Verificación legal** de importes y definiciones del glosario.
 
 ## Handoff original
 
