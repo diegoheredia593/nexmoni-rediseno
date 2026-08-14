@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+<template id="__bundler_thumbnail" data-bg-color="#e5e8ea">
+<svg viewBox="0 0 1200 800" xmlns="http://www.w3.org/2000/svg">
+<rect width="1200" height="800" fill="#e5e8ea"/>
+<rect x="640" y="120" width="440" height="560" fill="#c9ced2"/>
+<circle cx="860" cy="380" r="130" fill="#14181d" opacity="0.45"/>
+<rect x="828" y="330" width="64" height="150" fill="#e5e8ea"/>
+<circle cx="860" cy="405" r="16" fill="#8d5217"/>
+<rect x="120" y="200" width="420" height="46" fill="#14181d"/>
+<rect x="120" y="266" width="360" height="46" fill="#14181d"/>
+<rect x="120" y="332" width="300" height="46" fill="#14181d" opacity="0.4"/>
+<rect x="120" y="470" width="260" height="56" fill="#8d5217"/>
+</svg>
+</template>
+</head>
+<body>
+<x-dc>
+<helmet data-dc-atomics><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap&subset=latin,latin-ext" rel="stylesheet"><style>@keyframes nm-dots{0%{background-position:0 0}100%{background-position:6px 6px}}@keyframes nm-drift{0%,100%{transform:translateY(0)}50%{transform:translateY(-2.5%)}}@keyframes nm-rise{0%{transform:translate(-50%,30%) scale(.85);opacity:0}15%{opacity:1}75%{opacity:1}100%{transform:translate(-50%,-90%) scale(1.05);opacity:0}}@keyframes nm-pulse{0%,100%{transform:scale(1);opacity:.9}50%{transform:scale(1.3);opacity:.35}}@keyframes nm-inL{0%,100%{transform:translateX(-14%)}50%{transform:translateX(6%)}}@keyframes nm-inR{0%,100%{transform:translateX(14%)}50%{transform:translateX(-6%)}}@keyframes nm-sweep{0%{transform:translateX(-140%) skewX(-16deg)}100%{transform:translateX(260%) skewX(-16deg)}}@keyframes nm-tilt{0%,100%{transform:rotate(-6deg)}50%{transform:rotate(5deg)}}@keyframes nm-scan{0%{left:-6%}100%{left:106%}}body{margin:0;background:#e5e8ea;-webkit-font-smoothing:antialiased}*{box-sizing:border-box}a{color:#14181d;text-decoration:none;transition:color .2s ease}a:hover{color:#ad6a24}input{font-family:inherit;transition:border-color .2s ease,box-shadow .2s ease}
+nav a{position:relative}
+nav a::after{content:"";position:absolute;left:0;right:100%;bottom:-6px;height:1px;background:#8d5217;transition:right .28s ease}
+nav a:hover::after{right:0}
+input:focus{border-bottom-color:#8d5217;box-shadow:0 1px 0 0 #8d5217}
+button,a{-webkit-tap-highlight-color:transparent}
+[data-nm-btn]{position:relative;overflow:hidden}
+[data-nm-btn]>span{position:relative;z-index:1;display:inline-flex;align-items:center;gap:10px}
+[data-nm-btn]::before{content:"";position:absolute;inset:0;background:#14181d;transform:translateY(101%);transition:transform .32s cubic-bezier(.4,0,.2,1)}
+[data-nm-btn]:hover::before{transform:translateY(0)}
+[data-nm-btn]:active{transform:translateY(1px)}
+[data-nm-arrow]{transition:transform .26s cubic-bezier(.4,0,.2,1);display:inline-block}
+[data-nm-btn]:hover [data-nm-arrow]{transform:translateX(5px)}
+[data-nm-row]{transition:background-color .25s ease}
+[data-nm-row]:hover{background-color:#dfe3e6}
+[data-nm-plan]{transition:box-shadow .3s ease,transform .3s ease}
+[data-nm-plan]:hover{box-shadow:inset 0 0 0 1px rgba(20,24,29,.5);transform:translateY(-2px)}
+[data-nm-term]{cursor:help;border-bottom:1px dashed rgba(141,82,23,.55);transition:border-color .2s ease,color .2s ease}
+[data-nm-term]:hover{color:#8d5217;border-bottom-color:#8d5217}
+[data-nm-term][data-nm-dark]{border-bottom-color:rgba(224,163,94,.6)}
+[data-nm-term][data-nm-dark]:hover{color:#e0a35e;border-bottom-color:#e0a35e}
+[data-nm-tip]{position:fixed;z-index:60;opacity:0;visibility:hidden;transform:translateY(4px);transition:opacity .18s ease,transform .18s ease,visibility .18s}
+[data-nm-tip][data-open="1"]{opacity:1;visibility:visible;transform:translateY(0)}
+@media (prefers-reduced-motion:reduce){*{animation-duration:.001s !important;transition-duration:.001s !important}}</style></helmet>
+
+<div style="background:#e5e8ea;color:#14181d;font-family:'Archivo',Helvetica,sans-serif;min-height:100vh">
+
+<header style="display:flex;align-items:center;justify-content:space-between;gap:24px;padding:18px 40px;border-bottom:1px solid rgba(20,24,29,.16);position:sticky;top:0;background:#e5e8ea;z-index:20">
+<div style="display:flex;align-items:baseline;gap:14px">
+<span style="font:600 17px/1 'Archivo',sans-serif;letter-spacing:-.02em">NextMoni</span>
+<span style="font:400 9.5px/1 'Space Mono',monospace;letter-spacing:.14em;color:rgba(20,24,29,.45)">EUR · LT · REG.24</span>
+</div>
+<nav style="display:flex;gap:26px;font:500 10.5px/1 'Space Mono',monospace;letter-spacing:.12em;text-transform:uppercase">
+<a href="#como">Cómo funciona</a><a href="#cuenta">Cuenta</a><a href="#precios">Precios</a><a href="#tarifas">Tarifas</a><a href="#seguridad">Seguridad</a>
+</nav>
+<div style="display:flex;align-items:center;gap:14px">
+<a href="#abrir" style="font:400 10.5px/1 'Space Mono',monospace;letter-spacing:.1em;color:rgba(20,24,29,.55)">WhatsApp</a>
+<a href="#abrir" data-nm-btn="" style="display:inline-flex;align-items:center;gap:8px;background:#14181d;color:#e5e8ea;padding:10px 16px;font:500 11px/1 'Space Mono',monospace;letter-spacing:.1em;text-transform:uppercase;transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,letter-spacing .25s ease,box-shadow .25s ease;" style-hover="background:#8d5217;color:#fafbfc"><span>Abrir cuenta</span></a>
+</div>
+</header>
+
+<section style="display:grid;grid-template-columns:1.05fr .95fr;border-bottom:1px solid rgba(20,24,29,.16)">
+<div style="padding:78px 40px 40px;border-right:1px solid rgba(20,24,29,.16);display:flex;flex-direction:column;justify-content:space-between;gap:56px">
+<div>
+<div style="display:flex;gap:10px;flex-wrap:wrap;font:400 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:rgba(20,24,29,.5);margin-bottom:44px">
+<span>CUENTA EUROPEA</span><span>·</span><span>100% REMOTO</span><span>·</span><span>LICENCIA REG. EN LA UE</span>
+</div>
+<h1 style="font:600 clamp(52px,6.4vw,104px)/.92 'Archivo',sans-serif;letter-spacing:-.045em;margin:0 0 34px;text-wrap:balance">Tu vida está en dos países.<br><span style="color:rgba(20,24,29,.42)">Tu cuenta también.</span></h1>
+<p style="font:400 17px/1.55 'Archivo',sans-serif;color:rgba(20,24,29,.68);max-width:46ch;margin:0;text-wrap:pretty">Maneja euros, cambia divisas y envía dinero a los tuyos desde una sola cuenta abierta en la Unión Europea. Sin sucursales, sin letra pequeña.</p>
+<div style="display:flex;align-items:center;gap:18px;flex-wrap:wrap;margin-top:40px">
+<a href="#abrir" data-nm-btn="" style="display:inline-flex;align-items:center;gap:12px;background:#8d5217;color:#fafbfc;padding:17px 26px;font:500 12px/1 'Space Mono',monospace;letter-spacing:.12em;text-transform:uppercase;transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,letter-spacing .25s ease,box-shadow .25s ease;" style-hover="letter-spacing:.16em"><span>Abrir cuenta gratis <b data-nm-arrow="" style="font-weight:500">→</b></span></a>
+<a href="#abrir" style="border-bottom:1px solid rgba(20,24,29,.3);padding-bottom:3px;font:400 13px/1 'Archivo',sans-serif;color:rgba(20,24,29,.7);transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,letter-spacing .25s ease,box-shadow .25s ease;" style-hover="border-color:#8d5217;color:#8d5217;padding-bottom:6px">Habla con nosotros por WhatsApp</a>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:1px;background:rgba(20,24,29,.16);border-top:1px solid rgba(20,24,29,.16)">
+<div style="background:#e5e8ea;padding:20px 0 0"><div style="font:400 9.5px/1 'Space Mono',monospace;letter-spacing:.14em;color:#ad6a24;margin-bottom:9px">01</div><div style="font:400 12.5px/1.45 'Archivo',sans-serif;color:rgba(20,24,29,.7)">Licencia bajo N.º 24 — Banco de Lituania</div></div>
+<div style="background:#e5e8ea;padding:20px 0 0 22px"><div style="font:400 9.5px/1 'Space Mono',monospace;letter-spacing:.14em;color:#ad6a24;margin-bottom:9px">02</div><div style="font:400 12.5px/1.45 'Archivo',sans-serif;color:rgba(20,24,29,.7)">Fondos protegidos según normativa UE</div></div>
+</div>
+</div>
+<div style="position:relative;padding:20px;background:#dbdfe2">
+<div style="position:absolute;top:20px;left:20px;right:20px;display:flex;justify-content:space-between;font:400 9px/1 'Space Mono',monospace;letter-spacing:.14em;color:rgba(20,24,29,.4);z-index:2"><span style="background:#dbdfe2;padding:4px 6px">FIG. 01 — HERO</span><span style="background:#dbdfe2;padding:4px 6px">40.4168 N / 3.7038 W</span></div>
+<div style="position:relative;overflow:hidden;width:100%;height:100%;min-height:640px;background-color:#c9ced2;background-image:radial-gradient(rgba(20,24,29,.5) 1.3px,transparent 1.5px);background-size:6px 6px;animation:nm-dots 7s linear infinite"><div style="position:absolute;left:50%;top:46%;width:52%;aspect-ratio:1;transform:translate(-50%,-50%)"><div style="width:100%;height:100%;border-radius:50%;background:radial-gradient(circle,rgba(20,24,29,.55) 0 58%,rgba(20,24,29,0) 72%);animation:nm-drift 9s ease-in-out infinite"></div></div>
+<div style="position:absolute;left:50%;top:52%;width:15%;aspect-ratio:9/19;transform:translate(-50%,-50%)"><div style="width:100%;height:100%;background:#e5e8ea;outline:1px solid rgba(20,24,29,.55);animation:nm-drift 9s ease-in-out infinite"></div></div>
+<div style="position:absolute;left:50%;top:52%;width:5%;aspect-ratio:1;transform:translate(-50%,-50%)"><div style="width:100%;height:100%;border-radius:50%;background:#8d5217;animation:nm-pulse 2.6s ease-in-out infinite"></div></div>
+<div style="position:absolute;left:16px;bottom:16px;right:16px;background:#e5e8ea;padding:9px 11px;font:400 8.5px/1.75 'Space Mono',monospace;letter-spacing:.1em;color:rgba(20,24,29,.72);z-index:5">REFERENCIA HERO · COLUMNA VERTICAL A SANGRE, RECORTE CENTRAL ~1:1,9 (ENCUADRA SEGURO EN 3:4) · UNA SOLA FIGURA DE MEDIO CUERPO SOSTENIENDO EL MÓVIL, MIRADA FUERA DE CÁMARA, LUZ LATERAL DURA, FONDO LISO. HALFTONE GRUESO, SIN COLOR.</div></div>
+</div>
+</section>
+
+<section id="como" style="border-bottom:1px solid rgba(20,24,29,.16);padding:88px 40px">
+<div style="display:grid;grid-template-columns:220px 1fr;gap:40px;margin-bottom:60px">
+<div style="font:400 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:rgba(20,24,29,.5);padding-top:10px">§ 02 — CÓMO FUNCIONA</div>
+<div>
+<h2 style="font:600 clamp(34px,4vw,60px)/1 'Archivo',sans-serif;letter-spacing:-.035em;margin:0 0 18px">Tres pasos, no tres semanas.</h2>
+<p style="font:400 15.5px/1.6 'Archivo',sans-serif;color:rgba(20,24,29,.62);max-width:52ch;margin:0">Sin papeleo, sin sucursales, sin esperar días para tener una cuenta a tu nombre.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(20,24,29,.16)">
+<sc-for list="{{ steps }}" as="s" hint-placeholder-count="3">
+<div data-nm-row="" style="background:#e5e8ea;padding:30px 26px 34px;border-top:1px solid rgba(20,24,29,.16)">
+<div style="font:500 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:#ad6a24;margin-bottom:46px">{{ s.n }}</div>
+<h3 style="font:600 22px/1.2 'Archivo',sans-serif;letter-spacing:-.02em;margin:0 0 12px">{{ s.title }}</h3>
+<p style="font:400 14px/1.6 'Archivo',sans-serif;color:rgba(20,24,29,.64);margin:0">{{ s.body }}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="border-bottom:1px solid rgba(20,24,29,.16);padding:0 40px 40px">
+<div style="display:flex;justify-content:space-between;padding:16px 0;font:400 9px/1 'Space Mono',monospace;letter-spacing:.14em;color:rgba(20,24,29,.45)"><span>FIG. 02 — TRÍPTICO DE USO</span><span>HALFTONE · 3 × 4:5</span></div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+<div style="position:relative;overflow:hidden;width:100%;aspect-ratio:4/5;background-color:#c9ced2;background-image:radial-gradient(rgba(20,24,29,.5) 1.3px,transparent 1.5px);background-size:6px 6px;animation:nm-dots 7s linear infinite"><div style="position:absolute;left:50%;bottom:16%;width:34%;aspect-ratio:9/17;transform:translateX(-50%);background:#e5e8ea;outline:1px solid rgba(20,24,29,.55)"></div>
+<div style="position:absolute;left:50%;bottom:34%;width:11%;aspect-ratio:1;background:#8d5217;border-radius:50%;animation:nm-rise 3.2s ease-in-out infinite"></div>
+<div style="position:absolute;left:16px;bottom:16px;right:16px;background:#e5e8ea;padding:9px 11px;font:400 8.5px/1.75 'Space Mono',monospace;letter-spacing:.1em;color:rgba(20,24,29,.72);z-index:5">4:5 · MANOS + MÓVIL EN PRIMER PLANO, GESTO DE ENVIAR. ENCUADRE CERRADO, SIN CARA.</div></div>
+<div style="position:relative;overflow:hidden;width:100%;aspect-ratio:4/5;background-color:#c9ced2;background-image:radial-gradient(rgba(20,24,29,.5) 1.3px,transparent 1.5px);background-size:6px 6px;animation:nm-dots 7s linear infinite"><div style="position:absolute;left:26%;top:44%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%)"><div style="width:100%;height:100%;border-radius:50%;background:rgba(20,24,29,.5);animation:nm-inL 4.4s ease-in-out infinite"></div></div>
+<div style="position:absolute;left:74%;top:44%;width:30%;aspect-ratio:1;transform:translate(-50%,-50%)"><div style="width:100%;height:100%;border-radius:50%;background:rgba(20,24,29,.32);animation:nm-inR 4.4s ease-in-out infinite"></div></div>
+<div style="position:absolute;left:50%;top:44%;width:9%;aspect-ratio:1;transform:translate(-50%,-50%)"><div style="width:100%;height:100%;border-radius:50%;background:#8d5217;animation:nm-pulse 2.2s ease-in-out infinite"></div></div>
+<div style="position:absolute;left:16px;bottom:16px;right:16px;background:#e5e8ea;padding:9px 11px;font:400 8.5px/1.75 'Space Mono',monospace;letter-spacing:.1em;color:rgba(20,24,29,.72);z-index:5">4:5 · DOS PERSONAS RECIBIENDO LA NOTICIA (MADRE E HIJA), PLANO MEDIO, INTERIOR DE CASA.</div></div>
+<div style="position:relative;overflow:hidden;width:100%;aspect-ratio:4/5;background-color:#c9ced2;background-image:radial-gradient(rgba(20,24,29,.5) 1.3px,transparent 1.5px);background-size:6px 6px;animation:nm-dots 7s linear infinite"><div style="position:absolute;left:50%;top:46%;width:56%;aspect-ratio:8/5;transform:translate(-50%,-50%)"><div style="position:relative;width:100%;height:100%;background:#e5e8ea;outline:1px solid rgba(20,24,29,.55);overflow:hidden;animation:nm-tilt 6s ease-in-out infinite">
+<div style="position:absolute;left:8%;bottom:14%;width:34%;height:7%;background:rgba(20,24,29,.45)"></div>
+<div style="position:absolute;left:8%;top:14%;width:16%;aspect-ratio:1;background:#8d5217"></div>
+<div style="position:absolute;top:0;bottom:0;width:22%;background:rgba(20,24,29,.14);animation:nm-sweep 3.6s linear infinite"></div>
+</div></div>
+<div style="position:absolute;left:16px;bottom:16px;right:16px;background:#e5e8ea;padding:9px 11px;font:400 8.5px/1.75 'Space Mono',monospace;letter-spacing:.1em;color:rgba(20,24,29,.72);z-index:5">4:5 · TARJETA VISA SOSTENIDA EN LA MANO, ÁNGULO LIGERO, FONDO NEUTRO. SIN BRILLOS 3D.</div></div>
+</div>
+</section>
+
+<section id="cuenta" style="border-bottom:1px solid rgba(20,24,29,.16);padding:88px 40px">
+<div style="display:flex;align-items:baseline;justify-content:space-between;gap:40px;flex-wrap:wrap;margin-bottom:54px">
+<h2 style="font:600 clamp(34px,4.4vw,66px)/.98 'Archivo',sans-serif;letter-spacing:-.04em;margin:0;max-width:20ch">Una cuenta, dos países, cero fricción.</h2>
+<div style="font:400 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:rgba(20,24,29,.5)">TODO EN UN SOLO LUGAR</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(20,24,29,.16);border-top:1px solid rgba(20,24,29,.16)">
+<sc-for list="{{ features }}" as="f" hint-placeholder-count="6">
+<div data-nm-row="" style="background:#e5e8ea;padding:28px 26px 40px">
+<div style="display:flex;justify-content:space-between;font:400 9.5px/1 'Space Mono',monospace;letter-spacing:.14em;color:rgba(20,24,29,.42);margin-bottom:38px"><span>{{ f.n }}</span><span>{{ f.tag }}</span></div>
+<h3 style="font:600 19px/1.25 'Archivo',sans-serif;letter-spacing:-.015em;margin:0 0 10px">{{ f.title }}</h3>
+<p style="font:400 13.5px/1.6 'Archivo',sans-serif;color:rgba(20,24,29,.64);margin:0">{{ f.body }}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="border-bottom:1px solid rgba(20,24,29,.16);background:#14181d;color:#e5e8ea;padding:70px 40px">
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px">
+<sc-for list="{{ stats }}" as="st" hint-placeholder-count="3">
+<div>
+<div style="font:600 clamp(48px,6vw,86px)/.9 'Archivo',sans-serif;letter-spacing:-.05em;color:#e5e8ea">{{ st.figure }}</div>
+<div style="height:1px;background:rgba(229,232,234,.25);margin:20px 0 14px"></div>
+<div style="font:400 12px/1.55 'Space Mono',monospace;letter-spacing:.06em;color:rgba(229,232,234,.62);max-width:30ch">{{ st.label }}</div>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section id="precios" style="border-bottom:1px solid rgba(20,24,29,.16);padding:88px 40px">
+<div style="display:grid;grid-template-columns:220px 1fr;gap:40px;margin-bottom:54px">
+<div style="font:400 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:rgba(20,24,29,.5);padding-top:10px">§ 05 — PRECIOS</div>
+<div>
+<h2 style="font:600 clamp(34px,4vw,60px)/1 'Archivo',sans-serif;letter-spacing:-.035em;margin:0 0 18px">Simple y transparente.</h2>
+<p style="font:400 15.5px/1.6 'Archivo',sans-serif;color:rgba(20,24,29,.62);max-width:48ch;margin:0">Elige según tu criterio actual. Puedes cambiar de plan cuando quieras.</p>
+</div>
+</div>
+<div style="display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:rgba(20,24,29,.16);border-top:1px solid rgba(20,24,29,.16)">
+<sc-for list="{{ plans }}" as="p" hint-placeholder-count="3">
+<div data-nm-plan="" style="background:#e5e8ea;padding:0 0 34px;display:flex;flex-direction:column">
+<sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}"><div style="height:4px;background:#ad6a24"></div></sc-if>
+<div style="padding:28px 26px 0;display:flex;flex-direction:column;flex:1">
+<div style="display:flex;justify-content:space-between;align-items:baseline;margin-bottom:34px">
+<span style="font:500 11px/1 'Space Mono',monospace;letter-spacing:.16em;text-transform:uppercase">{{ p.name }}</span>
+<sc-if value="{{ p.featured }}" hint-placeholder-val="{{ false }}"><span style="font:400 9px/1 'Space Mono',monospace;letter-spacing:.14em;color:#ad6a24;border:1px solid #ad6a24;padding:4px 7px">MÁS POPULAR</span></sc-if>
+</div>
+<div style="font:600 clamp(30px,3.4vw,44px)/1 'Archivo',sans-serif;letter-spacing:-.04em;margin-bottom:14px">{{ p.price }}</div>
+<p style="font:400 13.5px/1.6 'Archivo',sans-serif;color:rgba(20,24,29,.62);margin:0 0 26px;min-height:66px">{{ p.pitch }}</p>
+<div style="font:400 9.5px/1 'Space Mono',monospace;letter-spacing:.14em;color:rgba(20,24,29,.42);margin-bottom:14px">INCLUYE</div>
+<ul style="list-style:none;margin:0 0 30px;padding:0;display:flex;flex-direction:column;gap:9px;flex:1">
+<sc-for list="{{ p.items }}" as="it" hint-placeholder-count="4">
+<li style="display:flex;gap:10px;font:400 13.5px/1.45 'Archivo',sans-serif;color:rgba(20,24,29,.78)"><span style="color:#ad6a24">—</span><span>{{ it }}</span></li>
+</sc-for>
+</ul>
+<a href="#abrir" data-nm-btn="" style="display:block;text-align:center;border:1px solid rgba(20,24,29,.85);padding:14px;font:500 11px/1 'Space Mono',monospace;letter-spacing:.12em;text-transform:uppercase;transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,letter-spacing .25s ease,box-shadow .25s ease;" style-hover="color:#fafbfc;border-color:#14181d"><span>{{ p.cta }}</span></a>
+</div>
+</div>
+</sc-for>
+</div>
+<div style="display:flex;gap:14px;align-items:baseline;margin-top:26px;font:400 12px/1.5 'Space Mono',monospace;color:rgba(20,24,29,.5)">
+<a href="#tarifas" style="border-bottom:1px solid rgba(20,24,29,.35)">Tarifas detalladas</a>
+<span>Sin comisiones ocultas — todo lo que cobramos, en un solo lugar.</span>
+</div>
+</section>
+
+<section id="tarifas" style="border-bottom:1px solid rgba(20,24,29,.16);padding:88px 40px">
+<div style="display:grid;grid-template-columns:220px 1fr;gap:40px;margin-bottom:54px">
+<div style="font:400 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:rgba(20,24,29,.5);padding-top:10px">§ 06 — TARIFAS</div>
+<div>
+<h2 style="font:600 clamp(34px,4vw,60px)/1 'Archivo',sans-serif;letter-spacing:-.035em;margin:0 0 18px">Tarifas detalladas.</h2>
+<p style="font:400 16px/1.6 'Archivo',sans-serif;color:rgba(20,24,29,.62);max-width:52ch;margin:0;text-wrap:pretty">Sin comisiones ocultas. Cada concepto que cobramos, con su importe, tal y como aparecerá en tu extracto.</p>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:220px 1fr;gap:40px">
+<div style="font:400 10px/1.7 'Space Mono',monospace;letter-spacing:.1em;color:rgba(20,24,29,.42);text-transform:uppercase">Importes en EUR<br>Vigentes desde 2026</div>
+<div style="border-top:1px solid rgba(20,24,29,.22)">
+<sc-for list="{{ fees }}" as="fee" hint-placeholder-count="7">
+<div data-nm-row="" style="display:grid;grid-template-columns:1fr auto;gap:24px;align-items:baseline;padding:17px 12px;border-bottom:1px solid rgba(20,24,29,.14)">
+<div>
+<div style="font:500 17px/1.3 'Archivo',sans-serif;letter-spacing:-.015em">{{ fee.label }}</div>
+<div style="font:400 12px/1.5 'Archivo',sans-serif;color:rgba(20,24,29,.5);margin-top:3px">{{ fee.note }}</div>
+</div>
+<div style="font:700 14px/1.3 'Space Mono',monospace;letter-spacing:-.01em;white-space:nowrap">{{ fee.price }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+
+<div style="display:grid;grid-template-columns:220px 1fr;gap:40px;margin-top:70px">
+<div style="font:400 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:rgba(20,24,29,.5);padding-top:8px">TERMINOLOGÍA<br>ESTANDARIZADA</div>
+<div>
+<p style="font:400 14px/1.6 'Archivo',sans-serif;color:rgba(20,24,29,.62);max-width:56ch;margin:0 0 26px;text-wrap:pretty">Usamos el glosario estandarizado del Banco de Lituania, para que puedas comparar nuestras tarifas con las de cualquier otra entidad europea.</p>
+<div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1px;background:transparent;border:1px solid rgba(20,24,29,.16)">
+<sc-for list="{{ terminology }}" as="term" hint-placeholder-count="7">
+<div data-nm-row="" style="background:#e5e8ea;padding:18px 18px 20px;box-shadow:0 0 0 1px rgba(20,24,29,.16)">
+<div style="font:700 10px/1.3 'Space Mono',monospace;letter-spacing:.1em;color:#8d5217;text-transform:uppercase">{{ term.en }}</div>
+<div style="font:400 14px/1.45 'Archivo',sans-serif;color:rgba(20,24,29,.72);margin-top:8px;text-wrap:pretty">{{ term.es }}</div>
+</div>
+</sc-for>
+</div>
+</div>
+</div>
+</section>
+
+<section id="seguridad" style="border-bottom:1px solid rgba(20,24,29,.16);display:grid;grid-template-columns:1.15fr .85fr">
+<div style="padding:78px 40px;border-right:1px solid rgba(20,24,29,.16)">
+<div style="font:400 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:rgba(20,24,29,.5);margin-bottom:40px">§ 07 — TESTIMONIO</div>
+<blockquote style="margin:0;font:500 clamp(24px,2.7vw,38px)/1.25 'Archivo',sans-serif;letter-spacing:-.025em;text-wrap:pretty">“Antes tardaba días en mandarle dinero a mi mamá y pagaba comisiones que no entendía. Ahora lo hago en minutos y sé exactamente cuánto le llega.”</blockquote>
+<div style="margin-top:34px;display:flex;gap:16px;align-items:center">
+<div style="position:relative;overflow:hidden;width:44px;height:44px;flex:none;background-color:#c9ced2;background-image:radial-gradient(rgba(20,24,29,.5) 1.3px,transparent 1.5px);background-size:4px 4px;animation:nm-dots 7s linear infinite"><div style="position:absolute;left:50%;top:52%;width:52%;aspect-ratio:1;transform:translate(-50%,-50%)"><div style="width:100%;height:100%;border-radius:50%;background:rgba(20,24,29,.5);animation:nm-pulse 3.4s ease-in-out infinite"></div></div></div>
+<div style="font:400 11.5px/1.6 'Space Mono',monospace;color:rgba(20,24,29,.6)">Usuaria de NextMoni<br>Vive en España, envía a Colombia</div>
+</div>
+</div>
+<div style="padding:78px 40px;display:flex;flex-direction:column;gap:0">
+<sc-for list="{{ security }}" as="sec" hint-placeholder-count="3">
+<div style="padding:22px 0;border-top:1px solid rgba(20,24,29,.16)">
+<h3 style="font:600 16px/1.2 'Archivo',sans-serif;margin:0 0 8px">{{ sec.title }}</h3>
+<p style="font:400 13px/1.55 'Archivo',sans-serif;color:rgba(20,24,29,.62);margin:0">{{ sec.body }}</p>
+</div>
+</sc-for>
+</div>
+</section>
+
+<section style="border-bottom:1px solid rgba(20,24,29,.16);padding:0 40px 40px">
+<div style="display:flex;justify-content:space-between;padding:16px 0;font:400 9px/1 'Space Mono',monospace;letter-spacing:.14em;color:rgba(20,24,29,.45)"><span>FIG. 03 — CIERRE</span><span>HALFTONE · 3:1</span></div>
+<div style="position:relative;overflow:hidden;width:100%;aspect-ratio:3/1;background-color:#c9ced2;background-image:radial-gradient(rgba(20,24,29,.5) 1.3px,transparent 1.5px);background-size:6px 6px;animation:nm-dots 7s linear infinite"><div style="position:absolute;left:14%;top:50%;width:9%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:rgba(20,24,29,.5)"></div>
+<div style="position:absolute;left:86%;top:50%;width:9%;aspect-ratio:1;transform:translate(-50%,-50%);border-radius:50%;background:rgba(20,24,29,.5)"></div>
+<div style="position:absolute;left:14%;right:14%;top:50%;height:1px;background:rgba(20,24,29,.45)"></div>
+<div style="position:absolute;top:50%;width:3%;aspect-ratio:1;transform:translateY(-50%);border-radius:50%;background:#8d5217;animation:nm-scan 5s linear infinite"></div>
+<div style="position:absolute;left:16px;bottom:16px;right:16px;background:#e5e8ea;padding:9px 11px;font:400 8.5px/1.75 'Space Mono',monospace;letter-spacing:.1em;color:rgba(20,24,29,.72);z-index:5">3:1 · PANORÁMICA DE CIERRE: DOS LUGARES EN UNA MISMA IMAGEN (CALLE EUROPEA / CALLE LATINOAMERICANA) O UNA MESA COMPARTIDA POR VIDEOLLAMADA.</div></div>
+</section>
+
+<section id="abrir" style="border-bottom:1px solid rgba(20,24,29,.16);display:grid;grid-template-columns:1fr 1fr;padding:0">
+<div style="padding:88px 40px;border-right:1px solid rgba(20,24,29,.16)">
+<div style="font:400 10px/1 'Space Mono',monospace;letter-spacing:.16em;color:#ad6a24;margin-bottom:30px">EMPIEZA HOY</div>
+<h2 style="font:600 clamp(38px,4.8vw,72px)/.98 'Archivo',sans-serif;letter-spacing:-.04em;margin:0 0 22px">Abre tu cuenta en minutos.</h2>
+<p style="font:400 16px/1.6 'Archivo',sans-serif;color:rgba(20,24,29,.65);max-width:42ch;margin:0">Sin sucursales, sin papeleo. Solo tu documento, una selfie, y tu IBAN europeo listo para usar.</p>
+</div>
+<div style="padding:88px 40px;display:flex;flex-direction:column;gap:22px">
+<sc-for list="{{ fields }}" as="fl" hint-placeholder-count="3">
+<label style="display:flex;flex-direction:column;gap:8px">
+<span style="font:400 9.5px/1 'Space Mono',monospace;letter-spacing:.16em;color:rgba(20,24,29,.5)">{{ fl.label }}</span>
+<input type="text" placeholder="{{ fl.ph }}" style="border:none;border-bottom:1px solid rgba(20,24,29,.3);background:transparent;padding:10px 0;font:400 16px/1 'Archivo',sans-serif;color:#14181d;outline:none;transition:border-color .2s ease,box-shadow .2s ease">
+</label>
+</sc-for>
+<button type="button" data-nm-btn="" style="margin-top:8px;background:#8d5217;color:#fafbfc;border:none;padding:18px;font:500 12px/1 'Space Mono',monospace;letter-spacing:.12em;text-transform:uppercase;cursor:pointer;transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,letter-spacing .25s ease,box-shadow .25s ease;" style-hover="letter-spacing:.16em"><span>Crear mi cuenta <b data-nm-arrow="" style="font-weight:500">→</b></span></button>
+<p style="font:400 12px/1.55 'Space Mono',monospace;color:rgba(20,24,29,.5);margin:0">¿Prefieres hablar primero? Escríbenos por WhatsApp.</p>
+</div>
+</section>
+
+<footer style="padding:70px 40px 34px;display:grid;grid-template-columns:1.3fr repeat(3,.9fr);gap:40px">
+<div>
+<div style="font:600 17px/1 'Archivo',sans-serif;letter-spacing:-.02em;margin-bottom:16px">NextMoni</div>
+<p style="font:400 13px/1.6 'Archivo',sans-serif;color:rgba(20,24,29,.6);max-width:38ch;margin:0">Tu vida está en dos países. Tu cuenta también. Cuenta europea, transferencias directas y cero papeleo para que manejes tu dinero a tu manera.</p>
+<div style="display:flex;gap:10px;margin-top:24px">
+<a href="#abrir" style="border:1px solid rgba(20,24,29,.3);padding:10px 14px;font:400 10px/1 'Space Mono',monospace;letter-spacing:.12em;transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,letter-spacing .25s ease,box-shadow .25s ease;" style-hover="background:#14181d;color:#e5e8ea;border-color:#14181d">APP STORE</a>
+<a href="#abrir" style="border:1px solid rgba(20,24,29,.3);padding:10px 14px;font:400 10px/1 'Space Mono',monospace;letter-spacing:.12em;transition:background-color .25s ease,color .25s ease,border-color .25s ease,transform .2s ease,letter-spacing .25s ease,box-shadow .25s ease;" style-hover="background:#14181d;color:#e5e8ea;border-color:#14181d">GOOGLE PLAY</a>
+</div>
+</div>
+<sc-for list="{{ footer }}" as="col" hint-placeholder-count="3">
+<div>
+<div style="font:400 9.5px/1 'Space Mono',monospace;letter-spacing:.16em;color:rgba(20,24,29,.45);margin-bottom:16px">{{ col.title }}</div>
+<div style="display:flex;flex-direction:column;gap:9px">
+<sc-for list="{{ col.links }}" as="l" hint-placeholder-count="4">
+<a href="#abrir" style="font:400 13px/1.3 'Archivo',sans-serif;color:rgba(20,24,29,.72)">{{ l }}</a>
+</sc-for>
+</div>
+</div>
+</sc-for>
+<div style="grid-column:1/-1;border-top:1px solid rgba(20,24,29,.16);padding-top:18px;display:flex;justify-content:space-between;flex-wrap:wrap;gap:14px;font:400 9.5px/1 'Space Mono',monospace;letter-spacing:.12em;color:rgba(20,24,29,.42)">
+<span>NEXTMONI · LICENCIA N.º 24 — BANCO DE LITUANIA</span><span>PSD2 · GDPR</span><span>v1c-f1a — ACERO / REFERENCIAS ANIMADAS + INTERACCIÓN</span>
+</div>
+</footer>
+
+<div data-nm-tip="" style="max-width:268px;background:#14181d;color:#e5e8ea;padding:13px 15px 14px;box-shadow:0 12px 30px rgba(20,24,29,.22)">
+<div data-nm-tip-term="" style="font:700 9.5px/1 'Space Mono',monospace;letter-spacing:.16em;color:#e0a35e;margin-bottom:7px"></div>
+<div data-nm-tip-def="" style="font:400 12.5px/1.5 'Archivo',sans-serif;color:rgba(229,232,234,.86);text-wrap:pretty"></div>
+</div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;featuredPlan&quot;:{&quot;editor&quot;:&quot;enum&quot;,&quot;options&quot;:[&quot;Standard&quot;,&quot;Plus&quot;,&quot;Premium&quot;],&quot;default&quot;:&quot;Plus&quot;,&quot;tsType&quot;:&quot;string&quot;,&quot;section&quot;:&quot;Precios&quot;}}">
+class Component extends DCLogic {
+  glossary = {
+    SEPA: "Zona Única de Pagos en Euros: transferencias en euros entre países de la UE, con las mismas condiciones que una nacional.",
+    SWIFT: "Red internacional de mensajería bancaria. Se usa para enviar dinero fuera de la zona euro, a más de 200 países.",
+    IBAN: "Número de cuenta bancaria internacional. El tuyo es europeo y va a tu nombre: sirve para recibir tu nómina o pagos.",
+    KYC: "«Conoce a tu cliente»: la verificación de identidad que exige la normativa europea antes de operar con tu cuenta.",
+    AML: "Prevención de blanqueo de capitales: los controles legales que aseguran el origen lícito del dinero.",
+    E2E: "Cifrado de extremo a extremo: solo tú y el destino pueden leer los datos; nadie por el camino.",
+    FX: "Cambio de divisa (foreign exchange): la tasa a la que se convierte tu dinero de una moneda a otra.",
+    PSD2: "Directiva europea de servicios de pago: fija reglas de seguridad y autenticación reforzada en cada operación.",
+    GDPR: "Reglamento europeo de protección de datos: controla cómo se guardan y usan tus datos personales."
+  };
+
+  componentDidMount() { this.scanTerms(); }
+  componentDidUpdate() { this.scanTerms(); }
+  componentWillUnmount() {
+    if (this._onMove) document.removeEventListener("scroll", this._onMove, true);
+  }
+
+  scanTerms() {
+    const root = this.el || document.querySelector("[data-nm-tip]")?.parentNode;
+    if (!root) return;
+    this.tip = root.querySelector("[data-nm-tip]");
+    if (!this.tip) return;
+    const re = /\b(SEPA|SWIFT|IBAN|KYC|AML|E2E|FX|PSD2|GDPR)\b/;
+    const skip = /^(SCRIPT|STYLE|INPUT|TEXTAREA)$/;
+    const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, {
+      acceptNode: (n) => {
+        const p = n.parentNode;
+        if (!p || skip.test(p.nodeName) || p.closest("[data-nm-term],[data-nm-tip]")) return NodeFilter.FILTER_REJECT;
+        return re.test(n.nodeValue) ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+      }
+    });
+    const targets = [];
+    while (walker.nextNode()) targets.push(walker.currentNode);
+    for (const node of targets) {
+      const parts = node.nodeValue.split(/\b(SEPA|SWIFT|IBAN|KYC|AML|E2E|FX|PSD2|GDPR)\b/);
+      const frag = document.createDocumentFragment();
+      parts.forEach((part, i) => {
+        if (i % 2 === 1) {
+          const span = document.createElement("span");
+          span.setAttribute("data-nm-term", part);
+          span.textContent = part;
+          frag.appendChild(span);
+        } else if (part) {
+          frag.appendChild(document.createTextNode(part));
+        }
+      });
+      node.parentNode.replaceChild(frag, node);
+    }
+    if (!this._bound) {
+      this._bound = true;
+      root.addEventListener("mouseover", (e) => {
+        const t = e.target.closest && e.target.closest("[data-nm-term]");
+        if (t) this.showTip(t);
+      });
+      root.addEventListener("mouseout", (e) => {
+        const t = e.target.closest && e.target.closest("[data-nm-term]");
+        if (t && !t.contains(e.relatedTarget)) this.hideTip();
+      });
+      root.addEventListener("focusin", (e) => {
+        const t = e.target.closest && e.target.closest("[data-nm-term]");
+        if (t) this.showTip(t);
+      });
+      root.addEventListener("focusout", () => this.hideTip());
+      this._onMove = () => this.hideTip();
+      document.addEventListener("scroll", this._onMove, true);
+    }
+    root.querySelectorAll("[data-nm-term]").forEach(el => {
+      if (!el.hasAttribute("tabindex")) { el.setAttribute("tabindex", "0"); el.setAttribute("role", "button"); }
+      if (this.onDarkBg(el)) el.setAttribute("data-nm-dark", ""); else el.removeAttribute("data-nm-dark");
+    });
+  }
+
+  onDarkBg(el) {
+    let node = el;
+    while (node && node !== document.documentElement) {
+      const bg = getComputedStyle(node).backgroundColor;
+      const m = bg && bg.match(/rgba?\(([\d.]+),\s*([\d.]+),\s*([\d.]+)(?:,\s*([\d.]+))?\)/);
+      if (m && (m[4] === undefined || parseFloat(m[4]) > 0.5)) {
+        const lum = (0.2126 * +m[1] + 0.7152 * +m[2] + 0.0722 * +m[3]) / 255;
+        return lum < 0.45;
+      }
+      node = node.parentElement;
+    }
+    return false;
+  }
+
+  showTip(el) {
+    const key = el.getAttribute("data-nm-term");
+    const def = this.glossary[key];
+    if (!def || !this.tip) return;
+    this.tip.querySelector("[data-nm-tip-term]").textContent = key;
+    this.tip.querySelector("[data-nm-tip-def]").textContent = def;
+    const dark = el.hasAttribute("data-nm-dark");
+    this.tip.style.background = dark ? "#fafbfc" : "#14181d";
+    this.tip.style.boxShadow = dark
+      ? "0 14px 34px rgba(0,0,0,.5)"
+      : "0 12px 30px rgba(20,24,29,.22)";
+    this.tip.querySelector("[data-nm-tip-term]").style.color = dark ? "#8d5217" : "#e0a35e";
+    this.tip.querySelector("[data-nm-tip-def]").style.color = dark ? "rgba(20,24,29,.78)" : "rgba(229,232,234,.86)";
+    this.tip.setAttribute("data-open", "1");
+    const r = el.getBoundingClientRect();
+    const t = this.tip.getBoundingClientRect();
+    let left = r.left + r.width / 2 - t.width / 2;
+    left = Math.max(14, Math.min(left, window.innerWidth - t.width - 14));
+    let top = r.top - t.height - 10;
+    if (top < 12) top = r.bottom + 10;
+    this.tip.style.left = left + "px";
+    this.tip.style.top = top + "px";
+  }
+
+  hideTip() { if (this.tip) this.tip.removeAttribute("data-open"); }
+
+  renderVals() {
+    const featured = this.props.featuredPlan || "Plus";
+    const plans = [
+      { name: "Standard", price: "Gratis", pitch: "Todo lo esencial para enviar dinero a casa de forma sencilla.", cta: "Elegir Standard",
+        items: ["Cuenta IBAN EUR", "Transferencias SEPA", "Monedero multidivisa", "Tarjeta Visa virtual + física"] },
+      { name: "Plus", price: "€4,99/mes", pitch: "Para quienes envían con frecuencia y quieren mejores tarifas.", cta: "Elegir Plus",
+        items: ["Todo lo de Standard", "Transferencias SWIFT", "Tasas de cambio reducidas", "Límites ampliados"] },
+      { name: "Premium", price: "€9,99/mes", pitch: "Un máximo nivel y las mejores condiciones para tu dinero.", cta: "Elegir Premium",
+        items: ["Todo lo de Plus", "Envíos ilimitados", "Gestor de cuenta dedicado", "Prioridad en soporte"] }
+    ].map(p => ({ ...p, featured: p.name === featured }));
+    return {
+      steps: [
+        { n: "01", title: "Abre tu cuenta", body: "Regístrate con tu documento y una selfie. Obtén tu IBAN europeo propio en minutos, sin visitar ninguna sucursal." },
+        { n: "02", title: "Verifica tu identidad", body: "La verificación (KYC) la procesa una entidad autorizada por el Banco de Lituania. Desbloquea todas las funciones y límites más altos." },
+        { n: "03", title: "Envía y controla tu dinero", body: "Transferencias desde tu cuenta y hacia Latinoamérica, tarjetas Visa y cambio de divisas — todo desde una sola app." }
+      ],
+      features: [
+        { n: "01", tag: "SEPA / SWIFT", title: "Transferencias sin fronteras", body: "SEPA directo desde la UE sin límites. SWIFT y más de 200 países cuando lo necesites." },
+        { n: "02", tag: "EUR / USD / GBP", title: "Multidivisa real", body: "Guarda y cambia entre EUR, USD, GBP y muchas otras monedas en un mismo saldo, sin abrir otra cuenta." },
+        { n: "03", tag: "IBAN", title: "IBAN a tu nombre", body: "Un número de cuenta europeo propio, para recibir tu nómina o pagos como cualquier residente de la UE." },
+        { n: "04", tag: "VISA", title: "Tarjeta Visa", body: "Visa de débito para pagar hoy mismo. Física y/o virtual para retirar o pagar en persona." },
+        { n: "05", tag: "KYC / E2E", title: "Seguridad verificable", body: "Verificación reforzada en cada acceso y cifrado de extremo a extremo. Cumplimos la normativa europea." },
+        { n: "06", tag: "FX", title: "Cambio de divisa claro", body: "Ve la tasa y la comisión antes de confirmar. Nunca sorpresa, nunca escondida." }
+      ],
+      fees: [
+        { label: "Cambio de moneda (FX)", note: "Diferencial aplicado sobre la tasa de mercado", price: "Spread 1–3% por par" },
+        { label: "Transferencia SEPA", note: "Envíos en euros dentro de la zona SEPA", price: "1,5% · mín. 0,50 €" },
+        { label: "Transferencia SWIFT", note: "Envíos internacionales fuera de la zona euro", price: "25,00 €" },
+        { label: "Recarga con tarjeta", note: "Añadir fondos con tarjeta de débito o crédito", price: "2% del monto" },
+        { label: "Retiro bancario", note: "Retirada a una cuenta bancaria externa", price: "1,00 €" },
+        { label: "Transferencia interna", note: "Entre cuentas NextMoni", price: "Gratis" },
+        { label: "Mantenimiento de cuenta", note: "Cargo periódico por cuenta activa", price: "1,00 € / 30 días" }
+      ],
+      terminology: [
+        { en: "Account management", es: "Mantenimiento de cuenta" },
+        { en: "Issuance of a debit card", es: "Emisión de tarjeta de débito" },
+        { en: "Cash withdrawal", es: "Retirada de efectivo" },
+        { en: "Credit transfer — SEPA", es: "Transferencia SEPA en euros" },
+        { en: "Credit transfer — non-SEPA", es: "Transferencia SWIFT fuera de la zona SEPA" },
+        { en: "Settlement of received payments", es: "Abono de pagos recibidos — en euros y en otras monedas" },
+        { en: "Currency conversion", es: "Cambio de divisa (FX)" }
+      ],
+      stats: [
+        { figure: "200+", label: "países alcanzables por transferencia o SWIFT" },
+        { figure: "N.º 24", label: "licencia emitida por el Banco de Lituania" },
+        { figure: "PSD2 · GDPR", label: "cumplimiento regulatorio en la Unión Europea" }
+      ],
+      plans,
+      security: [
+        { title: "Envíos protegidos", body: "Conexión cifrada y seguimiento de cada operación de principio a fin." },
+        { title: "Fondos protegidos", body: "Salvaguardamos y protegemos tu dinero según la normativa de la UE." },
+        { title: "Verificación reforzada", body: "KYC para mantener tu cuenta segura, identificando cada operación." }
+      ],
+      fields: [
+        { label: "NOMBRE COMPLETO", ph: "¿Cómo te llamas?" },
+        { label: "TELÉFONO", ph: "+34 600 000 000" },
+        { label: "CORREO ELECTRÓNICO", ph: "tu@correo.com" }
+      ],
+      footer: [
+        { title: "PRODUCTOS", links: ["Funciones", "Precios", "Comisiones", "Seguridad"] },
+        { title: "EMPRESA", links: ["Sobre nosotros", "Preguntas frecuentes", "Contacto", "support@nextmoni.com"] },
+        { title: "TÉRMINOS LEGALES", links: ["Privacidad", "Términos legales", "AML / KYC", "Quejas y reclamaciones"] }
+      ]
+    };
+  }
+}
+</script>
+</body>
+</html>
