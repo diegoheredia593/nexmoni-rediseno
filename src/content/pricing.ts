@@ -160,7 +160,7 @@ export const railFees: Record<Rail, RailFee> = {
     percent: 0,
     flat: 0,
     min: 0,
-    note: "Entre cuentas NextMoni",
+    note: "Entre cuentas NexMoni",
   },
 };
 

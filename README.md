@@ -1,6 +1,6 @@
-# NextMoni — landing
+# NexMoni — landing
 
-Landing de NextMoni en Next.js (App Router) con CSS propio. Recreación del diseño
+Landing de NexMoni en Next.js (App Router) con CSS propio. Recreación del diseño
 v1c-f1a "Acero / Halftone" del handoff en `design_handoff_nextmoni_landing/`.
 
 ```bash

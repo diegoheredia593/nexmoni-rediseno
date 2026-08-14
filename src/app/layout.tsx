@@ -22,9 +22,9 @@ const spaceMono = Space_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "NextMoni — Tu vida está en dos países. Tu cuenta también.",
+  title: "NexMoni — Tu vida está en dos países. Tu cuenta también.",
   description:
-    "Cuenta europea en euros para enviar dinero a Latinoamérica. IBAN a tu nombre, transferencias SEPA y SWIFT, tarjeta Visa. Licencia N.º 24 del Banco de Lituania.",
+    "Cuenta europea en euros para enviar dinero a Latinoamérica. IBAN a tu nombre, transferencias SEPA y SWIFT, tarjeta Visa. Dinero electrónico emitido por ConnectPay UAB, licencia EMI n.º 24 del Banco de Lituania.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {

@@ -5,9 +5,9 @@ import { withTerms } from "@/components/glossary/withTerms";
 import { feeSchedule, feesPage, terminology } from "@/content/fees";
 
 export const metadata: Metadata = {
-  title: "Tarifas y calculadora de envíos — NextMoni",
+  title: "Tarifas y calculadora de envíos — NexMoni",
   description:
-    "Tarifario completo de NextMoni y calculadora de conversión: comisión, diferencial de cambio y cuánto recibe el destinatario. Sin comisiones ocultas.",
+    "Tarifario completo de NexMoni y calculadora de conversión: comisión, diferencial de cambio y cuánto recibe el destinatario. Sin comisiones ocultas.",
 };
 
 export default function TarifasPage() {

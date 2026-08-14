@@ -2,9 +2,8 @@
  * Página "Acerca de". Datos societarios y regulatorios facilitados por el
  * cliente — no editar sin confirmación: son declaraciones con efecto legal.
  *
- * ⚠ La razón social aquí es "NexMoni OÜ" y los correos van a nexmoni.com,
- *   tal y como se facilitaron. El resto del sitio usa "NextMoni" y
- *   nextmoni.com (ver `site.ts`). Uno de los dos está mal; hay que unificar.
+ * `brand` es la fuente única del nombre y del dominio de correo. El resto del
+ * sitio debe cuadrar con esto: la marca es NexMoni, no NextMoni.
  */
 
 export const brand = {

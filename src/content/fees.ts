@@ -31,7 +31,7 @@ export const feeSchedule = [
   },
   {
     label: "Transferencia interna",
-    note: "Entre cuentas NextMoni",
+    note: "Entre cuentas NexMoni",
     price: "Gratis",
   },
   {

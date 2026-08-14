@@ -3,10 +3,19 @@
  * (design_handoff_nextmoni_landing). Editar aquí, no en los componentes.
  */
 
+/**
+ * ⚖ Atribución de la licencia — leer antes de tocar nada de esto.
+ *
+ * NexMoni OÜ NO tiene licencia propia: es distribuidor autorizado de
+ * ConnectPay UAB, que es quien posee la licencia EMI n.º 24 del Banco de
+ * Lituania y quien emite el dinero electrónico. Cualquier texto que dé a
+ * entender que la licencia es nuestra es una declaración falsa ante el
+ * supervisor. Al redactar copy nuevo, nombrar siempre al emisor.
+ */
 export const site = {
-  name: "NextMoni",
-  meta: "EUR · LT · REG.24",
-  legal: "NEXTMONI · LICENCIA N.º 24 — BANCO DE LITUANIA",
+  name: "NexMoni",
+  meta: "EUR · EE · UE",
+  legal: "NEXMONI OÜ · DINERO ELECTRÓNICO EMITIDO POR CONNECTPAY UAB (EMI N.º 24)",
   compliance: "PSD2 · GDPR",
   version: "v1c-f1a — ACERO",
   whatsapp: "#abrir",
@@ -21,7 +30,7 @@ export const nav = [
 ] as const;
 
 export const hero = {
-  kicker: ["CUENTA EUROPEA", "100% REMOTO", "LICENCIA REG. EN LA UE"],
+  kicker: ["CUENTA EUROPEA", "100% REMOTO", "EMISOR REGULADO EN LA UE"],
   titleTop: "Tu vida está en dos países.",
   titleBottom: "Tu cuenta también.",
   lead:
@@ -29,8 +38,11 @@ export const hero = {
   cta: "Abrir cuenta gratis",
   secondaryCta: "Habla con nosotros por WhatsApp",
   trust: [
-    { n: "01", body: "Licencia bajo N.º 24 — Banco de Lituania" },
-    { n: "02", body: "Fondos protegidos según normativa UE" },
+    {
+      n: "01",
+      body: "Dinero electrónico emitido por ConnectPay UAB — licencia EMI n.º 24 del Banco de Lituania",
+    },
+    { n: "02", body: "Fondos salvaguardados y segregados según normativa UE" },
   ],
   figure: {
     label: "FIG. 01 — HERO",
@@ -51,7 +63,7 @@ export const steps = [
     n: "02",
     title: "Verifica tu identidad",
     body:
-      "La verificación (KYC) la procesa una entidad autorizada por el Banco de Lituania. Desbloquea todas las funciones y límites más altos.",
+      "La verificación (KYC) la procesa ConnectPay UAB, entidad autorizada por el Banco de Lituania. Desbloquea todas las funciones y límites más altos.",
   },
   {
     n: "03",
@@ -105,7 +117,7 @@ export const features = [
 
 export const stats = [
   { figure: "200+", label: "países alcanzables por transferencia o SWIFT" },
-  { figure: "N.º 24", label: "licencia emitida por el Banco de Lituania" },
+  { figure: "N.º 24", label: "licencia EMI de ConnectPay UAB, nuestra entidad emisora" },
   { figure: "PSD2 · GDPR", label: "cumplimiento regulatorio en la Unión Europea" },
 ] as const;
 
@@ -158,7 +170,8 @@ export const security = [
   },
   {
     title: "Fondos protegidos",
-    body: "Salvaguardamos y protegemos tu dinero según la normativa de la UE.",
+    body:
+      "Tu dinero queda salvaguardado y segregado en ConnectPay UAB, conforme a la normativa de la UE.",
   },
   {
     title: "Verificación reforzada",
@@ -169,7 +182,7 @@ export const security = [
 export const testimonial = {
   quote:
     "Antes tardaba días en mandarle dinero a mi mamá y pagaba comisiones que no entendía. Ahora lo hago en minutos y sé exactamente cuánto le llega.",
-  attribution: ["Usuaria de NextMoni", "Vive en España, envía a Colombia"],
+  attribution: ["Usuaria de NexMoni", "Vive en España, envía a Colombia"],
 } as const;
 
 export const leadFields = [
@@ -194,8 +207,7 @@ export const footerColumns = [
       { label: "Sobre nosotros", href: "/acerca" },
       { label: "Preguntas frecuentes", href: "/preguntas-frecuentes" },
       { label: "Contacto", href: "/acerca#contacto" },
-      // ⚠ Dominio inconsistente con el de las páginas nuevas (nexmoni.com).
-      { label: "support@nextmoni.com", href: "mailto:support@nextmoni.com" },
+      { label: "support@nexmoni.com", href: "mailto:support@nexmoni.com" },
     ],
   },
   {
