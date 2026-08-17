@@ -2,6 +2,9 @@
 
 Landing de NexMoni en Next.js (App Router) con CSS propio.
 
+> **¿Retomas el proyecto?** Lee primero [`HANDOFF.md`](HANDOFF.md): estado
+> actual, decisiones de diseño con su porqué, y las trampas del despliegue.
+
 ## Sistema de diseño: «Acero templado»
 
 Parte del encargo v1c-f1a "Acero / Halftone" (`design_handoff_nextmoni_landing/`)
