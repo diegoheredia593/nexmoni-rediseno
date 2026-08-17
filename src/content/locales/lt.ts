@@ -29,7 +29,7 @@ export const lt: Dictionary = {
     compliance: "PSD2 · BDAR",
     version: "v1c-f1a — PLIENAS",
     whatsapp: "WhatsApp",
-    openAccount: "Atidaryti sąskaitą",
+    openAccount: "Atsisiųsti programėlę",
     menu: "Meniu",
     languageLabel: "Kalba",
   },
@@ -71,7 +71,7 @@ export const lt: Dictionary = {
     titleBottom: "Tavo sąskaita irgi.",
     lead:
       "Laikyk eurus, keisk valiutas ir siųsk pinigus savo artimiesiems iš vienos Europos Sąjungoje atidarytos sąskaitos. Be filialų, be smulkaus šrifto.",
-    cta: "Atidaryti nemokamą sąskaitą",
+    cta: "Atsisiųsti programėlę",
     secondaryCta: "Parašyk mums per WhatsApp",
     trust: [
       "Elektroninius pinigus leidžia ConnectPay UAB — EPĮ licencija Nr. 24, išduota Lietuvos banko",
@@ -224,16 +224,12 @@ export const lt: Dictionary = {
 
 
   signup: {
-    eyebrow: "PRADĖK ŠIANDIEN",
-    title: "Atidaryk sąskaitą per kelias minutes.",
-    leadBefore: "Be filialų, be popierių. Tik tavo dokumentas, asmenukė ir europinis ",
-    leadAfter: ", paruoštas naudoti.",
     fields: [
       { name: "nombre", label: "VARDAS IR PAVARDĖ", placeholder: "Koks tavo vardas?" },
       { name: "telefono", label: "TELEFONAS", placeholder: "+370 600 00000" },
       { name: "email", label: "EL. PAŠTAS", placeholder: "tu@pastas.lt" },
     ],
-    submit: "Sukurti sąskaitą",
+    submit: "Atsiųsti nuorodą",
     sending: "Siunčiama…",
     whatsappNote: "Nori pirmiau pasikalbėti? Parašyk mums per WhatsApp.",
     errors: {
@@ -245,11 +241,28 @@ export const lt: Dictionary = {
       submit: "Nepavyko išsiųsti užklausos. Bandyk dar kartą arba parašyk per WhatsApp.",
     },
     success: {
-      eyebrow: "UŽKLAUSA GAUTA",
-      title: "Ačiū. Netrukus susisieksime.",
+      eyebrow: "NUORODA IŠSIŲSTA",
+      title: "Ačiū. Nuoroda jau pakeliui.",
       body:
-        "Patikrink el. paštą — ten ateis tolesni žingsniai, kaip nustatyti tapatybę ir aktyvuoti sąskaitą.",
+        "Patikrink el. paštą — ten rasi atsisiuntimo nuorodą ir tolesnius žingsnius tapatybei nustatyti.",
     },
+  },
+
+  /* La descarga es el objetivo del embudo: todo lo demás lleva aquí. */
+  download: {
+    eyebrow: "ATSISIUNTIMAS",
+    title: "Turėk sąskaitą kišenėje.",
+    lead:
+      "Atidaryk sąskaitą, nustatyk tapatybę ir siųsk pinigus programėlėje. Viskas telefone, per kelias minutes.",
+    soon: "Netrukus",
+    appStorePre: "Atsisiųsk iš",
+    appStoreName: "App Store",
+    googlePlayPre: "Rasi",
+    googlePlayName: "Google Play",
+    qrNote: "Nukreipk telefono kamerą",
+    qrBrief: "QR KODAS — LAUKIAMA TIKRŲJŲ PARDUOTUVIŲ ADRESŲ",
+    deskTitle: "Naršai kompiuteriu?",
+    deskNote: "Palik savo duomenis ir atsiųsime atsisiuntimo nuorodą.",
   },
 
   footer: {
@@ -277,10 +290,10 @@ export const lt: Dictionary = {
       {
         title: "TEISINĖ INFORMACIJA",
         links: [
-          { label: "Privatumas", href: "/#abrir" },
-          { label: "Sąlygos", href: "/#abrir" },
-          { label: "AML / KYC", href: "/#abrir" },
-          { label: "Skundai", href: "/#abrir" },
+          { label: "Privatumas", href: "/#descargar" },
+          { label: "Sąlygos", href: "/#descargar" },
+          { label: "AML / KYC", href: "/#descargar" },
+          { label: "Skundai", href: "/#descargar" },
         ],
       },
     ],

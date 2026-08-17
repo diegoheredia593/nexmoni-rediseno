@@ -430,6 +430,13 @@ p { margin: 0; text-wrap: pretty; }
   .footer__grid { grid-template-columns: 1fr 1fr; gap: var(--s-32); }
 }
 
+@media (max-width: 620px) {
+  /* La etiqueta lituana de la acción es larga: se recuperan ~20px de holgura
+     apretando las separaciones de la barra, no encogiendo el botón. */
+  .topbar__in { gap: var(--s-12); }
+  .topbar__end { gap: var(--s-8); }
+}
+
 @media (max-width: 560px) {
   .footer__grid { grid-template-columns: 1fr; }
   .calc__row, .faq__list > div { grid-template-columns: 1fr; gap: var(--s-4); }
@@ -443,4 +450,51 @@ p { margin: 0; text-wrap: pretty; }
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.001s !important; transition-duration: 0.001s !important; }
+}
+
+/* ── Descarga: el final del embudo ──────────────────────────────────────── */
+
+.download { display: grid; grid-template-columns: 1.2fr 0.8fr; gap: var(--s-64); align-items: start; }
+
+.stores { display: flex; gap: var(--s-16); flex-wrap: wrap; }
+
+/* Distintivos compuestos con el sistema de la marca. Los oficiales de Apple y
+   Google los sustituyen al publicar las fichas. */
+.store {
+  display: inline-flex; flex-direction: column; gap: 3px;
+  padding: 12px 22px; min-width: 180px;
+  background: var(--accent); color: var(--btn-text);
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+.store:hover { background: var(--ink); color: var(--btn-text); }
+.store__pre { font: 400 var(--t-micro) / 1.2 var(--mono); letter-spacing: 0.1em; text-transform: uppercase; opacity: 0.85; }
+.store__name { font: 500 var(--t-lead) / 1.2 var(--sans); letter-spacing: var(--track-h3); }
+.store--sm { padding: 9px 16px; min-width: 148px; }
+.store--sm .store__name { font-size: var(--t-body); }
+
+/* Sin ficha publicada: ni enlace ni acento. */
+.store--soon {
+  background: transparent; color: var(--ink-45);
+  border: 1px solid var(--hairline-firm); cursor: default;
+}
+.store--soon:hover { background: transparent; color: var(--ink-45); }
+.store--soon .store__name { color: var(--ink-62); }
+
+/* ── Código QR (marcador) ───────────────────────────────────────────────── */
+.qr { display: flex; flex-direction: column; gap: var(--s-12); max-width: 280px; }
+.qr__grid {
+  display: grid; grid-template-columns: repeat(8, 1fr); gap: 3px;
+  padding: var(--s-16); aspect-ratio: 1;
+  background: var(--surface-halftone);
+}
+.qr__grid span { background: transparent; }
+.qr__grid span[data-on] { background: var(--ink); }
+.qr__brief { font: 400 10px/1.6 var(--mono); letter-spacing: 0.08em; color: var(--ink-45); }
+
+@media (max-width: 900px) {
+  .download { grid-template-columns: 1fr; gap: var(--s-48); }
+  .stores { gap: var(--s-12); }
+  .store { flex: 1 1 auto; min-width: 160px; }
+  /* En el móvil el QR no sirve: se está usando el propio teléfono. */
+  .qr { display: none; }
 }

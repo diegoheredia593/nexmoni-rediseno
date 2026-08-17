@@ -23,7 +23,7 @@ export const pt: Dictionary = {
     compliance: "PSD2 · RGPD",
     version: "v1c-f1a — AÇO",
     whatsapp: "WhatsApp",
-    openAccount: "Abrir conta",
+    openAccount: "Descarregar a app",
     menu: "Menu",
     languageLabel: "Idioma",
   },
@@ -65,7 +65,7 @@ export const pt: Dictionary = {
     titleBottom: "A tua conta também.",
     lead:
       "Guarda euros, troca divisas e envia dinheiro aos teus a partir de uma única conta aberta na União Europeia. Sem balcões, sem letras pequenas.",
-    cta: "Abrir conta grátis",
+    cta: "Descarregar a app",
     secondaryCta: "Fala connosco pelo WhatsApp",
     trust: [
       "Moeda eletrónica emitida pela ConnectPay UAB — licença EMI n.º 24 do Banco da Lituânia",
@@ -218,16 +218,12 @@ export const pt: Dictionary = {
 
 
   signup: {
-    eyebrow: "COMEÇA HOJE",
-    title: "Abre a tua conta em minutos.",
-    leadBefore: "Sem balcões, sem papelada. Só o teu documento, uma selfie, e o teu ",
-    leadAfter: " europeu pronto a usar.",
     fields: [
       { name: "nombre", label: "NOME COMPLETO", placeholder: "Como te chamas?" },
       { name: "telefono", label: "TELEFONE", placeholder: "+351 900 000 000" },
       { name: "email", label: "CORREIO ELETRÓNICO", placeholder: "tu@email.com" },
     ],
-    submit: "Criar a minha conta",
+    submit: "Enviar-me o link",
     sending: "A enviar…",
     whatsappNote: "Preferes falar primeiro? Escreve-nos pelo WhatsApp.",
     errors: {
@@ -239,11 +235,28 @@ export const pt: Dictionary = {
       submit: "Não conseguimos enviar o teu pedido. Tenta de novo ou escreve-nos pelo WhatsApp.",
     },
     success: {
-      eyebrow: "PEDIDO RECEBIDO",
-      title: "Obrigado. Entramos em contacto em breve.",
+      eyebrow: "LINK ENVIADO",
+      title: "Obrigado. Enviámos-te o link.",
       body:
-        "Vê o teu email — é por aí que chegam os passos seguintes para verificar a tua identidade e ativar a conta.",
+        "Vê o teu email — aí chega o link para descarregar a app e os passos seguintes para verificar a tua identidade.",
     },
+  },
+
+  /* La descarga es el objetivo del embudo: todo lo demás lleva aquí. */
+  download: {
+    eyebrow: "DESCARREGAR",
+    title: "Leva a tua conta no bolso.",
+    lead:
+      "Abre a conta, verifica a tua identidade e envia dinheiro a partir da app. Tudo no telemóvel, em minutos.",
+    soon: "Brevemente",
+    appStorePre: "Descarrega na",
+    appStoreName: "App Store",
+    googlePlayPre: "Disponível no",
+    googlePlayName: "Google Play",
+    qrNote: "Aponta a câmara do telemóvel",
+    qrBrief: "CÓDIGO QR — À ESPERA DOS ENDEREÇOS REAIS DAS LOJAS",
+    deskTitle: "Estás no computador?",
+    deskNote: "Deixa os teus dados e enviamos-te o link de descarga.",
   },
 
   footer: {
@@ -271,10 +284,10 @@ export const pt: Dictionary = {
       {
         title: "TERMOS LEGAIS",
         links: [
-          { label: "Privacidade", href: "/#abrir" },
-          { label: "Termos legais", href: "/#abrir" },
-          { label: "AML / KYC", href: "/#abrir" },
-          { label: "Reclamações", href: "/#abrir" },
+          { label: "Privacidade", href: "/#descargar" },
+          { label: "Termos legais", href: "/#descargar" },
+          { label: "AML / KYC", href: "/#descargar" },
+          { label: "Reclamações", href: "/#descargar" },
         ],
       },
     ],

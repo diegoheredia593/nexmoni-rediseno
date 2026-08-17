@@ -19,7 +19,7 @@ export const es = {
     compliance: "PSD2 · GDPR",
     version: "v1c-f1a — ACERO",
     whatsapp: "WhatsApp",
-    openAccount: "Abrir cuenta",
+    openAccount: "Descargar la app",
     menu: "Menú",
     languageLabel: "Idioma",
   },
@@ -61,7 +61,7 @@ export const es = {
     titleBottom: "Tu cuenta también.",
     lead:
       "Maneja euros, cambia divisas y envía dinero a los tuyos desde una sola cuenta abierta en la Unión Europea. Sin sucursales, sin letra pequeña.",
-    cta: "Abrir cuenta gratis",
+    cta: "Descargar la app",
     secondaryCta: "Habla con nosotros por WhatsApp",
     trust: [
       "Dinero electrónico emitido por ConnectPay UAB — licencia EMI n.º 24 del Banco de Lituania",
@@ -214,16 +214,12 @@ export const es = {
 
 
   signup: {
-    eyebrow: "EMPIEZA HOY",
-    title: "Abre tu cuenta en minutos.",
-    leadBefore: "Sin sucursales, sin papeleo. Solo tu documento, una selfie, y tu ",
-    leadAfter: " europeo listo para usar.",
     fields: [
       { name: "nombre", label: "NOMBRE COMPLETO", placeholder: "¿Cómo te llamas?" },
       { name: "telefono", label: "TELÉFONO", placeholder: "+34 600 000 000" },
       { name: "email", label: "CORREO ELECTRÓNICO", placeholder: "tu@correo.com" },
     ],
-    submit: "Crear mi cuenta",
+    submit: "Enviarme el enlace",
     sending: "Enviando…",
     whatsappNote: "¿Prefieres hablar primero? Escríbenos por WhatsApp.",
     errors: {
@@ -235,11 +231,28 @@ export const es = {
       submit: "No hemos podido enviar la solicitud. Inténtalo de nuevo o escríbenos por WhatsApp.",
     },
     success: {
-      eyebrow: "SOLICITUD RECIBIDA",
-      title: "Gracias. Te escribimos en breve.",
+      eyebrow: "ENLACE ENVIADO",
+      title: "Gracias. Te enviamos el enlace.",
       body:
-        "Revisa tu correo — ahí llegan los siguientes pasos para verificar tu identidad y activar tu cuenta.",
+        "Revisa tu correo — ahí llega el enlace de descarga y los siguientes pasos para verificar tu identidad.",
     },
+  },
+
+  /* La descarga es el objetivo del embudo: todo lo demás lleva aquí. */
+  download: {
+    eyebrow: "DESCARGA",
+    title: "Lleva tu cuenta en el bolsillo.",
+    lead:
+      "Abre la cuenta, verifica tu identidad y envía dinero desde la app. Todo en el móvil, en minutos.",
+    soon: "Próximamente",
+    appStorePre: "Descárgalo en el",
+    appStoreName: "App Store",
+    googlePlayPre: "Disponible en",
+    googlePlayName: "Google Play",
+    qrNote: "Apunta con la cámara de tu móvil",
+    qrBrief: "CÓDIGO QR — PENDIENTE DE LAS URL REALES DE LAS TIENDAS",
+    deskTitle: "¿Estás en el ordenador?",
+    deskNote: "Déjanos tus datos y te enviamos el enlace de descarga.",
   },
 
   footer: {
@@ -268,10 +281,10 @@ export const es = {
         // ⚠ Las cuatro apuntan al alta porque las páginas no existen todavía.
         title: "TÉRMINOS LEGALES",
         links: [
-          { label: "Privacidad", href: "/#abrir" },
-          { label: "Términos legales", href: "/#abrir" },
-          { label: "AML / KYC", href: "/#abrir" },
-          { label: "Quejas y reclamaciones", href: "/#abrir" },
+          { label: "Privacidad", href: "/#descargar" },
+          { label: "Términos legales", href: "/#descargar" },
+          { label: "AML / KYC", href: "/#descargar" },
+          { label: "Quejas y reclamaciones", href: "/#descargar" },
         ],
       },
     ],

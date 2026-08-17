@@ -53,7 +53,20 @@ Los *slugs* se traducen. El mapa está en `src/content/routes.ts`, que es lo
 | Acerca | `/es/acerca` | `/en/about` | `/pt/sobre-nos` | `/lt/apie-mus` |
 | FAQ | `/es/preguntas-frecuentes` | `/en/faq` | `/pt/perguntas-frequentes` | `/lt/duk` |
 
-`/api/lead` recibe el formulario de alta (sin destino final aún) y no se traduce.
+`/api/lead` recibe el formulario y no se traduce.
+
+## El embudo
+
+**El objetivo es la descarga de la aplicación.** Todas las llamadas a la acción
+—barra superior, portada, los tres planes y el pie— llevan a `#descargar`.
+
+Esa sección ofrece los distintivos de App Store y Google Play, un código QR
+para quien navega desde el ordenador, y como respaldo el formulario, que ahora
+envía el enlace de descarga en lugar de abrir una cuenta.
+
+Los enlaces de las tiendas viven en `stores`, dentro de `content/brand.ts`.
+Mientras `published` sea `false`, los distintivos se muestran sin enlace y
+anunciados como próximos.
 
 Un slug de otro idioma o uno antiguo (`/en/tarifas`) redirige con 308 al
 canónico, para no servir el mismo contenido en dos direcciones. **Cambiar un
@@ -98,17 +111,22 @@ poder sumarlo al coste total.
    cotización, cualquier cifra sería inventada.
 5. **Destino del formulario.** `src/app/api/lead/route.ts` valida y registra;
    falta enviar a donde corresponda (y dejar de escribir datos personales al log).
-6. **Fotografía.** Los dos marcadores animados llevan su briefing en la leyenda
+   Ahora promete enviar el enlace de descarga: hay que cumplirlo.
+6. **Fichas de las tiendas.** Faltan las URL reales en `stores`. Y los
+   distintivos actuales están compuestos con el sistema de la marca: Apple y
+   Google exigen los suyos oficiales, con su logotipo y sus márgenes mínimos.
+   El código QR también es un marcador hasta que existan esas URL.
+7. **Fotografía.** Los dos marcadores animados llevan su briefing en la leyenda
    y deben sustituirse por foto real con halftone grueso en blanco y negro:
    la figura de portada y el retrato del testimonio.
-7. **Verificación legal** de importes y definiciones del glosario.
-8. **Revisión nativa del lituano.** Es el idioma del supervisor y la
+8. **Verificación legal** de importes y definiciones del glosario.
+9. **Revisión nativa del lituano.** Es el idioma del supervisor y la
    terminología regulada tiene traducción oficial fijada en la normativa. Ver
    el aviso de `locales/lt.ts`. Inglés y portugués también deberían pasar por
    un jurista en las partes regulatorias.
-9. **Variante del portugués.** Ahora es pt-PT. Si el público son brasileños en
+10. **Variante del portugués.** Ahora es pt-PT. Si el público son brasileños en
    Europa, hay que cambiar vocabulario y `numberLocale` a pt-BR.
-10. **Dominio real.** `NEXT_PUBLIC_SITE_URL` decide el dominio del canónico, el
+11. **Dominio real.** `NEXT_PUBLIC_SITE_URL` decide el dominio del canónico, el
     `hreflang` y el sitemap. Por defecto asume `https://nexmoni.com`, deducido
     del dominio de correo. Con un dominio equivocado el buscador emparejaría
     mal las cuatro versiones de cada página: fijarlo en el despliegue.

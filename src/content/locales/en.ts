@@ -19,7 +19,7 @@ export const en: Dictionary = {
     compliance: "PSD2 · GDPR",
     version: "v1c-f1a — STEEL",
     whatsapp: "WhatsApp",
-    openAccount: "Open account",
+    openAccount: "Get the app",
     menu: "Menu",
     languageLabel: "Language",
   },
@@ -61,7 +61,7 @@ export const en: Dictionary = {
     titleBottom: "So should your account.",
     lead:
       "Hold euros, exchange currencies and send money to your family from a single account opened in the European Union. No branches, no small print.",
-    cta: "Open a free account",
+    cta: "Get the app",
     secondaryCta: "Talk to us on WhatsApp",
     trust: [
       "Electronic money issued by ConnectPay UAB — EMI licence no. 24 from the Bank of Lithuania",
@@ -208,16 +208,12 @@ export const en: Dictionary = {
 
 
   signup: {
-    eyebrow: "START TODAY",
-    title: "Open your account in minutes.",
-    leadBefore: "No branches, no paperwork. Just your ID, a selfie, and your European ",
-    leadAfter: " ready to use.",
     fields: [
       { name: "nombre", label: "FULL NAME", placeholder: "What's your name?" },
       { name: "telefono", label: "PHONE", placeholder: "+34 600 000 000" },
       { name: "email", label: "EMAIL", placeholder: "you@email.com" },
     ],
-    submit: "Create my account",
+    submit: "Send me the link",
     sending: "Sending…",
     whatsappNote: "Rather talk first? Message us on WhatsApp.",
     errors: {
@@ -229,11 +225,28 @@ export const en: Dictionary = {
       submit: "We couldn't send your request. Try again or message us on WhatsApp.",
     },
     success: {
-      eyebrow: "REQUEST RECEIVED",
-      title: "Thank you. We'll be in touch shortly.",
+      eyebrow: "LINK SENT",
+      title: "Thank you. The link is on its way.",
       body:
-        "Check your email — that's where the next steps arrive to verify your identity and activate your account.",
+        "Check your email — the download link is there, along with the next steps to verify your identity.",
     },
+  },
+
+  /* La descarga es el objetivo del embudo: todo lo demás lleva aquí. */
+  download: {
+    eyebrow: "DOWNLOAD",
+    title: "Carry your account in your pocket.",
+    lead:
+      "Open the account, verify your identity and send money from the app. All on your phone, in minutes.",
+    soon: "Coming soon",
+    appStorePre: "Download on the",
+    appStoreName: "App Store",
+    googlePlayPre: "Get it on",
+    googlePlayName: "Google Play",
+    qrNote: "Point your phone's camera at it",
+    qrBrief: "QR CODE — PENDING THE REAL STORE URLS",
+    deskTitle: "On a computer?",
+    deskNote: "Leave your details and we'll send you the download link.",
   },
 
   footer: {
@@ -261,10 +274,10 @@ export const en: Dictionary = {
       {
         title: "LEGAL",
         links: [
-          { label: "Privacy", href: "/#abrir" },
-          { label: "Terms", href: "/#abrir" },
-          { label: "AML / KYC", href: "/#abrir" },
-          { label: "Complaints", href: "/#abrir" },
+          { label: "Privacy", href: "/#descargar" },
+          { label: "Terms", href: "/#descargar" },
+          { label: "AML / KYC", href: "/#descargar" },
+          { label: "Complaints", href: "/#descargar" },
         ],
       },
     ],

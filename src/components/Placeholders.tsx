@@ -53,6 +53,23 @@ export function HeroFigure({ brief }: { brief: string }) {
   );
 }
 
+/**
+ * Código QR de descarga. Marcador: no se puede generar uno real hasta que
+ * existan las URL de las fichas. Ver `stores` en `content/brand.ts`.
+ */
+export function QrPlaceholder({ brief }: { brief: string }) {
+  return (
+    <div className="qr">
+      <div className="qr__grid" aria-hidden="true">
+        {Array.from({ length: 64 }, (_, i) => (
+          <span key={i} data-on={(i * 7 + (i % 5) * 3) % 3 === 0 ? "1" : undefined} />
+        ))}
+      </div>
+      <p className="qr__brief">{brief}</p>
+    </div>
+  );
+}
+
 export function AvatarPlaceholder() {
   return (
     <div

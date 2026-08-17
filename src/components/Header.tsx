@@ -25,7 +25,7 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           {/* La acción de la barra va en tinta: el óxido queda para la
               acción principal de cada página. */}
-          <Link href={href(locale, "/#abrir")} className="btn btn--ink">
+          <Link href={href(locale, "/#descargar")} className="btn btn--ink">
             {dict.site.openAccount}
           </Link>
 

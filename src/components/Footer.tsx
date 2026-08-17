@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { brand } from "@/content/brand";
+import { StoreButtons } from "./StoreButtons";
 import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
 
@@ -13,6 +14,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
             <p className="body-s" style={{ maxWidth: "34ch" }}>
               {dict.footer.blurb}
             </p>
+            {/* Segunda puerta al objetivo del embudo, siempre presente. */}
+            <div style={{ marginTop: "var(--s-8)" }}>
+              <StoreButtons dict={dict} size="sm" />
+            </div>
           </div>
 
           {dict.footer.columns.map((col) => (

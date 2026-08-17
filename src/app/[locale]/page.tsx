@@ -2,7 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
 import { LeadForm } from "@/components/LeadForm";
-import { AvatarPlaceholder, HeroFigure } from "@/components/Placeholders";
+import { AvatarPlaceholder, HeroFigure, QrPlaceholder } from "@/components/Placeholders";
+import { StoreButtons } from "@/components/StoreButtons";
 import { getDictionary, isLocale, locales } from "@/content/dictionary";
 import { href } from "@/content/routes";
 
@@ -31,10 +32,10 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </h1>
             <p className="lead">{dict.hero.lead}</p>
             <div className="hero__actions">
-              <Link href={href(locale, "/#abrir")} className="btn btn--primary">
+              <Link href={href(locale, "/#descargar")} className="btn btn--primary">
                 {dict.hero.cta}
               </Link>
-              <Link href={href(locale, "/#abrir")} className="link">
+              <Link href={href(locale, "/#descargar")} className="link">
                 {dict.hero.secondaryCta}
               </Link>
             </div>
@@ -139,7 +140,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                   </ul>
                   {/* Solo el plan destacado lleva la acción en óxido */}
                   <Link
-                    href={href(locale, "/#abrir")}
+                    href={href(locale, "/#descargar")}
                     className={`btn btn--block ${featured ? "btn--primary" : "btn--ghost"}`}
                   >
                     {plan.cta}
@@ -187,24 +188,40 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      {/* ── Alta ──────────────────────────────────────────────────────── */}
-      <section id="abrir" className="section rule">
+      {/* ── Descarga: el final del embudo ─────────────────────────────── */}
+      <section id="descargar" className="section rule">
         <div className="wrap">
-          <div className="hero split-top">
+          <div className="head">
+            <span className="tag">{dict.download.eyebrow}</span>
+            <h2>{dict.download.title}</h2>
+            <p className="lead">{dict.download.lead}</p>
+          </div>
+
+          <div className="download">
             <div className="stack-24">
-              <span className="tag">{dict.signup.eyebrow}</span>
-              <h2>{dict.signup.title}</h2>
-              <p className="lead">
-                {dict.signup.leadBefore}
-                {withTerms("IBAN")}
-                {dict.signup.leadAfter}
-              </p>
+              <StoreButtons dict={dict} />
+
+              {/* Desde el ordenador no se puede instalar: se envía el enlace. */}
+              <div
+                className="stack-16"
+                style={{ paddingTop: "var(--s-32)", borderTop: "1px solid var(--hairline)" }}
+              >
+                <h4>{dict.download.deskTitle}</h4>
+                <p className="body-s" style={{ maxWidth: "42ch" }}>
+                  {dict.download.deskNote}
+                </p>
+                <LeadForm dict={dict} />
+              </div>
             </div>
 
-            <LeadForm dict={dict} />
+            <div className="stack-16">
+              <span className="tag">{dict.download.qrNote}</span>
+              <QrPlaceholder brief={dict.download.qrBrief} />
+            </div>
           </div>
         </div>
       </section>
+
     </>
   );
 }
