@@ -4,7 +4,7 @@ Este archivo recoge lo que **no** está en el código: decisiones tomadas, por
 qué, y las trampas que solo se aprenden habiéndolas pisado. El `README.md`
 explica cómo funciona el proyecto; esto explica cómo llegamos aquí y qué falta.
 
-Última actualización: commit `5afd2e5`.
+Última actualización: commit `e641947`.
 
 ---
 
@@ -162,6 +162,21 @@ las URL en `content/brand.ts` y poner `published: true`.
 Google exigen los suyos oficiales.** Hay que sustituirlos antes de publicar.
 El QR es un marcador porque no hay URL que codificar.
 
+### Frontend: lo que la auditoría con navegador dejó sin hacer
+
+Pasada con Chromium sobre las cuatro páginas, a 1440 y a 390 px. Sano: build
+verde, cero errores de consola, cero desbordamiento horizontal, el menú
+hamburguesa abre y sus objetivos táctiles miden 218×53. Se corrigió el cierre
+del embudo. Quedaron dos cosas, ambas conscientes:
+
+- **La FAQ no emite datos estructurados.** Cero bloques `application/ld+json`.
+  Las respuestas ya están en el DOM dentro de `<details>`, así que emitir
+  `FAQPage` es barato y es lo que habilita el resultado enriquecido.
+- **La FAQ se ve vacía a 1440 px.** Ocho acordeones cerrados del mismo peso
+  sobre el ancho completo. Es la página más floja para enseñar a un cliente.
+  Recomponerla —agrupar por tema, abrir la primera, contener la columna de
+  lectura— es el cambio con más riesgo de discusión, y por eso se aparcó.
+
 ### Legal — en pausa por decisión del cliente
 
 Faltan Privacidad, Términos, AML/KYC y Quejas. **El cliente no tiene la
@@ -183,9 +198,17 @@ texto plano.
 
 ## 6. Qué haría a continuación
 
+**Todo lo de abajo está en pausa esperando la aprobación del cliente sobre el
+frontend.** Fue decisión expresa: primero que el cliente valide lo que se ve, y
+después se toca la integración. Al retomar, conviene preguntar si esa
+aprobación ya llegó antes de arrancar por el punto 1.
+
 Por orden de lo que más desbloquea:
 
 1. **Destino real del formulario.** Es lo único del embudo que está roto.
+   Hay un proyecto de Supabase activo en la cuenta (`fgjsmmnlftoixannpiiy`),
+   pero hoy aloja otras cosas y no se ha tocado: si se usa, la tabla `leads`
+   necesita RLS cerrada e inserción solo desde el servidor.
 2. **Cabeceras de seguridad y límite de peticiones.** El sitio ya es público.
 3. **Decidir el tramo de remesa.** Sin eso, el tarifario contradice al producto.
 4. **Search Console + Analytics con consentimiento** — pero el banner de
