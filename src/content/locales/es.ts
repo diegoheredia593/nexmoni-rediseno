@@ -67,8 +67,6 @@ export const es = {
       "Dinero electrónico emitido por ConnectPay UAB — licencia EMI n.º 24 del Banco de Lituania",
       "Fondos salvaguardados y segregados según normativa UE",
     ],
-    figureLabel: "FIG. 01 — HERO",
-    figureCoords: "40.4168 N / 3.7038 W",
     figureBrief:
       "REFERENCIA HERO · COLUMNA VERTICAL A SANGRE, RECORTE CENTRAL ~1:1,9 (ENCUADRA SEGURO EN 3:4) · UNA SOLA FIGURA DE MEDIO CUERPO SOSTENIENDO EL MÓVIL, MIRADA FUERA DE CÁMARA, LUZ LATERAL DURA, FONDO LISO. HALFTONE GRUESO, SIN COLOR.",
   },
@@ -96,15 +94,6 @@ export const es = {
     ],
   },
 
-  triptych: {
-    label: "FIG. 02 — TRÍPTICO DE USO",
-    format: "HALFTONE · 3 × 4:5",
-    briefs: [
-      "4:5 · MANOS + MÓVIL EN PRIMER PLANO, GESTO DE ENVIAR. ENCUADRE CERRADO, SIN CARA.",
-      "4:5 · DOS PERSONAS RECIBIENDO LA NOTICIA (MADRE E HIJA), PLANO MEDIO, INTERIOR DE CASA.",
-      "4:5 · TARJETA VISA SOSTENIDA EN LA MANO, ÁNGULO LIGERO, FONDO NEUTRO. SIN BRILLOS 3D.",
-    ],
-  },
 
   features: {
     title: "Una cuenta, dos países, cero fricción.",
@@ -223,12 +212,6 @@ export const es = {
     ],
   },
 
-  closing: {
-    label: "FIG. 03 — CIERRE",
-    format: "HALFTONE · 3:1",
-    brief:
-      "3:1 · PANORÁMICA DE CIERRE: DOS LUGARES EN UNA MISMA IMAGEN (CALLE EUROPEA / CALLE LATINOAMERICANA) O UNA MESA COMPARTIDA POR VIDEOLLAMADA.",
-  },
 
   signup: {
     eyebrow: "EMPIEZA HOY",

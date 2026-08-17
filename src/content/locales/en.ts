@@ -67,8 +67,6 @@ export const en: Dictionary = {
       "Electronic money issued by ConnectPay UAB — EMI licence no. 24 from the Bank of Lithuania",
       "Funds safeguarded and segregated under EU rules",
     ],
-    figureLabel: "FIG. 01 — HERO",
-    figureCoords: "40.4168 N / 3.7038 W",
     figureBrief:
       "HERO REFERENCE · FULL-BLEED VERTICAL COLUMN, CENTRE CROP ~1:1.9 (SAFE AT 3:4) · A SINGLE HALF-LENGTH FIGURE HOLDING A PHONE, GAZE OFF CAMERA, HARD SIDE LIGHT, PLAIN BACKGROUND. COARSE HALFTONE, NO COLOUR.",
   },
@@ -96,15 +94,6 @@ export const en: Dictionary = {
     ],
   },
 
-  triptych: {
-    label: "FIG. 02 — USE TRIPTYCH",
-    format: "HALFTONE · 3 × 4:5",
-    briefs: [
-      "4:5 · HANDS + PHONE IN CLOSE-UP, THE GESTURE OF SENDING. TIGHT CROP, NO FACE.",
-      "4:5 · TWO PEOPLE GETTING THE NEWS (MOTHER AND DAUGHTER), MID SHOT, DOMESTIC INTERIOR.",
-      "4:5 · VISA CARD HELD IN THE HAND, SLIGHT ANGLE, NEUTRAL BACKGROUND. NO 3D GLOSS.",
-    ],
-  },
 
   features: {
     title: "One account, two countries, zero friction.",
@@ -217,12 +206,6 @@ export const en: Dictionary = {
     ],
   },
 
-  closing: {
-    label: "FIG. 03 — CLOSING",
-    format: "HALFTONE · 3:1",
-    brief:
-      "3:1 · CLOSING PANORAMA: TWO PLACES IN ONE IMAGE (A EUROPEAN STREET / A LATIN AMERICAN STREET) OR A TABLE SHARED OVER VIDEO CALL.",
-  },
 
   signup: {
     eyebrow: "START TODAY",

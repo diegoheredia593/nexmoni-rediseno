@@ -49,14 +49,10 @@ export function LeadForm({ dict }: { dict: Dictionary }) {
 
   if (status === "sent") {
     return (
-      <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-        <div className="eyebrow" style={{ color: "var(--accent-light)" }}>
-          {t.success.eyebrow}
-        </div>
-        <h3 style={{ font: "600 26px/1.2 var(--sans)", letterSpacing: "-.02em", margin: 0 }}>
-          {t.success.title}
-        </h3>
-        <p style={{ font: "400 14px/1.6 var(--sans)", color: "var(--ink-62)", margin: 0 }}>
+      <div className="stack-16">
+        <span className="tag tag--strong">{t.success.eyebrow}</span>
+        <h3>{t.success.title}</h3>
+        <p className="body-s" style={{ maxWidth: "42ch" }}>
           {t.success.body}
         </p>
       </div>
@@ -64,10 +60,10 @@ export function LeadForm({ dict }: { dict: Dictionary }) {
   }
 
   return (
-    <form onSubmit={onSubmit} noValidate style={{ display: "flex", flexDirection: "column", gap: 22 }}>
+    <form onSubmit={onSubmit} noValidate className="form">
       {t.fields.map((field, i) => (
         <label key={field.name} className="field">
-          <span className="field__label">{field.label}</span>
+          <span className="tag">{field.label}</span>
           <input
             type={["text", "tel", "email"][i]}
             name={field.name}
@@ -77,28 +73,24 @@ export function LeadForm({ dict }: { dict: Dictionary }) {
             onChange={(e) => setValues((v) => ({ ...v, [field.name]: e.target.value }))}
           />
           {errors[field.name] && (
-            <span role="alert" style={{ font: "400 11.5px/1.4 var(--mono)", color: "var(--accent)" }}>
+            <span role="alert" className="caption" style={{ color: "var(--accent)" }}>
               {errors[field.name]}
             </span>
           )}
         </label>
       ))}
 
-      <button type="submit" className="btn btn--amber btn--block" disabled={status === "sending"}>
-        <span>
-          {status === "sending" ? t.sending : t.submit} <b className="arrow">→</b>
-        </span>
+      <button type="submit" className="btn btn--primary btn--block" disabled={status === "sending"}>
+        {status === "sending" ? t.sending : t.submit}
       </button>
 
       {status === "error" && (
-        <p role="alert" style={{ font: "400 12px/1.55 var(--mono)", color: "var(--accent)", margin: 0 }}>
+        <p role="alert" className="caption" style={{ color: "var(--accent)" }}>
           {t.errors.submit}
         </p>
       )}
 
-      <p style={{ font: "400 12px/1.55 var(--mono)", color: "var(--ink-50)", margin: 0 }}>
-        {t.whatsappNote}
-      </p>
+      <p className="caption">{t.whatsappNote}</p>
     </form>
   );
 }

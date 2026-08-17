@@ -9,171 +9,68 @@ export function FeesPage({ locale, dict }: { locale: Locale; dict: Dictionary })
 
   return (
     <>
-      {/* ── § 01 Tarifas ───────────────────────────────────────────────── */}
+      {/* ── Tarifario ──────────────────────────────────────────────────── */}
       <section className="section">
-        <div className="section-head" style={{ marginBottom: 54 }}>
-          <div className="eyebrow">{t.eyebrow}</div>
-          <div>
-            {/* h1 de la página: se estiliza como h2 para no romper la escala. */}
-            <h1 className="h2">{t.title}</h1>
-            <p className="lead" style={{ fontSize: 16 }}>
-              {t.lead}
-            </p>
-          </div>
-        </div>
-
-        <div
-          className="fees-block"
-          style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}
-        >
-          <div
-            style={{
-              font: "400 10px/1.7 var(--mono)",
-              letterSpacing: ".1em",
-              color: "var(--ink-42)",
-              textTransform: "uppercase",
-            }}
-          >
-            {t.sidenote[0]}
-            <br />
-            {t.sidenote[1]}
+        <div className="wrap">
+          <div className="head">
+            <span className="tag">
+              {t.eyebrow} · {t.sidenote[0]} · {t.sidenote[1]}
+            </span>
+            <h1 className="h1">{t.title}</h1>
+            <p className="lead">{t.lead}</p>
           </div>
 
-          <div style={{ borderTop: "1px solid var(--hairline-strong)" }}>
+          <div className="rows">
             {t.schedule.map((fee) => (
-              <div
-                key={fee.label}
-                className="row"
-                style={{
-                  display: "grid",
-                  gridTemplateColumns: "1fr auto",
-                  gap: 24,
-                  alignItems: "baseline",
-                  padding: "17px 12px",
-                  borderBottom: "1px solid var(--hairline-soft)",
-                }}
-              >
+              <div key={fee.label} className="rows__item">
                 <div>
-                  <div style={{ font: "500 17px/1.3 var(--sans)", letterSpacing: "-.015em" }}>
-                    {withTerms(fee.label)}
-                  </div>
-                  <div
-                    style={{
-                      font: "400 12px/1.5 var(--sans)",
-                      color: "var(--ink-50)",
-                      marginTop: 3,
-                    }}
-                  >
-                    {withTerms(fee.note)}
-                  </div>
+                  <h4>{withTerms(fee.label)}</h4>
+                  <p className="caption">{withTerms(fee.note)}</p>
                 </div>
-                <div
-                  style={{
-                    font: "700 14px/1.3 var(--mono)",
-                    letterSpacing: "-.01em",
-                    whiteSpace: "nowrap",
-                  }}
-                >
-                  {fee.price}
-                </div>
+                <div className="rows__value">{fee.price}</div>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ── § 02 Calculadora ───────────────────────────────────────────── */}
-      <section id="calculadora" className="section">
-        <div className="section-head" style={{ marginBottom: 40 }}>
-          <div className="eyebrow">{dict.calculator.eyebrow}</div>
-          <div>
-            <h2 className="h2">{dict.calculator.title}</h2>
-            <p className="lead" style={{ maxWidth: "56ch" }}>
-              {dict.calculator.lead}
-            </p>
+      {/* ── Calculadora ────────────────────────────────────────────────── */}
+      <section id="calculadora" className="section rule">
+        <div className="wrap">
+          <div className="head">
+            <span className="tag">{dict.calculator.eyebrow}</span>
+            <h2>{dict.calculator.title}</h2>
+            <p className="lead">{dict.calculator.lead}</p>
           </div>
-        </div>
 
-        <div
-          className="fees-block"
-          style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}
-        >
-          <div
-            style={{
-              font: "400 10px/1.7 var(--mono)",
-              letterSpacing: ".1em",
-              color: "var(--ink-42)",
-              textTransform: "uppercase",
-            }}
-          >
-            {dict.calculator.sidenote[0]}
-            <br />
-            {dict.calculator.sidenote[1]}
-          </div>
           <Calculator dict={dict} />
         </div>
       </section>
 
       {/* ── Terminología estandarizada ─────────────────────────────────── */}
-      <section className="section">
-        <div
-          className="fees-block"
-          style={{ display: "grid", gridTemplateColumns: "220px 1fr", gap: 40 }}
-        >
-          <div className="eyebrow" style={{ paddingTop: 8 }}>
-            {t.terminologyEyebrow[0]}
-            <br />
-            {t.terminologyEyebrow[1]}
+      <section className="section rule">
+        <div className="wrap">
+          <div className="head">
+            <span className="tag">
+              {t.terminologyEyebrow[0]} {t.terminologyEyebrow[1]}
+            </span>
+            <p className="lead">{t.terminologyIntro}</p>
           </div>
-          <div>
-            <p
-              style={{
-                font: "400 14px/1.6 var(--sans)",
-                color: "var(--ink-62)",
-                maxWidth: "56ch",
-                margin: "0 0 26px",
-                textWrap: "pretty",
-              }}
-            >
-              {t.terminologyIntro}
-            </p>
 
-            <div className="term-grid">
-              {t.terminology.map((term) => (
-                <div key={term.en} className="row">
-                  <div
-                    style={{
-                      font: "700 10px/1.3 var(--mono)",
-                      letterSpacing: ".1em",
-                      color: "var(--accent)",
-                      textTransform: "uppercase",
-                    }}
-                  >
-                    {term.en}
-                  </div>
-                  <div
-                    style={{
-                      font: "400 14px/1.45 var(--sans)",
-                      color: "var(--ink-72)",
-                      marginTop: 8,
-                      textWrap: "pretty",
-                    }}
-                  >
-                    {withTerms(term.local)}
-                  </div>
-                </div>
-              ))}
-            </div>
-
-            <div style={{ marginTop: 30, font: "400 12px/1.5 var(--mono)", color: "var(--ink-50)" }}>
-              <Link
-                href={href(locale, "/#precios")}
-                style={{ borderBottom: "1px solid rgba(20,24,29,.35)" }}
-              >
-                {t.plansLink}
-              </Link>
-            </div>
+          <div className="duo">
+            {t.terminology.map((term) => (
+              <div key={term.en} className="duo__item">
+                <span className="tag tag--strong">{term.en}</span>
+                <p className="body-s">{withTerms(term.local)}</p>
+              </div>
+            ))}
           </div>
+
+          <p className="caption" style={{ marginTop: "var(--s-24)" }}>
+            <Link href={href(locale, "/#precios")} className="link">
+              {t.plansLink}
+            </Link>
+          </p>
         </div>
       </section>
     </>

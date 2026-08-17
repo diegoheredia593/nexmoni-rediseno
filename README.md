@@ -1,7 +1,28 @@
 # NexMoni — landing
 
-Landing de NexMoni en Next.js (App Router) con CSS propio. Recreación del diseño
-v1c-f1a "Acero / Halftone" del handoff en `design_handoff_nextmoni_landing/`.
+Landing de NexMoni en Next.js (App Router) con CSS propio.
+
+## Sistema de diseño: «Acero templado»
+
+Parte del encargo v1c-f1a "Acero / Halftone" (`design_handoff_nextmoni_landing/`)
+y le aplica cuatro disciplinas de composición. Todo vive en `globals.css`.
+
+**Se conserva la identidad:** paleta acero + óxido, Archivo y Space Mono,
+filete de 1 px sin sombras, radio 0 y el lenguaje halftone.
+
+**Se adopta la disciplina:**
+
+1. **Contención** — 1200 px centrado. Solo la banda de cifras va a sangre.
+2. **Escala** — nueve tamaños declarados (12/13/15/17/20/24/32/48/64), con el
+   interletraje atado a cada peldaño. Prohibidos los medios píxeles.
+3. **Un acento** — el óxido solo en botones de acción: cuatro usos por página.
+   Números, etiquetas y distintivos van en gris.
+4. **Aire** — 96 px entre secciones. Las rejillas de tres tarjetas son ahora
+   listas con filete y dos columnas; los planes conservan las tres columnas
+   porque en precios es el patrón que la gente ya sabe leer.
+
+El encargo fotográfico baja de seis piezas a dos: figura de portada y retrato
+del testimonio.
 
 ```bash
 npm install

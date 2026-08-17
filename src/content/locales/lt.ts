@@ -77,8 +77,6 @@ export const lt: Dictionary = {
       "Elektroninius pinigus leidžia ConnectPay UAB — EPĮ licencija Nr. 24, išduota Lietuvos banko",
       "Lėšos apsaugotos ir atskirtos pagal ES teisės aktus",
     ],
-    figureLabel: "PAV. 01 — HERO",
-    figureCoords: "40.4168 N / 3.7038 W",
     figureBrief:
       "HERO NUORODA · VERTIKALUS STULPELIS PER VISĄ KRAŠTĄ, CENTRINIS KADRAS ~1:1,9 (SAUGU 3:4) · VIENA PUSFIGŪRĖ SU TELEFONU RANKOJE, ŽVILGSNIS PRO KAMERĄ, KIETA ŠONINĖ ŠVIESA, LYGUS FONAS. STAMBUS RASTRAS, BE SPALVŲ.",
   },
@@ -106,15 +104,6 @@ export const lt: Dictionary = {
     ],
   },
 
-  triptych: {
-    label: "PAV. 02 — NAUDOJIMO TRIPTIKAS",
-    format: "RASTRAS · 3 × 4:5",
-    briefs: [
-      "4:5 · RANKOS IR TELEFONAS STAMBIU PLANU, SIUNTIMO GESTAS. ARTIMAS KADRAS, BE VEIDO.",
-      "4:5 · DU ŽMONĖS GAUNA ŽINIĄ (MAMA IR DUKTĖ), VIDUTINIS PLANAS, NAMŲ INTERJERAS.",
-      "4:5 · VISA KORTELĖ RANKOJE, NEDIDELIS KAMPAS, NEUTRALUS FONAS. BE 3D BLIZGESIO.",
-    ],
-  },
 
   features: {
     title: "Viena sąskaita, dvi šalys, jokių kliūčių.",
@@ -233,12 +222,6 @@ export const lt: Dictionary = {
     ],
   },
 
-  closing: {
-    label: "PAV. 03 — UŽBAIGA",
-    format: "RASTRAS · 3:1",
-    brief:
-      "3:1 · UŽBAIGIAMOJI PANORAMA: DVI VIETOS VIENAME KADRE (EUROPOS GATVĖ / LOTYNŲ AMERIKOS GATVĖ) ARBA BENDRAS STALAS PER VAIZDO SKAMBUTĮ.",
-  },
 
   signup: {
     eyebrow: "PRADĖK ŠIANDIEN",

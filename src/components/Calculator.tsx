@@ -16,7 +16,6 @@ import { formatMoney, formatPercent, formatRate, parseAmount } from "@/lib/forma
 import { quote } from "@/lib/quote";
 import { Term } from "./glossary/Term";
 
-/** Destinos alcanzables desde una moneda de origen. */
 function destinationsFor(from: CurrencyCode) {
   return corridors.filter((c) => c.from === from).map((c) => ({ code: c.to, status: c.status }));
 }
@@ -38,14 +37,13 @@ export function Calculator({ dict }: { dict: Dictionary }) {
       {ratesArePlaceholder && (
         <p className="calc__notice" role="note">
           <strong>{t.noticeStrong}</strong>
-          {t.noticeRest}
+          {t.noticeRest} <span className="tag">{ratesUpdatedAt}</span>
         </p>
       )}
 
-      {/* ── Entradas ─────────────────────────────────────────────────── */}
       <div className="calc__inputs">
         <label className="field">
-          <span className="field__label">{t.amount}</span>
+          <span className="tag">{t.amount}</span>
           <input
             inputMode="decimal"
             value={rawAmount}
@@ -55,7 +53,7 @@ export function Calculator({ dict }: { dict: Dictionary }) {
         </label>
 
         <label className="field">
-          <span className="field__label">{t.from}</span>
+          <span className="tag">{t.from}</span>
           <select value={from} onChange={(e) => setFrom(e.target.value as CurrencyCode)}>
             {sourceCurrencies.map((code) => (
               <option key={code} value={code}>
@@ -66,7 +64,7 @@ export function Calculator({ dict }: { dict: Dictionary }) {
         </label>
 
         <label className="field">
-          <span className="field__label">{t.to}</span>
+          <span className="tag">{t.to}</span>
           <select value={to} onChange={(e) => setTo(e.target.value as CurrencyCode)}>
             {destinations.map((dest) => (
               <option key={dest.code} value={dest.code}>
@@ -78,17 +76,14 @@ export function Calculator({ dict }: { dict: Dictionary }) {
         </label>
       </div>
 
-      {/* ── Resultado ────────────────────────────────────────────────── */}
       {result.ok ? (
-        <div className="calc__result">
-          <div className="calc__headline">
+        <>
+          <div className="calc__out">
             <div>
-              <div className="calc__headline-label">{t.receives}</div>
-              <div className="calc__headline-note">{t.receivesNote}</div>
+              <h4>{t.receives}</h4>
+              <p className="caption">{t.receivesNote}</p>
             </div>
-            <div className="calc__headline-figure">
-              {formatMoney(result.receives, to, numberLocale)}
-            </div>
+            <div className="calc__figure">{formatMoney(result.receives, to, numberLocale)}</div>
           </div>
 
           <dl className="calc__rows">
@@ -119,20 +114,22 @@ export function Calculator({ dict }: { dict: Dictionary }) {
             />
           </dl>
 
-          <p className="calc__foot">
-            {t.foot} <span className="mono">{ratesUpdatedAt}</span>
+          <p className="caption" style={{ paddingTop: "var(--s-16)" }}>
+            {t.foot}
           </p>
-        </div>
+        </>
       ) : (
         <div className="calc__pending" role="status">
-          <div className="calc__pending-label">
+          <span className="tag tag--strong">
             {result.reason === "invalidAmount" || result.reason === "belowFee"
               ? t.badAmount
               : t.unavailable}
-          </div>
-          <p className="calc__pending-body">{t.quoteErrors[result.reason]}</p>
+          </span>
+          <p className="body-s" style={{ marginTop: "var(--s-12)", maxWidth: "54ch" }}>
+            {t.quoteErrors[result.reason]}
+          </p>
           {result.reason === "corridorPending" && (
-            <p className="calc__pending-body">
+            <p className="body-s" style={{ marginTop: "var(--s-8)", maxWidth: "54ch" }}>
               {t.sepaOnlyBefore}
               <Term term="SEPA" />
               {t.sepaOnlyAfter}
@@ -156,12 +153,14 @@ function CalcRow({
   strong?: boolean;
 }) {
   return (
-    <div className={`calc__row${strong ? " calc__row--strong" : ""}`}>
+    <div className={`calc__row${strong ? " calc__row--total" : ""}`}>
       <dt>
-        <span className="calc__row-label">{label}</span>
-        <span className="calc__row-note">{note}</span>
+        <span className={strong ? "h4" : "body-s"} style={{ color: "var(--ink)" }}>
+          {label}
+        </span>
+        <span className="caption">{note}</span>
       </dt>
-      <dd className="calc__row-value">{value}</dd>
+      <dd>{value}</dd>
     </div>
   );
 }

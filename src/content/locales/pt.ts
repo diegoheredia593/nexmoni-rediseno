@@ -71,8 +71,6 @@ export const pt: Dictionary = {
       "Moeda eletrónica emitida pela ConnectPay UAB — licença EMI n.º 24 do Banco da Lituânia",
       "Fundos salvaguardados e segregados segundo as regras da UE",
     ],
-    figureLabel: "FIG. 01 — HERO",
-    figureCoords: "40.4168 N / 3.7038 W",
     figureBrief:
       "REFERÊNCIA HERO · COLUNA VERTICAL ATÉ AO CORTE, RECORTE CENTRAL ~1:1,9 (SEGURO EM 3:4) · UMA ÚNICA FIGURA DE MEIO CORPO A SEGURAR O TELEMÓVEL, OLHAR FORA DE CÂMARA, LUZ LATERAL DURA, FUNDO LISO. MEIO-TOM GROSSO, SEM COR.",
   },
@@ -100,15 +98,6 @@ export const pt: Dictionary = {
     ],
   },
 
-  triptych: {
-    label: "FIG. 02 — TRÍPTICO DE USO",
-    format: "MEIO-TOM · 3 × 4:5",
-    briefs: [
-      "4:5 · MÃOS + TELEMÓVEL EM PRIMEIRO PLANO, GESTO DE ENVIAR. ENQUADRAMENTO FECHADO, SEM ROSTO.",
-      "4:5 · DUAS PESSOAS A RECEBER A NOTÍCIA (MÃE E FILHA), PLANO MÉDIO, INTERIOR DE CASA.",
-      "4:5 · CARTÃO VISA SEGURO NA MÃO, ÂNGULO LIGEIRO, FUNDO NEUTRO. SEM BRILHOS 3D.",
-    ],
-  },
 
   features: {
     title: "Uma conta, dois países, zero atrito.",
@@ -227,12 +216,6 @@ export const pt: Dictionary = {
     ],
   },
 
-  closing: {
-    label: "FIG. 03 — FECHO",
-    format: "MEIO-TOM · 3:1",
-    brief:
-      "3:1 · PANORÂMICA DE FECHO: DOIS LUGARES NUMA MESMA IMAGEM (RUA EUROPEIA / RUA LATINO-AMERICANA) OU UMA MESA PARTILHADA POR VIDEOCHAMADA.",
-  },
 
   signup: {
     eyebrow: "COMEÇA HOJE",
