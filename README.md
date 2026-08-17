@@ -98,8 +98,9 @@ poder sumarlo al coste total.
    cotización, cualquier cifra sería inventada.
 5. **Destino del formulario.** `src/app/api/lead/route.ts` valida y registra;
    falta enviar a donde corresponda (y dejar de escribir datos personales al log).
-6. **Fotografía.** Los seis marcadores animados llevan su briefing en la leyenda
-   y deben sustituirse por foto real con halftone grueso en blanco y negro.
+6. **Fotografía.** Los dos marcadores animados llevan su briefing en la leyenda
+   y deben sustituirse por foto real con halftone grueso en blanco y negro:
+   la figura de portada y el retrato del testimonio.
 7. **Verificación legal** de importes y definiciones del glosario.
 8. **Revisión nativa del lituano.** Es el idioma del supervisor y la
    terminología regulada tiene traducción oficial fijada en la normativa. Ver
