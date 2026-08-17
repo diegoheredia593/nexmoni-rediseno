@@ -63,6 +63,13 @@ Los *slugs* se traducen. El mapa está en `src/content/routes.ts`, que es lo
 **El objetivo es la descarga de la aplicación.** Todas las llamadas a la acción
 —barra superior, portada, los tres planes y el pie— llevan a `#descargar`.
 
+Las tres páginas interiores cierran con `PageCloser`: hasta ahora terminaban
+dejando al lector frente al pie justo cuando acababa de resolver su duda, y el
+único enlace a la descarga era el botón de la barra. Cada una trae su propio
+texto en `closers` porque el momento en que se lee es distinto, y su enlace
+secundario apunta a la página interior que al lector le queda por ver. Es el
+único uso del óxido en esas tres páginas.
+
 Esa sección ofrece los distintivos de App Store y Google Play, un código QR
 para quien navega desde el ordenador, y como respaldo el formulario, que ahora
 envía el enlace de descarga en lugar de abrir una cuenta.

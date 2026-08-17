@@ -1,3 +1,4 @@
+import { PageCloser } from "@/components/PageCloser";
 import { withTerms } from "@/components/glossary/withTerms";
 import type { Dictionary, Locale } from "@/content/dictionary";
 
@@ -21,7 +22,7 @@ function DataRows({
   );
 }
 
-export function AboutPage({ dict }: { locale: Locale; dict: Dictionary }) {
+export function AboutPage({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const t = dict.about;
 
   return (
@@ -134,6 +135,13 @@ export function AboutPage({ dict }: { locale: Locale; dict: Dictionary }) {
           </div>
         </div>
       </section>
+
+      <PageCloser
+        locale={locale}
+        dict={dict}
+        copy={dict.closers.about}
+        secondaryHref="/tarifas"
+      />
     </>
   );
 }

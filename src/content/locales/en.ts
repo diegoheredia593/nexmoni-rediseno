@@ -249,6 +249,30 @@ export const en: Dictionary = {
     deskNote: "Leave your details and we'll send you the download link.",
   },
 
+  closers: {
+    fees: {
+      title: "Now you know what it costs.",
+      lead:
+        "The same fees you have just read, applied from the app. Open it, verify your identity and send in minutes.",
+      action: "Download the app",
+      secondary: "Settle a question first",
+    },
+    about: {
+      title: "Now you know who holds your money.",
+      lead:
+        "Funds safeguarded and segregated at an institution licensed by the Bank of Lithuania. Everything else happens in the app.",
+      action: "Download the app",
+      secondary: "See the fees",
+    },
+    faq: {
+      title: "Answered?",
+      lead:
+        "If your question is settled, the next step fits in your pocket: open the account and send money from the app.",
+      action: "Download the app",
+      secondary: "Who holds your money",
+    },
+  },
+
   footer: {
     blurb:
       "Your life spans two countries. So should your account. A European account, direct transfers and zero paperwork, so you handle your money your way.",

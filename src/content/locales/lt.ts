@@ -265,6 +265,30 @@ export const lt: Dictionary = {
     deskNote: "Palik savo duomenis ir atsiųsime atsisiuntimo nuorodą.",
   },
 
+  closers: {
+    fees: {
+      title: "Dabar žinai, kiek tai kainuoja.",
+      lead:
+        "Tie patys ką tik perskaityti įkainiai, taikomi programėlėje. Atsidaryk ją, patvirtink tapatybę ir išsiųsk per kelias minutes.",
+      action: "Atsisiųsti programėlę",
+      secondary: "Pirma išsiaiškinti klausimą",
+    },
+    about: {
+      title: "Dabar žinai, kas saugo tavo pinigus.",
+      lead:
+        "Lėšos apsaugotos ir atskirtos Lietuvos banko licencijuotoje įstaigoje. Visa kita vyksta programėlėje.",
+      action: "Atsisiųsti programėlę",
+      secondary: "Peržiūrėti įkainius",
+    },
+    faq: {
+      title: "Atsakyta?",
+      lead:
+        "Jei tavo klausimas jau išspręstas, kitas žingsnis telpa telefone: atsidaryk sąskaitą ir siųsk pinigus programėlėje.",
+      action: "Atsisiųsti programėlę",
+      secondary: "Kas saugo tavo pinigus",
+    },
+  },
+
   footer: {
     blurb:
       "Tavo gyvenimas dviejose šalyse. Tavo sąskaita irgi. Europos sąskaita, tiesioginiai pavedimai ir jokių popierių, kad savo pinigus tvarkytum kaip nori.",

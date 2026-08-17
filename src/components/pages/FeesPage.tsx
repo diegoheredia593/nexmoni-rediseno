@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Calculator } from "@/components/Calculator";
+import { PageCloser } from "@/components/PageCloser";
 import { withTerms } from "@/components/glossary/withTerms";
 import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
@@ -73,6 +74,13 @@ export function FeesPage({ locale, dict }: { locale: Locale; dict: Dictionary })
           </p>
         </div>
       </section>
+
+      <PageCloser
+        locale={locale}
+        dict={dict}
+        copy={dict.closers.fees}
+        secondaryHref="/preguntas-frecuentes"
+      />
     </>
   );
 }

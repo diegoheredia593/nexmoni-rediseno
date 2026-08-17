@@ -255,6 +255,42 @@ export const es = {
     deskNote: "Déjanos tus datos y te enviamos el enlace de descarga.",
   },
 
+  /**
+   * Cierre de las páginas interiores.
+   *
+   * La portada terminaba pidiendo la descarga y las otras tres dejaban al
+   * lector frente al pie justo cuando acababa de resolver su duda. Cada una
+   * trae su propio texto porque el momento en que se lee es distinto: quien
+   * termina el tarifario ya sabe el precio, quien termina «Acerca» ya sabe
+   * quién custodia el dinero.
+   *
+   * El enlace secundario lleva siempre a la página interior que al lector le
+   * queda por ver, para no repetir el enlace que cada página ya tiene al pie.
+   */
+  closers: {
+    fees: {
+      title: "Ya sabes lo que cuesta.",
+      lead:
+        "Las mismas tarifas que acabas de leer, aplicadas desde la app. Ábrela, verifica tu identidad y envía en minutos.",
+      action: "Descargar la app",
+      secondary: "Resolver una duda antes",
+    },
+    about: {
+      title: "Ya sabes quién custodia tu dinero.",
+      lead:
+        "Fondos salvaguardados y segregados en una entidad con licencia del Banco de Lituania. Lo demás ocurre en la app.",
+      action: "Descargar la app",
+      secondary: "Ver las tarifas",
+    },
+    faq: {
+      title: "¿Resuelto?",
+      lead:
+        "Si tu duda ya tiene respuesta, el siguiente paso cabe en el móvil: abre la cuenta y envía dinero desde la app.",
+      action: "Descargar la app",
+      secondary: "Quién custodia tu dinero",
+    },
+  },
+
   footer: {
     blurb:
       "Tu vida está en dos países. Tu cuenta también. Cuenta europea, transferencias directas y cero papeleo para que manejes tu dinero a tu manera.",

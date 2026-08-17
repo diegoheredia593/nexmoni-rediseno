@@ -259,6 +259,30 @@ export const pt: Dictionary = {
     deskNote: "Deixa os teus dados e enviamos-te o link de descarga.",
   },
 
+  closers: {
+    fees: {
+      title: "Já sabes quanto custa.",
+      lead:
+        "As mesmas comissões que acabaste de ler, aplicadas a partir da app. Abre-a, verifica a tua identidade e envia em minutos.",
+      action: "Descarregar a app",
+      secondary: "Esclarecer uma dúvida antes",
+    },
+    about: {
+      title: "Já sabes quem guarda o teu dinheiro.",
+      lead:
+        "Fundos salvaguardados e segregados numa entidade com licença do Banco da Lituânia. O resto acontece na app.",
+      action: "Descarregar a app",
+      secondary: "Ver as comissões",
+    },
+    faq: {
+      title: "Resolvido?",
+      lead:
+        "Se a tua dúvida já tem resposta, o passo seguinte cabe no telemóvel: abre a conta e envia dinheiro a partir da app.",
+      action: "Descarregar a app",
+      secondary: "Quem guarda o teu dinheiro",
+    },
+  },
+
   footer: {
     blurb:
       "A tua vida está em dois países. A tua conta também. Conta europeia, transferências diretas e zero papelada para gerires o teu dinheiro à tua maneira.",
