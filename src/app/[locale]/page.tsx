@@ -43,7 +43,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             </div>
           </div>
 
-          <HeroFigure brief={dict.hero.figureBrief} />
+          <HeroFigure />
         </div>
 
         {/* Confianza: una línea, sin tarjetas */}

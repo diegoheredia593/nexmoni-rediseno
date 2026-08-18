@@ -141,9 +141,13 @@ poder sumarlo al coste total.
    distintivos actuales están compuestos con el sistema de la marca: Apple y
    Google exigen los suyos oficiales, con su logotipo y sus márgenes mínimos.
    El código QR también es un marcador hasta que existan esas URL.
-7. **Fotografía.** Los dos marcadores animados llevan su briefing en la leyenda
-   y deben sustituirse por foto real con halftone grueso en blanco y negro:
-   la figura de portada y el retrato del testimonio.
+7. ~~**Fotografía.**~~ **Hecho.** La figura de portada y el retrato del
+   testimonio ya están montados, en `public/foto/`. **Son imágenes generadas
+   por IA, no fotografía**; los masters y el detalle del procesado están en
+   `design_handoff_nextmoni_landing/originales/`. El halftone lo pone el CSS
+   encima (`.hero-figure__screen`), así que las imágenes van sin tramar: si
+   alguna vez se sustituyen por foto real, que venga también sin tramar o las
+   dos retículas producirán muaré.
 8. **Verificación legal** de importes y definiciones del glosario.
 9. **Revisión nativa del lituano.** Es el idioma del supervisor y la
    terminología regulada tiene traducción oficial fijada en la normativa. Ver

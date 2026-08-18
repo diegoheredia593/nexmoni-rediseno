@@ -493,9 +493,48 @@ p { margin: 0; text-wrap: pretty; }
   top: -45%;
   height: 200%;
   background-color: var(--surface-halftone);
-  background-image: radial-gradient(rgba(20, 24, 29, 0.5) 1.3px, transparent 1.5px);
+}
+
+/* La figura recorre un 16,5 % de su propia altura: con 125 % de alto y -20 %
+   de salida, el borde inferior nunca entra en cuadro. */
+.hero-figure__subject {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -20%;
+  height: 125%;
+}
+
+/* Referencia recta contra la que se lee el desplazamiento. */
+.hero-figure__rule {
+  position: absolute;
+  left: 8%;
+  right: 8%;
+  top: 63%;
+  height: 1px;
+  background: rgba(20, 24, 29, 0.5);
+}
+
+/* El halftone, encima de todo: es el tratamiento de la pieza, no de una capa.
+   `multiply` deja pasar la imagen y solo oscurece donde cae el punto, que es
+   como se comporta una trama real sobre papel. */
+.hero-figure__screen {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  mix-blend-mode: multiply;
+  background-image: radial-gradient(rgba(20, 24, 29, 0.55) 1.3px, transparent 1.5px);
   background-size: 6px 6px;
 }
+
+.avatar {
+  width: 44px;
+  height: 44px;
+  flex: none;
+  overflow: hidden;
+  filter: grayscale(1) contrast(1.1);
+}
+.avatar img { display: block; width: 100%; height: 100%; object-fit: cover; }
 
 /* ── Pie ────────────────────────────────────────────────────────────────── */
 .footer { border-top: 1px solid var(--hairline); padding: var(--s-64) 0 var(--s-32); }

@@ -1,18 +1,18 @@
 /**
- * Marcadores de posición fotográficos.
+ * Piezas fotográficas.
  *
- * ⚠ TEMPORALES. La leyenda lleva el encargo: proporción, encuadre, sujeto,
- * luz y tratamiento. Se sustituyen por fotografía real con halftone grueso en
- * blanco y negro; el manual de diseño pide explícitamente NO publicar estas
- * animaciones.
+ * Acero templado reduce el encargo de seis piezas a dos: la figura de portada
+ * y el retrato del testimonio. Ambas están ya montadas.
  *
- * Acero templado reduce el encargo de seis piezas a dos: una figura de
- * portada y el retrato del testimonio. Una idea por pantalla.
+ * Las tres imágenes son generadas, no fotografiadas. Van sin tramar a
+ * propósito: el halftone lo pone el CSS sobre ellas, y si vinieran ya tramadas
+ * las dos retículas se cruzarían y aparecería muaré.
  */
 
+import Image from "next/image";
 import { ParallaxLayers } from "@/components/ui/parallax-scrolling";
 
-export function HeroFigure({ brief }: { brief: string }) {
+export function HeroFigure() {
   return (
     <div className="hero-figure" style={{ aspectRatio: "4 / 5" }}>
       {/* Cuatro planos, del fondo al frente. Los de atrás se desplazan más
@@ -24,42 +24,37 @@ export function HeroFigure({ brief }: { brief: string }) {
           diseñada. Atarlo a la visibilidad la arrancaba ya empezada y
           el disco aparecía a un 60 % en vez de a su 46 %. */}
       <ParallaxLayers className="hero-figure__layers" factor={0.3}>
-        {/* 1 · Campo halftone. Sobredimensionado y subido, para que al bajar
-               no descubra el borde superior del marco.
-               ⏳ Aquí va la IMAGEN B (fondo del rodaje) si llega. */}
-        <div data-parallax-layer="1" className="hero-figure__field" />
+        {/* 1 · El fondo. Sobredimensionado y subido, para que al desplazarse
+               hacia abajo no descubra el borde superior del marco. */}
+        <div data-parallax-layer="1" className="hero-figure__field">
+          <Image
+            src="/foto/hero-fondo.webp"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 900px) 100vw, 40vw"
+            style={{ objectFit: "cover" }}
+          />
+        </div>
 
-        {/* 2 · La masa de la figura.
-               ⏳ AQUÍ VA LA IMAGEN A: la figura recortada sobre transparencia,
-               en blanco y negro. Se sustituye este div por el <img> y se
-               quita el degradado. */}
-        <div
-          data-parallax-layer="2"
-          className="dot"
-          style={{
-            left: "50%",
-            top: "46%",
-            width: "56%",
-            aspectRatio: "1",
-            transform: "translate(-50%,-50%)",
-            background: "radial-gradient(circle, rgba(20,24,29,.5) 0 58%, rgba(20,24,29,0) 72%)",
-          }}
-        />
+        {/* 2 · La figura, recortada sobre transparencia. Se le da holgura
+               vertical porque el plano recorre un 16,5 % de su propia altura:
+               sin ese aire, al moverse descubriría el borde inferior. */}
+        <div data-parallax-layer="2" className="hero-figure__subject">
+          <Image
+            src="/foto/hero-figura.webp"
+            alt=""
+            fill
+            priority
+            sizes="(max-width: 900px) 100vw, 40vw"
+            style={{ objectFit: "contain", objectPosition: "bottom center" }}
+          />
+        </div>
 
-        {/* 3 · El móvil. */}
-        <div
-          data-parallax-layer="3"
-          style={{
-            position: "absolute",
-            left: "50%",
-            top: "52%",
-            width: "16%",
-            aspectRatio: "9 / 19",
-            transform: "translate(-50%,-50%)",
-            background: "var(--surface)",
-            outline: "1px solid rgba(20,24,29,.5)",
-          }}
-        />
+        {/* 3 · Filete horizontal a la altura de las manos. Da una referencia
+               fija contra la que se mide el desplazamiento de la figura; sin
+               algo recto, el parallax casi no se percibe. */}
+        <div data-parallax-layer="3" className="hero-figure__rule" />
 
         {/* 4 · El punto de acento, al frente: es dirección de arte, no
                interfaz. Apenas se mueve, y por eso ancla la composición. */}
@@ -67,8 +62,8 @@ export function HeroFigure({ brief }: { brief: string }) {
           data-parallax-layer="4"
           className="dot"
           style={{
-            left: "50%",
-            top: "52%",
+            left: "13%",
+            top: "63%",
             width: "5%",
             aspectRatio: "1",
             transform: "translate(-50%,-50%)",
@@ -77,8 +72,9 @@ export function HeroFigure({ brief }: { brief: string }) {
         />
       </ParallaxLayers>
 
-      {/* La leyenda del encargo no se mueve: no es parte de la composición. */}
-      <div className="halftone__brief">{brief}</div>
+      {/* El halftone va encima de todos los planos: es tratamiento de la
+          pieza entera, no de una capa suelta. */}
+      <div className="hero-figure__screen" aria-hidden="true" />
     </div>
   );
 }
@@ -102,21 +98,8 @@ export function QrPlaceholder({ brief }: { brief: string }) {
 
 export function AvatarPlaceholder() {
   return (
-    <div
-      className="halftone"
-      style={{ width: 44, height: 44, flex: "none", backgroundSize: "4px 4px" }}
-    >
-      <div
-        className="dot"
-        style={{
-          left: "50%",
-          top: "52%",
-          width: "52%",
-          aspectRatio: "1",
-          transform: "translate(-50%,-50%)",
-          background: "rgba(20,24,29,.5)",
-        }}
-      />
+    <div className="avatar">
+      <Image src="/foto/testimonio.webp" alt="" width={44} height={44} />
     </div>
   );
 }
