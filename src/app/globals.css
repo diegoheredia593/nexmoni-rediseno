@@ -94,6 +94,35 @@
 * { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* Resplandor de fondo que sigue al puntero.
+   Dos paradas concéntricas sobre el acero: un núcleo de óxido, corto y muy
+   tenue, y un halo de gris halftone bastante más ancho que le da profundidad
+   sin teñir la página. Son los dos colores que ya usa el sistema; el óxido va
+   al 10 % porque a más se convierte en un acento decorativo, que es
+   justamente lo que el encargo prohíbe.
+
+   `z-index: -1` la deja sobre el fondo del lienzo pero por debajo de todo el
+   contenido, y `pointer-events: none` evita que se coma los clics. */
+.pointer-glow {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  opacity: var(--glow-on, 0);
+  transition: opacity 0.6s ease;
+  background:
+    radial-gradient(
+      420px 420px at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(141, 82, 23, 0.1),
+      transparent 70%
+    ),
+    radial-gradient(
+      900px 900px at var(--glow-x, 50%) var(--glow-y, 50%),
+      rgba(201, 206, 210, 0.55),
+      transparent 72%
+    );
+}
+
 body {
   margin: 0;
   background: var(--surface);

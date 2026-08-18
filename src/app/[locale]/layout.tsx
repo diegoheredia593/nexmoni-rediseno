@@ -4,6 +4,7 @@ import { Archivo, Space_Mono } from "next/font/google";
 import { GlossaryProvider } from "@/components/glossary/GlossaryProvider";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { PointerGlow } from "@/components/PointerGlow";
 import { getDictionary, isLocale, locales, type Locale } from "@/content/dictionary";
 import { robotsPolicy, siteUrl } from "@/lib/site-url";
 import "../globals.css";
@@ -72,6 +73,7 @@ export default async function LocaleLayout({
   return (
     <html lang={dict.meta.htmlLang} className={`${archivo.variable} ${spaceMono.variable}`}>
       <body>
+        <PointerGlow />
         <GlossaryProvider glossary={dict.glossary}>
           <Header locale={locale} dict={dict} />
           <main>{children}</main>
