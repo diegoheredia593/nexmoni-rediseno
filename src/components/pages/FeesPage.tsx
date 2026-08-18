@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { Calculator } from "@/components/Calculator";
+import { Button as MarcoAnimado } from "@/components/ui/moving-border";
 import { PageCloser } from "@/components/PageCloser";
 import { withTerms } from "@/components/glossary/withTerms";
 import type { Dictionary, Locale } from "@/content/dictionary";
@@ -44,7 +45,22 @@ export function FeesPage({ locale, dict }: { locale: Locale; dict: Dictionary })
             <p className="lead">{dict.calculator.lead}</p>
           </div>
 
-          <Calculator dict={dict} />
+          {/* El cliente avisó de que la calculadora pasaba desapercibida: no
+              tenía contenedor, solo filas de filete flotando en la sección.
+              El marco la convierte en un instrumento con bordes, y la luz que
+              lo recorre es lo que hace que el ojo la encuentre.
+              Radio 2 px: lo mínimo para que la luz no se coma la esquina, muy
+              lejos de los 28 px del original. */}
+          <MarcoAnimado
+            as="div"
+            borderRadius="2px"
+            duration={5200}
+            containerClassName="calc-frame"
+            borderClassName="calc-frame__light"
+            className="calc-frame__inner"
+          >
+            <Calculator dict={dict} />
+          </MarcoAnimado>
         </div>
       </section>
 

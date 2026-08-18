@@ -405,6 +405,48 @@ p { margin: 0; text-wrap: pretty; }
 .calc__row--total dd { font-size: var(--t-body); }
 .calc__pending { padding: var(--s-32) 0; border-bottom: 1px solid var(--hairline); }
 
+/* Marco de la calculadora.
+   El bloque no se distinguía: eran filas de filete sueltas dentro de la
+   sección, sin nada que dijera «esto es una herramienta». El marco le da
+   cuerpo y la luz que lo recorre le da el aviso.
+
+   Los colores son los mismos que el resplandor de los planes: el óxido de la
+   marca (#8d5217, matiz 30) con un núcleo amarillo (matiz 48). Ni azul, ni
+   púrpura, ni rosa. */
+.calc-frame {
+  margin-top: var(--s-32);
+  /* El filete en reposo va al tono firme, no al suave: con `--hairline` el
+     marco tenía el mismo peso que el fondo y seguía sin verse, que era
+     justamente la queja. */
+  background: var(--hairline-firm);
+}
+.calc-frame__light {
+  width: 320px;
+  height: 320px;
+  background: radial-gradient(
+    circle,
+    hsl(48 95% 62%) 0 10%,
+    hsl(38 88% 48%) 24%,
+    #8d5217 40%,
+    rgba(141, 82, 23, 0) 66%
+  );
+}
+.calc-frame__inner {
+  /* Un peldaño más oscuro que la página: el bloque se lee como panel sin
+     inventar un color. `--row-hover` ya estaba declarado en la paleta. */
+  background: var(--row-hover);
+  padding: var(--s-32);
+}
+/* La calculadora ya no necesita su propio filete superior: se lo da el marco. */
+.calc-frame__inner .calc { border-top: none; }
+/* Ni la última fila su borde inferior, que quedaría pegado al marco. */
+.calc-frame__inner .calc__rows .calc__row:last-child { border-bottom: none; }
+
+@media (max-width: 620px) {
+  .calc-frame__inner { padding: var(--s-16); }
+  .calc-frame__light { width: 150px; height: 150px; }
+}
+
 /* ── Preguntas frecuentes ───────────────────────────────────────────────── */
 .faq { border-top: 1px solid var(--hairline-firm); }
 .faq__item { border-bottom: 1px solid var(--hairline); }
