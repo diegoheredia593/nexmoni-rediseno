@@ -2,6 +2,7 @@ import Link from "next/link";
 import { brand } from "@/content/brand";
 import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
+import { RandomLetterSwap } from "@/components/ui/random-letter-swap";
 import { LocaleSwitch } from "./LocaleSwitch";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
@@ -15,7 +16,11 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         <nav className="nav">
           {dict.nav.map((item) => (
             <Link key={item.href} href={href(locale, item.href)}>
-              {item.label}
+              <RandomLetterSwap
+                label={item.label}
+                staggerDuration={0.025}
+                transition={{ duration: 0.6, type: "spring" }}
+              />
             </Link>
           ))}
         </nav>
