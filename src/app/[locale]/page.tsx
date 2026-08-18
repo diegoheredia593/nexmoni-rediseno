@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
 import { LeadForm } from "@/components/LeadForm";
 import { GlowCard } from "@/components/ui/spotlight-card";
+import { TextRoll } from "@/components/ui/text-roll";
 import { AvatarPlaceholder, HeroFigure, QrPlaceholder } from "@/components/Placeholders";
 import { StoreButtons } from "@/components/StoreButtons";
 import { getDictionary, isLocale, locales } from "@/content/dictionary";
@@ -27,9 +28,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           <div className="stack-24">
             <span className="tag">{dict.hero.kicker.join(" · ")}</span>
             <h1 className="display">
-              {dict.hero.titleTop}
+              <TextRoll>{dict.hero.titleTop}</TextRoll>
               <br />
-              {dict.hero.titleBottom}
+              <TextRoll>{dict.hero.titleBottom}</TextRoll>
             </h1>
             <p className="lead">{dict.hero.lead}</p>
             <div className="hero__actions">
