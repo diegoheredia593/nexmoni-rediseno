@@ -126,7 +126,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             {dict.pricing.plans.map((plan) => {
               const featured = plan.name === FEATURED_PLAN;
               return (
-                <GlowCard key={plan.name} customSize className="plan-glow">
+                <GlowCard key={plan.name} customSize glowColor="rust" className="plan-glow">
                 <div className={`plan${featured ? " plan--featured" : ""}`}>
                   <span className="tag tag--strong">
                     {plan.name}
