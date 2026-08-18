@@ -4,7 +4,7 @@ Este archivo recoge lo que **no** está en el código: decisiones tomadas, por
 qué, y las trampas que solo se aprenden habiéndolas pisado. El `README.md`
 explica cómo funciona el proyecto; esto explica cómo llegamos aquí y qué falta.
 
-Última actualización: commit `e641947`.
+Última actualización: commit `61367c3`.
 
 ---
 
@@ -72,6 +72,13 @@ Existe una maqueta estática de esta dirección, entregada al cliente en zip
 3. **Contención.** Todo dentro de `.wrap` (1200 px). Solo la banda de cifras
    va a sangre.
 4. **Radio 0** en todo. Es identidad del encargo, no un descuido.
+   **Excepción viva, decidida por el cliente:** el bloque de precios usa el
+   componente importado `spotlight-card` y lleva radio 16 px, sombra
+   proyectada y `backdrop-blur`. Fue una elección deliberada tras ver las dos
+   versiones en paralelo; no es un descuido y **no hay que «arreglarlo»**. La
+   alternativa que respetaba el sistema está en la rama `claude/spotlight-acero`
+   por si se recupera. La estética del resto de la página está pendiente de
+   revisar a la luz de esto.
 5. **Nada de rejillas de tres tarjetas** salvo los planes, donde el patrón
    ayuda a comparar precios.
 
@@ -110,6 +117,18 @@ Perdimos un rato diagnosticando un fallo que no existía.
 desbordamiento horizontal en móvil por un `style={{ gridTemplateColumns }}`
 que se saltaba la regla responsive. Si hay desbordamiento, sospechar de eso
 primero.
+
+**Los componentes importados de escaparate traen `touch-action: none`.**
+Lo traía `spotlight-card`, y bloquea el scroll táctil sobre el elemento: con
+el dedo encima, la página no se mueve. Medido antes de arreglarlo: 0 px de
+desplazamiento dentro del bloque de precios, 2657 px justo fuera. En un sitio
+cuyo público navega desde el móvil eso es una zona muerta a mitad de la
+portada. Al pegar cualquier componente de fuera, buscar esa propiedad.
+
+**El aviso de `sharp` viene de `next`, no de las dependencias nuevas.**
+`npm audit` marca una vulnerabilidad alta en `sharp@0.34.5`, que entra por
+`next@15.5.23`. `npm audit fix` propone `next@16`, que es salto de mayor. Sin
+resolver, y es justo el tipo de cosa que tumba un despliegue en Vercel.
 
 **Los campos de formulario traen un ancho intrínseco** que impide encoger la
 pista de una rejilla. Necesitan `min-width: 0` y `width: 100%`.

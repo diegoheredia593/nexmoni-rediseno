@@ -5,6 +5,11 @@ Landing de NexMoni en Next.js (App Router) con CSS propio.
 > **¿Retomas el proyecto?** Lee primero [`HANDOFF.md`](HANDOFF.md): estado
 > actual, decisiones de diseño con su porqué, y las trampas del despliegue.
 
+> **El bloque de precios ya no sigue el sistema.** Usa `spotlight-card`
+> (`src/components/ui/`), un componente importado con radio 16 px, sombra y
+> desenfoque, elegido por el cliente. Es la razón de que el proyecto tenga
+> Tailwind. Ver `HANDOFF.md` §3, regla 4.
+
 ## Sistema de diseño: «Acero templado»
 
 Parte del encargo v1c-f1a "Acero / Halftone" (`design_handoff_nextmoni_landing/`)
@@ -31,7 +36,17 @@ del testimonio.
 npm install
 npm run dev        # http://localhost:3000
 npm run build
+npm run typecheck
 ```
+
+### Tailwind
+
+Está instalado **solo** para `spotlight-card`, y se importa por capas sueltas
+en `globals.css` **sin preflight**. El preflight reinicia márgenes, bordes y
+tipografía de los elementos base, y este archivo tiene 500 líneas escritas a
+mano que dependen de esos valores: importarlo entero desmonta el resto del
+sitio. Si algún día se añade `@import "tailwindcss"` a secas, eso es lo que
+pasará.
 
 ## Idiomas
 
