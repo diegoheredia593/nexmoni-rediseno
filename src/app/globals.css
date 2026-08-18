@@ -486,8 +486,12 @@ p { margin: 0; text-wrap: pretty; }
   position: absolute;
   left: 0;
   right: 0;
-  top: -30%;
-  height: 160%;
+  /* El plano recorre un 21 % de su propia altura. Con 160 % de alto y -30 %
+     de salida acababa 3,6 % por debajo del borde superior del marco: medido,
+     22 px sin cubrir al final del recorrido. Con 200 % y -45 % termina un 3 %
+     por encima y nunca descubre el borde. */
+  top: -45%;
+  height: 200%;
   background-color: var(--surface-halftone);
   background-image: radial-gradient(rgba(20, 24, 29, 0.5) 1.3px, transparent 1.5px);
   background-size: 6px 6px;
