@@ -10,6 +10,22 @@
 @import "tailwindcss/utilities.css" layer(utilities);
 @source "../../src";
 
+/* Los componentes de shadcn nombran sus colores con tokens semánticos
+   (`bg-primary`, `ring-ring`…) que este proyecto nunca tuvo: sin esto los
+   botones de las tiendas salen transparentes. Se enganchan a la paleta Acero
+   en vez de traer una paleta ajena. Los distintivos de tienda son negros por
+   convención, así que `primary` es la tinta. */
+@theme {
+  --color-primary: var(--ink);
+  --color-primary-foreground: var(--btn-text);
+  --color-background: var(--surface);
+  --color-foreground: var(--ink);
+  --color-ring: var(--accent);
+  --color-input: var(--hairline-firm);
+  --color-accent: var(--row-hover);
+  --color-accent-foreground: var(--ink);
+}
+
 /* ═══════════════════════════════════════════════════════════════════════════
    NexMoni — ACERO TEMPLADO
    Misma identidad del encargo original; la disciplina de composición viene
