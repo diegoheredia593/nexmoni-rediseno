@@ -2,6 +2,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
 import { LeadForm } from "@/components/LeadForm";
+import { GlowCard } from "@/components/ui/spotlight-card";
 import { AvatarPlaceholder, HeroFigure, QrPlaceholder } from "@/components/Placeholders";
 import { StoreButtons } from "@/components/StoreButtons";
 import { getDictionary, isLocale, locales } from "@/content/dictionary";
@@ -120,11 +121,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <p className="lead">{dict.pricing.lead}</p>
           </div>
 
-          <div className="plans">
+          <div className="plans plans--glow">
             {dict.pricing.plans.map((plan) => {
               const featured = plan.name === FEATURED_PLAN;
               return (
-                <div key={plan.name} className={`plan${featured ? " plan--featured" : ""}`}>
+                <GlowCard key={plan.name} customSize className="plan-glow">
+                <div className={`plan${featured ? " plan--featured" : ""}`}>
                   <span className="tag tag--strong">
                     {plan.name}
                     {featured ? ` · ${dict.pricing.popular}` : ""}
@@ -146,6 +148,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     {plan.cta}
                   </Link>
                 </div>
+                </GlowCard>
               );
             })}
           </div>

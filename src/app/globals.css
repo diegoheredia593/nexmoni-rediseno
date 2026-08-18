@@ -1,3 +1,15 @@
+/* ── Tailwind (solo para el componente importado) ────────────────────────────
+   Se importan capas sueltas a propósito, SIN preflight. El preflight de
+   Tailwind reinicia márgenes, bordes y tipografía de los elementos base, y
+   este archivo lleva 500 líneas escritas a mano que dependen de esos valores:
+   importarlo entero desmonta el resto del sitio y la comparación dejaría de
+   medir el bloque de precios para medir un incendio.
+   ─────────────────────────────────────────────────────────────────────────── */
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css" layer(utilities);
+@source "../../src";
+
 /* ═══════════════════════════════════════════════════════════════════════════
    NexMoni — ACERO TEMPLADO
    Misma identidad del encargo original; la disciplina de composición viene
@@ -263,6 +275,25 @@ p { margin: 0; text-wrap: pretty; }
 .plan ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: var(--s-8); flex: 1; }
 .plan li { font-size: var(--t-body-s); color: var(--ink-80); display: flex; gap: var(--s-12); }
 .plan li::before { content: "—"; color: var(--ink-45); }
+
+/* ── Variante con GlowCard ──────────────────────────────────────────────────
+   El bloque continuo se deshace: cada plan pasa a ser una tarjeta suelta y
+   flotante, que es lo que el componente importado necesita para que su
+   resplandor de borde tenga un borde propio que iluminar. Con esto el bloque
+   de precios deja de compartir construcción con el resto de la página. */
+.plans--glow {
+  gap: var(--s-24);
+  background: none;
+  border: none;
+}
+.plans--glow .plan {
+  background: none;
+  padding: 0;
+  height: 100%;
+}
+/* El filete del destacado lo aporta ahora el resplandor del componente. */
+.plans--glow .plan--featured { box-shadow: none; }
+.plan-glow { height: 100%; }
 
 /* ── Testimonio ─────────────────────────────────────────────────────────── */
 .quote {
