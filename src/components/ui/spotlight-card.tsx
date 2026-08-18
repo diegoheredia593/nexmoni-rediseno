@@ -91,7 +91,12 @@ const GlowCard: React.FC<GlowCardProps> = ({
       backgroundAttachment: 'fixed',
       border: 'var(--border-size) solid var(--backup-border)',
       position: 'relative' as const,
-      touchAction: 'none' as const,
+      // `touchAction: 'none'` venía en el original y bloquea el scroll táctil
+      // sobre la tarjeta: con el dedo encima la página no se mueve. Medido:
+      // 0 px de desplazamiento dentro del bloque, 2657 px fuera de él. El
+      // seguimiento del puntero no lo necesita —escucha `pointermove` en
+      // `document` y no captura el gesto—, así que se retira. El resplandor,
+      // el radio y la sombra quedan intactos.
     };
 
     // Add width and height if provided
