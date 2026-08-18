@@ -470,6 +470,29 @@ p { margin: 0; text-wrap: pretty; }
 }
 .dot { position: absolute; border-radius: 50%; }
 
+/* Figura de portada por planos.
+   El marco recorta; los planos se mueven dentro. El campo halftone va
+   sobredimensionado y subido para que al desplazarse hacia abajo no descubra
+   el borde superior. El color de fondo del marco es el mismo del campo, así
+   que aunque algún plano se salga no aparece un hueco. */
+.hero-figure {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: var(--surface-halftone);
+}
+.hero-figure__layers { position: absolute; inset: 0; }
+.hero-figure__field {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -30%;
+  height: 160%;
+  background-color: var(--surface-halftone);
+  background-image: radial-gradient(rgba(20, 24, 29, 0.5) 1.3px, transparent 1.5px);
+  background-size: 6px 6px;
+}
+
 /* ── Pie ────────────────────────────────────────────────────────────────── */
 .footer { border-top: 1px solid var(--hairline); padding: var(--s-64) 0 var(--s-32); }
 .footer__grid { display: grid; grid-template-columns: 1.4fr repeat(3, 1fr); gap: var(--s-48); }

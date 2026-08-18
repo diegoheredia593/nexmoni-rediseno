@@ -10,44 +10,74 @@
  * portada y el retrato del testimonio. Una idea por pantalla.
  */
 
+import { ParallaxLayers } from "@/components/ui/parallax-scrolling";
+
 export function HeroFigure({ brief }: { brief: string }) {
   return (
-    <div className="halftone" style={{ aspectRatio: "4 / 5" }}>
-      <div
-        className="dot"
-        style={{
-          left: "50%",
-          top: "46%",
-          width: "56%",
-          aspectRatio: "1",
-          transform: "translate(-50%,-50%)",
-          background: "radial-gradient(circle, rgba(20,24,29,.5) 0 58%, rgba(20,24,29,0) 72%)",
-        }}
-      />
-      <div
-        style={{
-          position: "absolute",
-          left: "50%",
-          top: "52%",
-          width: "16%",
-          aspectRatio: "9 / 19",
-          transform: "translate(-50%,-50%)",
-          background: "var(--surface)",
-          outline: "1px solid rgba(20,24,29,.5)",
-        }}
-      />
-      {/* El punto de acento aquí es dirección de arte, no interfaz. */}
-      <div
-        className="dot"
-        style={{
-          left: "50%",
-          top: "52%",
-          width: "5%",
-          aspectRatio: "1",
-          transform: "translate(-50%,-50%)",
-          background: "var(--accent)",
-        }}
-      />
+    <div className="hero-figure" style={{ aspectRatio: "4 / 5" }}>
+      {/* Cuatro planos, del fondo al frente. Los de atrás se desplazan más
+          que los de delante, que es lo que separa la composición al hacer
+          scroll. El factor baja la magnitud del original a este marco. */}
+      {/* Se deja el rango del original a propósito: con él la línea de
+          tiempo está en cero mientras la figura ocupa su sitio en la
+          portada, así que el primer pintado muestra la composición
+          diseñada. Atarlo a la visibilidad la arrancaba ya empezada y
+          el disco aparecía a un 60 % en vez de a su 46 %. */}
+      <ParallaxLayers className="hero-figure__layers" factor={0.3}>
+        {/* 1 · Campo halftone. Sobredimensionado y subido, para que al bajar
+               no descubra el borde superior del marco.
+               ⏳ Aquí va la IMAGEN B (fondo del rodaje) si llega. */}
+        <div data-parallax-layer="1" className="hero-figure__field" />
+
+        {/* 2 · La masa de la figura.
+               ⏳ AQUÍ VA LA IMAGEN A: la figura recortada sobre transparencia,
+               en blanco y negro. Se sustituye este div por el <img> y se
+               quita el degradado. */}
+        <div
+          data-parallax-layer="2"
+          className="dot"
+          style={{
+            left: "50%",
+            top: "46%",
+            width: "56%",
+            aspectRatio: "1",
+            transform: "translate(-50%,-50%)",
+            background: "radial-gradient(circle, rgba(20,24,29,.5) 0 58%, rgba(20,24,29,0) 72%)",
+          }}
+        />
+
+        {/* 3 · El móvil. */}
+        <div
+          data-parallax-layer="3"
+          style={{
+            position: "absolute",
+            left: "50%",
+            top: "52%",
+            width: "16%",
+            aspectRatio: "9 / 19",
+            transform: "translate(-50%,-50%)",
+            background: "var(--surface)",
+            outline: "1px solid rgba(20,24,29,.5)",
+          }}
+        />
+
+        {/* 4 · El punto de acento, al frente: es dirección de arte, no
+               interfaz. Apenas se mueve, y por eso ancla la composición. */}
+        <div
+          data-parallax-layer="4"
+          className="dot"
+          style={{
+            left: "50%",
+            top: "52%",
+            width: "5%",
+            aspectRatio: "1",
+            transform: "translate(-50%,-50%)",
+            background: "var(--accent)",
+          }}
+        />
+      </ParallaxLayers>
+
+      {/* La leyenda del encargo no se mueve: no es parte de la composición. */}
       <div className="halftone__brief">{brief}</div>
     </div>
   );
