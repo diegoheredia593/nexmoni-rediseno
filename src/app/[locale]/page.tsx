@@ -1,10 +1,10 @@
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
+import { HeroCinematic } from "@/components/HeroCinematic";
 import { LeadForm } from "@/components/LeadForm";
 import { GlowCard } from "@/components/ui/spotlight-card";
-import { TextRoll } from "@/components/ui/text-roll";
-import { AvatarPlaceholder, HeroFigure, QrPlaceholder } from "@/components/Placeholders";
+import { AvatarPlaceholder, QrPlaceholder } from "@/components/Placeholders";
 import { StoreButtons } from "@/components/StoreButtons";
 import { getDictionary, isLocale, locales } from "@/content/dictionary";
 import { href } from "@/content/routes";
@@ -22,30 +22,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
   return (
     <>
-      {/* ── Portada: un foco, una acción ──────────────────────────────── */}
+      <HeroCinematic locale={locale} dict={dict} />
+
       <div className="wrap">
-        <div className="hero">
-          <div className="stack-24">
-            <span className="tag">{dict.hero.kicker.join(" · ")}</span>
-            <h1 className="display">
-              <TextRoll>{dict.hero.titleTop}</TextRoll>
-              <br />
-              <TextRoll>{dict.hero.titleBottom}</TextRoll>
-            </h1>
-            <p className="lead">{dict.hero.lead}</p>
-            <div className="hero__actions">
-              <Link href={href(locale, "/#descargar")} className="btn btn--primary">
-                {dict.hero.cta}
-              </Link>
-              <Link href={href(locale, "/#descargar")} className="link">
-                {dict.hero.secondaryCta}
-              </Link>
-            </div>
-          </div>
-
-          <HeroFigure />
-        </div>
-
         {/* Confianza: una línea, sin tarjetas */}
         <div className="trust">
           {dict.hero.trust.map((body, i) => (

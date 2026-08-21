@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { Archivo, Space_Mono } from "next/font/google";
 import { GlossaryProvider } from "@/components/glossary/GlossaryProvider";
 import { Header } from "@/components/Header";
+import { HeaderScroll } from "@/components/HeaderScroll";
 import { Footer } from "@/components/Footer";
 import { PointerGlow } from "@/components/PointerGlow";
 import { getDictionary, isLocale, locales, type Locale } from "@/content/dictionary";
@@ -76,6 +77,7 @@ export default async function LocaleLayout({
         <PointerGlow />
         <GlossaryProvider glossary={dict.glossary}>
           <Header locale={locale} dict={dict} />
+          <HeaderScroll />
           <main>{children}</main>
           <Footer locale={locale} dict={dict} />
         </GlossaryProvider>

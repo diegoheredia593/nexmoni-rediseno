@@ -27,42 +27,78 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   NexMoni — ACERO TEMPLADO
-   Misma identidad del encargo original; la disciplina de composición viene
-   del sistema de Linear.
+   NexMoni — TRÁNSITO
+   Rediseño estético sobre el mismo código. El original «Acero templado» vive
+   intacto en diegoheredia593/webapp.
 
-   SE CONSERVA (identidad)
-     · Paleta acero + óxido        · Archivo + Space Mono
-     · Filete de 1px, sin sombras  · Radio 0 en todo
-     · Lenguaje halftone           · Etiquetas monoespaciadas
+   LA IDEA
+     El sitio tiene dos zonas y una razón narrativa para tenerlas. El hero es
+     NOCHE: el viaje, a sangre, oscuro, con el vídeo del dinero cruzando el
+     mundo. Al bajar, la página amanece y todo lo demás es DÍA: papel cálido,
+     legible, factual. Se viaja de noche y se hacen cuentas de día.
 
-   SE ADOPTA (disciplina)
-     1. CONTENCIÓN — 1200px centrado; nada a sangre salvo la banda de cifras
-     2. ESCALA     — nueve tamaños declarados; prohibidos los medios píxeles
-     3. UN ACENTO  — el óxido solo en botones de acción
-     4. AIRE       — 96px entre secciones, una idea por pantalla
+   QUÉ SE CONSERVA DE ACERO
+     La disciplina: contención en 1200 px, escala de nueve peldaños, un solo
+     acento, 96 px de aire entre secciones. Eso funcionaba y no se toca.
+
+   QUÉ CAMBIA
+     La temperatura (gris frío → papel cálido), el acento (óxido → cobre),
+     el radio (0 → 12 px en paneles, píldora en botones) y el hero entero.
+
+   CÓMO ESTÁ MONTADO
+     Los tokens nuevos se declaran arriba; debajo, los nombres del sistema
+     viejo quedan como ALIAS. Así los doce componentes heredan la paleta nueva
+     sin tocar una línea de su CSS, y solo se reescribe lo que cambia de forma.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── Color ────────────────────────────────────────────────────────────── */
-  --surface: #e5e8ea;
-  --surface-halftone: #c9ced2;
-  --row-hover: #dfe3e6;
-  --ink: #14181d;
-  --on-dark: #e5e8ea;
-  --btn-text: #fafbfc;
-  --accent: #8d5217;
+  /* ── DÍA · el cuerpo del sitio ─────────────────────────────────────────── */
+  --papel:      #f7f5f1;   /* fondo de página */
+  --papel-2:    #efece5;   /* paneles, filas alternas */
+  --papel-3:    #e4dfd4;   /* rebajes, tramas */
+  --tinta:      #171614;
+  --tinta-78:   rgba(23, 22, 20, 0.78);
+  --tinta-58:   rgba(23, 22, 20, 0.58);
+  --tinta-40:   rgba(23, 22, 20, 0.40);
+  --filete:     rgba(23, 22, 20, 0.14);
+  --filete-2:   rgba(23, 22, 20, 0.28);
 
-  /* Tinta con opacidad: cuatro niveles, no once */
-  --ink-80: rgba(20, 24, 29, 0.8);
-  --ink-62: rgba(20, 24, 29, 0.62);
-  --ink-45: rgba(20, 24, 29, 0.45);
-  --hairline: rgba(20, 24, 29, 0.16);
-  --hairline-firm: rgba(20, 24, 29, 0.3);
-  --on-dark-62: rgba(229, 232, 234, 0.62);
-  --on-dark-25: rgba(229, 232, 234, 0.25);
+  /* ── NOCHE · el hero ───────────────────────────────────────────────────── */
+  --noche:      #141311;
+  --noche-2:    #201d19;
+  --sobre-noche:    #f6f2ea;
+  --sobre-noche-72: rgba(246, 242, 234, 0.72);
+  --sobre-noche-42: rgba(246, 242, 234, 0.42);
 
-  /* ── Escala tipográfica: nueve peldaños ───────────────────────────────── */
+  /* ── El acento, único, en las dos zonas ────────────────────────────────── */
+  --cobre:      #ad5c27;   /* 4,84:1 con blanco; #b4622c se quedaba en 4,45 */
+  --cobre-alto: #d4823f;   /* sobre fondo oscuro, donde el cobre se apaga */
+  --sobre-cobre: #ffffff;
+
+  /* ── Forma ─────────────────────────────────────────────────────────────── */
+  --r-panel: 12px;
+  --r-campo: 8px;
+  --r-pildora: 999px;
+
+  /* ── ALIAS del sistema viejo ───────────────────────────────────────────────
+     Todo el CSS de componentes sigue nombrando los tokens de Acero. Apuntarlos
+     aquí es lo que hace que el rediseño no exija reescribir 700 líneas. */
+  --surface: var(--papel);
+  --surface-halftone: var(--papel-3);
+  --row-hover: var(--papel-2);
+  --ink: var(--tinta);
+  --on-dark: var(--papel);
+  --btn-text: var(--sobre-cobre);
+  --accent: var(--cobre);
+  --ink-80: var(--tinta-78);
+  --ink-62: var(--tinta-58);
+  --ink-45: var(--tinta-40);
+  --hairline: var(--filete);
+  --hairline-firm: var(--filete-2);
+  --on-dark-62: rgba(247, 245, 241, 0.62);
+  --on-dark-25: rgba(247, 245, 241, 0.25);
+
+  /* ── Escala tipográfica: los mismos nueve peldaños ─────────────────────── */
   --t-micro: 12px;
   --t-caption: 13px;
   --t-body-s: 15px;
@@ -79,13 +115,12 @@
   --track-h3: -0.018em;
   --track-body: -0.008em;
 
-  /* ── Espaciado: base 4 ────────────────────────────────────────────────── */
   --s-4: 4px;   --s-8: 8px;   --s-12: 12px; --s-16: 16px;
   --s-24: 24px; --s-32: 32px; --s-48: 48px; --s-64: 64px; --s-96: 96px;
 
-  /* ── Contención ───────────────────────────────────────────────────────── */
   --page: 1200px;
   --gutter: 24px;
+  --alto-barra: 69px;   /* padding 16+16 + contenido; medido en el navegador */
 
   --sans: var(--font-archivo), Helvetica, Arial, sans-serif;
   --mono: var(--font-space-mono), ui-monospace, monospace;
@@ -113,12 +148,12 @@ html { scroll-behavior: smooth; }
   background:
     radial-gradient(
       420px 420px at var(--glow-x, 50%) var(--glow-y, 50%),
-      rgba(141, 82, 23, 0.1),
+      rgba(173, 92, 39, 0.11),
       transparent 70%
     ),
     radial-gradient(
       900px 900px at var(--glow-x, 50%) var(--glow-y, 50%),
-      rgba(201, 206, 210, 0.55),
+      var(--papel-3),
       transparent 72%
     );
 }
@@ -135,6 +170,115 @@ body {
 a { color: inherit; text-decoration: none; }
 :focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
 button, a { -webkit-tap-highlight-color: transparent; }
+
+/* ═══ HERO EN CLAVE DE NOCHE ══════════════════════════════════════════════ */
+.cine {
+  position: relative;
+  /* La barra es `sticky`, así que ocupa su sitio ANTES del hero: al volverse
+     transparente dejaba ver el papel de la página, no el vídeo. El hero se
+     sube por debajo de ella y recupera ese alto como relleno, de modo que la
+     imagen llega hasta arriba del todo y el contenido no queda tapado. */
+  margin-top: calc(-1 * var(--alto-barra));
+  padding-top: var(--alto-barra);
+  min-height: 100svh;
+  display: grid;
+  align-items: center;
+  background: var(--noche);
+  overflow: hidden;
+  isolation: isolate;
+}
+.cine__media {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -2;
+}
+/* El velo carga la tinta abajo y a la izquierda, que es donde cae el texto, y
+   la suelta arriba a la derecha para que la imagen respire. Un velo plano
+   apagaría el vídeo entero para salvar tres líneas de texto. */
+.cine__velo {
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  background:
+    linear-gradient(to right, rgba(20, 19, 17, 0.92) 0%, rgba(20, 19, 17, 0.72) 42%, rgba(20, 19, 17, 0.34) 100%),
+    linear-gradient(to top, rgba(20, 19, 17, 0.95) 0%, rgba(20, 19, 17, 0.30) 55%, rgba(20, 19, 17, 0.62) 100%);
+}
+.cine__in {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: var(--s-24);
+  padding-top: var(--s-96);
+  padding-bottom: var(--s-96);
+}
+.cine__kicker {
+  font: 400 var(--t-micro) / 1.4 var(--mono);
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--sobre-noche-42);
+}
+.cine__title {
+  margin: 0;
+  max-width: 16ch;
+  font-size: clamp(42px, 6.2vw, 84px);
+  font-weight: 600;
+  line-height: 1.0;
+  letter-spacing: -0.034em;
+  color: var(--sobre-noche);
+  text-wrap: balance;
+}
+.cine__lead {
+  max-width: 46ch;
+  font-size: var(--t-lead);
+  line-height: 1.5;
+  color: var(--sobre-noche-72);
+}
+.cine__actions { display: flex; align-items: center; gap: var(--s-16); flex-wrap: wrap; margin-top: var(--s-8); }
+
+/* Señal de scroll: una línea que respira, no una flecha. */
+.cine__cue {
+  position: absolute;
+  left: 50%;
+  bottom: var(--s-32);
+  width: 1px;
+  height: 46px;
+  background: linear-gradient(to bottom, transparent, var(--sobre-noche-42));
+  animation: cue 2.4s ease-in-out infinite;
+}
+@keyframes cue {
+  0%, 100% { opacity: 0.25; transform: scaleY(0.6); transform-origin: top; }
+  50%      { opacity: 1;    transform: scaleY(1);   transform-origin: top; }
+}
+
+/* ── Botones en píldora ─────────────────────────────────────────────────── */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--s-8);
+  padding: 15px 28px;
+  border-radius: var(--r-pildora);
+  border: 1px solid transparent;
+  font: 500 var(--t-body-s) / 1 var(--sans);
+  letter-spacing: -0.006em;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+.pill--acento { background: var(--cobre); color: var(--sobre-cobre); }
+.pill--acento:hover { background: var(--cobre-alto); }
+.pill--fantasma { border-color: var(--sobre-noche-42); color: var(--sobre-noche); }
+.pill--fantasma:hover { border-color: var(--sobre-noche); background: rgba(246, 242, 234, 0.08); }
+
+@media (max-width: 620px) {
+  .cine__in { gap: var(--s-16); }
+  .pill { padding: 14px 22px; }
+  .cine__cue { display: none; }
+}
 
 /* ── Contención ─────────────────────────────────────────────────────────── */
 .wrap { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
@@ -196,6 +340,27 @@ p { margin: 0; text-wrap: pretty; }
 .nav a:hover { color: var(--ink); }
 .topbar__end { display: flex; align-items: center; gap: var(--s-16); margin-left: auto; }
 .nav + .topbar__end { margin-left: 0; }
+
+/* La barra sobre el hero de noche: sin fondo, sin filete, en texto claro. */
+.topbar--sobre-noche {
+  background: transparent;
+  border-bottom-color: transparent;
+}
+.topbar--sobre-noche .wordmark { color: var(--sobre-noche); }
+.topbar--sobre-noche .nav a { color: var(--sobre-noche-72); }
+.topbar--sobre-noche .nav a:hover { color: var(--sobre-noche); }
+.topbar--sobre-noche .locales { border-color: var(--sobre-noche-42); }
+.topbar--sobre-noche .locales__item { color: var(--sobre-noche-42); border-right-color: var(--sobre-noche-42); }
+.topbar--sobre-noche .locales__item:hover { background: rgba(246, 242, 234, 0.1); color: var(--sobre-noche); }
+.topbar--sobre-noche .locales__item--on,
+.topbar--sobre-noche .locales__item--on:hover { background: var(--sobre-noche); color: var(--noche); }
+.topbar--sobre-noche .btn--ink { background: var(--sobre-noche); color: var(--noche); }
+.topbar--sobre-noche .btn--ink:hover { background: var(--cobre); color: var(--sobre-cobre); }
+.topbar--sobre-noche .menu > summary { color: var(--sobre-noche-72); border-color: var(--sobre-noche-42); }
+
+/* El cambio se ve, no se salta de golpe. */
+.topbar { transition: background-color 0.3s ease, border-color 0.3s ease; }
+.topbar .wordmark, .topbar .nav a, .topbar .btn--ink { transition: color 0.3s ease, background-color 0.3s ease; }
 
 /* ── Botones: el óxido solo aquí ────────────────────────────────────────── */
 .btn {
@@ -411,7 +576,7 @@ p { margin: 0; text-wrap: pretty; }
    cuerpo y la luz que lo recorre le da el aviso.
 
    Los colores son los mismos que el resplandor de los planes: el óxido de la
-   marca (#8d5217, matiz 30) con un núcleo amarillo (matiz 48). Ni azul, ni
+   marca (cobre #ad5c27, matiz 25) con un núcleo amarillo. Ni azul, ni
    púrpura, ni rosa. */
 .calc-frame {
   margin-top: var(--s-32);
@@ -425,10 +590,10 @@ p { margin: 0; text-wrap: pretty; }
   height: 320px;
   background: radial-gradient(
     circle,
-    hsl(48 95% 62%) 0 10%,
-    hsl(38 88% 48%) 24%,
-    #8d5217 40%,
-    rgba(141, 82, 23, 0) 66%
+    hsl(44 92% 64%) 0 10%,
+    hsl(32 82% 50%) 24%,
+    var(--cobre) 40%,
+    rgba(173, 92, 39, 0) 66%
   );
 }
 .calc-frame__inner {
@@ -502,7 +667,7 @@ p { margin: 0; text-wrap: pretty; }
 .halftone {
   position: relative; overflow: hidden; width: 100%;
   background-color: var(--surface-halftone);
-  background-image: radial-gradient(rgba(20, 24, 29, 0.5) 1.3px, transparent 1.5px);
+  background-image: radial-gradient(rgba(23, 22, 20, 0.5) 1.3px, transparent 1.5px);
   background-size: 6px 6px;
 }
 .halftone__brief {
@@ -554,7 +719,7 @@ p { margin: 0; text-wrap: pretty; }
   right: 8%;
   top: 63%;
   height: 1px;
-  background: rgba(20, 24, 29, 0.5);
+  background: var(--tinta-58);
 }
 
 /* El halftone, encima de todo: es el tratamiento de la pieza, no de una capa.
@@ -565,7 +730,7 @@ p { margin: 0; text-wrap: pretty; }
   inset: 0;
   pointer-events: none;
   mix-blend-mode: multiply;
-  background-image: radial-gradient(rgba(20, 24, 29, 0.55) 1.3px, transparent 1.5px);
+  background-image: radial-gradient(rgba(23, 22, 20, 0.55) 1.3px, transparent 1.5px);
   background-size: 6px 6px;
 }
 

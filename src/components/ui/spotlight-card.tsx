@@ -21,9 +21,9 @@ const glowColorMap = {
   // El matiz recorre de `base` a `base + spread` según dónde esté el cursor.
   // Los cinco de arriba barren 200 grados o más, así que cualquiera de ellos
   // cruza el azul, el púrpura y el rosa por el camino. Este se queda en los
-  // 25 grados que van del óxido de la marca (#8d5217 es exactamente H=30) al
-  // amarillo: los dos únicos colores que el bloque de precios debe mostrar.
-  rust: { base: 30, spread: 25 }
+  // 25 grados que van del cobre de la marca (#ad5c27 es H=25) al amarillo:
+  // los dos únicos colores que el bloque de precios debe mostrar.
+  rust: { base: 25, spread: 25 }
 };
 
 const sizeMap = {
