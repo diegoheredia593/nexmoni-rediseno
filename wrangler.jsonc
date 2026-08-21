@@ -1,0 +1,15 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "nexmoni-rediseno",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-08-01",
+  // `nodejs_compat` es obligatorio: el adaptador ejecuta el servidor de Next
+  // con el runtime de Node, no en el edge runtime recortado. Es justo lo que
+  // permite que middleware.ts y /api/lead sigan tal como están escritos.
+  "compatibility_flags": ["nodejs_compat"],
+  "assets": {
+    "directory": ".open-next/assets",
+    "binding": "ASSETS"
+  },
+  "observability": { "enabled": true }
+}
