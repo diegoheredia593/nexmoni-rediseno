@@ -679,7 +679,7 @@ export const pt: Dictionary = {
     bandLead: "O dinheiro sai de um turno da noite na Europa e acaba numa cozinha em Guayaquil. As duas metades contam.",
     ocean: "O Atlântico à noite visto de grande altitude, com as luzes da costa na margem do enquadramento.",
     milan: "Homem jovem numa rua residencial de Milão ao anoitecer.",
-    lisbon: "Trabalhadora de cuidados encostada à janela de um corredor, em Lisboa.",
+    madrid: "Mulher na cozinha do seu apartamento em Madrid, encostada ao caixilho da porta.",
     guayaquil: "Mulher idosa na cozinha da sua casa em Guayaquil, a olhar para algo que tem nas mãos.",
     shop: "Interior de uma mercearia de bairro na costa equatoriana, com a luz a entrar pela porta.",
     captionSend: "Quem envia",

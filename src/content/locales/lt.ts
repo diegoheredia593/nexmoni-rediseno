@@ -682,7 +682,7 @@ export const lt: Dictionary = {
     bandLead: "Pinigai išeina iš naktinės pamainos Europoje ir atsiduria virtuvėje Gvajakilyje. Svarbios abi pusės.",
     ocean: "Atlantas naktį iš didelio aukščio, pakrantės žiburiai kadro pakraštyje.",
     milan: "Jaunas vyras gyvenamojoje Milano gatvėje sutemus.",
-    lisbon: "Slaugos darbuotoja prie koridoriaus lango Lisabonoje.",
+    madrid: "Moteris savo buto virtuvėje Madride, atsirėmusi į durų staktą.",
     guayaquil: "Vyresnė moteris savo virtuvėje Gvajakilyje žiūri į kažką, ką laiko rankose.",
     shop: "Kaimynystės parduotuvės vidus Ekvadoro pakrantėje, pro duris krenta šviesa.",
     captionSend: "Kas siunčia",

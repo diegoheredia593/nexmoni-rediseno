@@ -99,7 +99,7 @@ export function QrPlaceholder({ brief }: { brief: string }) {
 export function AvatarPlaceholder() {
   return (
     <div className="avatar">
-      <Image src="/foto/testimonio.webp" alt="" width={44} height={44} />
+      <Image src="/foto/remitente-madrid.webp" alt="" width={44} height={44} />
     </div>
   );
 }

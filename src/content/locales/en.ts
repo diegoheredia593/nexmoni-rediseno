@@ -661,7 +661,7 @@ export const en: Dictionary = {
     bandLead: "The money leaves a night shift in Europe and ends up in a kitchen in Guayaquil. Both halves count.",
     ocean: "The Atlantic at night from high altitude, coastal lights along the edge of the frame.",
     milan: "A young man on a residential street in Milan at dusk.",
-    lisbon: "A care worker leaning by a corridor window in Lisbon.",
+    madrid: "A woman in the kitchen of her flat in Madrid, leaning against the doorframe.",
     guayaquil: "An older woman in her kitchen in Guayaquil, looking at something in her hands.",
     shop: "The inside of a neighbourhood shop on the Ecuadorian coast, light coming through the doorway.",
     captionSend: "Who sends",

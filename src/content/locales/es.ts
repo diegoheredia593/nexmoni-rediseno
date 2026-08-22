@@ -690,7 +690,7 @@ export const es = {
     bandLead: "El dinero sale de un turno de noche en Europa y termina en una cocina de Guayaquil. Las dos mitades cuentan.",
     ocean: "El Atlántico de noche visto desde gran altura, con las luces de la costa en el borde del encuadre.",
     milan: "Hombre joven en una calle residencial de Milán al anochecer.",
-    lisbon: "Trabajadora de cuidados apoyada en la ventana de un pasillo, en Lisboa.",
+    madrid: "Mujer en la cocina de su piso en Madrid, apoyada en el marco de la puerta.",
     guayaquil: "Mujer mayor en la cocina de su casa en Guayaquil, mirando algo que tiene en las manos.",
     shop: "Interior de una tienda de barrio en la costa ecuatoriana, con la luz entrando por la puerta.",
     captionSend: "Quien envía",

@@ -22,7 +22,7 @@ export function PhotoBand({ dict }: { dict: Dictionary }) {
 
   const piezas = [
     { src: "/foto/remitente-milan.webp", alt: f.milan, pie: f.captionSend, alto: true },
-    { src: "/foto/remitente-lisboa.webp", alt: f.lisbon, pie: f.captionSend, alto: false },
+    { src: "/foto/remitente-madrid.webp", alt: f.madrid, pie: f.captionSend, alto: false },
     { src: "/foto/destino-guayaquil.webp", alt: f.guayaquil, pie: f.captionReceive, alto: false },
     { src: "/foto/destino-tienda.webp", alt: f.shop, pie: f.captionReceive, alto: true },
   ];
