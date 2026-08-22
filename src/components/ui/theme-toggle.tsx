@@ -1,9 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Moon, Sun } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { CLAVE_TEMA } from "@/lib/tema";
+import { cambiarTema, temaVigente } from "@/lib/cambiar-tema";
 
 interface ThemeToggleProps {
   className?: string;
@@ -17,6 +18,7 @@ interface ThemeToggleProps {
 export function ThemeToggle({ className, label, labelDia, labelNoche }: ThemeToggleProps) {
   const [isDark, setIsDark] = useState(false);
   const [montado, setMontado] = useState(false);
+  const boton = useRef<HTMLButtonElement>(null);
 
   // El original arranca con `useState(true)` y su propio estado. Aquí no puede:
   //
@@ -32,7 +34,7 @@ export function ThemeToggle({ className, label, labelDia, labelNoche }: ThemeTog
   // a las dos mirándola.
   useEffect(() => {
     const raiz = document.documentElement;
-    const leer = () => setIsDark(raiz.dataset.tema === "noche");
+    const leer = () => setIsDark(temaVigente() === "noche");
     leer();
     setMontado(true);
     const obs = new MutationObserver(leer);
@@ -53,15 +55,13 @@ export function ThemeToggle({ className, label, labelDia, labelNoche }: ThemeTog
     return () => mq.removeEventListener("change", alCambiar);
   }, []);
 
+  // El barrido nace en el botón que se pulsó, no en un punto fijo: hay dos
+  // conmutadores —barra y panel del menú— y el círculo debe salir del que
+  // tocó el visitante. `cambiarTema` se encarga de que, si el navegador no
+  // sabe hacer transiciones de vista o el visitante pidió menos movimiento,
+  // el tema cambie igual pero sin animación.
   const alternar = () => {
-    const siguiente = isDark ? "dia" : "noche";
-    document.documentElement.dataset.tema = siguiente;
-    try {
-      localStorage.setItem(CLAVE_TEMA, siguiente);
-    } catch {
-      // Modo privado de Safari o almacenamiento bloqueado: el tema se aplica
-      // igual, solo que no sobrevive a la recarga. No es motivo para romper.
-    }
+    void cambiarTema(isDark ? "dia" : "noche", boton.current);
     // El observador de arriba propaga el cambio a las dos instancias.
   };
 
@@ -71,6 +71,7 @@ export function ThemeToggle({ className, label, labelDia, labelNoche }: ThemeTog
 
   return (
     <button
+      ref={boton}
       type="button"
       role="switch"
       aria-checked={oscuro}

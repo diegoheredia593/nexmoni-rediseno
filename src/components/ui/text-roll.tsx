@@ -1,4 +1,5 @@
 'use client';
+import { useEffect, useState } from 'react';
 import {
   motion,
   useReducedMotion,
@@ -68,8 +69,16 @@ export function TextRoll({
   // Quien pide menos movimiento recibe el titular quieto. El bloque de
   // `prefers-reduced-motion` de globals.css no alcanza a esto: Framer anima
   // con estilos en línea desde JavaScript, fuera del alcance de la hoja.
+  // ⚠ Mismo motivo que en random-letter-swap: `useReducedMotion` devuelve
+  //   `null` en el servidor y `true` en el cliente de quien pide menos
+  //   movimiento. Ramificar en el primer render pinta dos árboles distintos,
+  //   React descarta el del servidor y regenera, y esa regeneración borra el
+  //   `data-tema` que escribe el script anti-parpadeo. Con `montado`, el
+  //   primer render coincide y el cambio pasa a ser un re-render normal.
   const reduceMotion = useReducedMotion();
-  if (reduceMotion) {
+  const [montado, setMontado] = useState(false);
+  useEffect(() => setMontado(true), []);
+  if (montado && reduceMotion) {
     return <span className={className}>{children}</span>;
   }
 

@@ -101,7 +101,18 @@ export const MovingBorder = ({
     return () => obs.disconnect();
   }, []);
 
-  const corriendo = aLaVista && !menosMovimiento;
+  // ⚠ `menosMovimiento` NO puede decidir el marcado del primer render.
+  //   `useReducedMotion` devuelve `null` en el servidor y `true` en el cliente
+  //   de quien pide menos movimiento, así que el `{!menosMovimiento && …}` de
+  //   abajo pintaba el punto en el servidor y no en el cliente. React descarta
+  //   entonces el marcado del servidor y regenera el árbol, y esa regeneración
+  //   se lleva por delante el `data-tema` que escribe el script anti-parpadeo.
+  //   Aquí se difiere igual que en text-roll y random-letter-swap.
+  const [montado, setMontado] = useState(false);
+  useEffect(() => setMontado(true), []);
+  const quieto = montado && menosMovimiento;
+
+  const corriendo = aLaVista && !quieto;
 
   useAnimationFrame((time) => {
     if (!corriendo) return;
@@ -129,7 +140,7 @@ export const MovingBorder = ({
       >
         <rect fill="none" width="100%" height="100%" rx={rx} ry={ry} ref={pathRef} />
       </svg>
-      {!menosMovimiento && (
+      {!quieto && (
         <motion.div
           style={{ position: "absolute", top: 0, left: 0, display: "inline-block", transform }}
         >

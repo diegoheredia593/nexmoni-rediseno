@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useState } from "react";
+import { useCallback, useEffect, useMemo, useState } from "react";
 import { motion, useReducedMotion, type Transition } from "motion/react";
 
 /**
@@ -63,8 +63,20 @@ export function RandomLetterSwap({
 
   // Quien pide menos movimiento recibe la etiqueta quieta. La regla de
   // globals.css no llega: motion anima con estilos en línea desde JavaScript.
+  //
+  // ⚠ EL CAMBIO SOLO PUEDE OCURRIR DESPUÉS DE MONTAR. `useReducedMotion`
+  //   devuelve `null` en el servidor y `true` en el cliente de quien pide
+  //   menos movimiento, así que ramificar en el primer render pinta DOS
+  //   ÁRBOLES DISTINTOS y React descarta el marcado del servidor y regenera.
+  //   Eso se llevaba por delante el `data-tema` que escribe el script
+  //   anti-parpadeo —medido: `noche` antes de hidratar, `null` después—, y el
+  //   visitante que había elegido tema oscuro volvía al claro sin tocar nada.
+  //   Con `montado` el primer render coincide y el cambio es un re-render
+  //   normal, no un desajuste.
   const menosMovimiento = useReducedMotion();
-  if (menosMovimiento) {
+  const [montado, setMontado] = useState(false);
+  useEffect(() => setMontado(true), []);
+  if (montado && menosMovimiento) {
     return <span className={className}>{label}</span>;
   }
 

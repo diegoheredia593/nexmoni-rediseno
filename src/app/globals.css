@@ -1652,3 +1652,27 @@ p { margin: 0; text-wrap: pretty; }
 /* La marca dentro de la maqueta del teléfono. Se separa del saludo lo justo
    para leerse como cabecera de la aplicación y no como parte del texto. */
 .app__marca { margin-bottom: var(--s-8); }
+
+/* ── Barrido circular al cambiar de tema ─────────────────────────────────────
+   `startViewTransition` fotografía la página antes y después y superpone las
+   dos instantáneas. Por defecto las funde una en otra; eso hay que apagarlo o
+   se ve el fundido Y el barrido a la vez, y el resultado es un borrón.
+
+   `mix-blend-mode: normal` es igual de necesario: el valor por defecto es
+   `plus-lighter`, pensado para que un fundido cruzado no oscurezca a mitad de
+   camino. Con un recorte en lugar de un fundido, ese modo suma las dos
+   instantáneas donde se solapan y el borde del círculo sale blanqueado.
+
+   El recorte lo anima JavaScript, no este archivo, porque el centro del
+   círculo depende de dónde esté el botón pulsado. */
+
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* La instantánea nueva se revela por encima de la vieja: es el círculo el que
+   crece, no la página vieja la que se encoge. */
+::view-transition-old(root) { z-index: 0; }
+::view-transition-new(root) { z-index: 1; }
