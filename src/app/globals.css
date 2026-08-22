@@ -1607,3 +1607,111 @@ p { margin: 0; text-wrap: pretty; }
   color: var(--ink-62);
 }
 @media (min-width: 621px) { .menu__tema { display: none; } }
+
+/* ── Banda de fotografía ─────────────────────────────────────────────────────
+   Cuatro piezas en fila, dos altas y dos bajas alternadas, para que la línea
+   superior no quede plana. La proporción la fija el CSS con `aspect-ratio`, no
+   la imagen: así el hueco conserva su sitio aunque el archivo todavía no
+   exista, y la maqueta puede montarse antes que la sesión de fotos. */
+
+.tira {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--s-16);
+  margin-top: var(--s-48);
+  align-items: end;
+}
+
+.tira__pieza { margin: 0; display: flex; flex-direction: column; gap: var(--s-12); }
+
+.tira__marco {
+  position: relative;
+  aspect-ratio: 3 / 4;
+  border-radius: var(--r-panel);
+  overflow: hidden;
+  background: var(--papel-3);
+}
+.tira__pieza[data-alto] .tira__marco { aspect-ratio: 3 / 4.6; }
+
+/* La imagen entra despacio al pasar el ratón. Es el único movimiento que se
+   permite aquí: la fotografía ya tiene bastante peso. */
+.tira__marco :where(img) { transition: transform 0.9s var(--ease-salida); }
+.tira__pieza:hover .tira__marco :where(img) { transform: scale(1.04); }
+
+.tira__pie {
+  font: 400 var(--t-micro) / 1 var(--mono);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-45);
+}
+
+@media (max-width: 700px) {
+  .tira { grid-template-columns: 1fr 1fr; gap: var(--s-12); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .tira__pieza:hover .tira__marco :where(img) { transform: none; }
+}
+
+/* ── Anatomía de la tarifa ───────────────────────────────────────────────────
+   Una sola barra apilada, a escala real sobre lo que se paga. Los dos tramos
+   de coste van en el color de aviso y no en el de acción: no son algo que se
+   pueda pulsar, y teñirlos de acento los haría parecer un botón. */
+
+.barra { margin-top: var(--s-48); max-width: 780px; }
+
+.barra__extremos {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  gap: var(--s-24); margin-bottom: var(--s-16);
+}
+.barra__extremos span { display: flex; flex-direction: column; gap: 3px; }
+.barra__derecha { text-align: right; }
+.barra__extremos em {
+  font: 400 var(--t-micro) / 1 var(--mono);
+  letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-45); font-style: normal;
+}
+.barra__extremos b {
+  font: 600 var(--t-h3) / 1.1 var(--sans);
+  letter-spacing: var(--track-h3); font-variant-numeric: tabular-nums;
+}
+.barra__llega { color: var(--senal); }
+
+.barra__pista {
+  display: flex; gap: 2px;
+  height: 44px;
+  border-radius: var(--r-campo);
+  overflow: hidden;
+}
+.barra__tramo { will-change: transform; }
+.barra__tramo[data-tono="llega"] { background: var(--senal); }
+.barra__tramo[data-tono="coste"] { background: var(--aviso); }
+.barra__tramo[data-tono="coste-2"] { background: color-mix(in srgb, var(--aviso) 55%, var(--papel-3)); }
+
+.barra__leyenda {
+  list-style: none; margin: var(--s-24) 0 0; padding: 0;
+  display: flex; flex-wrap: wrap; gap: var(--s-12) var(--s-32);
+}
+.barra__leyenda li { display: flex; align-items: center; gap: var(--s-8); }
+.barra__punto { width: 10px; height: 10px; border-radius: 2px; flex: none; }
+.barra__punto[data-tono="llega"] { background: var(--senal); }
+.barra__punto[data-tono="coste"] { background: var(--aviso); }
+.barra__punto[data-tono="coste-2"] { background: color-mix(in srgb, var(--aviso) 55%, var(--papel-3)); }
+.barra__etq { font-size: var(--t-body-s); }
+.barra__val { font: 400 var(--t-caption) / 1 var(--mono); color: var(--ink-62); font-variant-numeric: tabular-nums; }
+
+.barra__total {
+  margin: var(--s-32) 0 0; padding-top: var(--s-16);
+  border-top: 1px solid var(--hairline);
+  font-size: var(--t-body);
+}
+.barra__pct {
+  font: 600 var(--t-h2) / 1 var(--sans);
+  letter-spacing: var(--track-h2);
+  font-variant-numeric: tabular-nums;
+  margin-left: var(--s-8);
+}
+.barra__nota { margin-top: var(--s-16); max-width: 62ch; }
+
+@media (max-width: 620px) {
+  .barra__extremos b { font-size: var(--t-lead); }
+  .barra__pista { height: 34px; }
+}

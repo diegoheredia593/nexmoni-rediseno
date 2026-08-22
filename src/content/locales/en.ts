@@ -656,4 +656,28 @@ export const en: Dictionary = {
       share: "Download receipt",
     },
   },
+  photos: {
+    band: "The other side",
+    bandLead: "The money leaves a night shift in Europe and ends up in a kitchen in Guayaquil. Both halves count.",
+    ocean: "The Atlantic at night from high altitude, coastal lights along the edge of the frame.",
+    milan: "A young man on a residential street in Milan at dusk.",
+    lisbon: "A care worker leaning by a corridor window in Lisbon.",
+    guayaquil: "An older woman in her kitchen in Guayaquil, looking at something in her hands.",
+    shop: "The inside of a neighbourhood shop on the Ecuadorian coast, light coming through the doorway.",
+    captionSend: "Who sends",
+    captionReceive: "Who receives",
+  },
+  feeBar: {
+    eyebrow: "Anatomy of the fee",
+    title: "What you pay and what lands",
+    lead:
+      "A 200 EUR transfer to Ecuador, in full. The bar is to scale: each band is as wide as it costs.",
+    sends: "You pay",
+    arrives: "Arrives",
+    fee: "Fee",
+    spread: "Spread",
+    totalCost: "Total cost of the transfer",
+    note:
+      "Example using the proposed remittance tier (1.5%, minimum 3 EUR), still undecided. The published schedule only carries the flat 25 EUR SWIFT charge, which at this amount would be 14%.",
+  },
 };

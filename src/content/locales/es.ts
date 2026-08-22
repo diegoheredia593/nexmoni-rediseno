@@ -683,4 +683,30 @@ export const es = {
       share: "Descargar comprobante",
     },
   },
+  /* Textos alternativos de la fotografía. Se traducen porque describen la
+     imagen a quien no puede verla, y eso es contenido, no decoración. */
+  photos: {
+    band: "Al otro lado",
+    bandLead: "El dinero sale de un turno de noche en Europa y termina en una cocina de Guayaquil. Las dos mitades cuentan.",
+    ocean: "El Atlántico de noche visto desde gran altura, con las luces de la costa en el borde del encuadre.",
+    milan: "Hombre joven en una calle residencial de Milán al anochecer.",
+    lisbon: "Trabajadora de cuidados apoyada en la ventana de un pasillo, en Lisboa.",
+    guayaquil: "Mujer mayor en la cocina de su casa en Guayaquil, mirando algo que tiene en las manos.",
+    shop: "Interior de una tienda de barrio en la costa ecuatoriana, con la luz entrando por la puerta.",
+    captionSend: "Quien envía",
+    captionReceive: "Quien recibe",
+  },
+  feeBar: {
+    eyebrow: "Anatomía de la tarifa",
+    title: "Qué pagas y qué llega",
+    lead:
+      "Un envío de 200 € a Ecuador, entero. La barra está a escala: cada tramo ocupa lo que cuesta.",
+    sends: "Pagas",
+    arrives: "Llega",
+    fee: "Comisión",
+    spread: "Diferencial",
+    totalCost: "Coste total del envío",
+    note:
+      "Ejemplo con el tramo de remesa propuesto (1,5 %, mínimo 3 €), todavía sin decidir. El tarifario publicado solo recoge el SWIFT de 25 € fijos, que en este importe supondría un 14 %.",
+  },
 } as const;

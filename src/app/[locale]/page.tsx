@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
 import { HeroCinematic } from "@/components/HeroCinematic";
 import { PhoneScroll } from "@/components/PhoneScroll";
+import { PhotoBand } from "@/components/PhotoBand";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { GlowCard } from "@/components/ui/spotlight-card";
@@ -175,6 +176,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
         </div>
       </section>
+
+      {/* ── Las dos mitades del envío ─────────────────────────────────── */}
+      <PhotoBand dict={dict} />
 
       {/* ── Descarga: el final del embudo ─────────────────────────────── */}
       <section id="descargar" className="section rule">

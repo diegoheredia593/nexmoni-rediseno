@@ -674,4 +674,28 @@ export const pt: Dictionary = {
       share: "Descarregar comprovativo",
     },
   },
+  photos: {
+    band: "Do outro lado",
+    bandLead: "O dinheiro sai de um turno da noite na Europa e acaba numa cozinha em Guayaquil. As duas metades contam.",
+    ocean: "O Atlântico à noite visto de grande altitude, com as luzes da costa na margem do enquadramento.",
+    milan: "Homem jovem numa rua residencial de Milão ao anoitecer.",
+    lisbon: "Trabalhadora de cuidados encostada à janela de um corredor, em Lisboa.",
+    guayaquil: "Mulher idosa na cozinha da sua casa em Guayaquil, a olhar para algo que tem nas mãos.",
+    shop: "Interior de uma mercearia de bairro na costa equatoriana, com a luz a entrar pela porta.",
+    captionSend: "Quem envia",
+    captionReceive: "Quem recebe",
+  },
+  feeBar: {
+    eyebrow: "Anatomia da comissão",
+    title: "O que paga e o que chega",
+    lead:
+      "Um envio de 200 € para o Equador, por inteiro. A barra está à escala: cada faixa ocupa o que custa.",
+    sends: "Paga",
+    arrives: "Chega",
+    fee: "Comissão",
+    spread: "Diferencial",
+    totalCost: "Custo total do envio",
+    note:
+      "Exemplo com o escalão de remessa proposto (1,5 %, mínimo 3 €), ainda por decidir. O tarifário publicado só contempla o SWIFT de 25 € fixos, que neste montante seria 14 %.",
+  },
 };

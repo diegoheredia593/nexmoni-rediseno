@@ -677,4 +677,28 @@ export const lt: Dictionary = {
       share: "Atsisiųsti kvitą",
     },
   },
+  photos: {
+    band: "Kitoje pusėje",
+    bandLead: "Pinigai išeina iš naktinės pamainos Europoje ir atsiduria virtuvėje Gvajakilyje. Svarbios abi pusės.",
+    ocean: "Atlantas naktį iš didelio aukščio, pakrantės žiburiai kadro pakraštyje.",
+    milan: "Jaunas vyras gyvenamojoje Milano gatvėje sutemus.",
+    lisbon: "Slaugos darbuotoja prie koridoriaus lango Lisabonoje.",
+    guayaquil: "Vyresnė moteris savo virtuvėje Gvajakilyje žiūri į kažką, ką laiko rankose.",
+    shop: "Kaimynystės parduotuvės vidus Ekvadoro pakrantėje, pro duris krenta šviesa.",
+    captionSend: "Kas siunčia",
+    captionReceive: "Kas gauna",
+  },
+  feeBar: {
+    eyebrow: "Mokesčio sandara",
+    title: "Ką mokate ir kas pasiekia",
+    lead:
+      "200 EUR pervedimas į Ekvadorą, visas. Juosta pavaizduota masteliu: kiekviena dalis užima tiek, kiek kainuoja.",
+    sends: "Mokate",
+    arrives: "Pasiekia",
+    fee: "Mokestis",
+    spread: "Kurso skirtumas",
+    totalCost: "Bendra pervedimo kaina",
+    note:
+      "Pavyzdys su siūloma perlaidų pakopa (1,5 %, ne mažiau kaip 3 EUR), dar nepatvirtinta. Paskelbtame kainoraštyje yra tik fiksuotas 25 EUR SWIFT mokestis, kuris nuo šios sumos sudarytų 14 %.",
+  },
 };

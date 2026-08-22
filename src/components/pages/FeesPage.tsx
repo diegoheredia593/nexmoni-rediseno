@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { Calculator } from "@/components/Calculator";
 import { Button as MarcoAnimado } from "@/components/ui/moving-border";
+import { FeeBar } from "@/components/FeeBar";
 import { PageCloser } from "@/components/PageCloser";
 import { Reveal } from "@/components/Reveal";
 import { withTerms } from "@/components/glossary/withTerms";
@@ -36,6 +37,9 @@ export function FeesPage({ locale, dict }: { locale: Locale; dict: Dictionary })
           </Reveal>
         </div>
       </section>
+
+      {/* ── Anatomía de la tarifa ──────────────────────────────────────── */}
+      <FeeBar dict={dict} />
 
       {/* ── Calculadora ────────────────────────────────────────────────── */}
       <section id="calculadora" className="section rule">
