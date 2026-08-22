@@ -628,14 +628,22 @@ p { margin: 0; text-wrap: pretty; }
 .split-top { align-items: start; padding: 0; }
 .hero__actions { display: flex; align-items: center; gap: var(--s-24); flex-wrap: wrap; }
 
+/* ── Banda de confianza: el pie del hero, no la cabeza del día ───────────────
+   Sobre el papel claro esta franja quedaba huérfana: demasiado pegada al hero
+   para leerse como sección propia y demasiado clara para pertenecer a él. En
+   clave de noche cierra el hero, y el amanecer de la página ocurre justo
+   debajo, que es donde la narrativa lo pide. */
+.confianza {
+  background: var(--noche);
+  color: var(--sobre-noche-72);
+}
 .trust {
   display: flex; flex-wrap: wrap; gap: var(--s-32);
-  padding: var(--s-24) 0;
-  border-top: 1px solid var(--hairline);
-  border-bottom: 1px solid var(--hairline);
+  padding: var(--s-24) 0 var(--s-32);
 }
 .trust > div { display: flex; gap: var(--s-12); align-items: baseline; max-width: 42ch; }
-.trust .n { font: 400 var(--t-micro) / 1 var(--mono); color: var(--ink-45); }
+.trust .n { font: 400 var(--t-micro) / 1 var(--mono); color: var(--sobre-noche-42); }
+.trust .caption { color: var(--sobre-noche-72); }
 
 /* ── Lista con filetes: sustituye a la rejilla de tarjetas ──────────────── */
 .list { border-top: 1px solid var(--hairline-firm); }
@@ -1676,3 +1684,13 @@ p { margin: 0; text-wrap: pretty; }
    crece, no la página vieja la que se encoge. */
 ::view-transition-old(root) { z-index: 0; }
 ::view-transition-new(root) { z-index: 1; }
+
+/* La marca junto al logotipo suma 30 px (22 del icono más la separación) al
+   lado izquierdo de la barra, y a 360 px con la etiqueta lituana eso devolvía
+   el desbordamiento que la regla de arriba había cerrado: medido, 16 px.
+   A este ancho el icono se retira de la BARRA —el nombre escrito sigue ahí y
+   la marca sigue en el pie y en el teléfono, donde sí hay sitio. */
+@media (max-width: 400px) {
+  .topbar .wordmark svg { display: none; }
+  .topbar .wordmark { gap: 0; }
+}

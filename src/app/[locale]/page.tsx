@@ -27,17 +27,24 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
     <>
       <HeroCinematic locale={locale} dict={dict} />
 
-      <div className="wrap">
-        {/* Confianza: una línea, sin tarjetas */}
-        <div className="trust">
-          {dict.hero.trust.map((body, i) => (
-            <div key={body}>
-              <span className="n">{`0${i + 1}`}</span>
-              <p className="caption">{withTerms(body)}</p>
-            </div>
-          ))}
+      {/* Confianza: una línea, sin tarjetas. Va en clave de NOCHE, no de día:
+          son las credenciales del hero y pertenecen a él. Sobre el papel claro
+          quedaba como una franja huérfana entre dos zonas, sin ser de ninguna.
+          `withTerms(…, "dark")` es obligatorio aquí: los términos del glosario
+          tienen dos juegos de color y el claro no se lee sobre el fondo
+          oscuro. */}
+      <section className="confianza">
+        <div className="wrap">
+          <div className="trust">
+            {dict.hero.trust.map((body, i) => (
+              <div key={body}>
+                <span className="n">{`0${i + 1}`}</span>
+                <p className="caption">{withTerms(body, "dark")}</p>
+              </div>
+            ))}
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* ── Cómo funciona: filas con filete, no tarjetas ──────────────── */}
       <section id="como" className="section">
