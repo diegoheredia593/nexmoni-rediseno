@@ -668,16 +668,13 @@ export const en: Dictionary = {
     captionReceive: "Who receives",
   },
   feeBar: {
-    eyebrow: "Anatomy of the fee",
-    title: "What you pay and what lands",
-    lead:
-      "A 200 EUR transfer to Ecuador, in full. The bar is to scale: each band is as wide as it costs.",
-    sends: "You pay",
+    eyebrow: "Anatomy of the transfer",
+    lead: "To scale: each band is as wide as its share of what you hand over.",
+    sends: "You hand over",
     arrives: "Arrives",
+    converts: "Converted",
     fee: "Fee",
     spread: "Spread",
-    totalCost: "Total cost of the transfer",
-    note:
-      "Example using the proposed remittance tier (1.5%, minimum 3 EUR), still undecided. The published schedule only carries the flat 25 EUR SWIFT charge, which at this amount would be 14%.",
+    totalCost: "Total cost",
   },
 };

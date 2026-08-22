@@ -1551,7 +1551,14 @@ p { margin: 0; text-wrap: pretty; }
    de coste van en el color de aviso y no en el de acción: no son algo que se
    pueda pulsar, y teñirlos de acento los haría parecer un botón. */
 
-.barra { margin-top: var(--s-48); max-width: 780px; }
+.barra {
+  margin-top: var(--s-32);
+  padding-top: var(--s-24);
+  border-top: 1px solid var(--hairline);
+}
+
+.barra__cabeza { margin-bottom: var(--s-16); }
+.barra__lead { margin: var(--s-4) 0 0; max-width: 52ch; }
 
 .barra__extremos {
   display: flex; justify-content: space-between; align-items: flex-end;
@@ -1575,13 +1582,21 @@ p { margin: 0; text-wrap: pretty; }
   border-radius: var(--r-campo);
   overflow: hidden;
 }
-.barra__tramo { will-change: transform; }
+
+/* El ancho se anima, no la escala. `scaleX` deformaría el contenido y además
+   no se puede combinar con un ancho que cambia con cada pulsación: la barra
+   ahora sigue a la calculadora en vivo. 240 ms es lo justo para que el ojo
+   siga qué tramo creció sin que se sienta lento al teclear. */
+.barra__tramo {
+  min-width: 0;
+  transition: width 0.24s var(--ease-suave);
+}
 .barra__tramo[data-tono="llega"] { background: var(--senal); }
 .barra__tramo[data-tono="coste"] { background: var(--aviso); }
 .barra__tramo[data-tono="coste-2"] { background: color-mix(in srgb, var(--aviso) 55%, var(--papel-3)); }
 
 .barra__leyenda {
-  list-style: none; margin: var(--s-24) 0 0; padding: 0;
+  list-style: none; margin: var(--s-16) 0 0; padding: 0;
   display: flex; flex-wrap: wrap; gap: var(--s-12) var(--s-32);
 }
 .barra__leyenda li { display: flex; align-items: center; gap: var(--s-8); }
@@ -1593,17 +1608,17 @@ p { margin: 0; text-wrap: pretty; }
 .barra__val { font: 400 var(--t-caption) / 1 var(--mono); color: var(--ink-62); font-variant-numeric: tabular-nums; }
 
 .barra__total {
-  margin: var(--s-32) 0 0; padding-top: var(--s-16);
+  display: flex; align-items: baseline; gap: var(--s-12);
+  margin: var(--s-24) 0 0; padding-top: var(--s-16);
   border-top: 1px solid var(--hairline);
   font-size: var(--t-body);
 }
 .barra__pct {
-  font: 600 var(--t-h2) / 1 var(--sans);
-  letter-spacing: var(--track-h2);
+  font: 600 var(--t-h3) / 1 var(--sans);
+  letter-spacing: var(--track-h3);
   font-variant-numeric: tabular-nums;
-  margin-left: var(--s-8);
+  margin-left: auto;
 }
-.barra__nota { margin-top: var(--s-16); max-width: 62ch; }
 
 @media (max-width: 620px) {
   .barra__extremos b { font-size: var(--t-lead); }

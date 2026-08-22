@@ -697,16 +697,13 @@ export const es = {
     captionReceive: "Quien recibe",
   },
   feeBar: {
-    eyebrow: "Anatomía de la tarifa",
-    title: "Qué pagas y qué llega",
-    lead:
-      "Un envío de 200 € a Ecuador, entero. La barra está a escala: cada tramo ocupa lo que cuesta.",
-    sends: "Pagas",
+    eyebrow: "Anatomía del envío",
+    lead: "A escala: cada tramo ocupa lo que pesa sobre lo que entregas.",
+    sends: "Entregas",
     arrives: "Llega",
+    converts: "Se convierte",
     fee: "Comisión",
     spread: "Diferencial",
-    totalCost: "Coste total del envío",
-    note:
-      "Ejemplo con el tramo de remesa propuesto (1,5 %, mínimo 3 €), todavía sin decidir. El tarifario publicado solo recoge el SWIFT de 25 € fijos, que en este importe supondría un 14 %.",
+    totalCost: "Coste total",
   },
 } as const;

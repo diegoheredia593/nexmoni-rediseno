@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { TextRoll } from "@/components/ui/text-roll";
 import { useEffect, useRef, useState } from "react";
 import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
@@ -66,10 +67,16 @@ export function HeroCinematic({ locale, dict }: { locale: Locale; dict: Dictiona
       <div className="cine__in wrap">
         <span className="cine__kicker">{dict.hero.kicker.join(" · ")}</span>
 
+        {/* El titular entra letra a letra al cargar. Esto NO contradice la regla
+            de «nada se anima por encima del pliegue»: aquella prohíbe los
+            revelados atados al scroll, que retrasan contenido ya visible. Esto
+            es el gesto de apertura del hero y arranca solo, sin esperar a nada.
+            `TextRoll` agrupa cada palabra en una caja sin corte, así que el
+            salto de línea nunca parte una palabra por la mitad. */}
         <h1 className="cine__title">
-          {dict.hero.titleTop}
+          <TextRoll>{dict.hero.titleTop}</TextRoll>
           <br />
-          {dict.hero.titleBottom}
+          <TextRoll>{dict.hero.titleBottom}</TextRoll>
         </h1>
 
         <p className="cine__lead">{dict.hero.lead}</p>

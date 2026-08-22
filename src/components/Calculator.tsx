@@ -14,6 +14,7 @@ import {
 } from "@/content/pricing";
 import { formatMoney, formatPercent, formatRate, parseAmount } from "@/lib/format";
 import { quote } from "@/lib/quote";
+import { FeeBar } from "@/components/FeeBar";
 import { Term } from "./glossary/Term";
 
 function destinationsFor(from: CurrencyCode) {
@@ -113,6 +114,11 @@ export function Calculator({ dict }: { dict: Dictionary }) {
               strong
             />
           </dl>
+
+          {/* La representación gráfica de lo que se acaba de calcular. Va aquí
+              y no en una sección aparte porque una barra que cambia a 800 px
+              de donde estás tecleando no la ve nadie. */}
+          <FeeBar dict={dict} quote={result} from={from} to={to} />
 
           <p className="caption" style={{ paddingTop: "var(--s-16)" }}>
             {t.foot}

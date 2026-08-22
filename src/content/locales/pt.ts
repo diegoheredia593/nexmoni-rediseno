@@ -686,16 +686,13 @@ export const pt: Dictionary = {
     captionReceive: "Quem recebe",
   },
   feeBar: {
-    eyebrow: "Anatomia da comissão",
-    title: "O que paga e o que chega",
-    lead:
-      "Um envio de 200 € para o Equador, por inteiro. A barra está à escala: cada faixa ocupa o que custa.",
-    sends: "Paga",
+    eyebrow: "Anatomia do envio",
+    lead: "À escala: cada faixa ocupa o que pesa sobre o que entrega.",
+    sends: "Entrega",
     arrives: "Chega",
+    converts: "Convertido",
     fee: "Comissão",
     spread: "Diferencial",
-    totalCost: "Custo total do envio",
-    note:
-      "Exemplo com o escalão de remessa proposto (1,5 %, mínimo 3 €), ainda por decidir. O tarifário publicado só contempla o SWIFT de 25 € fixos, que neste montante seria 14 %.",
+    totalCost: "Custo total",
   },
 };

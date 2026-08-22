@@ -689,16 +689,13 @@ export const lt: Dictionary = {
     captionReceive: "Kas gauna",
   },
   feeBar: {
-    eyebrow: "Mokesčio sandara",
-    title: "Ką mokate ir kas pasiekia",
-    lead:
-      "200 EUR pervedimas į Ekvadorą, visas. Juosta pavaizduota masteliu: kiekviena dalis užima tiek, kiek kainuoja.",
-    sends: "Mokate",
+    eyebrow: "Pervedimo sandara",
+    lead: "Masteliu: kiekviena dalis užima tiek, kiek sveria nuo jūsų perduodamos sumos.",
+    sends: "Perduodate",
     arrives: "Pasiekia",
+    converts: "Konvertuojama",
     fee: "Mokestis",
     spread: "Kurso skirtumas",
-    totalCost: "Bendra pervedimo kaina",
-    note:
-      "Pavyzdys su siūloma perlaidų pakopa (1,5 %, ne mažiau kaip 3 EUR), dar nepatvirtinta. Paskelbtame kainoraštyje yra tik fiksuotas 25 EUR SWIFT mokestis, kuris nuo šios sumos sudarytų 14 %.",
+    totalCost: "Bendra kaina",
   },
 };
