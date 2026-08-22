@@ -4,7 +4,7 @@ import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
 import { RandomLetterSwap } from "@/components/ui/random-letter-swap";
 import { LocaleSwitch } from "./LocaleSwitch";
-import { ThemeSwitch } from "./ThemeSwitch";
+import { ThemeToggle } from "@/components/ui/theme-toggle";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
@@ -27,7 +27,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </nav>
 
         <div className="topbar__end">
-          <ThemeSwitch
+          <ThemeToggle
+            className="tema-barra"
             label={dict.site.themeLabel}
             labelDia={dict.site.themeDay}
             labelNoche={dict.site.themeNight}
@@ -55,7 +56,8 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                   puede ir etiquetado. */}
               <div className="menu__tema">
                 <span>{dict.site.themeLabel}</span>
-                <ThemeSwitch
+                <ThemeToggle
+                  className="tema-menu"
                   label={dict.site.themeLabel}
                   labelDia={dict.site.themeDay}
                   labelNoche={dict.site.themeNight}

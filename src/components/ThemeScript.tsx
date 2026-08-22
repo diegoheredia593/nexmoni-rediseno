@@ -1,4 +1,4 @@
-import { CLAVE_TEMA } from "./ThemeSwitch";
+import { CLAVE_TEMA } from "@/lib/tema";
 
 /**
  * Escribe `data-tema` en <html> antes del primer pintado.

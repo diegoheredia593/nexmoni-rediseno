@@ -1053,112 +1053,6 @@ p { margin: 0; text-wrap: pretty; }
   .closer__actions { justify-content: flex-start; }
 }
 
-/* ── Conmutador día / noche ──────────────────────────────────────────────────
-   Un disco que se desplaza de un extremo al otro y por el camino cambia de
-   astro: de día lleva rayos (`box-shadow`, sin nodos extra) y de noche una
-   segunda circunferencia del color de la pista le da el mordisco que lo
-   convierte en luna creciente. Las tres estrellas solo aparecen de noche.
-
-   Es el único adorno de la barra, así que se le permite ser expresivo. El
-   bloque global de `prefers-reduced-motion` de más arriba le quita todas las
-   transiciones de golpe; el conmutador sigue funcionando, solo que cambia de
-   estado sin recorrido. */
-
-.tema {
-  position: relative;
-  width: 52px;
-  height: 28px;
-  flex: none;
-  padding: 0;
-  border: 1px solid var(--filete-2);
-  border-radius: var(--r-pildora);
-  background: var(--papel-3);
-  cursor: pointer;
-  overflow: hidden;
-  transition: background-color 0.45s var(--ease-suave), border-color 0.45s var(--ease-suave);
-}
-
-.tema[data-noche] {
-  background: var(--noche-2);
-  border-color: rgb(var(--rgb-acento) / 0.45);
-}
-
-.tema__astro {
-  position: absolute;
-  top: 50%;
-  left: 4px;
-  width: 18px;
-  height: 18px;
-  margin-top: -9px;
-  border-radius: 50%;
-  background: var(--aviso);
-  /* Los rayos del sol. Cuatro sombras a distancia fija; al pasar a noche se
-     encogen a cero y desaparecen sin dejar hueco. */
-  box-shadow:
-    0 -7px 0 -6px var(--aviso),
-    0  7px 0 -6px var(--aviso),
-    -7px 0 0 -6px var(--aviso),
-    7px  0 0 -6px var(--aviso);
-  transition:
-    left 0.45s var(--ease-salida),
-    background-color 0.45s var(--ease-suave),
-    box-shadow 0.35s var(--ease-suave);
-}
-
-.tema[data-noche] .tema__astro {
-  left: 30px;
-  background: var(--sobre-noche);
-  box-shadow:
-    0 -7px 0 -9px transparent,
-    0  7px 0 -9px transparent,
-    -7px 0 0 -9px transparent,
-    7px  0 0 -9px transparent;
-}
-
-/* El mordisco. De día está encogido y fuera del disco; de noche entra y toma
-   tamaño, y como va pintado del color exacto de la pista el recorte parece
-   real en vez de una silueta pegada encima. */
-.tema__mordisco {
-  position: absolute;
-  top: -3px;
-  right: -3px;
-  width: 16px;
-  height: 16px;
-  border-radius: 50%;
-  background: var(--papel-3);
-  transform: scale(0) translate(6px, -6px);
-  transition: transform 0.45s var(--ease-salida), background-color 0.45s var(--ease-suave);
-}
-
-.tema[data-noche] .tema__mordisco {
-  background: var(--noche-2);
-  transform: scale(1) translate(0, 0);
-}
-
-.tema__estrellas {
-  position: absolute;
-  inset: 0;
-  opacity: 0;
-  transition: opacity 0.4s var(--ease-suave);
-}
-
-.tema[data-noche] .tema__estrellas { opacity: 1; }
-
-.tema__estrellas i {
-  position: absolute;
-  width: 2px;
-  height: 2px;
-  border-radius: 50%;
-  background: var(--sobre-noche-72);
-}
-
-.tema__estrellas i:nth-child(1) { top: 7px;  left: 9px; }
-.tema__estrellas i:nth-child(2) { top: 16px; left: 15px; width: 1.5px; height: 1.5px; }
-.tema__estrellas i:nth-child(3) { top: 11px; left: 20px; }
-
-.tema:hover { border-color: var(--acento); }
-.tema:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
-
 /* ── El teléfono que se desplaza con la página ───────────────────────────────
    Proporciones reales del iPhone 16: 393 × 852 pt lógicos y 55 pt de radio en
    la esquina. A 300 px de ancho eso son 650 px de alto y 42 px de radio; el
@@ -1587,11 +1481,11 @@ p { margin: 0; text-wrap: pretty; }
    más abajo que el bloque de adaptación original, así que una media query
    colocada allí arriba perdía la cascada por orden de aparición. */
 @media (max-width: 620px) {
-  .topbar__end > .tema { display: none; }
+  .tema-barra { display: none; }
 }
 
 @media (min-width: 621px) {
-  .menu__panel .tema { display: none; }
+  .tema-menu { display: none; }
 }
 
 /* En el panel el conmutador va etiquetado: ahí no hay contexto que explique
@@ -1714,4 +1608,17 @@ p { margin: 0; text-wrap: pretty; }
 @media (max-width: 620px) {
   .barra__extremos b { font-size: var(--t-lead); }
   .barra__pista { height: 34px; }
+}
+
+/* ── Pantallas de 360 px ─────────────────────────────────────────────────────
+   Medido en lituano a 360 px: 4 px de desbordamiento. No lo causa el
+   conmutador —a este ancho ya está en el menú— sino «Atsisiųsti programėlę»,
+   que hace un botón de 183 px. 360 px es el ancho del Android de gama baja
+   que este encargo tiene como público, así que importa.
+
+   Se recorta el relleno del botón, no su texto: la acción es el objetivo del
+   embudo y truncarla sería peor que apretarla. */
+@media (max-width: 400px) {
+  .topbar__end .btn--ink { padding-left: 13px; padding-right: 13px; }
+  .topbar__in { gap: var(--s-8); }
 }
