@@ -5,12 +5,16 @@ import { href } from "@/content/routes";
 import { RandomLetterSwap } from "@/components/ui/random-letter-swap";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
+import { AppIcon } from "@/components/AppIcon";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
     <header className="topbar">
       <div className="topbar__in">
         <Link href={href(locale, "/")} className="wordmark">
+          {/* Sin `title`: el nombre ya va escrito al lado y anunciarlo dos
+              veces es ruido para quien usa lector de pantalla. */}
+          <AppIcon size={22} />
           {brand.name}
         </Link>
 

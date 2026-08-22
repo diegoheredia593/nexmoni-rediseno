@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { brand } from "@/content/brand";
+import { AppIcon } from "@/components/AppIcon";
 import { StoreButtons } from "./StoreButtons";
 import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
@@ -10,7 +11,10 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
       <div className="wrap">
         <div className="footer__grid">
           <div className="footer__col">
-            <span className="wordmark">{brand.name}</span>
+            <span className="wordmark">
+              <AppIcon size={24} />
+              {brand.name}
+            </span>
             <p className="body-s" style={{ maxWidth: "34ch" }}>
               {dict.footer.blurb}
             </p>

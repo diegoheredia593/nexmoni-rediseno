@@ -4,6 +4,7 @@ import { useEffect, useRef } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { appDemo, dinero, tasa } from "@/content/appDemo";
+import { AppIcon } from "@/components/AppIcon";
 import type { Dictionary } from "@/content/dictionary";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -115,6 +116,9 @@ export function PhoneScroll({ dict }: { dict: Dictionary }) {
                     <div className="fone__lienzo" ref={lienzo}>
                       {/* 1 · Inicio */}
                       <div className="app__pant">
+                        {/* `enCaja`: cuadrado redondeado relleno con la marca
+                            calada, que es como se ve el icono en el teléfono. */}
+                        <AppIcon size={38} enCaja className="app__marca" />
                         <p className="app__saludo">{u.greeting}</p>
                         <p className="app__titulo">{u.prompt}</p>
                         <p className="app__etq">{u.recent}</p>

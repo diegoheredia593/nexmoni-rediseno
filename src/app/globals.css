@@ -518,7 +518,18 @@ p { margin: 0; text-wrap: pretty; }
   padding: var(--s-16) var(--gutter);
   display: flex; align-items: center; gap: var(--s-24);
 }
-.wordmark { font-size: var(--t-lead); font-weight: 600; letter-spacing: -0.02em; }
+/* El logotipo lleva ahora la marca al lado del nombre. `inline-flex` en vez de
+   `flex` para que dentro del pie siga comportándose como texto en su línea. */
+.wordmark {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--s-8);
+  font-size: var(--t-lead);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+/* El SVG hereda la línea base del texto y quedaría desplazado hacia abajo. */
+.wordmark svg { flex: none; display: block; }
 .nav { display: flex; gap: var(--s-24); margin-left: auto; }
 .nav a { font-size: var(--t-caption); color: var(--ink-62); transition: color 0.18s ease; }
 .nav a:hover { color: var(--ink); }
@@ -1637,3 +1648,7 @@ p { margin: 0; text-wrap: pretty; }
   .topbar__end .btn--ink { padding-left: 13px; padding-right: 13px; }
   .topbar__in { gap: var(--s-8); }
 }
+
+/* La marca dentro de la maqueta del teléfono. Se separa del saludo lo justo
+   para leerse como cabecera de la aplicación y no como parte del texto. */
+.app__marca { margin-bottom: var(--s-8); }
