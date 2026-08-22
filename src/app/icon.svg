@@ -1,13 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+    <linearGradient id="g" x1="0" y1="0" x2="0.42" y2="1">
       <stop offset="0%" stop-color="#5fb8bd"/>
       <stop offset="100%" stop-color="#0f5f63"/>
     </linearGradient>
   </defs>
   <rect width="64" height="64" rx="14" fill="url(#g)"/>
-  <g transform="translate(32 32) scale(0.72) translate(-32 -32)" fill="none" stroke="#ffffff" stroke-linejoin="miter" stroke-miterlimit="4">
-    <path d="M55 8 L7 32 L43 56" stroke-width="11"/>
-    <path d="M55 24 L31 33 L48 45" stroke-width="10"/>
+  <g transform="translate(12.1 12) scale(0.084) translate(-200 -102.7)" fill="#ffffff">
+    <path d="M656 126C665 132 661 141 651 147L291 347C281 353 281 360 291 366L608 545C615 549 615 555 607 560C560 589 507 582 463 557L224 421C206 411 200 398 200 381V351C200 323 213 298 238 283L509 120C550 96 616 96 656 126Z"/>
+    <path d="M668 151C672 149 674 154 674 160V207C674 244 658 271 630 289L481 384V306C481 277 495 253 522 237L668 151Z"/>
+    <path d="M541 372C545 370 549 370 554 373L646 425C663 435 670 451 670 471V534C670 541 667 543 661 539L457 425C452 422 452 418 457 414L541 372Z"/>
   </g>
 </svg>
