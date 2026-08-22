@@ -4,6 +4,7 @@ import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
 import { RandomLetterSwap } from "@/components/ui/random-letter-swap";
 import { LocaleSwitch } from "./LocaleSwitch";
+import { ThemeSwitch } from "./ThemeSwitch";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
@@ -26,6 +27,12 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
         </nav>
 
         <div className="topbar__end">
+          <ThemeSwitch
+            label={dict.site.themeLabel}
+            labelDia={dict.site.themeDay}
+            labelNoche={dict.site.themeNight}
+          />
+
           <LocaleSwitch current={locale} label={dict.site.languageLabel} />
 
           {/* La acción de la barra va en tinta: el óxido queda para la
@@ -43,6 +50,17 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
                 </Link>
               ))}
               <LocaleSwitch current={locale} label={dict.site.languageLabel} />
+
+              {/* En la barra no cabe por debajo de 620 px; aquí sí, y además
+                  puede ir etiquetado. */}
+              <div className="menu__tema">
+                <span>{dict.site.themeLabel}</span>
+                <ThemeSwitch
+                  label={dict.site.themeLabel}
+                  labelDia={dict.site.themeDay}
+                  labelNoche={dict.site.themeNight}
+                />
+              </div>
             </div>
           </details>
         </div>

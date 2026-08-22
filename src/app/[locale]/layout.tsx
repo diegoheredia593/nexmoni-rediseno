@@ -3,11 +3,13 @@ import { notFound } from "next/navigation";
 import { Archivo, Space_Mono } from "next/font/google";
 import { GlossaryProvider } from "@/components/glossary/GlossaryProvider";
 import { Header } from "@/components/Header";
+import { ThemeScript } from "@/components/ThemeScript";
 import { HeaderScroll } from "@/components/HeaderScroll";
 import { Footer } from "@/components/Footer";
 import { PointerGlow } from "@/components/PointerGlow";
+import { PaletteSwitch } from "@/components/PaletteSwitch";
 import { getDictionary, isLocale, locales, type Locale } from "@/content/dictionary";
-import { robotsPolicy, siteUrl } from "@/lib/site-url";
+import { isPreview, robotsPolicy, siteUrl } from "@/lib/site-url";
 import "../globals.css";
 
 // next/font descarga y auto-hospeda las familias en build: sin peticiones a
@@ -72,7 +74,16 @@ export default async function LocaleLayout({
   const dict = getDictionary(locale as Locale);
 
   return (
-    <html lang={dict.meta.htmlLang} className={`${archivo.variable} ${spaceMono.variable}`}>
+    <html
+      lang={dict.meta.htmlLang}
+      className={`${archivo.variable} ${spaceMono.variable}`}
+      // El script de abajo escribe `data-tema` antes de que React hidrate, así
+      // que el marcado del servidor y el del cliente difieren a propósito.
+      suppressHydrationWarning
+    >
+      <head>
+        <ThemeScript />
+      </head>
       <body>
         <PointerGlow />
         <GlossaryProvider glossary={dict.glossary}>
@@ -80,6 +91,9 @@ export default async function LocaleLayout({
           <HeaderScroll />
           <main>{children}</main>
           <Footer locale={locale} dict={dict} />
+          {/* Para enseñar las tres direcciones al cliente. Fuera de vista
+              previa no se monta, así que no llega al paquete de producción. */}
+          {isPreview && <PaletteSwitch />}
         </GlossaryProvider>
       </body>
     </html>

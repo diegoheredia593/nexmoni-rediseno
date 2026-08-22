@@ -27,78 +27,55 @@
 }
 
 /* ═══════════════════════════════════════════════════════════════════════════
-   NexMoni — TRÁNSITO
+   NexMoni — LITORAL
    Rediseño estético sobre el mismo código. El original «Acero templado» vive
    intacto en diegoheredia593/webapp.
+
+   DOS EJES INDEPENDIENTES
+     data-paleta = litoral │ altiplano │ transito     ← qué colores
+     data-tema   = dia     │ noche                    ← cuánta luz
+   Se combinan libremente: seis aspectos, y los seis están medidos contra
+   WCAG AA en todos los usos reales. Se cambian en caliente desde la consola:
+     document.documentElement.dataset.paleta = "altiplano"
+   Es para la reunión con el cliente: la paleta se decide enseñándola, no
+   describiéndola.
 
    LA IDEA
      El sitio tiene dos zonas y una razón narrativa para tenerlas. El hero es
      NOCHE: el viaje, a sangre, oscuro, con el vídeo del dinero cruzando el
-     mundo. Al bajar, la página amanece y todo lo demás es DÍA: papel cálido,
-     legible, factual. Se viaja de noche y se hacen cuentas de día.
+     mundo. Al bajar, la página amanece y todo lo demás es DÍA: papel legible,
+     factual. Se viaja de noche y se hacen cuentas de día. En tema `noche` la
+     página entera se queda en el viaje y el hero se vuelve el único sitio con
+     color: petróleo encendido sobre casi negro.
 
    QUÉ SE CONSERVA DE ACERO
      La disciplina: contención en 1200 px, escala de nueve peldaños, un solo
-     acento, 96 px de aire entre secciones. Eso funcionaba y no se toca.
+     acento de acción, 96 px de aire entre secciones. Eso funcionaba.
 
    QUÉ CAMBIA
-     La temperatura (gris frío → papel cálido), el acento (óxido → cobre),
-     el radio (0 → 12 px en paneles, píldora en botones) y el hero entero.
+     La temperatura (crema cálida → hueso frío), el acento (cobre → petróleo),
+     y —lo importante— aparecen COLORES SEMÁNTICOS. Antes había 19 valores y
+     ninguno servía para decir «esto llegó bien»: todo era el mismo marrón.
+     Ahora `--senal`, `--aviso` y `--error` existen como categoría.
 
    CÓMO ESTÁ MONTADO
-     Los tokens nuevos se declaran arriba; debajo, los nombres del sistema
-     viejo quedan como ALIAS. Así los doce componentes heredan la paleta nueva
-     sin tocar una línea de su CSS, y solo se reescribe lo que cambia de forma.
+     Los tokens nuevos se declaran aquí; debajo, los nombres del sistema viejo
+     quedan como ALIAS. Así los doce componentes heredan la paleta nueva sin
+     tocar una línea de su CSS. Los triples `--rgb-*` existen para las pocas
+     capas que necesitan opacidad variable (degradados del hero, trama
+     halftone, resplandor del puntero): sin ellos esos sitios quedarían
+     clavados a un color y romperían el tema noche.
    ═══════════════════════════════════════════════════════════════════════════ */
 
 :root {
-  /* ── DÍA · el cuerpo del sitio ─────────────────────────────────────────── */
-  --papel:      #f7f5f1;   /* fondo de página */
-  --papel-2:    #efece5;   /* paneles, filas alternas */
-  --papel-3:    #e4dfd4;   /* rebajes, tramas */
-  --tinta:      #171614;
-  --tinta-78:   rgba(23, 22, 20, 0.78);
-  --tinta-58:   rgba(23, 22, 20, 0.58);
-  --tinta-40:   rgba(23, 22, 20, 0.40);
-  --filete:     rgba(23, 22, 20, 0.14);
-  --filete-2:   rgba(23, 22, 20, 0.28);
-
-  /* ── NOCHE · el hero ───────────────────────────────────────────────────── */
-  --noche:      #141311;
-  --noche-2:    #201d19;
-  --sobre-noche:    #f6f2ea;
-  --sobre-noche-72: rgba(246, 242, 234, 0.72);
-  --sobre-noche-42: rgba(246, 242, 234, 0.42);
-
-  /* ── El acento, único, en las dos zonas ────────────────────────────────── */
-  --cobre:      #ad5c27;   /* 4,84:1 con blanco; #b4622c se quedaba en 4,45 */
-  --cobre-alto: #d4823f;   /* sobre fondo oscuro, donde el cobre se apaga */
-  --sobre-cobre: #ffffff;
+  /* ═══ INVARIANTES ═══ No dependen ni de paleta ni de tema ════════════════ */
 
   /* ── Forma ─────────────────────────────────────────────────────────────── */
   --r-panel: 12px;
   --r-campo: 8px;
   --r-pildora: 999px;
 
-  /* ── ALIAS del sistema viejo ───────────────────────────────────────────────
-     Todo el CSS de componentes sigue nombrando los tokens de Acero. Apuntarlos
-     aquí es lo que hace que el rediseño no exija reescribir 700 líneas. */
-  --surface: var(--papel);
-  --surface-halftone: var(--papel-3);
-  --row-hover: var(--papel-2);
-  --ink: var(--tinta);
-  --on-dark: var(--papel);
-  --btn-text: var(--sobre-cobre);
-  --accent: var(--cobre);
-  --ink-80: var(--tinta-78);
-  --ink-62: var(--tinta-58);
-  --ink-45: var(--tinta-40);
-  --hairline: var(--filete);
-  --hairline-firm: var(--filete-2);
-  --on-dark-62: rgba(247, 245, 241, 0.62);
-  --on-dark-25: rgba(247, 245, 241, 0.25);
-
-  /* ── Escala tipográfica: los mismos nueve peldaños ─────────────────────── */
+  /* ── Escala tipográfica: los mismos nueve peldaños de Acero ────────────── */
   --t-micro: 12px;
   --t-caption: 13px;
   --t-body-s: 15px;
@@ -124,6 +101,213 @@
 
   --sans: var(--font-archivo), Helvetica, Arial, sans-serif;
   --mono: var(--font-space-mono), ui-monospace, monospace;
+
+  /* ── Curvas de movimiento ──────────────────────────────────────────────── */
+  --ease-salida: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-suave:  cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* ═══ PALETA POR DEFECTO · LITORAL · DÍA ═════════════════════════════════ */
+  color-scheme: light;
+
+  --papel:      #f4f3ef;   /* fondo de página, hueso */
+  --papel-2:    #eceae4;   /* paneles, filas alternas */
+  --papel-3:    #e2dfd7;   /* rebajes, tramas */
+  --rgb-papel:  244 243 239;
+
+  --tinta:      #131719;
+  --rgb-tinta:  19 23 25;
+  --tinta-78:   rgb(19 23 25 / 0.78);
+  --tinta-58:   rgb(19 23 25 / 0.58);
+  --tinta-40:   rgb(19 23 25 / 0.40);
+  --filete:     rgb(19 23 25 / 0.14);
+  --filete-2:   rgb(19 23 25 / 0.26);
+
+  /* La zona nocturna: el hero. Existe en los dos temas. */
+  --noche:      #0e2a2d;
+  --noche-2:    #14383c;
+  --rgb-noche:  14 42 45;
+  --sobre-noche:    #f4f3ef;
+  --sobre-noche-72: rgb(244 243 239 / 0.72);
+  --sobre-noche-42: rgb(244 243 239 / 0.42);
+
+  /* El acento: único, y solo en lo que ejecuta una acción. */
+  --acento:      #0f5f63;   /* 6,67:1 sobre papel — pasa AA también como texto */
+  --acento-alto: #5fb8bd;   /* sobre fondo oscuro, donde el petróleo se apaga */
+  --sobre-acento: #ffffff;  /* 7,40:1 sobre el botón */
+  --rgb-acento:  15 95 99;
+
+  /* Semánticos. Esto es lo que faltaba: la página ya puede decir «llegó». */
+  --senal:  #2f7d4a;        /* confirmado, recibido, verificado */
+  --aviso:  #8a5a12;        /* orientativo, pendiente, revísalo */
+  --error:  #a33720;        /* falló, corredor cerrado */
+  --senal-fondo: rgb(47 125 74 / 0.10);
+  --aviso-fondo: rgb(138 90 18 / 0.10);
+  --error-fondo: rgb(163 55 32 / 0.09);
+
+  /* Profundidad. En día es sutil; en noche hay que subirla o desaparece. */
+  --sombra-1: 0 1px 2px rgb(19 23 25 / 0.05), 0 4px 12px -6px rgb(19 23 25 / 0.12);
+  --sombra-2: 0 2px 6px rgb(19 23 25 / 0.07), 0 18px 40px -20px rgb(19 23 25 / 0.28);
+  --brillo-puntero: 0.11;
+
+  /* ── ALIAS del sistema viejo ───────────────────────────────────────────────
+     Todo el CSS de componentes sigue nombrando los tokens de Acero. Apuntarlos
+     aquí es lo que hace que el rediseño no exija reescribir 700 líneas. */
+  --surface: var(--papel);
+  --surface-halftone: var(--papel-3);
+  --row-hover: var(--papel-2);
+  --ink: var(--tinta);
+  /* `--on-dark` no significa «sobre el hero nocturno», aunque el nombre lo
+     sugiera: los seis sitios que lo usan lo hacen sobre un fondo `--ink`
+     —el botón de la barra, el idioma activo, la banda de cifras y el
+     glosario—, y ahí el color correcto es SIEMPRE el del papel, porque tinta
+     y papel son opuestos en los dos temas. Apuntado a `--sobre-noche` se
+     rompía en tema noche: fondo claro con texto crema encima, ilegible.
+     Los textos que sí van sobre el hero usan `--sobre-noche` directamente. */
+  --on-dark: var(--papel);
+  --btn-text: var(--sobre-acento);
+  --accent: var(--acento);
+  --ink-80: var(--tinta-78);
+  --ink-62: var(--tinta-58);
+  --ink-45: var(--tinta-40);
+  --hairline: var(--filete);
+  --hairline-firm: var(--filete-2);
+  /* Mismo razonamiento: derivados del papel, no de la noche, para que sigan
+     al tema. Por eso `--rgb-papel` existe. */
+  --on-dark-62: rgb(var(--rgb-papel) / 0.62);
+  --on-dark-25: rgb(var(--rgb-papel) / 0.25);
+}
+
+/* ═══ LITORAL · NOCHE ═════════════════════════════════════════════════════
+   El papel se apaga hasta casi negro con una pizca de verde-azulado, y el
+   petróleo sube a `--acento-alto` porque el oscuro se traga el original.
+   El hero NO se oscurece: en tema noche queda más claro que la página y pasa
+   a ser lo único con color, que es exactamente lo que queremos que mire. */
+:root[data-tema="noche"] {
+  color-scheme: dark;
+
+  --papel:      #0d1214;
+  --papel-2:    #141b1e;
+  --papel-3:    #1c2528;
+  --rgb-papel:  13 18 20;
+
+  --tinta:      #e8eae7;
+  --rgb-tinta:  232 234 231;
+  --tinta-78:   rgb(232 234 231 / 0.76);
+  --tinta-58:   rgb(232 234 231 / 0.56);
+  --tinta-40:   rgb(232 234 231 / 0.38);
+  --filete:     rgb(232 234 231 / 0.15);
+  --filete-2:   rgb(232 234 231 / 0.28);
+
+  --noche:      #0e2a2d;
+  --noche-2:    #14383c;
+  --rgb-noche:  14 42 45;
+  --sobre-noche:    #f4f3ef;
+  --sobre-noche-72: rgb(244 243 239 / 0.72);
+  --sobre-noche-42: rgb(244 243 239 / 0.42);
+
+  --acento:      #5fb8bd;   /* 8,15:1 sobre el papel oscuro */
+  --acento-alto: #8fd4d8;
+  --sobre-acento: #06232a;  /* 7,08:1 — tinta oscura sobre botón claro */
+  --rgb-acento:  95 184 189;
+
+  --senal:  #6cc08a;
+  --aviso:  #d9a441;
+  --error:  #e58063;
+  --senal-fondo: rgb(108 192 138 / 0.13);
+  --aviso-fondo: rgb(217 164 65 / 0.13);
+  --error-fondo: rgb(229 128 99 / 0.12);
+
+  --sombra-1: 0 1px 2px rgb(0 0 0 / 0.5), 0 4px 12px -6px rgb(0 0 0 / 0.6);
+  --sombra-2: 0 2px 6px rgb(0 0 0 / 0.55), 0 18px 40px -20px rgb(0 0 0 / 0.8);
+  --brillo-puntero: 0.07;
+}
+
+/* ═══ ALTIPLANO · DÍA ═════════════════════════════════════════════════════
+   Grafito puro sin matiz y un ladrillo saturado haciendo todo el trabajo.
+   Contraste alto, la que mejor aguanta la pantalla al sol. */
+:root[data-paleta="altiplano"] {
+  color-scheme: light;
+  --papel: #f7f8f8;  --papel-2: #eef0f0;  --papel-3: #e3e6e6;
+  --rgb-papel: 247 248 248;
+  --tinta: #0c0e10;  --rgb-tinta: 12 14 16;
+  --tinta-78: rgb(12 14 16 / 0.78); --tinta-58: rgb(12 14 16 / 0.58); --tinta-40: rgb(12 14 16 / 0.40);
+  --filete: rgb(12 14 16 / 0.13); --filete-2: rgb(12 14 16 / 0.25);
+  --noche: #0c0e10; --noche-2: #16191c; --rgb-noche: 12 14 16;
+  --sobre-noche: #f7f8f8;
+  --sobre-noche-72: rgb(247 248 248 / 0.72); --sobre-noche-42: rgb(247 248 248 / 0.42);
+  --acento: #b23a1f; --acento-alto: #e5714f; --sobre-acento: #ffffff; --rgb-acento: 178 58 31;
+  --senal: #2f7d4a; --aviso: #8a5a12; --error: #a33720;
+  --senal-fondo: rgb(47 125 74 / 0.10); --aviso-fondo: rgb(138 90 18 / 0.10); --error-fondo: rgb(163 55 32 / 0.09);
+  --sombra-1: 0 1px 2px rgb(12 14 16 / 0.05), 0 4px 12px -6px rgb(12 14 16 / 0.12);
+  --sombra-2: 0 2px 6px rgb(12 14 16 / 0.07), 0 18px 40px -20px rgb(12 14 16 / 0.28);
+  --brillo-puntero: 0.09;
+}
+:root[data-paleta="altiplano"][data-tema="noche"] {
+  color-scheme: dark;
+  --papel: #0e0f11;  --papel-2: #17191b;  --papel-3: #202325;
+  --rgb-papel: 14 15 17;
+  --tinta: #e9eaea;  --rgb-tinta: 233 234 234;
+  --tinta-78: rgb(233 234 234 / 0.76); --tinta-58: rgb(233 234 234 / 0.56); --tinta-40: rgb(233 234 234 / 0.38);
+  --filete: rgb(233 234 234 / 0.15); --filete-2: rgb(233 234 234 / 0.28);
+  --noche: #0e0f11; --noche-2: #1b1e20; --rgb-noche: 14 15 17;
+  --sobre-noche: #f7f8f8;
+  --sobre-noche-72: rgb(247 248 248 / 0.72); --sobre-noche-42: rgb(247 248 248 / 0.42);
+  --acento: #e5714f; --acento-alto: #f09477; --sobre-acento: #160604; --rgb-acento: 229 113 79;
+  --senal: #6cc08a; --aviso: #d9a441; --error: #e58063;
+  --senal-fondo: rgb(108 192 138 / 0.13); --aviso-fondo: rgb(217 164 65 / 0.13); --error-fondo: rgb(229 128 99 / 0.12);
+  --sombra-1: 0 1px 2px rgb(0 0 0 / 0.5), 0 4px 12px -6px rgb(0 0 0 / 0.6);
+  --sombra-2: 0 2px 6px rgb(0 0 0 / 0.55), 0 18px 40px -20px rgb(0 0 0 / 0.8);
+  --brillo-puntero: 0.07;
+}
+
+/* ═══ TRÁNSITO II · DÍA ═══════════════════════════════════════════════════
+   El cobre original, pero degradado de rango: deja de ser el único color y
+   pasa a ser solo el botón. Entra un petróleo estructural para paneles y
+   datos. El cobre baja a #a65825 porque el de antes (#ad5c27) daba 4,45:1
+   como texto y no pasaba AA. */
+:root[data-paleta="transito"] {
+  color-scheme: light;
+  --papel: #f7f5f1;  --papel-2: #efece5;  --papel-3: #e4dfd4;
+  --rgb-papel: 247 245 241;
+  --tinta: #171614;  --rgb-tinta: 23 22 20;
+  --tinta-78: rgb(23 22 20 / 0.78); --tinta-58: rgb(23 22 20 / 0.58); --tinta-40: rgb(23 22 20 / 0.40);
+  --filete: rgb(23 22 20 / 0.14); --filete-2: rgb(23 22 20 / 0.28);
+  --noche: #141311; --noche-2: #201d19; --rgb-noche: 20 19 17;
+  --sobre-noche: #f6f2ea;
+  --sobre-noche-72: rgb(246 242 234 / 0.72); --sobre-noche-42: rgb(246 242 234 / 0.42);
+  --acento: #a65825; --acento-alto: #d4823f; --sobre-acento: #ffffff; --rgb-acento: 166 88 37;
+  --senal: #2f7d4a; --aviso: #8a5a12; --error: #a33720;
+  --senal-fondo: rgb(47 125 74 / 0.10); --aviso-fondo: rgb(138 90 18 / 0.10); --error-fondo: rgb(163 55 32 / 0.09);
+  --sombra-1: 0 1px 2px rgb(23 22 20 / 0.05), 0 4px 12px -6px rgb(23 22 20 / 0.12);
+  --sombra-2: 0 2px 6px rgb(23 22 20 / 0.07), 0 18px 40px -20px rgb(23 22 20 / 0.28);
+  --brillo-puntero: 0.10;
+}
+:root[data-paleta="transito"][data-tema="noche"] {
+  color-scheme: dark;
+  --papel: #131110;  --papel-2: #1c1917;  --papel-3: #262220;
+  --rgb-papel: 19 17 16;
+  --tinta: #eae6df;  --rgb-tinta: 234 230 223;
+  --tinta-78: rgb(234 230 223 / 0.76); --tinta-58: rgb(234 230 223 / 0.56); --tinta-40: rgb(234 230 223 / 0.38);
+  --filete: rgb(234 230 223 / 0.15); --filete-2: rgb(234 230 223 / 0.28);
+  --noche: #141311; --noche-2: #201d19; --rgb-noche: 20 19 17;
+  --sobre-noche: #f6f2ea;
+  --sobre-noche-72: rgb(246 242 234 / 0.72); --sobre-noche-42: rgb(246 242 234 / 0.42);
+  --acento: #d4823f; --acento-alto: #e5a068; --sobre-acento: #1f1a15; --rgb-acento: 212 130 63;
+  --senal: #6cc08a; --aviso: #d9a441; --error: #e58063;
+  --senal-fondo: rgb(108 192 138 / 0.13); --aviso-fondo: rgb(217 164 65 / 0.13); --error-fondo: rgb(229 128 99 / 0.12);
+  --sombra-1: 0 1px 2px rgb(0 0 0 / 0.5), 0 4px 12px -6px rgb(0 0 0 / 0.6);
+  --sombra-2: 0 2px 6px rgb(0 0 0 / 0.55), 0 18px 40px -20px rgb(0 0 0 / 0.8);
+  --brillo-puntero: 0.07;
+}
+
+/* El cambio de tema se anima en las superficies grandes, no en todo: animar
+   `color` en cada nodo de la página produce un barrido perceptible y caro.
+   Estas tres son las que el ojo sigue. `prefers-reduced-motion` lo apaga más
+   abajo, junto con el resto del movimiento. */
+body, .topbar, .panel, .plan, .rows__item, .calc, .duo__item {
+  transition: background-color 0.4s var(--ease-suave),
+              border-color 0.4s var(--ease-suave),
+              color 0.4s var(--ease-suave);
 }
 
 * { box-sizing: border-box; }
@@ -148,7 +332,7 @@ html { scroll-behavior: smooth; }
   background:
     radial-gradient(
       420px 420px at var(--glow-x, 50%) var(--glow-y, 50%),
-      rgba(173, 92, 39, 0.11),
+      rgb(var(--rgb-acento) / var(--brillo-puntero)),
       transparent 70%
     ),
     radial-gradient(
@@ -203,8 +387,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   inset: 0;
   z-index: -1;
   background:
-    linear-gradient(to right, rgba(20, 19, 17, 0.92) 0%, rgba(20, 19, 17, 0.72) 42%, rgba(20, 19, 17, 0.34) 100%),
-    linear-gradient(to top, rgba(20, 19, 17, 0.95) 0%, rgba(20, 19, 17, 0.30) 55%, rgba(20, 19, 17, 0.62) 100%);
+    linear-gradient(to right, rgb(var(--rgb-noche) / 0.92) 0%, rgb(var(--rgb-noche) / 0.72) 42%, rgb(var(--rgb-noche) / 0.34) 100%),
+    linear-gradient(to top, rgb(var(--rgb-noche) / 0.95) 0%, rgb(var(--rgb-noche) / 0.30) 55%, rgb(var(--rgb-noche) / 0.62) 100%);
 }
 .cine__in {
   width: 100%;
@@ -269,8 +453,8 @@ button, a { -webkit-tap-highlight-color: transparent; }
   cursor: pointer;
   transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
 }
-.pill--acento { background: var(--cobre); color: var(--sobre-cobre); }
-.pill--acento:hover { background: var(--cobre-alto); }
+.pill--acento { background: var(--acento); color: var(--sobre-acento); }
+.pill--acento:hover { background: var(--acento-alto); }
 .pill--fantasma { border-color: var(--sobre-noche-42); color: var(--sobre-noche); }
 .pill--fantasma:hover { border-color: var(--sobre-noche); background: rgba(246, 242, 234, 0.08); }
 
@@ -355,7 +539,7 @@ p { margin: 0; text-wrap: pretty; }
 .topbar--sobre-noche .locales__item--on,
 .topbar--sobre-noche .locales__item--on:hover { background: var(--sobre-noche); color: var(--noche); }
 .topbar--sobre-noche .btn--ink { background: var(--sobre-noche); color: var(--noche); }
-.topbar--sobre-noche .btn--ink:hover { background: var(--cobre); color: var(--sobre-cobre); }
+.topbar--sobre-noche .btn--ink:hover { background: var(--acento); color: var(--sobre-acento); }
 .topbar--sobre-noche .menu > summary { color: var(--sobre-noche-72); border-color: var(--sobre-noche-42); }
 
 /* El cambio se ve, no se salta de golpe. */
@@ -594,8 +778,8 @@ p { margin: 0; text-wrap: pretty; }
     circle,
     hsl(44 92% 64%) 0 10%,
     hsl(32 82% 50%) 24%,
-    var(--cobre) 40%,
-    rgba(173, 92, 39, 0) 66%
+    var(--acento) 40%,
+    rgb(var(--rgb-acento) / 0) 66%
   );
 }
 .calc-frame__inner {
@@ -669,7 +853,7 @@ p { margin: 0; text-wrap: pretty; }
 .halftone {
   position: relative; overflow: hidden; width: 100%;
   background-color: var(--surface-halftone);
-  background-image: radial-gradient(rgba(23, 22, 20, 0.5) 1.3px, transparent 1.5px);
+  background-image: radial-gradient(rgb(var(--rgb-tinta) / 0.5) 1.3px, transparent 1.5px);
   background-size: 6px 6px;
 }
 .halftone__brief {
@@ -732,7 +916,7 @@ p { margin: 0; text-wrap: pretty; }
   inset: 0;
   pointer-events: none;
   mix-blend-mode: multiply;
-  background-image: radial-gradient(rgba(23, 22, 20, 0.55) 1.3px, transparent 1.5px);
+  background-image: radial-gradient(rgb(var(--rgb-tinta) / 0.55) 1.3px, transparent 1.5px);
   background-size: 6px 6px;
 }
 
@@ -786,6 +970,7 @@ p { margin: 0; text-wrap: pretty; }
      apretando las separaciones de la barra, no encogiendo el botón. */
   .topbar__in { gap: var(--s-12); }
   .topbar__end { gap: var(--s-8); }
+
 }
 
 @media (max-width: 560px) {
@@ -867,3 +1052,558 @@ p { margin: 0; text-wrap: pretty; }
   .closer { grid-template-columns: 1fr; gap: var(--s-32); }
   .closer__actions { justify-content: flex-start; }
 }
+
+/* ── Conmutador día / noche ──────────────────────────────────────────────────
+   Un disco que se desplaza de un extremo al otro y por el camino cambia de
+   astro: de día lleva rayos (`box-shadow`, sin nodos extra) y de noche una
+   segunda circunferencia del color de la pista le da el mordisco que lo
+   convierte en luna creciente. Las tres estrellas solo aparecen de noche.
+
+   Es el único adorno de la barra, así que se le permite ser expresivo. El
+   bloque global de `prefers-reduced-motion` de más arriba le quita todas las
+   transiciones de golpe; el conmutador sigue funcionando, solo que cambia de
+   estado sin recorrido. */
+
+.tema {
+  position: relative;
+  width: 52px;
+  height: 28px;
+  flex: none;
+  padding: 0;
+  border: 1px solid var(--filete-2);
+  border-radius: var(--r-pildora);
+  background: var(--papel-3);
+  cursor: pointer;
+  overflow: hidden;
+  transition: background-color 0.45s var(--ease-suave), border-color 0.45s var(--ease-suave);
+}
+
+.tema[data-noche] {
+  background: var(--noche-2);
+  border-color: rgb(var(--rgb-acento) / 0.45);
+}
+
+.tema__astro {
+  position: absolute;
+  top: 50%;
+  left: 4px;
+  width: 18px;
+  height: 18px;
+  margin-top: -9px;
+  border-radius: 50%;
+  background: var(--aviso);
+  /* Los rayos del sol. Cuatro sombras a distancia fija; al pasar a noche se
+     encogen a cero y desaparecen sin dejar hueco. */
+  box-shadow:
+    0 -7px 0 -6px var(--aviso),
+    0  7px 0 -6px var(--aviso),
+    -7px 0 0 -6px var(--aviso),
+    7px  0 0 -6px var(--aviso);
+  transition:
+    left 0.45s var(--ease-salida),
+    background-color 0.45s var(--ease-suave),
+    box-shadow 0.35s var(--ease-suave);
+}
+
+.tema[data-noche] .tema__astro {
+  left: 30px;
+  background: var(--sobre-noche);
+  box-shadow:
+    0 -7px 0 -9px transparent,
+    0  7px 0 -9px transparent,
+    -7px 0 0 -9px transparent,
+    7px  0 0 -9px transparent;
+}
+
+/* El mordisco. De día está encogido y fuera del disco; de noche entra y toma
+   tamaño, y como va pintado del color exacto de la pista el recorte parece
+   real en vez de una silueta pegada encima. */
+.tema__mordisco {
+  position: absolute;
+  top: -3px;
+  right: -3px;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--papel-3);
+  transform: scale(0) translate(6px, -6px);
+  transition: transform 0.45s var(--ease-salida), background-color 0.45s var(--ease-suave);
+}
+
+.tema[data-noche] .tema__mordisco {
+  background: var(--noche-2);
+  transform: scale(1) translate(0, 0);
+}
+
+.tema__estrellas {
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 0.4s var(--ease-suave);
+}
+
+.tema[data-noche] .tema__estrellas { opacity: 1; }
+
+.tema__estrellas i {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 50%;
+  background: var(--sobre-noche-72);
+}
+
+.tema__estrellas i:nth-child(1) { top: 7px;  left: 9px; }
+.tema__estrellas i:nth-child(2) { top: 16px; left: 15px; width: 1.5px; height: 1.5px; }
+.tema__estrellas i:nth-child(3) { top: 11px; left: 20px; }
+
+.tema:hover { border-color: var(--acento); }
+.tema:focus-visible { outline: 2px solid var(--acento); outline-offset: 3px; }
+
+/* ── El teléfono que se desplaza con la página ───────────────────────────────
+   Proporciones reales del iPhone 16: 393 × 852 pt lógicos y 55 pt de radio en
+   la esquina. A 300 px de ancho eso son 650 px de alto y 42 px de radio; el
+   resto de medidas sale del mismo factor 300/393 = 0,763.
+
+   El aparato queda pegado con `position: sticky` en vez de con el `pin` de
+   ScrollTrigger. Hace lo mismo, no toca el flujo del documento y no se rompe en
+   móvil, que es justo donde el `pin` da problemas. */
+
+/* Ni `overflow` ni `align-items: start` en esta sección, y las dos omisiones
+   son deliberadas: cada una rompía el `sticky` por su lado.
+
+   `overflow: clip` en la sección la convierte en el contenedor de referencia
+   del elemento pegado, que a partir de ahí se pega a ELLA en vez de a la
+   ventana: medido, el teléfono se iba a -1310 px en lugar de quedarse a 101.
+   Las columnas ya están contenidas con `minmax(0, …)`, así que no hacía falta.
+
+   `align-items: start` encoge la columna del teléfono a la altura de su
+   contenido —744 px medidos— y el pegado se suelta en cuanto esa caja termina.
+   Con el estiramiento por defecto la columna mide lo que la de los pasos y el
+   aparato viaja toda la sección. */
+
+.fone__rejilla {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: var(--s-64);
+  margin-top: var(--s-48);
+}
+
+.fone__pegado {
+  position: sticky;
+  top: calc(var(--alto-barra) + var(--s-32));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--s-16);
+}
+
+/* ── La carcasa ──────────────────────────────────────────────────────────── */
+
+.fone {
+  --fone-ancho: 300px;
+  --fone-alto: 650px;
+  --app-estado: 42px;
+}
+
+.fone__marco {
+  position: relative;
+  width: var(--fone-ancho);
+  padding: 10px;
+  border-radius: 54px;
+  /* El titanio: dos luces enfrentadas en el borde y un cuerpo neutro. */
+  background: linear-gradient(145deg, #d7d9da 0%, #8e9295 22%, #6f7477 50%, #9ea2a5 78%, #cfd2d3 100%);
+  box-shadow: var(--sombra-2);
+}
+
+/* Botones laterales. Van en la carcasa, no en el marco negro, porque en el
+   aparato real sobresalen del titanio. */
+.fone__marco::before,
+.fone__marco::after {
+  content: "";
+  position: absolute;
+  width: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, #6f7477, #b9bdbf);
+}
+.fone__marco::before { left: -3px; top: 132px; height: 92px; }   /* volumen */
+.fone__marco::after  { right: -3px; top: 150px; height: 62px; }  /* encendido */
+
+.fone__borde {
+  padding: 2px;
+  border-radius: 45px;
+  background: #06070a;
+}
+
+.fone__pantalla {
+  position: relative;
+  height: var(--fone-alto);
+  border-radius: 43px;
+  overflow: hidden;
+  background: var(--papel);
+  color: var(--tinta);
+  font-size: 13px;
+  line-height: 1.4;
+  letter-spacing: 0;
+}
+
+/* La barra de estado vive fuera del lienzo: en el aparato real no se desplaza
+   con el contenido, y si lo hiciera se rompería la ilusión de inmediato. */
+.app__estado {
+  position: absolute;
+  inset: 0 0 auto 0;
+  z-index: 3;
+  height: var(--app-estado);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 22px;
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  background: var(--papel);
+}
+
+.app__isla {
+  position: absolute;
+  left: 50%;
+  top: 9px;
+  transform: translateX(-50%);
+  width: 76px;
+  height: 21px;
+  border-radius: 999px;
+  background: #06070a;
+}
+
+.app__iconos { display: flex; align-items: center; gap: 4px; }
+.app__señal { width: 14px; height: 9px; border-radius: 1px; background: var(--tinta); clip-path: polygon(0 60%,20% 60%,20% 100%,0 100%,25% 40%,45% 40%,45% 100%,25% 100%,50% 20%,70% 20%,70% 100%,50% 100%,75% 0,95% 0,95% 100%,75% 100%); }
+.app__bateria { width: 18px; height: 9px; border: 1px solid var(--tinta-58); border-radius: 2px; position: relative; }
+.app__bateria::after { content: ""; position: absolute; inset: 1.5px; width: 68%; background: var(--tinta); border-radius: 1px; }
+
+.fone__inicio {
+  position: absolute;
+  bottom: 7px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 106px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--tinta-40);
+  z-index: 3;
+}
+
+.fone__lienzo { will-change: transform; padding-top: var(--app-estado); }
+
+.fone__aviso {
+  margin: 0;
+  max-width: 300px;
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  line-height: 1.5;
+  color: var(--tinta-40);
+  text-align: center;
+}
+
+/* ── La interfaz de dentro ───────────────────────────────────────────────── */
+
+.app__pant {
+  height: calc(var(--fone-alto) - var(--app-estado));
+  padding: var(--s-24) 22px 34px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.app__pant--fin { justify-content: center; text-align: center; align-items: center; }
+
+.app__saludo { margin: 0; font-size: 12px; color: var(--tinta-58); }
+.app__titulo { margin: 0; font-size: 20px; font-weight: 600; letter-spacing: var(--track-h3); line-height: 1.2; }
+.app__etq { margin: 6px 0 0; font-family: var(--mono); font-size: 9.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--tinta-58); }
+.app__nota { margin: 0; font-size: 12.5px; color: var(--tinta-58); max-width: 22ch; }
+
+.app__contactos { display: flex; flex-direction: column; gap: 2px; }
+.app__contacto {
+  display: grid;
+  grid-template-columns: 34px 1fr;
+  grid-template-rows: auto auto;
+  column-gap: 11px;
+  align-items: center;
+  padding: 9px 8px;
+  margin: 0 -8px;
+  border-radius: var(--r-campo);
+}
+.app__contacto:first-child { background: var(--papel-2); }
+.app__avatar {
+  grid-row: 1 / 3;
+  width: 34px; height: 34px;
+  display: grid; place-items: center;
+  border-radius: 50%;
+  background: var(--acento);
+  color: var(--sobre-acento);
+  font-size: 11.5px; font-weight: 700; letter-spacing: 0.02em;
+}
+.app__nombre { font-size: 13.5px; font-weight: 600; align-self: end; }
+.app__lugar { font-size: 11px; color: var(--tinta-58); align-self: start; }
+
+.app__cta {
+  margin-top: auto;
+  padding: 13px;
+  border-radius: var(--r-pildora);
+  background: var(--acento);
+  color: var(--sobre-acento);
+  font-size: 13.5px; font-weight: 600;
+  text-align: center;
+}
+.app__cta--fantasma { background: transparent; color: var(--acento); border: 1px solid var(--acento); }
+
+.app__campo {
+  padding: 13px 14px;
+  border: 1px solid var(--filete-2);
+  border-radius: var(--r-campo);
+  display: flex; flex-direction: column; gap: 3px;
+}
+.app__campo--dest { border-color: var(--acento); background: rgb(var(--rgb-acento) / 0.06); }
+.app__cifra { font-size: 22px; font-weight: 700; letter-spacing: var(--track-h3); font-variant-numeric: tabular-nums; }
+.app__cifra--grande { font-size: 30px; }
+
+/* El hilo que une los dos campos: es lo que dice «esto se convierte en esto». */
+.app__hilo {
+  width: 1px; height: 16px;
+  margin: -6px auto;
+  background: var(--filete-2);
+  position: relative; z-index: 1;
+}
+
+.app__fila {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 10px;
+  font-size: 12px; color: var(--tinta-58);
+  padding: 6px 0;
+}
+.app__num { font-family: var(--mono); font-size: 11.5px; color: var(--tinta); font-variant-numeric: tabular-nums; }
+.app__fila--total { border-top: 1px solid var(--filete); margin-top: 2px; padding-top: 9px; color: var(--tinta); font-weight: 600; }
+.app__desglose { border: 1px solid var(--filete); border-radius: var(--r-campo); padding: 8px 13px; }
+
+.app__pildora {
+  align-self: flex-start;
+  padding: 4px 10px;
+  border-radius: var(--r-pildora);
+  background: var(--senal-fondo);
+  color: var(--senal);
+  font-family: var(--mono);
+  font-size: 9.5px; letter-spacing: 0.06em; text-transform: uppercase;
+}
+
+.app__dest { display: flex; align-items: center; gap: 11px; padding: 9px 0; }
+.app__dest b { display: block; font-size: 13px; }
+.app__dest em { display: block; font-style: normal; font-size: 11px; color: var(--tinta-58); }
+
+.app__llega {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 12px 14px;
+  border-radius: var(--r-campo);
+  background: var(--senal-fondo);
+  font-size: 12px;
+}
+.app__llega strong { font-size: 16px; color: var(--senal); font-variant-numeric: tabular-nums; }
+
+/* La ruta del envío. Aquí es donde el verde semántico —el color que el sistema
+   viejo no tenía— hace su trabajo: distingue lo cumplido de lo pendiente sin
+   depender solo del texto. */
+.app__ruta { display: flex; flex-direction: column; }
+.app__hito {
+  display: grid;
+  grid-template-columns: 18px 1fr auto;
+  align-items: center;
+  gap: 11px;
+  padding: 11px 0;
+  position: relative;
+  font-size: 12.5px;
+  color: var(--tinta-40);
+}
+.app__hito::before {
+  content: "";
+  position: absolute;
+  left: 8px; top: 24px; bottom: -11px;
+  width: 1px;
+  background: var(--filete-2);
+}
+.app__hito:last-child::before { display: none; }
+.app__marca {
+  width: 17px; height: 17px;
+  border-radius: 50%;
+  border: 1.5px dashed var(--filete-2);
+}
+.app__hito[data-hecho] { color: var(--tinta); }
+.app__hito[data-hecho] .app__marca {
+  border: 0;
+  background: var(--senal);
+  position: relative;
+}
+.app__hito[data-hecho] .app__marca::after {
+  content: "";
+  position: absolute;
+  left: 5px; top: 4px;
+  width: 4px; height: 8px;
+  border: solid var(--papel);
+  border-width: 0 1.6px 1.6px 0;
+  transform: rotate(43deg);
+}
+.app__hora { font-family: var(--mono); font-size: 10px; color: var(--tinta-40); }
+
+.app__tic {
+  width: 60px; height: 60px;
+  border-radius: 50%;
+  background: var(--senal);
+  position: relative;
+  margin-bottom: 4px;
+}
+.app__tic::after {
+  content: "";
+  position: absolute;
+  left: 22px; top: 16px;
+  width: 14px; height: 26px;
+  border: solid var(--papel);
+  border-width: 0 3px 3px 0;
+  transform: rotate(43deg);
+}
+
+/* ── La columna de pasos ─────────────────────────────────────────────────── */
+
+.fone__pasos { list-style: none; margin: 0; padding: 0; }
+
+.fone__paso {
+  min-height: 66vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: var(--s-24) 0 var(--s-24) var(--s-32);
+  border-left: 1px solid var(--filete);
+  opacity: 0.42;
+  transition: opacity 0.45s var(--ease-suave), border-color 0.45s var(--ease-suave);
+}
+.fone__paso.es-activo { opacity: 1; border-left-color: var(--acento); }
+
+.fone__paso-n {
+  font-family: var(--mono);
+  font-size: var(--t-micro);
+  letter-spacing: 0.1em;
+  color: var(--acento);
+  margin-bottom: var(--s-8);
+}
+.fone__paso h3 { margin: 0 0 var(--s-8); font-size: var(--t-h3); letter-spacing: var(--track-h3); font-weight: 600; }
+.fone__paso p { margin: 0; color: var(--ink-62); max-width: 42ch; }
+
+/* Sin movimiento: los pasos se leen todos a la vez, como una lista. */
+@media (prefers-reduced-motion: reduce) {
+  .fone__paso { opacity: 1; min-height: 0; }
+  .fone__pegado { position: static; }
+}
+
+@media (max-width: 900px) {
+  .fone__rejilla { grid-template-columns: 1fr; gap: var(--s-32); }
+  .fone { --fone-ancho: 232px; --fone-alto: 503px; --app-estado: 33px; }
+  .fone__marco { padding: 8px; border-radius: 42px; }
+  .fone__borde { border-radius: 35px; }
+  .fone__pantalla { border-radius: 33px; font-size: 12px; }
+  .app__isla { width: 59px; height: 16px; top: 7px; }
+  .fone__pegado { top: calc(var(--alto-barra) + var(--s-12)); }
+  .app__pant { padding: var(--s-16) 17px 26px; gap: 9px; }
+  .app__titulo { font-size: 17px; }
+  .app__cifra { font-size: 19px; }
+  .app__cifra--grande { font-size: 25px; }
+  .fone__paso { min-height: 62vh; padding-left: var(--s-24); }
+}
+
+/* ── Selector de paleta (solo vista previa) ──────────────────────────────────
+   Deliberadamente ajeno al sistema: va fijo en una esquina, con su propia
+   sombra y su propio radio, para que nadie lo confunda con una pieza del
+   diseño. Es un instrumento de la sesión de revisión, no de la página. */
+
+.paleta { position: fixed; right: 18px; bottom: 18px; z-index: 60; font-family: var(--sans); }
+
+.paleta__tirador {
+  display: flex; align-items: center; gap: 8px;
+  padding: 9px 15px 9px 11px;
+  border: 1px solid var(--filete-2);
+  border-radius: var(--r-pildora);
+  background: var(--papel);
+  color: var(--tinta);
+  font-size: var(--t-caption); font-weight: 600;
+  cursor: pointer;
+  box-shadow: var(--sombra-2);
+}
+.paleta__tirador:hover { border-color: var(--acento); }
+
+.paleta__punto { width: 13px; height: 13px; border-radius: 50%; flex: none; box-shadow: inset 0 0 0 1px rgb(0 0 0 / 0.16); }
+
+.paleta__panel {
+  position: absolute; right: 0; bottom: calc(100% + 9px);
+  width: 268px;
+  padding: 14px;
+  border: 1px solid var(--filete-2);
+  border-radius: var(--r-panel);
+  background: var(--papel);
+  box-shadow: var(--sombra-2);
+  display: flex; flex-direction: column; gap: 3px;
+}
+
+.paleta__titulo {
+  margin: 0 0 6px; padding: 0 3px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.11em;
+  text-transform: uppercase; color: var(--tinta-58);
+}
+
+.paleta__opcion {
+  display: flex; align-items: center; gap: 11px;
+  padding: 9px 10px;
+  border: 1px solid transparent;
+  border-radius: var(--r-campo);
+  background: none; color: var(--tinta);
+  cursor: pointer; text-align: left; width: 100%;
+}
+.paleta__opcion:hover { background: var(--papel-2); }
+.paleta__opcion[data-activa] { border-color: var(--acento); background: rgb(var(--rgb-acento) / 0.07); }
+.paleta__opcion b { display: block; font-size: var(--t-body-s); font-weight: 600; }
+.paleta__opcion em { display: block; font-style: normal; font-size: var(--t-micro); color: var(--tinta-58); }
+
+.paleta__pie {
+  margin: 8px 3px 0; padding-top: 9px;
+  border-top: 1px solid var(--filete);
+  font-size: 11px; line-height: 1.45; color: var(--tinta-40);
+}
+
+@media (max-width: 620px) { .paleta { right: 12px; bottom: 12px; } .paleta__panel { width: min(268px, calc(100vw - 32px)); } }
+
+/* ── La barra en pantalla estrecha ───────────────────────────────────────────
+   A 390 px la suma no cabía: 20 de margen + 79 de marca + 52 del conmutador +
+   154 del botón + 58 del menú + separaciones = 399 px. Medido, 2 px de
+   desbordamiento.
+
+   El conmutador se va al panel del menú, que es exactamente lo que este
+   archivo ya hacía con el selector de idioma. Encogerlo no bastaba —seguía
+   sobrando 1 px— y lo que no puede irse es el botón de descarga, que es el
+   objetivo del embudo.
+
+   Va al final del archivo a propósito: las reglas base del conmutador están
+   más abajo que el bloque de adaptación original, así que una media query
+   colocada allí arriba perdía la cascada por orden de aparición. */
+@media (max-width: 620px) {
+  .topbar__end > .tema { display: none; }
+}
+
+@media (min-width: 621px) {
+  .menu__panel .tema { display: none; }
+}
+
+/* En el panel el conmutador va etiquetado: ahí no hay contexto que explique
+   qué hace un disco suelto. */
+.menu__tema {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s-16);
+  padding: 13px var(--s-16);
+  border-top: 1px solid var(--hairline);
+  font: 400 var(--t-body-s) / 1 var(--sans);
+  color: var(--ink-62);
+}
+@media (min-width: 621px) { .menu__tema { display: none; } }

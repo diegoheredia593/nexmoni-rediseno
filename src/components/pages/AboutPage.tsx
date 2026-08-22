@@ -1,4 +1,5 @@
 import { PageCloser } from "@/components/PageCloser";
+import { Reveal } from "@/components/Reveal";
 import { withTerms } from "@/components/glossary/withTerms";
 import type { Dictionary, Locale } from "@/content/dictionary";
 
@@ -61,11 +62,11 @@ export function AboutPage({ locale, dict }: { locale: Locale; dict: Dictionary }
       {/* ── Estado regulatorio ─────────────────────────────────────────── */}
       <section className="section rule">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">{t.regulatoryEyebrow}</span>
             <h2>{t.regulatoryTitle}</h2>
             <p className="lead">{withTerms(t.regulatoryBody)}</p>
-          </div>
+          </Reveal>
 
           <DataRows rows={t.regulatory} />
 
@@ -83,10 +84,10 @@ export function AboutPage({ locale, dict }: { locale: Locale; dict: Dictionary }
       {/* ── Servicios ──────────────────────────────────────────────────── */}
       <section className="section rule">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">{t.servicesEyebrow}</span>
             <h2>{t.servicesTitle}</h2>
-          </div>
+          </Reveal>
 
           <div className="duo">
             {t.services.map((item) => (
@@ -103,10 +104,10 @@ export function AboutPage({ locale, dict }: { locale: Locale; dict: Dictionary }
       {/* ── Cumplimiento ───────────────────────────────────────────────── */}
       <section className="section rule">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">{t.complianceEyebrow}</span>
             <h2>{t.complianceTitle}</h2>
-          </div>
+          </Reveal>
 
           <DataRows
             wide
@@ -118,10 +119,10 @@ export function AboutPage({ locale, dict }: { locale: Locale; dict: Dictionary }
       {/* ── Contacto ───────────────────────────────────────────────────── */}
       <section id="contacto" className="section rule">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">{t.contactEyebrow}</span>
             <h2>{t.contactTitle}</h2>
-          </div>
+          </Reveal>
 
           <div className="duo">
             {t.contact.map((item) => (

@@ -17,11 +17,14 @@ export const es = {
     tag: "EUR · EE · UE",
     legal: "NEXMONI OÜ · DINERO ELECTRÓNICO EMITIDO POR CONNECTPAY UAB (EMI N.º 24)",
     compliance: "PSD2 · GDPR",
-    version: "v1c-f1a — ACERO",
+    version: "v1c-f1a — LITORAL",
     whatsapp: "WhatsApp",
     openAccount: "Descargar la app",
     menu: "Menú",
     languageLabel: "Idioma",
+    themeLabel: "Aspecto",
+    themeDay: "Claro",
+    themeNight: "Oscuro",
   },
 
   nav: [
@@ -633,5 +636,51 @@ export const es = {
         list: [],
       },
     ],
+  },
+  /* ── Maqueta de la aplicación ───────────────────────────────────────────────
+     Alimenta el teléfono que se desplaza con la página. Es una REPRESENTACIÓN
+     del producto, no una captura: la ficha de la app todavía no existe. */
+  phone: {
+    eyebrow: "La aplicación",
+    title: "Así se ve enviar dinero",
+    lead:
+      "Cinco pantallas, desde que abres la app hasta que sabes que el dinero llegó. Sigue bajando y el teléfono avanza contigo.",
+    disclaimer:
+      "Maqueta de producto. Los importes usan los mismos tipos orientativos que la calculadora.",
+    steps: [
+      { title: "Eliges a quién", body: "Los destinatarios de siempre, arriba. Sin volver a escribir un IBAN nunca más." },
+      { title: "Ves el cambio antes de pagar", body: "El tipo se fija al empezar. Lo que ves en esta pantalla es lo que recibe." },
+      { title: "El desglose, entero", body: "Comisión y diferencial por separado, en euros. Nada aparece después." },
+      { title: "Sigues el envío", body: "Cada paso con su hora. Sabes dónde está el dinero sin llamar a nadie." },
+      { title: "Llega, y se nota", body: "Aviso en los dos teléfonos y comprobante descargable con la referencia." },
+    ],
+    ui: {
+      greeting: "Hola, Diego",
+      prompt: "¿A quién envías hoy?",
+      recent: "Recientes",
+      send: "Enviar dinero",
+      youSend: "Envías",
+      theyGet: "Recibe",
+      rate: "Tipo de cambio",
+      guaranteed: "Fijado 30 min",
+      continue: "Continuar",
+      reviewTitle: "Revisa el envío",
+      amount: "Importe",
+      fee: "Comisión de envío",
+      spread: "Diferencial",
+      totalPay: "Pagas en total",
+      arrives: "Llega",
+      confirm: "Confirmar y pagar",
+      trackTitle: "En curso",
+      received: "Recibido",
+      converted: "Convertido a dólares",
+      onTheWay: "En camino al banco",
+      delivered: "Entregado",
+      estimate: "Estimado hoy",
+      doneTitle: "Entregado",
+      doneNote: "Rosa ya tiene el dinero en su cuenta.",
+      reference: "Referencia",
+      share: "Descargar comprobante",
+    },
   },
 } as const;

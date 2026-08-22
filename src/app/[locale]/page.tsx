@@ -2,6 +2,8 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
 import { HeroCinematic } from "@/components/HeroCinematic";
+import { PhoneScroll } from "@/components/PhoneScroll";
+import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { GlowCard } from "@/components/ui/spotlight-card";
 import { AvatarPlaceholder, QrPlaceholder } from "@/components/Placeholders";
@@ -39,13 +41,13 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ── Cómo funciona: filas con filete, no tarjetas ──────────────── */}
       <section id="como" className="section">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">{dict.steps.eyebrow}</span>
             <h2>{dict.steps.title}</h2>
             <p className="lead">{dict.steps.lead}</p>
-          </div>
+          </Reveal>
 
-          <div className="list">
+          <Reveal className="list" escalonado>
             {dict.steps.items.map((step, i) => (
               <div key={step.title} className="list__item">
                 <span className="n">{`0${i + 1}`}</span>
@@ -53,19 +55,22 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 <p className="body-s">{withTerms(step.body)}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
+
+      {/* ── La aplicación: el teléfono que se desplaza con la página ──── */}
+      <PhoneScroll dict={dict} />
 
       {/* ── La cuenta: seis piezas en dos columnas ────────────────────── */}
       <section id="cuenta" className="section rule">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">{dict.features.eyebrow}</span>
             <h2>{dict.features.title}</h2>
-          </div>
+          </Reveal>
 
-          <div className="duo">
+          <Reveal className="duo" escalonado>
             {dict.features.items.map((feature) => (
               <div key={feature.title} className="duo__item">
                 <span className="tag">{feature.tag}</span>
@@ -73,14 +78,14 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 <p className="body-s">{withTerms(feature.body)}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ── Cifras: lo único a sangre ─────────────────────────────────── */}
       <section className="figures">
         <div className="wrap">
-          <div className="figures__grid">
+          <Reveal className="figures__grid" escalonado>
             {dict.stats.map((stat) => (
               <div key={stat.figure}>
                 <div className="n">{stat.figure}</div>
@@ -88,20 +93,20 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 <p>{withTerms(stat.label, "dark")}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ── Precios ───────────────────────────────────────────────────── */}
       <section id="precios" className="section">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">{dict.pricing.eyebrow}</span>
             <h2>{dict.pricing.title}</h2>
             <p className="lead">{dict.pricing.lead}</p>
-          </div>
+          </Reveal>
 
-          <div className="plans plans--glow">
+          <Reveal className="plans plans--glow" escalonado>
             {dict.pricing.plans.map((plan) => {
               const featured = plan.name === FEATURED_PLAN;
               return (
@@ -131,7 +136,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                 </GlowCard>
               );
             })}
-          </div>
+          </Reveal>
 
           <p className="caption" style={{ marginTop: "var(--s-24)" }}>
             {dict.pricing.feesNote}{" "}
@@ -174,11 +179,11 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ── Descarga: el final del embudo ─────────────────────────────── */}
       <section id="descargar" className="section rule">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">{dict.download.eyebrow}</span>
             <h2>{dict.download.title}</h2>
             <p className="lead">{dict.download.lead}</p>
-          </div>
+          </Reveal>
 
           <div className="download">
             <div className="stack-24">

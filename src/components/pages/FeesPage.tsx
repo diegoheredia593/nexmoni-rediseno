@@ -2,6 +2,7 @@ import Link from "next/link";
 import { Calculator } from "@/components/Calculator";
 import { Button as MarcoAnimado } from "@/components/ui/moving-border";
 import { PageCloser } from "@/components/PageCloser";
+import { Reveal } from "@/components/Reveal";
 import { withTerms } from "@/components/glossary/withTerms";
 import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
@@ -14,15 +15,15 @@ export function FeesPage({ locale, dict }: { locale: Locale; dict: Dictionary })
       {/* ── Tarifario ──────────────────────────────────────────────────── */}
       <section className="section">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">
               {t.eyebrow} · {t.sidenote[0]} · {t.sidenote[1]}
             </span>
             <h1 className="h1">{t.title}</h1>
             <p className="lead">{t.lead}</p>
-          </div>
+          </Reveal>
 
-          <div className="rows">
+          <Reveal className="rows" escalonado>
             {t.schedule.map((fee) => (
               <div key={fee.label} className="rows__item">
                 <div>
@@ -32,18 +33,18 @@ export function FeesPage({ locale, dict }: { locale: Locale; dict: Dictionary })
                 <div className="rows__value">{fee.price}</div>
               </div>
             ))}
-          </div>
+          </Reveal>
         </div>
       </section>
 
       {/* ── Calculadora ────────────────────────────────────────────────── */}
       <section id="calculadora" className="section rule">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">{dict.calculator.eyebrow}</span>
             <h2>{dict.calculator.title}</h2>
             <p className="lead">{dict.calculator.lead}</p>
-          </div>
+          </Reveal>
 
           {/* El cliente avisó de que la calculadora pasaba desapercibida: no
               tenía contenedor, solo filas de filete flotando en la sección.
@@ -74,14 +75,14 @@ export function FeesPage({ locale, dict }: { locale: Locale; dict: Dictionary })
             <p className="lead">{t.terminologyIntro}</p>
           </div>
 
-          <div className="duo">
+          <Reveal className="duo" escalonado>
             {t.terminology.map((term) => (
               <div key={term.en} className="duo__item">
                 <span className="tag tag--strong">{term.en}</span>
                 <p className="body-s">{withTerms(term.local)}</p>
               </div>
             ))}
-          </div>
+          </Reveal>
 
           <p className="caption" style={{ marginTop: "var(--s-24)" }}>
             <Link href={href(locale, "/#precios")} className="link">

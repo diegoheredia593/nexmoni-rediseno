@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { PageCloser } from "@/components/PageCloser";
+import { Reveal } from "@/components/Reveal";
 import { withTerms } from "@/components/glossary/withTerms";
 import { email } from "@/content/brand";
 import type { Dictionary, Locale } from "@/content/dictionary";
@@ -12,13 +13,13 @@ export function FaqPage({ locale, dict }: { locale: Locale; dict: Dictionary }) 
     <>
       <section className="section">
         <div className="wrap">
-          <div className="head">
+          <Reveal className="head">
             <span className="tag">
               {t.eyebrow} · {t.items.length} {t.sidenoteCount}
             </span>
             <h1 className="h1">{t.h1}</h1>
             <p className="lead">{t.subtitle}</p>
-          </div>
+          </Reveal>
 
           <div className="faq">
             {t.items.map((item, i) => (
