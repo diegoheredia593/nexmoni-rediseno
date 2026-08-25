@@ -3,7 +3,7 @@ import { notFound } from "next/navigation";
 import { withTerms } from "@/components/glossary/withTerms";
 import { HeroCinematic } from "@/components/HeroCinematic";
 import { PhoneScroll } from "@/components/PhoneScroll";
-import { PhotoBand } from "@/components/PhotoBand";
+import { CreditCardScroll } from "@/components/CreditCardScroll";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { GlowCard } from "@/components/ui/spotlight-card";
@@ -69,6 +69,9 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
 
       {/* ── La aplicación: el teléfono que se desplaza con la página ──── */}
       <PhoneScroll dict={dict} />
+
+      {/* ── La tarjeta: una vuelta completa ligada al scroll ─────────── */}
+      <CreditCardScroll />
 
       {/* ── La cuenta: seis piezas en dos columnas ────────────────────── */}
       <section id="cuenta" className="section rule">
@@ -183,9 +186,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
         </div>
       </section>
-
-      {/* ── Las dos mitades del envío ─────────────────────────────────── */}
-      <PhotoBand dict={dict} />
 
       {/* ── Descarga: el final del embudo ─────────────────────────────── */}
       <section id="descargar" className="section rule">
