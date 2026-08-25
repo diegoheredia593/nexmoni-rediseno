@@ -1,250 +1,511 @@
-# Traspaso de sesión — NexMoni
+# Traspaso de sesión — Rediseño Litoral de NexMoni
 
-Este archivo recoge lo que **no** está en el código: decisiones tomadas, por
-qué, y las trampas que solo se aprenden habiéndolas pisado. El `README.md`
-explica cómo funciona el proyecto; esto explica cómo llegamos aquí y qué falta.
+Este archivo recoge lo que **no** está en el código: decisiones tomadas, arquitectura de diseño, y las trampas que solo se aprenden habiéndolas pisado. El `README.md` explica cómo construir; esto explica cómo llegamos aquí y qué falta.
 
-Última actualización: commit `61367c3`.
+Última actualización: commit `e9819db` (2026-08-25).
 
 ---
 
-## 1. Dónde está todo
+## 1. Disposición de repositorios
 
-| | |
-|---|---|
-| Repositorio | `diegoheredia593/webapp` |
-| Rama de producción | `main` — es la que construye Vercel |
-| Rama de trabajo | `claude/continue-dev-with-zip-ojh32x` |
-| Despliegue | Vercel, equipo `nex`, proyecto `webapp` (plan Hobby) |
+| Repositorio | Rama | Propósito | Despliegue |
+|---|---|---|---|
+| `diegoheredia593/webapp` | `main` @ `8bd1a7b` | **Original intacto** — diseño "Acero templado" | *Congelado* |
+| `diegoheredia593/nexmoni-rediseno` | `main` ← `rediseno` | Rediseño Litoral en desarrollo | Cloudflare Workers |
 
-**Flujo de trabajo establecido:** se desarrolla en la rama de trabajo, se hace
-push, y después `git checkout main && git merge --ff-only <rama> && git push`.
-La fusión siempre ha sido de avance rápido. Vercel redespliega al recibir `main`.
+**Flujo de trabajo:** desarrollar en rama `rediseno`, push a `diegoheredia593/nexmoni-rediseno`, y desde allí despliegue automático a Cloudflare.
 
-### Documentos de esta sesión
-
-- **Ruta a producción** — checklist de 77 tareas para publicar, con lo que
-  bloquea marcado: https://claude.ai/code/artifact/bd3319ca-438c-4b25-b73f-5c988c76584e
-- **Acero contra Linear** — análisis de diseño que originó el sistema actual:
-  https://claude.ai/code/artifact/f7c85049-1269-4d5c-b246-31acdb73760a
-
-Ambos siguen accesibles y se pueden leer con WebFetch.
+**El original nunca se toca.** El cliente quiso ver ambas versiones en paralelo durante la presentación.
 
 ---
 
 ## 2. Qué es esto
 
-Landing de **NexMoni OÜ** (Estonia), distribuidor autorizado de **ConnectPay
-UAB**, entidad de dinero electrónico con licencia EMI n.º 24 del Banco de
-Lituania. Envíos de dinero desde Europa hacia Latinoamérica.
+Rediseño completo de la landing de **NexMoni** (Estonia), distribuidor de **ConnectPay UAB** (EMI licencia 24, Banco de Lituania). Envíos de dinero Europa → Latinoamérica.
 
-Next.js 15 (App Router), CSS propio, sin dependencias más allá del framework.
-Cuatro idiomas, cuatro páginas, 16 páginas estáticas.
+**Cambios principales:**
+- **Paleta:** Cambio de "Acero templado" (óxido `#8d5217`) a sistema **Litoral** con tres paletas intercambiables (Litoral, Altiplano, Tránsito)
+- **Temas:** Dos temas día/noche con selector animado en el encabezado
+- **Interactividad:** iPhone 16 con scroll paralelo, animaciones de texto, gradientes animados, transición circular al cambiar tema
+- **Autoridad:** Fotografía real en lugar de generada
+- **Calculadora:** Sin movimiento de animación (como se pidió)
 
-**El objetivo del embudo es la descarga de la aplicación móvil.**
+**Stack:** Next.js 15.5.23 (App Router), React 19.1.1, TypeScript 5.7.2, Tailwind v4 sin preflight, GSAP 3.15 + ScrollTrigger, `motion` 13.1, View Transitions API.
 
----
-
-## 3. Decisiones tomadas, y por qué
-
-### Diseño: «Acero templado»
-
-Nació de comparar el encargo original con el sistema de Linear. Se copió **la
-disciplina** (contención, escala, un acento, aire) y **no la paleta**.
-
-El razonamiento que convenció al cliente y conviene no perder: el lenguaje de
-Linear —negro medianoche, acento ácido, Inter apretada— es hoy el uniforme del
-software para desarrolladores (Vercel, Cursor, Raycast, Framer). **El público
-de NexMoni son migrantes mandando dinero a casa**, muchos desde un Android de
-gama baja con la pantalla al sol. El gris claro se lee mejor a plena luz y no
-dice «esto no es para ti».
-
-Existe una maqueta estática de esta dirección, entregada al cliente en zip
-(`nexmoni-acero-templado`), hoy equivalente a lo que hay en `main`.
-
-### Reglas que hay que respetar al añadir interfaz
-
-1. **Un acento.** El óxido `#8d5217` solo en botones que ejecutan una acción.
-   Hoy son cuatro por página. Números, etiquetas y distintivos van en gris.
-   El original llegó a 37 referencias decorativas: ese fue el problema.
-2. **Escala.** Nueve tamaños declarados en `globals.css`. **No inventar
-   valores nuevos en píxeles**, y jamás medios píxeles.
-3. **Contención.** Todo dentro de `.wrap` (1200 px). Solo la banda de cifras
-   va a sangre.
-4. **Radio 0** en todo. Es identidad del encargo, no un descuido.
-   **Excepción viva, decidida por el cliente:** el bloque de precios usa el
-   componente importado `spotlight-card` y lleva radio 16 px, sombra
-   proyectada y `backdrop-blur`. Fue una elección deliberada tras ver las dos
-   versiones en paralelo; no es un descuido y **no hay que «arreglarlo»**. La
-   alternativa que respetaba el sistema está en la rama `claude/spotlight-acero`
-   por si se recupera. La estética del resto de la página está pendiente de
-   revisar a la luz de esto.
-5. **Nada de rejillas de tres tarjetas** salvo los planes, donde el patrón
-   ayuda a comparar precios.
-
-### Contenido
-
-- **La marca es NexMoni**, no NextMoni. El dominio es `nexmoni.com`.
-- **La licencia no es de NexMoni.** Es de ConnectPay UAB. Cualquier texto que
-  dé a entender lo contrario es una declaración falsa ante el supervisor. Hubo
-  que corregirlo en seis sitios. Hay un aviso en `content/locales/es.ts`.
-- El español es la **fuente de la forma** del diccionario: si a una traducción
-  le falta una clave, el build falla. Es intencionado.
+**Despliegue:** Cloudflare Workers via `@opennextjs/cloudflare` 1.20.2.
 
 ---
 
-## 4. Trampas que ya pisamos
+## 3. Arquitectura de diseño: Sistema de dos ejes
 
-**Vercel bloquea versiones vulnerables de Next.js.** El build sale verde y el
-despliegue muere justo después con `Vulnerable version of Next.js detected`.
-No es configuración. Se resuelve actualizando Next.
-
-**El proyecto de Vercel se importó apuntando a `main` cuando `main` estaba
-vacía**, así que el preset quedó en «Other» y falló. Ya está resuelto, pero si
-alguna vez se recrea el proyecto: la rama debe tener `package.json` antes de
-importar.
-
-**`NEXT_PUBLIC_PREVIEW=1`** activa `noindex` y bloquea el rastreo. Hace falta
-mientras la web sea una demo: la calculadora enseña tipos de cambio
-orientativos y no debe indexarse. **Ojo:** la detección automática de Vercel no
-salta, porque esta demo es el entorno de *producción* del proyecto.
-
-**Nunca borrar `.next` con el servidor de desarrollo corriendo.** Se queda
-sirviendo un CSS vacío y parece que la web está rota en todas las páginas.
-Perdimos un rato diagnosticando un fallo que no existía.
-
-**Los estilos en línea vencen a las media queries.** Dos veces apareció
-desbordamiento horizontal en móvil por un `style={{ gridTemplateColumns }}`
-que se saltaba la regla responsive. Si hay desbordamiento, sospechar de eso
-primero.
-
-**Los componentes importados de escaparate traen `touch-action: none`.**
-Lo traía `spotlight-card`, y bloquea el scroll táctil sobre el elemento: con
-el dedo encima, la página no se mueve. Medido antes de arreglarlo: 0 px de
-desplazamiento dentro del bloque de precios, 2657 px justo fuera. En un sitio
-cuyo público navega desde el móvil eso es una zona muerta a mitad de la
-portada. Al pegar cualquier componente de fuera, buscar esa propiedad.
-
-**El aviso de `sharp` viene de `next`, no de las dependencias nuevas.**
-`npm audit` marca una vulnerabilidad alta en `sharp@0.34.5`, que entra por
-`next@15.5.23`. `npm audit fix` propone `next@16`, que es salto de mayor. Sin
-resolver, y es justo el tipo de cosa que tumba un despliegue en Vercel.
-
-**Los campos de formulario traen un ancho intrínseco** que impide encoger la
-pista de una rejilla. Necesitan `min-width: 0` y `width: 100%`.
-
----
-
-## 5. Lo que está a medias, con contexto
-
-### Precios — la decisión pendiente más importante
-
-Los corredores fuera de SEPA aplican el **SWIFT de 25 € fijos** del tarifario,
-que es el único precio publicado para fuera de la zona euro. En un envío de
-**200 € a Colombia el coste total sale 28,50 €, un 14 %**, y el ticket típico
-de remesa está entre 100 y 300 €.
-
-La calculadora lo enseña sin piedad, justo debajo de la tabla de tarifas. No es
-un fallo de la web: es el tarifario delatándose. Propuse un tramo de remesa
-(por ejemplo 1,5 % con mínimo 3 €) separado del SWIFT corporativo. **El cliente
-lo dejó aparcado a propósito.**
-
-### Cifras que son invención mía
-
-- **Tipos de cambio** (`content/pricing.ts`): recogidos de prensa financiera el
-  14-08-2026 y cruzados vía USD. Cinco (CLP, BOB, PYG, UYU, VES) son
-  estimaciones sin cotización del día.
-- **Diferenciales por par**: repartidos dentro de la banda 1–3 % que anuncia el
-  tarifario, pero **son invención**. El diferencial es una decisión comercial;
-  no hay forma de deducirlo.
-- **Corredor VES cerrado a propósito**: el bolívar se mueve demasiado y tiene
-  control de cambios. Sin proveedor, cualquier cifra estaría mal por un
-  múltiplo.
-
-Mientras `ratesArePlaceholder` sea `true`, la calculadora muestra el aviso.
-
-### Traducciones
-
-- **El lituano necesita revisión nativa.** Es el idioma del supervisor y la
-  terminología regulada tiene redacción fijada en la normativa lituana. Aviso
-  en la cabecera de `locales/lt.ts`.
-- **El portugués es pt-PT.** Si el público son brasileños en Europa, hay que
-  cambiar vocabulario y `numberLocale`.
-
-### Tiendas de aplicaciones
-
-Las fichas no existen. `stores.published` está en `false`, así que los
-distintivos se muestran sin enlace y como «próximamente». Al publicar: pegar
-las URL en `content/brand.ts` y poner `published: true`.
-
-**Los distintivos actuales están compuestos con el sistema de la marca. Apple y
-Google exigen los suyos oficiales.** Hay que sustituirlos antes de publicar.
-El QR es un marcador porque no hay URL que codificar.
-
-### Frontend: lo que la auditoría con navegador dejó sin hacer
-
-Pasada con Chromium sobre las cuatro páginas, a 1440 y a 390 px. Sano: build
-verde, cero errores de consola, cero desbordamiento horizontal, el menú
-hamburguesa abre y sus objetivos táctiles miden 218×53. Se corrigió el cierre
-del embudo. Quedaron dos cosas, ambas conscientes:
-
-- **La FAQ no emite datos estructurados.** Cero bloques `application/ld+json`.
-  Las respuestas ya están en el DOM dentro de `<details>`, así que emitir
-  `FAQPage` es barato y es lo que habilita el resultado enriquecido.
-- **La FAQ se ve vacía a 1440 px.** Ocho acordeones cerrados del mismo peso
-  sobre el ancho completo. Es la página más floja para enseñar a un cliente.
-  Recomponerla —agrupar por tema, abrir la primera, contener la columna de
-  lectura— es el cambio con más riesgo de discusión, y por eso se aparcó.
-
-### Legal — en pausa por decisión del cliente
-
-Faltan Privacidad, Términos, AML/KYC y Quejas. **El cliente no tiene la
-documentación todavía y pidió expresamente dejarlo en pausa**, con recordatorio
-para más adelante. Las cuatro entradas del pie apuntan de momento a
-`/#descargar`.
-
-Es bloqueante para publicar: la FAQ ya promete respuesta a reclamaciones en 15
-días hábiles, y el formulario recoge datos personales.
-
-### Formulario
-
-`/api/lead` valida y escribe en el log del servidor. **No envía a ninguna
-parte**, y ahora promete enviar un enlace de descarga, así que la promesa es
-concreta. Además hay que quitar ese `console.info`: son datos personales en
-texto plano.
-
----
-
-## 6. Qué haría a continuación
-
-**Todo lo de abajo está en pausa esperando la aprobación del cliente sobre el
-frontend.** Fue decisión expresa: primero que el cliente valide lo que se ve, y
-después se toca la integración. Al retomar, conviene preguntar si esa
-aprobación ya llegó antes de arrancar por el punto 1.
-
-Por orden de lo que más desbloquea:
-
-1. **Destino real del formulario.** Es lo único del embudo que está roto.
-   Hay un proyecto de Supabase activo en la cuenta (`fgjsmmnlftoixannpiiy`),
-   pero hoy aloja otras cosas y no se ha tocado: si se usa, la tabla `leads`
-   necesita RLS cerrada e inserción solo desde el servidor.
-2. **Cabeceras de seguridad y límite de peticiones.** El sitio ya es público.
-3. **Decidir el tramo de remesa.** Sin eso, el tarifario contradice al producto.
-4. **Search Console + Analytics con consentimiento** — pero el banner de
-   cookies va *antes* que la analítica, no después.
-5. Las páginas legales, cuando llegue la documentación.
-
-La lista completa, con las 77 tareas y lo que bloquea marcado, está en el
-artifact «Ruta a producción».
-
----
-
-## 7. Cómo arrancar el chat nuevo
+### Paletas × Temas = 6 apariencias
 
 ```
-Trabajo en el repositorio diegoheredia593/webapp, rama
-claude/continue-dev-with-zip-ojh32x. Lee HANDOFF.md y README.md antes de nada:
-ahí está el estado del proyecto, las decisiones de diseño y lo que falta.
-Desarrolla en esa rama y fusiona a main con --ff-only cuando quieras que
-Vercel redespliegue.
+data-paleta: "litoral" | "altiplano" | "transito"
+data-tema:   "dia"     | "noche"
 ```
+
+Cada combinación es un bloque `:root[…]` en `src/app/globals.css`:
+
+| | Día | Noche |
+|---|---|---|
+| **Litoral** | `:root` (líneas 1–184) | `:root[data-tema="noche"]` (185–227) |
+| **Altiplano** | `:root[data-paleta="altiplano"]` (228–244) | `…[data-paleta="altiplano"][data-tema="noche"]` (245–267) |
+| **Tránsito** | `:root[data-paleta="transito"]` (268–284) | `…[data-paleta="transito"][data-tema="noche"]` (285–301) |
+
+**Litoral Día (invariantes + valores Litoral):**
+```
+--papel: #f4f3ef        (fondo)
+--tinta: #131719        (texto primario)
+--noche: #0e2a2d        (fondo hero nocturno, rara vez usado)
+--acento: #0f5f63       (botones, iconos activos)
+--acento-alto: #5fb8bd  (acentos secundarios)
+--senal: #2f7d4a        (éxito)
+--aviso: #8a5a12        (advertencia)
+--error: #a33720        (error)
+```
+
+Todas las variantes han sido **verificadas WCAG AA** en contraste.
+
+### Capa de alias: Compatibilidad sin tocar CSS
+
+El proyecto usa nombres antiguos de tokens (`--ink`, `--surface`, `--accent`, `--hairline`). Todos apuntan al sistema Litoral:
+
+```css
+--ink: var(--tinta);
+--surface: var(--papel);
+--accent: var(--acento);
+--hairline: #d9d6cf;  /* Derivado de Litoral Día */
+```
+
+**Efecto:** ~700 líneas de CSS de componentes heredan la nueva paleta sin cambios. Un componente que hace `color: var(--ink)` funciona en las 6 variantes automáticamente.
+
+### Triples RGB para opacidad
+
+Gradientes, medios tonos y resplandores del puntero usan variables `--rgb-*`:
+
+```css
+--rgb-papel: 244 243 239;
+--rgb-tinta: 19 23 25;
+--rgb-acento: 15 95 99;
+```
+
+Se invocan con `rgb(var(--rgb-*) / opacity)` en `@supports (color: rgb(...))`.
+
+---
+
+## 4. Stack técnico completo
+
+### Runtime y framework
+- **Next.js 15.5.23** — App Router, renderizado en servidor → Cloudflare Workers
+- **React 19.1.1** — Cliente
+- **TypeScript 5.7.2** — Tipado completo
+- **Tailwind CSS v4.3.3** — Utilidades sin preflight (importado manual: `theme.css` + `utilities.css`)
+
+### Animación
+- **GSAP 3.15.0** — ScrollTrigger para animaciones vinculadas a scroll
+  - `gsap.context()` para limpieza de referencias
+  - Guarded con `useReducedMotion()` (comprobado en **JavaScript**, no en CSS)
+- **Motion 13.1.0** — Animaciones de entrada/salida (deliberadamente NO Framer Motion para evitar libs de animación duplicadas)
+- **View Transitions API** — Transición circular al cambiar tema, Chromium-only con detección de características
+
+### Componentes de UI
+- **Radix UI** (`@radix-ui/react-slot@^1.3.3`) — Primitivos sin estilo
+- **Lucide React** (`^1.33.0`) — Iconos SVG
+- **shadcn/ui** — Componentes de mercado integrados (accordion, etc.)
+
+### Utilities
+- **class-variance-authority** (`^0.7.1`) — API de variantes
+- **clsx** (`^2.1.1`) — Fusión condicional de clases
+- **tailwind-merge** (`^3.6.0`) — Fusión inteligente de clases Tailwind
+
+### Despliegue
+- **@opennextjs/cloudflare** (`^1.20.2`) — Adaptador Next.js → Cloudflare Workers
+- **wrangler** (`^4.125.0`) — CLI de Cloudflare
+- **nodejs_compat** — Flag para compatibilidad Node.js en Workers
+
+### Dev
+- ESLint (Next.js) — Linting integrado
+- TypeScript strict — Tipado completo
+
+### Scripts
+```
+npm run dev              # Desarrollo local
+npm run build            # Build Next.js
+npm run start            # Servidor Next.js
+npm run lint             # ESLint
+npm run typecheck        # TypeScript check
+npm run cf:build         # Build para Cloudflare
+npm run cf:preview       # Preview local de Cloudflare
+npm run cf:deploy        # Deploy a Cloudflare
+```
+
+---
+
+## 5. Componentes y arquitectura
+
+### Componentes de diseño nuevos esta sesión
+
+| Componente | Archivo | Propósito |
+|---|---|---|
+| `HeroCinematic` | `src/components/HeroCinematic.tsx` | Hero rediseñado con gradiente animado |
+| `PhoneScroll` | `src/components/PhoneScroll.tsx` | iPhone 16 (393×852pt) con canvas scrubbed a scroll |
+| `FeeBar` | `src/components/FeeBar.tsx` | Barra visual de tarifa, actualizada en vivo por la calculadora |
+| `ThemeToggle` | `src/components/ui/theme-toggle.tsx` | Selector día/noche (64×32, lucide Moon/Sun) |
+| `PaletteSwitch` | `src/components/PaletteSwitch.tsx` | Selector de las tres paletas (Litoral/Altiplano/Tránsito) |
+| `TextRoll` | `src/components/glossary/TextRoll.tsx` | Animación de scroll de texto (hero) |
+| `RandomLetterSwap` | `src/components/glossary/RandomLetterSwap.tsx` | Glitch de letras aleatorias (deferred motion) |
+| `MovingBorder` | `src/components/ui/moving-border.tsx` | Borde animado (deferred motion) |
+| `AppIcon` | `src/components/AppIcon.tsx` | Marca vectorial (3 rutas copiadas byte-a-byte de `NexMoni_logo_vector.svg`) |
+
+**Componentes heredados que heredan la paleta automáticamente:** ~30 componentes (Calculator, CTA, Footer, Header, etc.) sin cambios en su CSS.
+
+### Estructura de directorios
+
+```
+src/
+├── app/
+│   ├── globals.css                  (1696 líneas: sistema de diseño)
+│   ├── layout.tsx                   (root layout)
+│   └── [locale]/
+│       ├── page.tsx                 (landing principal)
+│       ├── [slug]/page.tsx           (páginas interiores)
+│       └── layout.tsx
+├── components/
+│   ├── HeroCinematic.tsx
+│   ├── PhoneScroll.tsx
+│   ├── FeeBar.tsx
+│   ├── AppIcon.tsx
+│   ├── Calculator.tsx               (FeeBar anidado)
+│   ├── ui/
+│   │   ├── theme-toggle.tsx
+│   │   ├── moving-border.tsx
+│   │   └── [...shadcn components]
+│   ├── glossary/
+│   │   ├── TextRoll.tsx
+│   │   ├── RandomLetterSwap.tsx
+│   │   └── [...otros]
+│   └── [~35 componentes en total]
+├── lib/
+│   ├── tema.ts                      (CLAVE_TEMA = "nexmoni:tema", neutral — sin "use client")
+│   ├── cambiar-tema.ts              ("use client", export Tema, temaVigente, cambiarTema)
+│   ├── quote.ts                     (motor de cotización)
+│   ├── format.ts                    (formateo de números)
+│   ├── utils.ts
+│   └── site-url.ts
+├── content/
+│   ├── appDemo.ts                   (figuras del teléfono desde midRates)
+│   ├── brand.ts                     (marca, tiendas de apps)
+│   ├── dictionary.ts                (diccionario del cliente)
+│   ├── pricing.ts                   (tipos de cambio, diferenciales)
+│   ├── routes.ts
+│   └── locales/
+│       ├── es.ts                    (fuente de verdad)
+│       ├── en.ts
+│       ├── pt.ts
+│       └── lt.ts
+├── hooks/
+│   ├── useReducedMotion.ts          ("use client", detección de preferencia)
+│   └── [otros custom hooks]
+└── pages/
+    └── api/
+        └── lead/
+            └── route.ts             (validación, sin destino todavía)
+```
+
+---
+
+## 6. Decisiones de movimiento y animación
+
+### Regla: Motion en JS, no en CSS
+
+`prefers-reduced-motion` se **comprueba en JavaScript**, no en CSS:
+
+```typescript
+// useReducedMotion.ts — "use client"
+const [menosMovimiento, setMenosMovimiento] = useState<boolean | null>(null);
+useEffect(() => {
+  setMenosMovimiento(window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+}, []);
+
+// Luego en componentes:
+{!menosMovimiento && <GSAPAnimation />}
+```
+
+**Por qué:** GSAP y `motion` escriben estilos en línea que una media query CSS no puede alcanzar.
+
+### Trampa: Desajuste de hidratación
+
+Si un componente **bifurca estructuralmente** en función de `useReducedMotion()`:
+- Servidor renderiza sin la rama (devuelve `null`)
+- Cliente hidrata con la rama (devuelve `true` o `false`)
+- React ve árboles diferentes → fuerza regeneración → **borra `data-tema`**
+
+**Solución:** diferir la rama tras un estado `montado`:
+
+```typescript
+const [montado, setMontado] = useState(false);
+useEffect(() => setMontado(true), []);
+
+if (!montado) return null;  // O render neutro sin rama
+return !menosMovimiento && <Animated /> || <Static />;
+```
+
+Afecta a: `TextRoll.tsx`, `RandomLetterSwap.tsx`, `MovingBorder.tsx`.
+
+### Transición de tema: View Transitions API
+
+Al cambiar tema, se lanza una transición circular desde el toggle hacia abajo:
+
+```typescript
+// cambiar-tema.ts
+const siguiente = temaVigente() === "dia" ? "noche" : "dia";
+
+const puedoTransicionar = 
+  typeof document !== "undefined" && 
+  "startViewTransition" in document &&
+  !menosMovimiento;
+
+if (puedoTransicionar) {
+  document.startViewTransition(() => {
+    document.documentElement.dataset.tema = siguiente;
+  });
+} else {
+  document.documentElement.dataset.tema = siguiente;
+}
+
+localStorage.setItem(CLAVE_TEMA, siguiente);
+```
+
+**Regla:** dos guardias obligatorios:
+1. Sin `startViewTransition` → cambio plano
+2. Movimiento reducido → cambio plano
+
+### FOUC (flash de contenido sin estilo)
+
+Script bloqueante en `app/layout.tsx` que escribe `data-tema` antes del first paint:
+
+```html
+<script dangerouslySetInnerHTML={{ __html: `
+  (function() {
+    const t = localStorage.getItem("nexmoni:tema") || "dia";
+    document.documentElement.dataset.tema = t;
+  })()
+` }} />
+```
+
+Esto evita parpadeo tema-día → tema-noche en reload.
+
+---
+
+## 7. Trampas ya pisadas esta sesión
+
+### Preflight de Tailwind deshabilitado
+
+El proyecto importa Tailwind sin preflight (solo `theme.css` + `utilities.css`). El componente `border` de Tailwind establece solo el ancho; el estilo viene del preflight.
+
+**Trampa:** `<div className="border">` → `border: 0px` (comprobado).
+**Solución:** `<div className="border border-solid">`.
+
+Esto afectó a: `ThemeToggle.tsx`.
+
+### `overflow: clip` en `.fone` rompió `position: sticky`
+
+```css
+.fone { overflow: clip; }  /* ❌ crea nuevo contexto de bloque contenedor */
+```
+
+La sección se convierte en el bloque contenedor → el teléfono sticky se libera pronto (medido: −195/−1310px en lugar de pegado a 101px).
+
+**Solución:** borrar `overflow: clip`; el `minmax(0, 1fr)` en la grid ya contiene.
+
+### `align-items: start` encogió `.fone__col`
+
+```css
+.fone__col { align-items: start; }  /* ❌ ancho: 744px */
+```
+
+El valor de inicio acorta las columnas grid. Borrado; estirar por defecto hizo 2970px.
+
+### Alias `--on-dark` confuso
+
+**Uso previo:** "sobre fondo oscuro" (hero nocturno).
+**Uso real:** todos los 6 sitios usan `--on-dark` sobre fondos `--ink` (claro en Litoral día, oscuro en Litoral noche).
+
+**Trampa:** `--on-dark: var(--noche)` producía claro-sobre-claro en noche (botón Descargar: 1.18:1).
+**Solución:** `--on-dark: var(--papel)` → 13.63:1.
+
+```css
+/* En globals.css, línea 41 con nota: */
+--on-dark: var(--papel);
+--on-dark-62: rgb(var(--rgb-papel) / 0.62);
+--on-dark-25: rgb(var(--rgb-papel) / 0.25);
+```
+
+### Ancho de la barra de tema (header)
+
+Presupuesto: 52px para el selector día/noche (sin etiqueta). El lituano es largo; el conmutador se desbordó 16px a 360px.
+
+**Solución:** mover el selector **al panel del menú** (debajo de 620px). El interruptor de la barra queda oculto.
+
+```css
+.tema { width: 52px; }
+@media (max-width: 620px) { .tema { display: none; } }
+@media (max-width: 620px) { .menu-tema { display: flex; } }
+```
+
+### Desbordamiento del icono de 360px
+
+Añadir la marca junto al wordmark añadió 30px a la izquierda. A 360px, el lituano desbordaba 16px más.
+
+**Solución:** ocultar el icono en la **barra** (no en el menú) debajo de 400px.
+
+```css
+@media (max-width: 400px) { .app-icon-header { display: none; } }
+```
+
+### Caché `.next` mezclado
+
+Alternar `next build` y `next dev` sin limpiar → `Cannot find module './vendor-chunks/motion-dom.js'` y 500s.
+
+**Solución:** `rm -rf .next` primero, luego servidor/build.
+
+### `ThemeScript` importando desde módulo "use client"
+
+`ThemeScript` es un componente servidor. Importar `CLAVE_TEMA` desde `cambiar-tema.ts` (`"use client"`) emitía `localStorage.getItem(undefined)` → tema no persistía tras reload.
+
+**Solución:** módulo neutral `src/lib/tema.ts` (sin directiva) que exporta solo `CLAVE_TEMA`.
+
+### Desajuste de tema en hidratación
+
+Tres componentes (`TextRoll`, `RandomLetterSwap`, `MovingBorder`) bifurcaban en `useReducedMotion()`. React regeneraba el árbol, borrando `data-tema`.
+
+**Solución:** diferir rama con estado `montado` (ver sección 6).
+
+### La barra de tarifa contradecía la calculadora
+
+Motor de cotización: `amountConverted = amount - transferFee` (deducción).
+Mi barra: la sumaba (203 para enviar 200) ❌.
+
+**Solución:** adoptar modelo del motor `send - totalCost`.
+
+### TextRoll desapareció del hero
+
+Fue borrado en commit `c57d9cd` al reemplazar el hero con `HeroCinematic`. Git log con `-S TextRoll` lo confirmó.
+
+**Solución:** restaurado.
+
+### Medición de contraste incluyendo alfa
+
+Medí `rgba(..., 0.42)` como si fuera opaco: `match(/\d+/g)` dropaba el alfa.
+
+**Solución:** actualizar fórmula para restar opacidad antes de calcular contraste relativo.
+
+---
+
+## 8. Lo que está a medias y por qué
+
+### Decisión de precios — más importante
+
+La tarifa SWIFT de 25 € fijos fuera de SEPA da:
+- 200 EUR → Colombia: 14.2% (`(28.5 / 200) × 100`)
+- 50 EUR → Colombia: **51.0%** (más que lo que se remite)
+
+La barra de tarifas lo **muestra sin piedad** porque es correcto. El problema no es la web; es el tarifario. El cliente lo dejó aparcado a propósito, sabiendo el riesgo visual.
+
+### Activos pendientes
+
+| Activo | Ubicación | Estado | Notas |
+|---|---|---|---|
+| `public/video/hero.mp4` | Hero background | **Faltan los archivos** | User debe descargar de Higgsfield (2 videos 1080p/8s en la sesión anterior) y colocar; hero ya está cableado |
+| Icono de ConnectPay | Footer/legal | Deferred | Documentación oficial no disponible |
+| Marca SEPA | Footer | Deferred | Documentación oficial no disponible |
+| Distintivos App Store/Google Play | Footer | Deferred | Deben ser oficiales, no compuestos |
+| Logotipo del Banco de Lituania | Pie legal | Deferred | Autoridad institucional, deferred |
+
+### Bloqueadores abiertos
+
+| Bloqueador | Prioridad | Situación |
+|---|---|---|
+| `/api/lead` sin destino real | **CRÍTICO** | Valida y registra, no envía; promete enlace de descarga |
+| Páginas legales (4 faltantes) | **CRÍTICO** | Privacidad, Términos, AML/KYC, Quejas — cliente sin documentación |
+| Revisión lituana nativa | **Alta** | Terminología regulada lituana; aviso en `locales/lt.ts` |
+| Decisión tarifa remesa | **Alta** | Problema comercial que se ve (51% a 50 EUR), no técnico |
+| Cabeceras de seguridad / Rate limiting | Alta | No aplicado; sitio es público ahora |
+| Contraste del toggle scrolleado | Media | 1.11:1/1.06:1 en scroll (< 3:1 WCAG) — flagged, left as designed |
+
+---
+
+## 9. Variables de entorno y configuración Cloudflare
+
+```
+NEXT_PUBLIC_PREVIEW=1              # Activa noindex (demo, no indexable)
+NEXT_PUBLIC_SITE_URL=...           # URL raíz para links absolutos
+NEXT_PUBLIC_PALETA_DEFAULT=litoral # Paleta por defecto
+```
+
+En `wrangler.toml`:
+```toml
+nodejs_compat = true
+```
+
+---
+
+## 10. Cómo continuar
+
+### Para la siguiente sesión
+
+```
+Trabajo en repositorio diegoheredia593/nexmoni-rediseno, rama rediseno.
+Lee HANDOFF.md y README.md antes de nada.
+Desarrolla en rediseno, push a origin, despliegue automático a Cloudflare.
+
+El original (diegoheredia593/webapp @ 8bd1a7b) nunca se toca.
+```
+
+### Tareas pendientes en orden de impacto
+
+1. **Descargar videos hero de Higgsfield** (sesión anterior, widget)
+   - Dos videos 1080p/8s; elegir uno
+   - Colocar en `public/video/hero.mp4`
+   - Comprimir: `ffmpeg -i hero.mp4 -c:v hevc_videotoolbox -b:v 2.5M hero-compressed.mp4`
+   - **Sin cambios de código; hero ya está cableado**
+
+2. **Destino real de `/api/lead`**
+   - Hoy: logging en stderr (datos personales en texto plano)
+   - Supabase está disponible (`fgjsmmnlftoixannpiiy`)
+   - Tabla `leads` con RLS cerrada, inserción solo desde servidor
+   - **Bloqueador:** usuario promete link de descarga, formulario no se envía a ningún lado
+
+3. **Páginas legales** (4 nuevas rutas)
+   - Privacidad, Términos, AML/KYC, Quejas
+   - Esperar a que cliente entregue documentación
+
+4. **Decidir tramo de remesa** ($, €, etc.)
+   - Comercial, no técnico
+   - Afecta tarifa visible y confianza del usuario
+
+5. **Cabeceras de seguridad** — el sitio es público
+   - CSP, X-Frame-Options, etc.
+   - Rate limiting en `/api/lead`
+
+---
+
+## 11. Pendientes menores
+
+- **Fotografías:** 7 webp en `public/foto/`; Higgsfield fue bloqueado (403 en egress), URL local usada como fallback. Considerar comprimir a ~600px (no redimensionadas por Cloudflare `next/image`).
+- **Revisión de traductor lituano** — aviso en `locales/lt.ts`
+- **Portugués pt-PT vs pt-BR** — actualmente es pt-PT; cambiar si el público es brasileño en Europa
+- **Distintivos App Store/Google Play** — actuales son compuestos; deben ser oficiales antes de publicar
+- **FAQ estructurada** — sin `FAQPage` ld+json; barato de añadir
+- **Avisos de vulnerabilidad en Next.js** — 3 high-severity en `next@15.5.23`; sin acción hasta que haya update disponible
+
+---
+
+## Archivos clave para leer primero
+
+1. **`src/app/globals.css`** — Toda la paleta, alias, y reglas de animación (1696 líneas)
+2. **`src/lib/cambiar-tema.ts`** — Cambio de tema con View Transitions
+3. **`src/components/PhoneScroll.tsx`** — Parallax del iPhone
+4. **`src/components/FeeBar.tsx`** — Barra de tarifa dinámica
+5. **`src/components/ui/theme-toggle.tsx`** — Toggle día/noche y su patrón de sincronización
