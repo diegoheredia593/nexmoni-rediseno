@@ -830,6 +830,12 @@ p { margin: 0; text-wrap: pretty; }
   font-size: clamp(28px, 3.6vw, var(--t-h1)); font-weight: 600;
   letter-spacing: var(--track-h1); line-height: 1; text-align: right;
 }
+.calc__live-value {
+  display: inline-block;
+  transform-origin: 50% 70%;
+  font-variant-numeric: tabular-nums;
+  will-change: transform, opacity, filter;
+}
 .calc__rows { margin: 0; }
 .calc__row {
   display: grid; grid-template-columns: 1fr auto; gap: var(--s-24);
@@ -1773,6 +1779,20 @@ p { margin: 0; text-wrap: pretty; }
 .nex-card { position: relative; width: 100%; height: 100%; transform-style: preserve-3d; will-change: transform; }
 .nex-card__face { position: absolute; inset: 0; overflow: hidden; backface-visibility: hidden; border: 1px solid rgb(255 255 255 / .24); border-radius: 28px; color: #f4f6f7; background: linear-gradient(125deg, transparent 0 38%, rgb(255 255 255 / .08) 49%, transparent 60%), linear-gradient(145deg, #172536, #0d1928 52%, #07111d); box-shadow: inset 0 1px rgb(255 255 255 / .18), inset 0 -1px rgb(0 0 0 / .36); }
 .nex-card__face::after { content: ""; position: absolute; inset: 0; pointer-events: none; opacity: .12; background-image: radial-gradient(circle, #fff .7px, transparent .8px); background-size: 5px 5px; mask-image: linear-gradient(115deg, transparent 8%, #000 45%, transparent 92%); }
+.nex-card { --card-light-x: 68%; --card-light-y: 18%; --card-light-strength: .28; }
+.nex-card__face::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: 2;
+  pointer-events: none;
+  opacity: var(--card-light-strength);
+  background:
+    radial-gradient(circle at var(--card-light-x) var(--card-light-y), rgb(255 255 255 / .72) 0, rgb(255 229 168 / .28) 9%, transparent 31%),
+    linear-gradient(112deg, transparent 34%, rgb(255 255 255 / .16) 47%, transparent 60%);
+  mix-blend-mode: screen;
+  transition: opacity .35s ease;
+}
 .nex-card__front { padding: 42px 46px; transform: translateZ(4px); }
 .nex-card__back { transform: rotateY(180deg) translateZ(4px); padding: 34px 42px; }
 .nex-card__brand { position: absolute; top: 38px; left: 44px; display: flex; align-items: center; gap: 12px; font: 700 24px var(--sans); letter-spacing: -.04em; }
@@ -1818,7 +1838,7 @@ p { margin: 0; text-wrap: pretty; }
   .nex-card__back p { top: 139px; left: 24px; font-size: 5px; }
   .nex-card__brand--back { top: auto; bottom: 20px; left: 24px; font-size: 13px; }
 }
-@media (prefers-reduced-motion: reduce) { .card-scroll { height: auto; min-height: 0; padding: var(--s-96) 0; } .card-scroll__sticky { position: static; min-height: auto; } .card-scroll__hint { display: none; } }
+@media (prefers-reduced-motion: reduce) { .card-scroll { height: auto; min-height: 0; padding: var(--s-96) 0; } .card-scroll__sticky { position: static; min-height: auto; } .card-scroll__hint { display: none; } .nex-card__face::before { transition: none; } }
 /* Profundidad, red de pago y detalles de seguridad de la tarjeta. */
 .nex-card::before,
 .nex-card::after { content: ""; position: absolute; z-index: -1; left: 28px; right: 28px; height: 8px; border-radius: 50%; background: linear-gradient(90deg, #4b535c, #d2d5d6 20%, #737a80 52%, #e0e1df 78%, #424a53); transform-style: preserve-3d; }

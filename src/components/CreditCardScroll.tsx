@@ -58,6 +58,33 @@ export function CreditCardScroll({ locale }: { locale: Locale }) {
     return () => ctx.revert();
   }, []);
 
+  useEffect(() => {
+    const el = card.current;
+    if (!el || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+
+    let frame = 0;
+    const updateLight = (event: PointerEvent) => {
+      cancelAnimationFrame(frame);
+      frame = requestAnimationFrame(() => {
+        const bounds = el.getBoundingClientRect();
+        const x = ((event.clientX - bounds.left) / bounds.width) * 100;
+        const y = ((event.clientY - bounds.top) / bounds.height) * 100;
+        el.style.setProperty("--card-light-x", x + "%");
+        el.style.setProperty("--card-light-y", y + "%");
+        el.style.setProperty("--card-light-strength", "1");
+      });
+    };
+    const dimLight = () => el.style.setProperty("--card-light-strength", ".28");
+
+    el.addEventListener("pointermove", updateLight);
+    el.addEventListener("pointerleave", dimLight);
+    return () => {
+      cancelAnimationFrame(frame);
+      el.removeEventListener("pointermove", updateLight);
+      el.removeEventListener("pointerleave", dimLight);
+    };
+  }, []);
+
   return (
     <section className="card-scroll" ref={section} aria-label={copy.aria}>
       <div className="card-scroll__sticky">

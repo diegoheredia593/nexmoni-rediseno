@@ -1,6 +1,7 @@
 "use client";
 
 import { useMemo, useState } from "react";
+import { motion, useReducedMotion } from "motion/react";
 import type { Dictionary } from "@/content/dictionary";
 import {
   corridors,
@@ -84,7 +85,9 @@ export function Calculator({ dict }: { dict: Dictionary }) {
               <h4>{t.receives}</h4>
               <p className="caption">{t.receivesNote}</p>
             </div>
-            <div className="calc__figure">{formatMoney(result.receives, to, numberLocale)}</div>
+            <div className="calc__figure" aria-live="polite">
+              <LiveValue value={formatMoney(result.receives, to, numberLocale)} />
+            </div>
           </div>
 
           <dl className="calc__rows">
@@ -147,6 +150,22 @@ export function Calculator({ dict }: { dict: Dictionary }) {
   );
 }
 
+function LiveValue({ value }: { value: string }) {
+  const reduceMotion = useReducedMotion();
+
+  return (
+    <motion.span
+      key={value}
+      className="calc__live-value"
+      initial={reduceMotion ? false : { opacity: 0.35, y: 7, filter: "blur(3px)" }}
+      animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+      transition={{ duration: 0.28, ease: [0.22, 1, 0.36, 1] }}
+    >
+      {value}
+    </motion.span>
+  );
+}
+
 function CalcRow({
   label,
   note,
@@ -166,7 +185,7 @@ function CalcRow({
         </span>
         <span className="caption">{note}</span>
       </dt>
-      <dd>{value}</dd>
+      <dd><LiveValue value={value} /></dd>
     </div>
   );
 }
