@@ -1413,7 +1413,7 @@ p { margin: 0; text-wrap: pretty; }
 
 @media (max-width: 900px) {
   .fone__rejilla { grid-template-columns: 1fr; gap: var(--s-32); }
-  .fone { --fone-ancho: 232px; --fone-alto: 503px; --app-estado: 33px; }
+  .fone { --fone-ancho: 232px; --fone-alto: 472px; --app-estado: 33px; }
   .fone__marco { padding: 8px; border-radius: 42px; }
   .fone__borde { border-radius: 35px; }
   .fone__pantalla { border-radius: 33px; font-size: 12px; }
@@ -1727,8 +1727,8 @@ p { margin: 0; text-wrap: pretty; }
 .card-scroll__hint { position: absolute; left: 50%; bottom: 30px; transform: translateX(-50%); display: flex; align-items: center; gap: 10px; font: 9px var(--mono); letter-spacing: .12em; text-transform: uppercase; color: var(--tinta-40); }
 .card-scroll__hint i { width: 1px; height: 28px; background: linear-gradient(var(--filete-2) 45%, var(--acento) 45% 58%, var(--filete-2) 58%); }
 @media (max-width: 700px) {
-  .card-scroll { height: 180vh; min-height: 980px; }
-  .card-scroll__scene { width: min(88vw, 520px); }
+  .card-scroll { height: 155vh; min-height: 820px; }
+  .card-scroll__scene { width: min(82vw, 460px); }
   .nex-card__face { border-radius: 18px; }
   .nex-card__brand { top: 24px; left: 26px; gap: 8px; font-size: 17px; }
   .nex-card__brand svg { width: 22px; height: 22px; }
