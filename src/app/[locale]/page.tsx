@@ -71,7 +71,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <PhoneScroll dict={dict} />
 
       {/* ── La tarjeta: una vuelta completa ligada al scroll ─────────── */}
-      <CreditCardScroll />
+      <CreditCardScroll locale={locale} />
 
       {/* ── La cuenta: seis piezas en dos columnas ────────────────────── */}
       <section id="cuenta" className="section rule">
