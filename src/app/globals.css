@@ -390,7 +390,73 @@ button, a { -webkit-tap-highlight-color: transparent; }
     linear-gradient(to right, rgb(var(--rgb-noche) / 0.92) 0%, rgb(var(--rgb-noche) / 0.72) 42%, rgb(var(--rgb-noche) / 0.34) 100%),
     linear-gradient(to top, rgb(var(--rgb-noche) / 0.95) 0%, rgb(var(--rgb-noche) / 0.30) 55%, rgb(var(--rgb-noche) / 0.62) 100%);
 }
+
+/* El arco une visualmente los dos mercados del producto. Es SVG para conservar
+   nitidez a cualquier tamaño y no añade una segunda descarga de vídeo. */
+.cine__route {
+  position: absolute;
+  z-index: 0;
+  top: 8%;
+  right: max(-70px, calc((100vw - var(--page)) / 2 - 70px));
+  width: min(58vw, 760px);
+  height: auto;
+  overflow: visible;
+  pointer-events: none;
+  opacity: .82;
+}
+.cine__route-guide {
+  fill: none;
+  stroke: rgb(255 255 255 / .16);
+  stroke-width: 1.2;
+  stroke-dasharray: 3 8;
+}
+.cine__route-line {
+  fill: none;
+  stroke: var(--acento-alto);
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-dasharray: 7 10;
+  animation: route-flow 1.2s linear infinite;
+}
+.cine__route-origin,
+.cine__route-destination {
+  fill: var(--acento-alto);
+  stroke: rgb(255 255 255 / .78);
+  stroke-width: 2;
+}
+.cine__route-destination { animation: route-arrival 2.4s ease-out infinite; }
+.cine__route-pulse { fill: #fff4d8; }
+.cine__route-label {
+  fill: rgb(255 255 255 / .66);
+  font: 500 12px var(--mono);
+  letter-spacing: .16em;
+}
+.cine__route-label--destination { text-anchor: middle; }
+
+@keyframes route-flow { to { stroke-dashoffset: -17; } }
+@keyframes route-arrival {
+  0%, 45% { stroke-opacity: .9; stroke-width: 2; }
+  100% { stroke-opacity: 0; stroke-width: 14; }
+}
+
+@media (max-width: 700px) {
+  .cine__route {
+    top: 42%;
+    right: -35%;
+    width: 105vw;
+    opacity: .42;
+  }
+  .cine__route-label { font-size: 10px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cine__route-line,
+  .cine__route-destination { animation: none; }
+  .cine__route-pulse { display: none; }
+}
 .cine__in {
+  position: relative;
+  z-index: 1;
   width: 100%;
   display: flex;
   flex-direction: column;

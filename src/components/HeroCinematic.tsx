@@ -25,6 +25,13 @@ import { href } from "@/content/routes";
  *     cae el texto y la suelta en los bordes, para que la imagen respire sin
  *     que el titular pierda contraste.
  */
+const routeLabels: Record<Locale, { from: string; to: string; aria: string }> = {
+  es: { from: "EUROPA", to: "LATINOAMÉRICA", aria: "Trayecto de Europa a Latinoamérica" },
+  en: { from: "EUROPE", to: "LATIN AMERICA", aria: "Route from Europe to Latin America" },
+  pt: { from: "EUROPA", to: "AMÉRICA LATINA", aria: "Rota da Europa para a América Latina" },
+  lt: { from: "EUROPA", to: "LOTYNŲ AMERIKA", aria: "Maršrutas iš Europos į Lotynų Ameriką" },
+};
+
 export function HeroCinematic({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   const video = useRef<HTMLVideoElement>(null);
   const [reproduce, setReproduce] = useState(false);
@@ -63,6 +70,36 @@ export function HeroCinematic({ locale, dict }: { locale: Locale; dict: Dictiona
       </video>
 
       <div className="cine__velo" aria-hidden="true" />
+
+      <svg
+        className="cine__route"
+        viewBox="0 0 700 500"
+        role="img"
+        aria-label={routeLabels[locale].aria}
+      >
+        <defs>
+          <filter id="route-glow" x="-50%" y="-50%" width="200%" height="200%">
+            <feGaussianBlur stdDeviation="4" result="blur" />
+            <feMerge>
+              <feMergeNode in="blur" />
+              <feMergeNode in="SourceGraphic" />
+            </feMerge>
+          </filter>
+        </defs>
+        <path className="cine__route-guide" d="M566 98 C450 88 370 154 318 238 C267 320 215 380 119 411" />
+        <path className="cine__route-line" d="M566 98 C450 88 370 154 318 238 C267 320 215 380 119 411" />
+        <circle className="cine__route-origin" cx="566" cy="98" r="6" />
+        <circle className="cine__route-destination" cx="119" cy="411" r="7" />
+        <circle className="cine__route-pulse" r="5" filter="url(#route-glow)">
+          <animateMotion
+            dur="4.8s"
+            repeatCount="indefinite"
+            path="M566 98 C450 88 370 154 318 238 C267 320 215 380 119 411"
+          />
+        </circle>
+        <text className="cine__route-label" x="584" y="103">{routeLabels[locale].from}</text>
+        <text className="cine__route-label cine__route-label--destination" x="101" y="440">{routeLabels[locale].to}</text>
+      </svg>
 
       <div className="cine__in wrap">
         <span className="cine__kicker">{dict.hero.kicker.join(" · ")}</span>
