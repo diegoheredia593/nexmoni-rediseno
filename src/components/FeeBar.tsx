@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
 import type { CurrencyCode } from "@/content/pricing";
 import { formatMoney } from "@/lib/format";
 import type { QuoteBreakdown } from "@/lib/quote";
@@ -47,15 +47,18 @@ export function FeeBar({
   const loc = dict.meta.numberLocale;
   const dinero = (v: number, m: CurrencyCode) => formatMoney(v, m, loc);
   const [dibujada, setDibujada] = useState(false);
-  const primera = useRef(true);
 
-  // Entrada: los tramos arrancan a cero y crecen una sola vez, al montar. A
-  // partir de ahí la misma transición sirve para cada cambio de importe.
+  // Cada cotización monta una barra nueva: dos fotogramas separan el estado
+  // colapsado del final para que el navegador pinte y anime el crecimiento.
   useEffect(() => {
-    if (!primera.current) return;
-    primera.current = false;
-    const id = requestAnimationFrame(() => setDibujada(true));
-    return () => cancelAnimationFrame(id);
+    let secondFrame = 0;
+    const firstFrame = requestAnimationFrame(() => {
+      secondFrame = requestAnimationFrame(() => setDibujada(true));
+    });
+    return () => {
+      cancelAnimationFrame(firstFrame);
+      cancelAnimationFrame(secondFrame);
+    };
   }, []);
 
   const entregado = quote.send;

@@ -830,6 +830,18 @@ p { margin: 0; text-wrap: pretty; }
   font-size: clamp(28px, 3.6vw, var(--t-h1)); font-weight: 600;
   letter-spacing: var(--track-h1); line-height: 1; text-align: right;
 }
+.calc__out,
+.calc__rows,
+.barra {
+  transition: opacity .22s ease, filter .22s ease, transform .22s ease;
+}
+.calc[data-updating="true"] .calc__out,
+.calc[data-updating="true"] .calc__rows,
+.calc[data-updating="true"] .barra {
+  opacity: .48;
+  filter: blur(.7px);
+  transform: translateY(2px);
+}
 .calc__live-value {
   display: inline-block;
   transform-origin: 50% 70%;
@@ -1648,6 +1660,11 @@ p { margin: 0; text-wrap: pretty; }
   border-top: 1px solid var(--hairline);
 }
 
+.barra { animation: bar-refresh .58s cubic-bezier(.22, 1, .36, 1); }
+@keyframes bar-refresh {
+  from { opacity: .38; transform: translateY(7px); }
+  to { opacity: 1; transform: translateY(0); }
+}
 .barra__cabeza { margin-bottom: var(--s-16); }
 .barra__lead { margin: var(--s-4) 0 0; max-width: 52ch; }
 
@@ -1680,7 +1697,7 @@ p { margin: 0; text-wrap: pretty; }
    siga qué tramo creció sin que se sienta lento al teclear. */
 .barra__tramo {
   min-width: 0;
-  transition: width 0.24s var(--ease-suave);
+  transition: width .72s cubic-bezier(.22, 1, .36, 1);
 }
 .barra__tramo[data-tono="llega"] { background: var(--senal); }
 .barra__tramo[data-tono="coste"] { background: var(--aviso); }
@@ -1709,6 +1726,14 @@ p { margin: 0; text-wrap: pretty; }
   letter-spacing: var(--track-h3);
   font-variant-numeric: tabular-nums;
   margin-left: auto;
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .calc__out, .calc__rows, .barra, .barra__tramo { transition: none; animation: none; }
+  .calc[data-updating="true"] .calc__out,
+  .calc[data-updating="true"] .calc__rows,
+  .calc[data-updating="true"] .barra { filter: none; transform: none; }
 }
 
 @media (max-width: 620px) {
