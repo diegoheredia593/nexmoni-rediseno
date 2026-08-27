@@ -225,6 +225,8 @@ export const es = {
     submit: "Enviarme el enlace",
     sending: "Enviando…",
     whatsappNote: "¿Prefieres hablar primero? Escríbenos por WhatsApp.",
+    contactEmail: "Escribir por correo",
+    contactWhatsapp: "Abrir WhatsApp",
     errors: {
       name: "Escribe tu nombre.",
       phoneMissing: "Escribe tu teléfono.",
@@ -254,8 +256,8 @@ export const es = {
     googlePlayName: "Google Play",
     qrNote: "Apunta con la cámara de tu móvil",
     qrBrief: "CÓDIGO QR — PENDIENTE DE LAS URL REALES DE LAS TIENDAS",
-    deskTitle: "¿Estás en el ordenador?",
-    deskNote: "Déjanos tus datos y te enviamos el enlace de descarga.",
+    deskTitle: "¿Necesitas ayuda?",
+    deskNote: "Contacta directamente con nuestro equipo por correo o WhatsApp.",
   },
 
   /**
@@ -320,10 +322,13 @@ export const es = {
         // ⚠ Las cuatro apuntan al alta porque las páginas no existen todavía.
         title: "TÉRMINOS LEGALES",
         links: [
-          { label: "Privacidad", href: "/#descargar" },
-          { label: "Términos legales", href: "/#descargar" },
-          { label: "AML / KYC", href: "/#descargar" },
-          { label: "Quejas y reclamaciones", href: "/#descargar" },
+          { label: "Privacidad", href: "/legal/privacy" },
+          { label: "Términos legales", href: "/legal/terms" },
+          { label: "AML / KYC", href: "/legal/aml-kyc" },
+          { label: "Quejas y reclamaciones", href: "/legal/complaints" },
+          { label: "Derechos del consumidor", href: "/legal/consumer-rights" },
+          { label: "Prevención de fraude", href: "/legal/fraud-prevention" },
+          { label: "Términos de ConnectPay", href: "/connectpay-terms" },
         ],
       },
     ],

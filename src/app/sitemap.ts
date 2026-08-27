@@ -2,6 +2,7 @@ import type { MetadataRoute } from "next";
 import { locales } from "@/content/dictionary";
 import { allRoutes, pathFor } from "@/content/routes";
 import { siteUrl } from "@/lib/site-url";
+import { legalDocuments } from "@/content/legal";
 
 /**
  * Sitemap con las 16 páginas: cada una declara sus tres traducciones, que es
@@ -31,5 +32,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
     },
   }));
 
-  return [...homes, ...inner];
+  const legal = legalDocuments.map((document) => ({
+    url: absolute(`/es/legal/${document.slug}`),
+    changeFrequency: "yearly" as const,
+    priority: 0.4,
+  }));
+
+  return [...homes, ...inner, ...legal];
 }

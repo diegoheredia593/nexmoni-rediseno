@@ -235,6 +235,8 @@ export const lt: Dictionary = {
     submit: "Atsiųsti nuorodą",
     sending: "Siunčiama…",
     whatsappNote: "Nori pirmiau pasikalbėti? Parašyk mums per WhatsApp.",
+    contactEmail: "Rašyti el. paštu",
+    contactWhatsapp: "Atidaryti WhatsApp",
     errors: {
       name: "Įrašyk savo vardą.",
       phoneMissing: "Įrašyk telefono numerį.",
@@ -264,8 +266,8 @@ export const lt: Dictionary = {
     googlePlayName: "Google Play",
     qrNote: "Nukreipk telefono kamerą",
     qrBrief: "QR KODAS — LAUKIAMA TIKRŲJŲ PARDUOTUVIŲ ADRESŲ",
-    deskTitle: "Naršai kompiuteriu?",
-    deskNote: "Palik savo duomenis ir atsiųsime atsisiuntimo nuorodą.",
+    deskTitle: "Reikia pagalbos?",
+    deskNote: "Susisiek su mūsų komanda tiesiogiai el. paštu arba per WhatsApp.",
   },
 
   closers: {
@@ -317,10 +319,13 @@ export const lt: Dictionary = {
       {
         title: "TEISINĖ INFORMACIJA",
         links: [
-          { label: "Privatumas", href: "/#descargar" },
-          { label: "Sąlygos", href: "/#descargar" },
-          { label: "AML / KYC", href: "/#descargar" },
-          { label: "Skundai", href: "/#descargar" },
+          { label: "Privatumas", href: "/legal/privacy" },
+          { label: "Sąlygos", href: "/legal/terms" },
+          { label: "AML / KYC", href: "/legal/aml-kyc" },
+          { label: "Skundai", href: "/legal/complaints" },
+          { label: "Vartotojų teisės", href: "/legal/consumer-rights" },
+          { label: "Sukčiavimo prevencija", href: "/legal/fraud-prevention" },
+          { label: "ConnectPay sąlygos", href: "/connectpay-terms" },
         ],
       },
     ],

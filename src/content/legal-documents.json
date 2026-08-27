@@ -1,0 +1,1172 @@
+[
+  {
+    "slug": "privacy",
+    "title": "Política de Privacidad",
+    "sourceFile": "Política de Privacidad .docx",
+    "blocks": [
+      {
+        "kind": "title",
+        "text": "Política de Privacidad"
+      },
+      {
+        "kind": "subtitle",
+        "text": "Última actualización: abril de 2026"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "1. Responsable del Tratamiento"
+      },
+      {
+        "kind": "paragraph",
+        "text": "NexMoni OÜ (Código de registro: 17303472), una sociedad registrada en la República de Estonia, es el responsable del tratamiento de tus datos personales. Tratamos los datos personales conforme al Reglamento (UE) 2016/679 (Reglamento General de Protección de Datos, GDPR) y a la legislación estonia y de la UE aplicable."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "2. Datos que Recopilamos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Recopilamos: (a) Datos de identidad: nombre completo, fecha de nacimiento, nacionalidad, documento de identidad emitido por una autoridad; (b) Datos de contacto: dirección de correo electrónico, número de teléfono, domicilio; (c) Datos financieros: IBAN, historial de transacciones, origen de los fondos; (d) Datos técnicos: dirección IP, tipo de navegador, información del dispositivo, registros de acceso; (e) Datos KYC/AML: documentos de verificación, resultados de evaluación de riesgo, cribado de PEP, comprobaciones de sanciones."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "3. Finalidad y Base Jurídica"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Tratamos tus datos para: (a) Ejecución del contrato, para prestar servicios de pago, ejecutar transacciones y gestionar tu cuenta (Art. 6(1)(b) GDPR); (b) Obligación legal, para cumplir con la normativa AML/CFT (Directiva UE 2015/849), PSD2 (Directiva UE 2015/2366) y la Ley estonia de Prevención del Blanqueo de Capitales y la Financiación del Terrorismo (Art. 6(1)(c) GDPR); (c) Interés legítimo, para prevenir el fraude, mejorar nuestros servicios y garantizar la seguridad de la plataforma (Art. 6(1)(f) GDPR); (d) Consentimiento, para comunicaciones de marketing y cookies opcionales (Art. 6(1)(a) GDPR)."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "4. Conservación de Datos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Conservamos tus datos personales durante: (a) Cuentas activas: mientras dure la relación contractual; (b) Tras el cierre de la cuenta: 5 años para los registros de transacciones (requisito AML); (c) Documentos KYC: 5 años tras el fin de la relación comercial, según exige la Directiva UE contra el Blanqueo de Capitales 2015/849; (d) Registros técnicos: 12 meses. Eliminamos o anonimizamos los datos una vez expirado el periodo de conservación."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "5. Cesión de Datos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Compartimos tus datos únicamente con: (a) Nuestro socio bancario (EMI autorizada y regulada por el Bank of Lithuania) para el procesamiento de pagos; (b) Proveedores de verificación de identidad para el cumplimiento KYC; (c) Autoridades reguladoras cuando lo exija la ley; (d) Proveedores de infraestructura en la nube (centros de datos ubicados en la UE). NO vendemos tus datos personales. Todos los encargados del tratamiento externos están vinculados por acuerdos de tratamiento de datos conformes al GDPR."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "6. Transferencias Internacionales"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Tus datos se tratan dentro del Espacio Económico Europeo (EEE). Si los datos se transfieren fuera del EEE, garantizamos las salvaguardas adecuadas conforme al Capítulo V del GDPR, incluidas las Cláusulas Contractuales Tipo (CCT) aprobadas por la Comisión Europea."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "7. Tus Derechos (Artículos 15-22 del GDPR)"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Tienes derecho a: (a) Acceder a tus datos (Art. 15); (b) Rectificar datos inexactos (Art. 16); (c) Suprimir tus datos, con sujeción a las obligaciones legales de conservación (Art. 17); (d) Limitar el tratamiento (Art. 18); (e) Portabilidad de los datos (Art. 20); (f) Oponerte al tratamiento basado en el interés legítimo (Art. 21); (g) Retirar el consentimiento en cualquier momento (Art. 7(3)). Para ejercer tus derechos, contacta con privacy@nexmoni.com. También tienes derecho a presentar una reclamación ante la Inspección de Protección de Datos de Estonia (Andmekaitse Inspektsioon)."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "8. Seguridad de los Datos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Aplicamos medidas técnicas y organizativas adecuadas, entre ellas: cifrado de doble capa AES-256-GCM y ChaCha20-Poly1305 para los datos sensibles en reposo; TLS 1.3 para los datos en tránsito; hashing de contraseñas con Argon2id; controles de acceso basados en roles; auditorías de seguridad periódicas; y procedimientos de respuesta a incidentes conformes a los Art. 33-34 del GDPR."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "9. Cookies"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Utilizamos únicamente cookies y almacenamiento local estrictamente necesarios para el funcionamiento de la plataforma (por ejemplo, la sesión y tu preferencia de idioma). No utilizamos cookies de publicidad ni de seguimiento de terceros. Puedes bloquear o eliminar las cookies desde la configuración de tu navegador."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "10. Contacto"
+      },
+      {
+        "kind": "paragraph",
+        "text": "NexMoni OÜ"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Código de registro: 17303472"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Tornimäe tn 5, 10145 Tallinn"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estonia, Unión Europea"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Correo: privacy@nexmoni.com"
+      }
+    ]
+  },
+  {
+    "slug": "terms",
+    "title": "Términos de Servicio",
+    "sourceFile": "Términos de Servicio.docx",
+    "blocks": [
+      {
+        "kind": "title",
+        "text": "Términos de Servicio"
+      },
+      {
+        "kind": "subtitle",
+        "text": "Última actualización: abril de 2026"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "1. Introducción"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estas Condiciones del Servicio regulan tu uso de la plataforma NexMoni, operada por NexMoni OÜ (Código de registro: 17303472), registrada en la República de Estonia. Al crear una cuenta, aceptas estas condiciones, nuestra Política de Privacidad y la normativa de la UE aplicable."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "2. Servicios"
+      },
+      {
+        "kind": "paragraph",
+        "text": "NexMoni ofrece: (a) Servicios de monedero electrónico multidivisa; (b) Transferencias internacionales SEPA y SWIFT; (c) Servicios de cambio de divisa; (d) Tarjetas de pago Visa virtuales y físicas; (e) Asistente de IA por WhatsApp para la gestión de la cuenta. El dinero electrónico y los servicios de pago son prestados por ConnectPay UAB, una Entidad de Dinero Electrónico autorizada por el Bank of Lithuania (Licencia EMI n.º 24, Algirdo str. 38, LT-03218 Vilna, Lituania) conforme a la Directiva UE 2009/110/CE (EMD2) y la Directiva UE 2015/2366 (PSD2). NexMoni OÜ actúa como distribuidor autorizado de ConnectPay UAB y no emite por sí misma dinero electrónico."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "3. Elegibilidad y KYC"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Para usar nuestros servicios debes: (a) Tener al menos 18 años; (b) Ser residente legal de un país admitido; (c) Completar la verificación de identidad (KYC) según exige la Directiva UE contra el Blanqueo de Capitales 2015/849. Podemos solicitar documentación adicional en cualquier momento para cumplir con nuestras obligaciones regulatorias. No facilitar la información solicitada puede dar lugar a restricciones en la cuenta."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "4. Cuenta y Seguridad"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Eres responsable de: (a) Mantener la seguridad de tus credenciales de acceso; (b) Toda la actividad realizada bajo tu cuenta; (c) Notificarnos de inmediato cualquier acceso no autorizado. Aplicamos medidas de seguridad robustas, pero no podemos garantizar una seguridad absoluta. Te recomendamos activar todas las funciones de seguridad disponibles."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "5. Comisiones y Cargos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Las comisiones se muestran de forma transparente antes de cada transacción. Cobramos: (a) Un margen (spread) de cambio de divisa aplicado sobre la tasa de mercado; (b) Comisiones porcentuales sobre las transferencias SEPA y SWIFT salientes; (c) Cuotas de suscripción opcionales para los planes Plus y Premium. Nos reservamos el derecho a modificar las comisiones con 30 días de antelación. Las comisiones vigentes siempre están visibles en la app y en nuestro sitio web."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "6. Transacciones y Límites"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Los límites de transacción dependen de tu nivel de verificación KYC y de tu plan de suscripción. Las transferencias SEPA dentro de la UE suelen procesarse en cuestión de minutos. Las transferencias internacionales SWIFT pueden tardar de 1 a 5 días hábiles. Todas las transacciones están sujetas a cribado AML/CFT. Podemos retrasar o rechazar transacciones que presenten riesgos de cumplimiento."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "7. Actividades Prohibidas"
+      },
+      {
+        "kind": "paragraph",
+        "text": "No puedes usar NexMoni para: (a) Blanqueo de capitales, financiación del terrorismo o cualquier actividad ilegal; (b) Elusión de sanciones; (c) Fraude o suplantación de identidad; (d) Transacciones que impliquen bienes o servicios prohibidos; (e) Eludir los límites de transacción o los requisitos KYC. La infracción conllevará el cierre inmediato de la cuenta y su comunicación a las autoridades competentes."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "8. Propiedad Intelectual"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Todo el contenido, marcas, software y tecnología de la plataforma NexMoni pertenecen a NexMoni OÜ o a sus licenciantes. No puedes copiar, modificar, distribuir ni realizar ingeniería inversa de ninguna parte de nuestra plataforma."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "9. Responsabilidad"
+      },
+      {
+        "kind": "paragraph",
+        "text": "En la máxima medida permitida por la legislación de la UE: (a) Respondemos por los daños directos causados por nuestra negligencia o dolo; (b) No respondemos por daños indirectos, consecuentes o punitivos; (c) No respondemos por pérdidas causadas por tu incumplimiento de estas condiciones, por el acceso no autorizado a tu cuenta o por eventos de fuerza mayor; (d) Nuestra responsabilidad total se limita a las comisiones que hayas pagado en los 12 meses anteriores."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "10. Resolución de Conflictos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estas condiciones se rigen por las leyes de la República de Estonia y la normativa de la UE aplicable. Los conflictos se resolverán mediante: (a) Nuestro procedimiento interno de reclamaciones (respuesta en un plazo de 15 días hábiles); (b) El Comité de Litigios de Consumo de Estonia para los consumidores; (c) Los tribunales de Estonia como último recurso. Los consumidores de la UE también pueden usar la plataforma europea de Resolución de Litigios en Línea (ec.europa.eu/odr)."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "11. Modificaciones"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Podemos modificar estas condiciones con un preaviso de 60 días por correo electrónico y notificación en la app. El uso continuado tras la fecha de entrada en vigor constituye aceptación. Si no estás de acuerdo, puedes cerrar tu cuenta y retirar tus fondos sin coste alguno."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "12. Contacto"
+      },
+      {
+        "kind": "paragraph",
+        "text": "NexMoni OÜ"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Código de registro: 17303472"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Tornimäe tn 5, 10145 Tallinn"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estonia, Unión Europea"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Correo: legal@nexmoni.com"
+      }
+    ]
+  },
+  {
+    "slug": "aml-kyc",
+    "title": "Política AML / KYC",
+    "sourceFile": "Política AML _ KYC.docx",
+    "blocks": [
+      {
+        "kind": "title",
+        "text": "Política AML / KYC"
+      },
+      {
+        "kind": "subtitle",
+        "text": "Última actualización: abril de 2026"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "1. Marco Regulatorio"
+      },
+      {
+        "kind": "paragraph",
+        "text": "NexMoni OÜ (código de registro: 17303472) aplica esta política de Prevención de Blanqueo de Capitales (AML) y Conoce a tu Cliente (KYC) en cumplimiento de: (a) la Directiva UE 2015/849 (Cuarta Directiva contra el Blanqueo de Capitales, AMLD4); (b) la Directiva UE 2018/843 (Quinta Directiva contra el Blanqueo de Capitales, AMLD5); (c) la Ley estonia de Prevención del Blanqueo de Capitales y la Financiación del Terrorismo (RahaPTS); (d) el Reglamento UE 2015/847 sobre la información que acompaña a las transferencias de fondos; (e) los reglamentos de sanciones de la UE y el cumplimiento de OFAC."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "2. Diligencia Debida del Cliente (CDD)"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Aplicamos una diligencia debida basada en el riesgo durante la incorporación y a lo largo de toda la relación comercial: (a) CDD básica: verificación de identidad mediante documento oficial, prueba de vida, verificación de domicilio y cribado de PEP y sanciones; (b) Diligencia Debida Reforzada (EDD): aplicada a clientes de alto riesgo, PEP, clientes de jurisdicciones de alto riesgo y patrones de transacción inusuales. La EDD incluye la verificación del origen de los fondos y una monitorización continua reforzada."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "3. Niveles de Verificación KYC"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Nivel 1 (Básico): verificación de correo y teléfono, funcionalidad limitada. Nivel 2 (Estándar): documento de identidad oficial y verificación con selfie, límites de transacción estándar. Nivel 3 (Reforzado): comprobante de domicilio y origen de los fondos, acceso completo y límites más altos. Toda la verificación se realiza a través de proveedores certificados de verificación de identidad conformes con el reglamento eIDAS."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "4. Monitorización de Transacciones"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Implementamos sistemas de monitorización automáticos y manuales para detectar: (a) patrones de transacción inusuales; (b) intentos de fraccionamiento o pitufeo; (c) transacciones que impliquen entidades o jurisdicciones sancionadas; (d) movimiento rápido de fondos sin propósito económico; (e) transacciones incoherentes con el perfil del cliente. La actividad sospechosa activa una revisión reforzada y una posible comunicación a la Unidad de Inteligencia Financiera (FIU)."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "5. Comunicación de Actividad Sospechosa"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Cuando identificamos actividad sospechosa: (a) presentamos un Reporte de Actividad Sospechosa (SAR) ante la Unidad de Inteligencia Financiera de Estonia; (b) podemos bloquear la cuenta y los fondos relacionados a la espera de la investigación; (c) no informamos al cliente del reporte (prohibición de revelación conforme al art. 39 de la AMLD4); (d) cooperamos plenamente con las fuerzas del orden y las autoridades reguladoras."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "6. Cumplimiento de Sanciones"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Cribamos a todos los clientes y transacciones frente a: (a) la lista consolidada de sanciones de la UE; (b) las sanciones del Consejo de Seguridad de la ONU; (c) la lista OFAC de Nacionales Especialmente Designados (SDN); (d) las listas de sanciones locales de las jurisdicciones aplicables. Las coincidencias dan lugar al bloqueo inmediato de la transacción y a la comunicación reguladora."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "7. Conservación de Registros"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Conservamos toda la documentación de CDD y los registros de transacciones durante un mínimo de 5 años tras la finalización de la relación comercial, según exige el artículo 40 de la AMLD4. Los registros se almacenan de forma segura con cifrado de doble capa."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "8. Formación del Personal"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Todo el personal de NexMoni implicado en la incorporación de clientes, el procesamiento de transacciones y el cumplimiento recibe formación sobre obligaciones AML/CFT, identificación de señales de alerta y procedimientos de comunicación. La formación se imparte en la incorporación y se actualiza anualmente."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "9. Evaluación de Riesgos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Mantenemos una evaluación de riesgos AML/CFT a nivel de toda la empresa que valora: el riesgo del cliente, el riesgo geográfico, el riesgo de producto o servicio, el riesgo del canal de distribución y el riesgo transaccional. La evaluación de riesgos se actualiza al menos anualmente y cuando se producen cambios significativos."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "10. Contacto"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Para consultas de AML/KYC:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "NexMoni OÜ, Departamento de Cumplimiento"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Código de registro: 17303472"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Tornimäe tn 5, 10145 Tallinn"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Estonia, Unión Europea"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Correo: compliance@nexmoni.com"
+      }
+    ]
+  },
+  {
+    "slug": "complaints",
+    "title": "Quejas y Reclamaciones",
+    "sourceFile": "Quejas y Reclamaciones.docx",
+    "blocks": [
+      {
+        "kind": "title",
+        "text": "Quejas y Reclamaciones"
+      },
+      {
+        "kind": "subtitle",
+        "text": "Cómo presentar una queja"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Cómo Presentar una Reclamación"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Si no estás satisfecho con nuestros servicios, tienes derecho a presentar una reclamación. Nos comprometemos a resolver todas las reclamaciones de forma justa y rápida."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Dónde Enviarla"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Puedes enviar tu reclamación a:"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "paragraph",
+        "text": "Correo: complaints@nexmoni.com"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Por favor, incluye:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "1. Tu nombre completo e identificador de cuenta"
+      },
+      {
+        "kind": "paragraph",
+        "text": "2. La fecha del problema"
+      },
+      {
+        "kind": "paragraph",
+        "text": "3. La descripción de la reclamación"
+      },
+      {
+        "kind": "paragraph",
+        "text": "4. Los detalles de la transacción relevante (si procede)"
+      },
+      {
+        "kind": "paragraph",
+        "text": "5. Tu resolución preferida"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Plazos de Respuesta"
+      },
+      {
+        "kind": "paragraph",
+        "text": "ConnectPay UAB, como emisor del dinero electrónico, sigue siendo plenamente responsable de la resolución de las reclamaciones. También puedes presentar una reclamación directamente a ConnectPay UAB en support@connectpay.com, siguiendo las indicaciones en connectpay.com/how-to-complain/."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "• Se proporcionará una respuesta detallada, motivada y documentada en un plazo de 15 días hábiles."
+      },
+      {
+        "kind": "paragraph",
+        "text": "• En casos excepcionales en los que no se pueda dar una respuesta en 15 días hábiles, se enviará una respuesta provisional explicando el retraso, con una respuesta final en un plazo de 35 días hábiles."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Si No Estás Satisfecho"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Si no estás satisfecho con la resolución, puedes:"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "1. Contactarnos directamente: support@nexmoni.com"
+      },
+      {
+        "kind": "paragraph",
+        "text": "2. Presentar una reclamación ante el Bank of Lithuania (Lietuvos bankas): www.lb.lt"
+      },
+      {
+        "kind": "paragraph",
+        "text": "3. Utilizar la plataforma europea de Resolución de Litigios en Línea: ec.europa.eu/odr"
+      },
+      {
+        "kind": "paragraph",
+        "text": "4. Contactar con el Comité estonio de Litigios de Consumo (para NexMoni OÜ como empresa registrada en Estonia)"
+      }
+    ]
+  },
+  {
+    "slug": "consumer-rights",
+    "title": "Tus Derechos como Consumidor",
+    "sourceFile": "Tus Derechos como Consumidor.docx",
+    "blocks": [
+      {
+        "kind": "title",
+        "text": "Tus Derechos como Consumidor"
+      },
+      {
+        "kind": "subtitle",
+        "text": "Derechos del consumidor en la UE (PSD2)"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Derecho a la información"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Antes de usar nuestros servicios de pago, tienes derecho a recibir información clara sobre:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Todas las comisiones y cargos aplicables"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Los tipos de cambio utilizados para la conversión de divisas"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• El tiempo máximo para que un pago llegue al destinatario"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Tus derechos y responsabilidades"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Derecho a reembolsos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Para transacciones no autorizadas:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Informa de las transacciones no autorizadas de inmediato"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Tienes derecho a un reembolso completo de las transacciones de pago no autorizadas si las informas dentro de un plazo de 13 meses"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• El reembolso debe procesarse a más tardar al final del siguiente día hábil tras la notificación"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Para transacciones de domiciliación bancaria:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Tienes derecho a un reembolso dentro de las 8 semanas siguientes a la fecha en que se cargaron los fondos"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Derecho a cancelación"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Tienes derecho a:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Rescindir tu contrato de servicio de pago en cualquier momento con un mes de preaviso"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Rescindir sin coste si el contrato ha estado vigente durante más de 6 meses"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Recibir un reembolso de cualquier cargo prepagado proporcional al periodo restante"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Derecho a reclamar"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Tienes derecho a:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Presentar una reclamación ante NexMoni y recibir una respuesta dentro de 15 días hábiles"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Presentar una reclamación ante el Bank of Lithuania si no quedas satisfecho con la respuesta"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Usar la plataforma europea de Resolución de Litigios en Línea"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Buscar reparación a través de los tribunales"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Derecho a la protección de datos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Según el GDPR (Reglamento UE 2016/679), tienes derecho a:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Acceder a tus datos personales"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Rectificar datos inexactos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Suprimir tus datos (derecho al olvido)"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Restringir u oponerte al tratamiento"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Portabilidad de datos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Presentar una reclamación ante una autoridad de protección de datos"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Plazos de ejecución de pagos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Pagos SEPA dentro de la UE: el mismo día o el siguiente día hábil"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Pagos internacionales SWIFT: de 1 a 5 días hábiles"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Cambio de divisas: procesado de inmediato al tipo mostrado"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Responsabilidad"
+      },
+      {
+        "kind": "paragraph",
+        "text": "ConnectPay UAB, como emisor del dinero electrónico, es responsable de:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• La correcta ejecución de las transacciones de pago autorizadas"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• El reembolso de transacciones no autorizadas (sujeto a condiciones)"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Cualquier cargo aplicado incorrectamente"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Tú eres responsable de:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Mantener la confidencialidad de tus credenciales de seguridad"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Informar de credenciales perdidas o robadas de inmediato"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Pérdidas de hasta EUR 50 por transacciones no autorizadas antes de la notificación (salvo fraude)"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Tus derechos al realizar pagos en la UE"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Como usuario de servicios de pago en la Unión Europea, estás protegido por la legislación de la UE (PSD2, Directiva UE 2015/2366). La Comisión Europea publica un folleto para el consumidor que resume estos derechos: pagos seguros y rápidos, protección frente a transacciones no autorizadas e información transparente sobre las comisiones."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "paragraph",
+        "text": "Consulta el folleto oficial de la Comisión Europea «Your rights when making payments in Europe» en commission.europa.eu."
+      }
+    ]
+  },
+  {
+    "slug": "fraud-prevention",
+    "title": "Prevención de Fraude",
+    "sourceFile": "Prevención de Fraude.docx",
+    "blocks": [
+      {
+        "kind": "title",
+        "text": "Prevención de Fraude"
+      },
+      {
+        "kind": "subtitle",
+        "text": "Protégete del fraude financiero"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Protege tus credenciales"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Nunca compartas tu contraseña, PIN o códigos de seguridad con nadie. NexMoni NUNCA te los pedirá"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Usa contraseñas fuertes y únicas (al menos 12 caracteres con letras, números y símbolos)"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Activa todas las funciones de seguridad disponibles en tu cuenta"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Cambia tu contraseña con regularidad y de inmediato si sospechas que ha sido comprometida"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Reconoce el phishing"
+      },
+      {
+        "kind": "paragraph",
+        "text": "El phishing ocurre cuando los delincuentes se hacen pasar por una organización de confianza, como una entidad financiera u otra empresa legítima, y envían correos, mensajes o enlaces fraudulentos diseñados para engañarte y que reveles credenciales confidenciales (por ejemplo, nombres de usuario, contraseñas, datos de tarjeta o códigos de verificación de un solo uso) o autorices pagos fraudulentos."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "• NexMoni nunca enviará correos pidiendo tu contraseña o los datos completos de tu tarjeta"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Revisa con cuidado la dirección de correo del remitente. Los correos fraudulentos suelen usar dominios de apariencia similar"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• No hagas clic en enlaces de correos o mensajes sospechosos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Ante la duda, ve directamente a app.nexmoni.com escribiendo la dirección en tu navegador"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Protege tu dispositivo"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Mantén actualizado el software de tu teléfono y ordenador"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Usa un antivirus y mantenlo al día"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Descarga la app de NexMoni solo desde fuentes oficiales"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Bloquea tu dispositivo con PIN, huella o reconocimiento facial"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• No uses NexMoni en redes Wi-Fi públicas sin una VPN"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Vigila tu cuenta"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Revisa tu historial de transacciones con regularidad"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Configura notificaciones para todas las transacciones"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Informa de cualquier transacción desconocida de inmediato"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Si detectas actividad no autorizada, congela tu tarjeta de inmediato desde la app"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Estafas de inversión y pago"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ten cuidado con:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Oportunidades de inversión no solicitadas que prometen altos rendimientos"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Solicitudes para transferir dinero a 'cuentas seguras'"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Presión para actuar rápido sin tiempo para pensar"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Solicitudes de enviar dinero a personas que nunca has conocido en persona"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Estafas románticas"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ten cuidado con:"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Personas que solo conoces desde hace poco en línea o en persona"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Solicitudes de enviar dinero, tarjetas de regalo o criptomonedas"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Excusas para no poder verse en persona o hacer una videollamada"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Solicitudes de mantener en secreto la relación o el apoyo económico"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Historias sobre emergencias, facturas médicas, gastos de viaje u oportunidades de inversión"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Qué hacer si eres víctima"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Si crees que has sido víctima de un fraude:"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "1. Congela tu tarjeta de inmediato en la app de NexMoni"
+      },
+      {
+        "kind": "paragraph",
+        "text": "2. Contáctanos en support@nexmoni.com"
+      },
+      {
+        "kind": "paragraph",
+        "text": "3. Denuncia el incidente ante tu policía local"
+      },
+      {
+        "kind": "paragraph",
+        "text": "4. No envíes más dinero al presunto estafador"
+      },
+      {
+        "kind": "paragraph",
+        "text": "5. Conserva todas las pruebas (correos, mensajes, capturas de pantalla)"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Informa de actividad sospechosa"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Ayúdanos a proteger a todos nuestros clientes:"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "paragraph",
+        "text": "Correo: fraud@nexmoni.com"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "paragraph",
+        "text": "Todos los informes se investigan de forma rápida y confidencial."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Cómo bloquear tu cuenta (24/7)"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Puedes bloquear el acceso a tu cuenta y congelar tus tarjetas en cualquier momento, de día o de noche:"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "• En la app de NexMoni: abre Tarjetas para congelar o cancelar una tarjeta al instante, o ve a Ajustes para bloquear tu cuenta"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Si no puedes acceder a la app: contáctanos de inmediato en support@nexmoni.com y bloquearemos tu cuenta"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Por teléfono, disponible 24/7: +34632956541"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "paragraph",
+        "text": "El bloqueo está disponible 24/7. Bloquea tu cuenta de inmediato si pierdes tu dispositivo o sospechas de un acceso no autorizado."
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "Más recursos de prevención de fraude"
+      },
+      {
+        "kind": "paragraph",
+        "text": "Los pagos en esta plataforma están impulsados por ConnectPay, un proveedor europeo autorizado. Para una orientación más completa sobre prevención de fraude y seguridad, consulta:"
+      },
+      {
+        "kind": "space",
+        "text": ""
+      },
+      {
+        "kind": "heading",
+        "text": "• Prevención de fraude de ConnectPay: connectpay.com/fraud-prevention/"
+      },
+      {
+        "kind": "paragraph",
+        "text": "• Seguridad de ConnectPay: connectpay.com/security/"
+      }
+    ]
+  }
+]

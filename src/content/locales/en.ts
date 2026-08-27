@@ -219,6 +219,8 @@ export const en: Dictionary = {
     submit: "Send me the link",
     sending: "Sending…",
     whatsappNote: "Rather talk first? Message us on WhatsApp.",
+    contactEmail: "Email us",
+    contactWhatsapp: "Open WhatsApp",
     errors: {
       name: "Enter your name.",
       phoneMissing: "Enter your phone number.",
@@ -248,8 +250,8 @@ export const en: Dictionary = {
     googlePlayName: "Google Play",
     qrNote: "Point your phone's camera at it",
     qrBrief: "QR CODE — PENDING THE REAL STORE URLS",
-    deskTitle: "On a computer?",
-    deskNote: "Leave your details and we'll send you the download link.",
+    deskTitle: "Need help?",
+    deskNote: "Contact our team directly by email or WhatsApp.",
   },
 
   closers: {
@@ -301,10 +303,13 @@ export const en: Dictionary = {
       {
         title: "LEGAL",
         links: [
-          { label: "Privacy", href: "/#descargar" },
-          { label: "Terms", href: "/#descargar" },
-          { label: "AML / KYC", href: "/#descargar" },
-          { label: "Complaints", href: "/#descargar" },
+          { label: "Privacy", href: "/legal/privacy" },
+          { label: "Terms", href: "/legal/terms" },
+          { label: "AML / KYC", href: "/legal/aml-kyc" },
+          { label: "Complaints", href: "/legal/complaints" },
+          { label: "Consumer rights", href: "/legal/consumer-rights" },
+          { label: "Fraud prevention", href: "/legal/fraud-prevention" },
+          { label: "ConnectPay terms", href: "/connectpay-terms" },
         ],
       },
     ],
