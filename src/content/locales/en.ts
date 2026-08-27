@@ -309,7 +309,7 @@ export const en: Dictionary = {
           { label: "Complaints", href: "/legal/complaints" },
           { label: "Consumer rights", href: "/legal/consumer-rights" },
           { label: "Fraud prevention", href: "/legal/fraud-prevention" },
-          { label: "ConnectPay terms", href: "/connectpay-terms" },
+          { label: "ConnectPay terms", href: "https://connectpay.com/terms-and-conditions/" },
         ],
       },
     ],

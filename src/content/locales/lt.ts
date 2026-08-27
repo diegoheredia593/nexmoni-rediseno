@@ -325,7 +325,7 @@ export const lt: Dictionary = {
           { label: "Skundai", href: "/legal/complaints" },
           { label: "Vartotojų teisės", href: "/legal/consumer-rights" },
           { label: "Sukčiavimo prevencija", href: "/legal/fraud-prevention" },
-          { label: "ConnectPay sąlygos", href: "/connectpay-terms" },
+          { label: "ConnectPay sąlygos", href: "https://connectpay.com/terms-and-conditions/" },
         ],
       },
     ],

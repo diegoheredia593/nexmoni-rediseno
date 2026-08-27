@@ -328,7 +328,7 @@ export const es = {
           { label: "Quejas y reclamaciones", href: "/legal/complaints" },
           { label: "Derechos del consumidor", href: "/legal/consumer-rights" },
           { label: "Prevención de fraude", href: "/legal/fraud-prevention" },
-          { label: "Términos de ConnectPay", href: "/connectpay-terms" },
+          { label: "Términos de ConnectPay", href: "https://connectpay.com/terms-and-conditions/" },
         ],
       },
     ],

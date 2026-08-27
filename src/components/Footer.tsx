@@ -27,11 +27,20 @@ export function Footer({ locale, dict }: { locale: Locale; dict: Dictionary }) {
           {dict.footer.columns.map((col) => (
             <div key={col.title} className="footer__col">
               <span className="tag">{col.title}</span>
-              {col.links.map((link) => (
-                <Link key={link.label} href={href(locale, link.href)}>
-                  {link.label}
-                </Link>
-              ))}
+              {col.links.map((link) => {
+                const external = link.href.startsWith("http");
+
+                return (
+                  <Link
+                    key={link.label}
+                    href={external ? link.href : href(locale, link.href)}
+                    target={external ? "_blank" : undefined}
+                    rel={external ? "noopener noreferrer" : undefined}
+                  >
+                    {link.label}
+                  </Link>
+                );
+              })}
             </div>
           ))}
         </div>
