@@ -71,10 +71,10 @@ export function CreditCardScroll({ locale }: { locale: Locale }) {
         const y = ((event.clientY - bounds.top) / bounds.height) * 100;
         el.style.setProperty("--card-light-x", x + "%");
         el.style.setProperty("--card-light-y", y + "%");
-        el.style.setProperty("--card-light-strength", "1");
+        el.style.setProperty("--card-light-strength", ".62");
       });
     };
-    const dimLight = () => el.style.setProperty("--card-light-strength", ".28");
+    const dimLight = () => el.style.setProperty("--card-light-strength", ".16");
 
     el.addEventListener("pointermove", updateLight);
     el.addEventListener("pointerleave", dimLight);
