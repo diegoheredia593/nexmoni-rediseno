@@ -2099,3 +2099,97 @@ p { margin: 0; text-wrap: pretty; }
   .legal-document h1 { font-size: var(--t-h1); }
   .legal-document h2 { margin-top: var(--s-32); }
 }
+
+/* ── Calculadora: cierre y respiración ambiental ─────────────────────────── */
+.calc__figure {
+  position: relative;
+  isolation: isolate;
+}
+.calc__figure::after {
+  content: "";
+  position: absolute;
+  inset: -14px -18px;
+  z-index: -1;
+  border-radius: 50%;
+  background: radial-gradient(ellipse, color-mix(in srgb, var(--senal) 18%, transparent), transparent 68%);
+  opacity: 0;
+  transform: scale(.72);
+  pointer-events: none;
+}
+.calc[data-settled="true"] .calc__figure::after {
+  animation: calc-arrival-glow 1.15s cubic-bezier(.22, 1, .36, 1) both;
+}
+.calc[data-settled="true"] .calc__live-value {
+  animation: calc-settle .64s cubic-bezier(.16, 1, .3, 1);
+}
+@keyframes calc-settle {
+  0% { transform: translateY(2px) scale(.985); }
+  48% { transform: translateY(-1px) scale(1.018); }
+  100% { transform: translateY(0) scale(1); }
+}
+@keyframes calc-arrival-glow {
+  0% { opacity: 0; transform: scale(.72); }
+  38% { opacity: 1; }
+  100% { opacity: 0; transform: scale(1.18); }
+}
+
+.calc-frame__inner {
+  isolation: isolate;
+  overflow: hidden;
+}
+.calc-frame__inner::before,
+.calc-frame__inner::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  width: 48%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  filter: blur(54px);
+  opacity: .055;
+  pointer-events: none;
+  will-change: transform;
+}
+.calc-frame__inner::before {
+  top: -20%;
+  left: -12%;
+  background: var(--senal);
+  animation: calc-ambient-a 18s ease-in-out infinite alternate;
+}
+.calc-frame__inner::after {
+  right: -14%;
+  bottom: -24%;
+  background: var(--acento);
+  animation: calc-ambient-b 22s ease-in-out infinite alternate;
+}
+.calc-frame__inner > * { position: relative; z-index: 1; }
+@keyframes calc-ambient-a {
+  from { transform: translate3d(-3%, -2%, 0) scale(.92); }
+  to { transform: translate3d(42%, 28%, 0) scale(1.12); }
+}
+@keyframes calc-ambient-b {
+  from { transform: translate3d(4%, 5%, 0) scale(1); }
+  to { transform: translate3d(-36%, -22%, 0) scale(.9); }
+}
+
+.barra__pista { position: relative; }
+.barra__pista::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(100deg, transparent 0 42%, rgb(255 255 255 / .58) 49%, transparent 56% 100%);
+  transform: translateX(-120%);
+  pointer-events: none;
+}
+.calc[data-settled="true"] .barra__pista::after {
+  animation: calc-bar-arrival .82s .18s cubic-bezier(.22, 1, .36, 1) both;
+}
+@keyframes calc-bar-arrival { to { transform: translateX(120%); } }
+
+@media (prefers-reduced-motion: reduce) {
+  .calc-frame__inner::before,
+  .calc-frame__inner::after,
+  .calc[data-settled="true"] .calc__figure::after,
+  .calc[data-settled="true"] .calc__live-value,
+  .calc[data-settled="true"] .barra__pista::after { animation: none; }
+}

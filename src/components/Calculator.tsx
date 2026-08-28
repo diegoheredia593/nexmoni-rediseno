@@ -34,6 +34,7 @@ export function Calculator({ dict }: { dict: Dictionary }) {
   const destinations = useMemo(() => destinationsFor(from), [from]);
   const nextResult = useMemo(() => quote({ amount, from, to }), [amount, from, to]);
   const [isUpdating, setIsUpdating] = useState(false);
+  const [isSettled, setIsSettled] = useState(false);
   const [displayed, setDisplayed] = useState<{
     result: QuoteResult;
     from: CurrencyCode;
@@ -41,14 +42,20 @@ export function Calculator({ dict }: { dict: Dictionary }) {
   }>({ result: nextResult, from, to });
 
   useEffect(() => {
-
+    setIsSettled(false);
     setIsUpdating(true);
     const timer = window.setTimeout(() => {
       setDisplayed({ result: nextResult, from, to });
       setIsUpdating(false);
+      setIsSettled(true);
     }, 420);
 
-    return () => window.clearTimeout(timer);
+    const settleTimer = window.setTimeout(() => setIsSettled(false), 1320);
+
+    return () => {
+      window.clearTimeout(timer);
+      window.clearTimeout(settleTimer);
+    };
   }, [nextResult, from, to]);
 
   const result = displayed.result;
@@ -56,7 +63,12 @@ export function Calculator({ dict }: { dict: Dictionary }) {
   const resultTo = displayed.to;
 
   return (
-    <div className="calc" data-updating={isUpdating || undefined} aria-busy={isUpdating}>
+    <div
+      className="calc"
+      data-updating={isUpdating || undefined}
+      data-settled={isSettled || undefined}
+      aria-busy={isUpdating}
+    >
       {ratesArePlaceholder && (
         <p className="calc__notice" role="note">
           <strong>{t.noticeStrong}</strong>
