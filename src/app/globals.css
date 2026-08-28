@@ -530,6 +530,93 @@ button, a { -webkit-tap-highlight-color: transparent; }
   .cine__cue { display: none; }
 }
 
+/* ── Hilo narrativo: una misma señal acompaña toda la portada ─────────── */
+.story-thread {
+  position: fixed;
+  z-index: 18;
+  top: calc(var(--alto-barra) + 22px);
+  right: clamp(10px, 2.2vw, 34px);
+  bottom: 24px;
+  width: 10px;
+  pointer-events: none;
+  filter: drop-shadow(0 0 7px rgb(var(--rgb-acento) / .32));
+}
+.story-thread__rail,
+.story-thread__progress {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 4px;
+  width: 1px;
+}
+.story-thread__rail { background: var(--filete-2); }
+.story-thread__progress {
+  background: linear-gradient(to bottom, var(--acento-alto), var(--acento) 72%, var(--senal));
+  transform-origin: 50% 0;
+}
+.story-thread__node {
+  position: absolute;
+  left: 1px;
+  width: 7px;
+  height: 7px;
+  border: 1px solid var(--acento);
+  border-radius: 50%;
+  background: var(--papel);
+  box-shadow: 0 0 0 4px rgb(var(--rgb-acento) / .08);
+}
+
+/* Pausas breves: no explican otra función, fijan la idea que une los capítulos. */
+.editorial-beat {
+  position: relative;
+  overflow: hidden;
+  padding: clamp(76px, 10vw, 148px) 0;
+  border-block: 1px solid var(--filete);
+  background:
+    radial-gradient(circle at 78% 50%, rgb(var(--rgb-acento) / .07), transparent 30%),
+    var(--papel);
+}
+.editorial-beat::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: clamp(42px, 9vw, 150px);
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--acento));
+}
+.editorial-beat__inner {
+  display: grid;
+  grid-template-columns: 64px minmax(0, 820px);
+  gap: var(--s-32);
+  align-items: start;
+}
+.editorial-beat[data-side="right"] .editorial-beat__inner {
+  justify-content: end;
+}
+.editorial-beat__index {
+  padding-top: 9px;
+  font: 400 var(--t-micro) / 1 var(--mono);
+  letter-spacing: .14em;
+  color: var(--acento);
+}
+.editorial-beat__inner .tag { display: block; margin-bottom: var(--s-16); }
+.editorial-beat__inner p {
+  max-width: 18ch;
+  font-size: clamp(38px, 5.6vw, 78px);
+  font-weight: 560;
+  line-height: 1.02;
+  letter-spacing: var(--track-display);
+  text-wrap: balance;
+}
+
+@media (max-width: 700px) {
+  .story-thread { right: 5px; top: calc(var(--alto-barra) + 12px); bottom: 12px; opacity: .58; }
+  .story-thread__node { display: none; }
+  .editorial-beat { padding: var(--s-80) 0; }
+  .editorial-beat::after { width: 30px; }
+  .editorial-beat__inner { grid-template-columns: 34px minmax(0, 1fr); gap: var(--s-16); }
+  .editorial-beat__inner p { font-size: clamp(34px, 10.5vw, 48px); }
+}
 /* ── Contención ─────────────────────────────────────────────────────────── */
 .wrap { max-width: var(--page); margin: 0 auto; padding: 0 var(--gutter); }
 .section { padding: var(--s-96) 0; }

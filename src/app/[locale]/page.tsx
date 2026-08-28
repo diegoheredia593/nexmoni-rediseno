@@ -4,6 +4,8 @@ import { withTerms } from "@/components/glossary/withTerms";
 import { HeroCinematic } from "@/components/HeroCinematic";
 import { PhoneScroll } from "@/components/PhoneScroll";
 import { CreditCardScroll } from "@/components/CreditCardScroll";
+import { StoryThread } from "@/components/StoryThread";
+import { EditorialBeat } from "@/components/EditorialBeat";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { GlowCard } from "@/components/ui/spotlight-card";
@@ -11,6 +13,7 @@ import { AvatarPlaceholder, QrPlaceholder } from "@/components/Placeholders";
 import { StoreButtons } from "@/components/StoreButtons";
 import { getDictionary, isLocale, locales } from "@/content/dictionary";
 import { href } from "@/content/routes";
+import { editorialCopy } from "@/content/editorial";
 
 export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
@@ -22,10 +25,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
+  const editorial = editorialCopy[locale];
 
   return (
     <>
       <HeroCinematic locale={locale} dict={dict} />
+      <StoryThread />
 
       {/* Confianza: una línea, sin tarjetas. Va en clave de NOCHE, no de día:
           son las credenciales del hero y pertenecen a él. Sobre el papel claro
@@ -45,6 +50,8 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
           </div>
         </div>
       </section>
+
+      <EditorialBeat index={1} {...editorial[0]} />
 
       {/* ── Cómo funciona: filas con filete, no tarjetas ──────────────── */}
       <section id="como" className="section">
@@ -70,8 +77,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ── La aplicación: el teléfono que se desplaza con la página ──── */}
       <PhoneScroll dict={dict} />
 
+      <EditorialBeat index={2} {...editorial[1]} />
+
       {/* ── La tarjeta: una vuelta completa ligada al scroll ─────────── */}
       <CreditCardScroll locale={locale} />
+
+      <EditorialBeat index={3} {...editorial[2]} />
 
       {/* ── La cuenta: seis piezas en dos columnas ────────────────────── */}
       <section id="cuenta" className="section rule">
