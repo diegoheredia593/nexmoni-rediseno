@@ -1,32 +1,35 @@
 "use client";
 
 import Link from "next/link";
+import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { isLocale, locales, localeLabels, localeNames, type Locale } from "@/content/dictionary";
 import { pathFor, resolveSlug } from "@/content/routes";
 
-/**
- * Selector de idioma: ES EN PT LT.
- *
- * Conserva la página, no solo el idioma: desde /es/tarifas, pulsar EN lleva a
- * /en/fees — el slug también se traduce. Son enlaces reales, así que funcionan
- * sin JavaScript, se abren en otra pestaña y los rastreadores los siguen.
- */
 export function LocaleSwitch({ current, label }: { current: Locale; label: string }) {
   const pathname = usePathname();
+  const [suffix, setSuffix] = useState("");
 
-  /** La misma página que estamos viendo, pero en otro idioma. */
+  useEffect(() => {
+    const syncSuffix = () => setSuffix(window.location.search + window.location.hash);
+    syncSuffix();
+    window.addEventListener("hashchange", syncSuffix);
+    return () => window.removeEventListener("hashchange", syncSuffix);
+  }, [pathname]);
+
   function equivalent(target: Locale): string {
-    const [, first, second] = pathname.split("/");
+    const segments = pathname.split("/").filter(Boolean);
+    const first = segments[0];
+    const rest = segments.slice(1);
 
-    // La portada no tiene slug.
-    if (!second) return `/${target}`;
+    if (rest.length === 0) return `/${target}${suffix}`;
 
     const from = isLocale(first) ? first : current;
-    const resolved = resolveSlug(from, second);
+    const resolved = resolveSlug(from, rest[0]);
 
-    // Ruta desconocida: al menos cambiamos el idioma.
-    return resolved ? pathFor(resolved.key, target) : `/${target}`;
+    if (resolved) return `${pathFor(resolved.key, target)}${suffix}`;
+
+    return `/${target}/${rest.join("/")}${suffix}`;
   }
 
   return (
@@ -37,6 +40,7 @@ export function LocaleSwitch({ current, label }: { current: Locale; label: strin
           <Link
             key={locale}
             href={equivalent(locale)}
+            scroll={false}
             className={`locales__item${isCurrent ? " locales__item--on" : ""}`}
             hrefLang={locale}
             title={localeNames[locale]}
