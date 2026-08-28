@@ -6,6 +6,7 @@ import { PhoneScroll } from "@/components/PhoneScroll";
 import { CreditCardScroll } from "@/components/CreditCardScroll";
 import { StoryThread } from "@/components/StoryThread";
 import { EditorialBeat } from "@/components/EditorialBeat";
+import { PhoneCardBridge } from "@/components/PhoneCardBridge";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { GlowCard } from "@/components/ui/spotlight-card";
@@ -54,7 +55,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <EditorialBeat index={1} {...editorial[0]} />
 
       {/* ── Cómo funciona: filas con filete, no tarjetas ──────────────── */}
-      <section id="como" className="section">
+      <section id="como" className="section chapter chapter--how">
         <div className="wrap">
           <Reveal className="head">
             <span className="tag">{dict.steps.eyebrow}</span>
@@ -77,7 +78,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ── La aplicación: el teléfono que se desplaza con la página ──── */}
       <PhoneScroll dict={dict} />
 
-      <EditorialBeat index={2} {...editorial[1]} />
+      <PhoneCardBridge {...editorial[1]} />
 
       {/* ── La tarjeta: una vuelta completa ligada al scroll ─────────── */}
       <CreditCardScroll locale={locale} />
@@ -85,7 +86,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       <EditorialBeat index={3} {...editorial[2]} />
 
       {/* ── La cuenta: seis piezas en dos columnas ────────────────────── */}
-      <section id="cuenta" className="section rule">
+      <section id="cuenta" className="section rule chapter chapter--account">
         <div className="wrap">
           <Reveal className="head">
             <span className="tag">{dict.features.eyebrow}</span>
@@ -120,7 +121,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* ── Precios ───────────────────────────────────────────────────── */}
-      <section id="precios" className="section">
+      <section id="precios" className="section chapter chapter--pricing">
         <div className="wrap">
           <Reveal className="head">
             <span className="tag">{dict.pricing.eyebrow}</span>
@@ -170,7 +171,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       </section>
 
       {/* ── Testimonio y seguridad ────────────────────────────────────── */}
-      <section id="seguridad" className="section rule">
+      <section id="seguridad" className="section rule chapter chapter--security">
         <div className="wrap">
           <div className="hero split-top">
             <div className="stack-24">
