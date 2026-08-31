@@ -1,5 +1,6 @@
 import type { Dictionary } from "@/content/dictionary";
 import { email } from "@/content/brand";
+import { FlowButton } from "@/components/ui/flow-button";
 
 const whatsappUrl = "https://wa.me/34632956541";
 
@@ -13,17 +14,8 @@ export function LeadForm({ dict }: { dict: Dictionary }) {
 
   return (
     <div className="form form--contact">
-      <a className="btn btn--primary btn--block" href={`mailto:${email.support}`}>
-        {t.contactEmail}
-      </a>
-      <a
-        className="btn btn--ghost btn--block"
-        href={whatsappUrl}
-        target="_blank"
-        rel="noreferrer"
-      >
-        {t.contactWhatsapp}
-      </a>
+      <FlowButton text={t.contactEmail} href={`mailto:${email.support}`} variant="accent" block />
+      <FlowButton text={t.contactWhatsapp} href={whatsappUrl} target="_blank" rel="noreferrer" block />
       <p className="caption">{t.whatsappNote}</p>
     </div>
   );

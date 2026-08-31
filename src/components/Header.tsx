@@ -6,6 +6,7 @@ import { RandomLetterSwap } from "@/components/ui/random-letter-swap";
 import { LocaleSwitch } from "./LocaleSwitch";
 import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { AppIcon } from "@/components/AppIcon";
+import { FlowButton } from "@/components/ui/flow-button";
 
 export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
   return (
@@ -42,9 +43,11 @@ export function Header({ locale, dict }: { locale: Locale; dict: Dictionary }) {
 
           {/* La acción de la barra va en tinta: el óxido queda para la
               acción principal de cada página. */}
-          <Link href={href(locale, "/#descargar")} className="btn btn--ink">
-            {dict.site.openAccount}
-          </Link>
+          <FlowButton
+            text={dict.site.openAccount}
+            href={href(locale, "/#descargar")}
+            className="topbar__flow"
+          />
 
           <details className="menu">
             <summary aria-label={dict.site.menu}>{dict.site.menu}</summary>

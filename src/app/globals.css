@@ -2407,3 +2407,49 @@ p { margin: 0; text-wrap: pretty; }
   .calculator-cta__inner { grid-template-columns: 1fr; align-items: start; }
   .calculator-cta .btn { justify-self: start; }
 }
+/* FlowButton: conserva la paleta editorial y cambia solo la interacción. */
+.flow-button {
+  --flow-fg: var(--ink);
+  --flow-border: var(--hairline-firm);
+  --flow-fill: var(--ink);
+  --flow-hover: var(--on-dark);
+  min-height: 46px;
+  color: var(--flow-fg);
+  text-decoration: none;
+  white-space: nowrap;
+}
+.flow-button:hover { color: var(--flow-hover); }
+.flow-button--accent {
+  --flow-fg: var(--accent);
+  --flow-border: rgb(var(--rgb-acento) / .55);
+  --flow-fill: var(--accent);
+  --flow-hover: var(--btn-text);
+}
+.cine .flow-button--accent {
+  --flow-fg: var(--acento-alto);
+  --flow-border: rgb(95 184 189 / .62);
+  --flow-fill: var(--acento-alto);
+  --flow-hover: var(--noche);
+}
+.flow-button--dark {
+  --flow-fg: var(--sobre-noche);
+  --flow-border: rgb(244 243 239 / .48);
+  --flow-fill: var(--sobre-noche);
+  --flow-hover: var(--noche);
+}
+.topbar--sobre-noche .topbar__flow {
+  --flow-fg: var(--sobre-noche);
+  --flow-border: rgb(244 243 239 / .48);
+  --flow-fill: var(--sobre-noche);
+  --flow-hover: var(--noche);
+}
+.calculator-cta .flow-button { min-width: min(100%, 230px); }
+@media (max-width: 980px) {
+  .topbar__flow { padding-inline: 20px; }
+}
+@media (max-width: 700px) {
+  .calculator-cta .flow-button { justify-self: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .flow-button, .flow-button * { transition-duration: .01ms !important; }
+}

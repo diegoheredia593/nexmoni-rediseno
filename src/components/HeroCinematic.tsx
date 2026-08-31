@@ -1,10 +1,10 @@
 "use client";
 
-import Link from "next/link";
 import { TextRoll } from "@/components/ui/text-roll";
 import { useEffect, useRef, useState } from "react";
 import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
+import { FlowButton } from "@/components/ui/flow-button";
 
 /**
  * Hero a sangre, en clave de noche.
@@ -119,12 +119,8 @@ export function HeroCinematic({ locale, dict }: { locale: Locale; dict: Dictiona
         <p className="cine__lead">{dict.hero.lead}</p>
 
         <div className="cine__actions">
-          <Link href={href(locale, "/#descargar")} className="pill pill--acento">
-            {dict.hero.cta}
-          </Link>
-          <Link href={href(locale, "/#descargar")} className="pill pill--fantasma">
-            {dict.hero.secondaryCta}
-          </Link>
+          <FlowButton text={dict.hero.cta} href={href(locale, "/#descargar")} variant="accent" />
+          <FlowButton text={dict.hero.secondaryCta} href={href(locale, "/#descargar")} variant="dark" />
         </div>
       </div>
 

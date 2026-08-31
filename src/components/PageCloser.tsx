@@ -1,6 +1,7 @@
 import Link from "next/link";
 import type { Dictionary, Locale } from "@/content/dictionary";
 import { href } from "@/content/routes";
+import { FlowButton } from "@/components/ui/flow-button";
 
 /**
  * Cierre de las páginas interiores.
@@ -34,9 +35,7 @@ export function PageCloser({
           </div>
 
           <div className="closer__actions">
-            <Link href={href(locale, "/#descargar")} className="btn btn--primary">
-              {copy.action}
-            </Link>
+            <FlowButton text={copy.action} href={href(locale, "/#descargar")} variant="accent" />
             <Link href={href(locale, secondaryHref)} className="link">
               {copy.secondary}
             </Link>

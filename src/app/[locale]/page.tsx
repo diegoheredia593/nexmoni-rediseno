@@ -10,6 +10,7 @@ import { TransferRelay } from "@/components/TransferRelay";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { GlowCard } from "@/components/ui/spotlight-card";
+import { FlowButton } from "@/components/ui/flow-button";
 import { AvatarPlaceholder, QrPlaceholder } from "@/components/Placeholders";
 import { StoreButtons } from "@/components/StoreButtons";
 import { getDictionary, isLocale, locales } from "@/content/dictionary";
@@ -117,9 +118,11 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
             <h2>{calculator.title}</h2>
             <p>{calculator.body}</p>
           </div>
-          <Link className="btn btn--primary" href={`${href(locale, "/tarifas")}#calculadora`}>
-            {calculator.button}
-          </Link>
+          <FlowButton
+            text={calculator.button}
+            href={`${href(locale, "/tarifas")}#calculadora`}
+            variant="accent"
+          />
         </div>
       </section>
 
@@ -187,12 +190,12 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
                     ))}
                   </ul>
                   {/* Solo el plan destacado lleva la acción en óxido */}
-                  <Link
+                  <FlowButton
+                    text={plan.cta}
                     href={href(locale, "/#descargar")}
-                    className={`btn btn--block ${featured ? "btn--primary" : "btn--ghost"}`}
-                  >
-                    {plan.cta}
-                  </Link>
+                    variant={featured ? "accent" : "default"}
+                    block
+                  />
                 </div>
                 </GlowCard>
               );
