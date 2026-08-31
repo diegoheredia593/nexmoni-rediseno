@@ -18,8 +18,6 @@ export function TransferRelay({ dict, locale }: { dict: Dictionary; locale: Loca
   const t = copy[locale];
   const { scrollYProgress } = useScroll({ target: section, offset: ["start 80%", "end 24%"] });
   const progress = useSpring(scrollYProgress, { stiffness: 82, damping: 24, mass: 0.38 });
-  const incoming = useTransform(progress, [0, 0.48], [0, 1]);
-  const outgoing = useTransform(progress, [0.5, 1], [0, 1]);
   const sentOpacity = useTransform(progress, [0, 0.12, 0.48, 0.62], [0.18, 1, 1, 0.42]);
   const receivedOpacity = useTransform(progress, [0.38, 0.58], [0.12, 1]);
   const phoneOpacity = useTransform(progress, [0.28, 0.5], [0.28, 1]);
@@ -37,25 +35,6 @@ export function TransferRelay({ dict, locale }: { dict: Dictionary; locale: Loca
         </div>
 
         <div className="transfer-relay__stage">
-          <svg className="transfer-relay__routes" viewBox="0 0 1100 680" aria-hidden="true">
-            <defs>
-              <linearGradient id="relay-flow" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0" stopColor="var(--acento-alto)" /><stop offset=".52" stopColor="#fff0c9" /><stop offset="1" stopColor="var(--senal)" />
-              </linearGradient>
-              <filter id="relay-glow" x="-80%" y="-80%" width="260%" height="260%">
-                <feGaussianBlur stdDeviation="5" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
-              </filter>
-            </defs>
-            <path className="transfer-relay__guide" d="M300 -430 C300 -350 420 -350 500 -350 C560 -350 560 -60 560 182 C560 244 548 286 536 302" />
-            <motion.path className="transfer-relay__flow" d="M300 -430 C300 -350 420 -350 500 -350 C560 -350 560 -60 560 182 C560 244 548 286 536 302" style={{ pathLength: reducedMotion ? 1 : incoming }} />
-            <path className="transfer-relay__particles" d="M300 -430 C300 -350 420 -350 500 -350 C560 -350 560 -60 560 182 C560 244 548 286 536 302" />
-            <path className="transfer-relay__guide" d="M550 590 C550 648 620 650 688 680 C750 708 782 730 790 760" />
-            <motion.path className="transfer-relay__flow transfer-relay__flow--out" d="M550 590 C550 648 620 650 688 680 C750 708 782 730 790 760" style={{ pathLength: reducedMotion ? 1 : outgoing }} />
-            <path className="transfer-relay__particles transfer-relay__particles--out" d="M550 590 C550 648 620 650 688 680 C750 708 782 730 790 760" />
-            <circle className="transfer-relay__pulse" cx="536" cy="302" r="8" filter="url(#relay-glow)" />
-            <circle className="transfer-relay__pulse transfer-relay__pulse--out" cx="550" cy="590" r="6" filter="url(#relay-glow)" />
-          </svg>
-
           <motion.div className="transfer-relay__phone" style={{ opacity: reducedMotion ? 1 : phoneOpacity, y: reducedMotion ? 0 : phoneY }} aria-label={`${t.received} ${t.amount} ${t.from}`}>
             <div className="fone__marco"><div className="fone__borde"><div className="fone__pantalla">
               <div className="app__estado"><span>9:42</span><span className="app__isla" /><span className="app__iconos"><i className="app__señal" /><i className="app__bateria" /></span></div>
