@@ -6,10 +6,10 @@ import { AppIcon } from "@/components/AppIcon";
 import type { Dictionary, Locale } from "@/content/dictionary";
 
 const copy = {
-  es: { tag: "EUROPA → LATINOAMÉRICA", sentTitle: "Enviado en euros.", receivedTitle: "Recibido en pesos.", received: "Has recibido", from: "desde España", available: "Disponible en tu cuenta", amount: "1.234.567 COP" },
-  en: { tag: "EUROPE → LATIN AMERICA", sentTitle: "Sent in euros.", receivedTitle: "Received in pesos.", received: "You received", from: "from Spain", available: "Available in your account", amount: "1,234,567 COP" },
-  pt: { tag: "EUROPA → AMÉRICA LATINA", sentTitle: "Enviado em euros.", receivedTitle: "Recebido em pesos.", received: "Recebeste", from: "desde Espanha", available: "Disponível na tua conta", amount: "1.234.567 COP" },
-  lt: { tag: "EUROPA → LOTYNŲ AMERIKA", sentTitle: "Išsiųsta eurais.", receivedTitle: "Gauta pesais.", received: "Gavai", from: "iš Ispanijos", available: "Pasiekiama tavo sąskaitoje", amount: "1 234 567 COP" },
+  es: { tag: "EUROPA → LATINOAMÉRICA", sentTitle: "Enviado en euros.", receivedTitle: "Recibido en dólares.", received: "Has recibido", from: "desde España", available: "Disponible en tu cuenta", amount: "$227.83" },
+  en: { tag: "EUROPE → LATIN AMERICA", sentTitle: "Sent in euros.", receivedTitle: "Received in dollars.", received: "You received", from: "from Spain", available: "Available in your account", amount: "$227.83" },
+  pt: { tag: "EUROPA → AMÉRICA LATINA", sentTitle: "Enviado em euros.", receivedTitle: "Recebido em dólares.", received: "Recebeste", from: "desde Espanha", available: "Disponível na tua conta", amount: "$227.83" },
+  lt: { tag: "EUROPA → LOTYNŲ AMERIKA", sentTitle: "Išsiųsta eurais.", receivedTitle: "Gauta doleriais.", received: "Gavai", from: "iš Ispanijos", available: "Pasiekiama tavo sąskaitoje", amount: "$227.83" },
 } as const;
 
 export function TransferRelay({ dict, locale }: { dict: Dictionary; locale: Locale }) {
@@ -46,14 +46,14 @@ export function TransferRelay({ dict, locale }: { dict: Dictionary; locale: Loca
                 <feGaussianBlur stdDeviation="5" result="b" /><feMerge><feMergeNode in="b" /><feMergeNode in="SourceGraphic" /></feMerge>
               </filter>
             </defs>
-            <path className="transfer-relay__guide" d="M170 -35 C170 95 280 126 405 205 C480 252 484 302 536 302" />
-            <motion.path className="transfer-relay__flow" d="M170 -35 C170 95 280 126 405 205 C480 252 484 302 536 302" style={{ pathLength: reducedMotion ? 1 : incoming }} />
-            <path className="transfer-relay__particles" d="M170 -35 C170 95 280 126 405 205 C480 252 484 302 536 302" />
-            <path className="transfer-relay__guide" d="M742 302 C875 330 883 482 880 715" />
-            <motion.path className="transfer-relay__flow transfer-relay__flow--out" d="M742 302 C875 330 883 482 880 715" style={{ pathLength: reducedMotion ? 1 : outgoing }} />
-            <path className="transfer-relay__particles transfer-relay__particles--out" d="M742 302 C875 330 883 482 880 715" />
+            <path className="transfer-relay__guide" d="M300 -430 C300 -350 420 -350 500 -350 C560 -350 560 -60 560 182 C560 244 548 286 536 302" />
+            <motion.path className="transfer-relay__flow" d="M300 -430 C300 -350 420 -350 500 -350 C560 -350 560 -60 560 182 C560 244 548 286 536 302" style={{ pathLength: reducedMotion ? 1 : incoming }} />
+            <path className="transfer-relay__particles" d="M300 -430 C300 -350 420 -350 500 -350 C560 -350 560 -60 560 182 C560 244 548 286 536 302" />
+            <path className="transfer-relay__guide" d="M550 590 C550 648 620 650 688 680 C750 708 782 730 790 760" />
+            <motion.path className="transfer-relay__flow transfer-relay__flow--out" d="M550 590 C550 648 620 650 688 680 C750 708 782 730 790 760" style={{ pathLength: reducedMotion ? 1 : outgoing }} />
+            <path className="transfer-relay__particles transfer-relay__particles--out" d="M550 590 C550 648 620 650 688 680 C750 708 782 730 790 760" />
             <circle className="transfer-relay__pulse" cx="536" cy="302" r="8" filter="url(#relay-glow)" />
-            <circle className="transfer-relay__pulse transfer-relay__pulse--out" cx="742" cy="302" r="6" filter="url(#relay-glow)" />
+            <circle className="transfer-relay__pulse transfer-relay__pulse--out" cx="550" cy="590" r="6" filter="url(#relay-glow)" />
           </svg>
 
           <motion.div className="transfer-relay__phone" style={{ opacity: reducedMotion ? 1 : phoneOpacity, y: reducedMotion ? 0 : phoneY }} aria-label={`${t.received} ${t.amount} ${t.from}`}>

@@ -2374,3 +2374,36 @@ p { margin: 0; text-wrap: pretty; }
   .card-scroll__arrival { width: 145%; left: -22%; }
 }
 @media (prefers-reduced-motion: reduce) { .card-scroll__arrival-flow { animation: none; } }
+/* CTA que cierra el recorrido teléfono → recepción → tarjeta. */
+.calculator-cta {
+  padding: clamp(72px, 9vw, 124px) 0;
+  background: var(--papel-2);
+  border-bottom: 1px solid var(--filete);
+}
+.calculator-cta__inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: clamp(40px, 8vw, 112px);
+  align-items: end;
+}
+.calculator-cta h2 {
+  max-width: 14ch;
+  margin: var(--s-16) 0 var(--s-20);
+  font-size: clamp(38px, 4.6vw, 66px);
+  line-height: .96;
+  letter-spacing: -.045em;
+}
+.calculator-cta p {
+  max-width: 54ch;
+  color: var(--ink-62);
+  line-height: 1.65;
+}
+.calculator-cta .btn {
+  min-width: min(100%, 230px);
+  white-space: nowrap;
+}
+
+@media (max-width: 700px) {
+  .calculator-cta__inner { grid-template-columns: 1fr; align-items: start; }
+  .calculator-cta .btn { justify-self: start; }
+}

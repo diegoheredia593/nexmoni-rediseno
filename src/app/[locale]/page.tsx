@@ -21,12 +21,39 @@ export function generateStaticParams() {
 }
 
 const FEATURED_PLAN = "Plus";
+const calculatorCta = {
+  es: {
+    eyebrow: "CALCULA TU ENVÍO",
+    title: "Antes de enviar, mira cuánto llega.",
+    body: "Introduce el importe y comprueba el tipo de cambio, las comisiones y el monto final que recibirá la otra persona.",
+    button: "Usar la calculadora",
+  },
+  en: {
+    eyebrow: "CALCULATE YOUR TRANSFER",
+    title: "See what arrives before you send.",
+    body: "Enter the amount and check the exchange rate, fees and final amount the other person will receive.",
+    button: "Use the calculator",
+  },
+  pt: {
+    eyebrow: "CALCULA O TEU ENVIO",
+    title: "Vê quanto chega antes de enviar.",
+    body: "Introduz o valor e consulta a taxa de câmbio, as comissões e o montante final que a outra pessoa irá receber.",
+    button: "Usar a calculadora",
+  },
+  lt: {
+    eyebrow: "APSKAIČIUOK PERVEDIMĄ",
+    title: "Prieš siųsdamas sužinok, kiek bus gauta.",
+    body: "Įvesk sumą ir patikrink valiutos kursą, mokesčius bei galutinę sumą, kurią gaus kitas žmogus.",
+    button: "Naudoti skaičiuoklę",
+  },
+} as const;
 
 export default async function Home({ params }: { params: Promise<{ locale: string }> }) {
   const { locale } = await params;
   if (!isLocale(locale)) notFound();
   const dict = getDictionary(locale);
   const editorial = editorialCopy[locale];
+  const calculator = calculatorCta[locale];
 
   return (
     <>
@@ -83,7 +110,18 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ── La tarjeta: una vuelta completa ligada al scroll ─────────── */}
       <CreditCardScroll locale={locale} />
 
-      <EditorialBeat index={3} {...editorial[2]} />
+      <section className="calculator-cta">
+        <div className="wrap calculator-cta__inner">
+          <div>
+            <span className="tag">{calculator.eyebrow}</span>
+            <h2>{calculator.title}</h2>
+            <p>{calculator.body}</p>
+          </div>
+          <Link className="btn btn--primary" href={`${href(locale, "/tarifas")}#calculadora`}>
+            {calculator.button}
+          </Link>
+        </div>
+      </section>
 
       {/* ── La cuenta: seis piezas en dos columnas ────────────────────── */}
       <section id="cuenta" className="section rule chapter chapter--account">
