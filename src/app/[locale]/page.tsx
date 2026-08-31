@@ -6,7 +6,7 @@ import { PhoneScroll } from "@/components/PhoneScroll";
 import { CreditCardScroll } from "@/components/CreditCardScroll";
 import { StoryThread } from "@/components/StoryThread";
 import { EditorialBeat } from "@/components/EditorialBeat";
-import { PhoneCardBridge } from "@/components/PhoneCardBridge";
+import { TransferRelay } from "@/components/TransferRelay";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
 import { GlowCard } from "@/components/ui/spotlight-card";
@@ -78,7 +78,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
       {/* ── La aplicación: el teléfono que se desplaza con la página ──── */}
       <PhoneScroll dict={dict} />
 
-      <PhoneCardBridge {...editorial[1]} />
+      <TransferRelay dict={dict} locale={locale} />
 
       {/* ── La tarjeta: una vuelta completa ligada al scroll ─────────── */}
       <CreditCardScroll locale={locale} />

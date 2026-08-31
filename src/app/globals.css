@@ -2285,3 +2285,53 @@ p { margin: 0; text-wrap: pretty; }
 .product-bridge__phone-ui circle { fill: rgb(var(--rgb-acento) / .78); }
 .product-bridge__phone-ui path { fill: none; stroke: rgb(255 255 255 / .5); stroke-width: 3; stroke-linecap: round; }
 .product-bridge__phone-ui rect { fill: rgb(var(--rgb-acento) / .72); stroke: rgb(255 255 255 / .14); }
+/* ── Relevo Europa → Latinoamérica → tarjeta ───────────────────────────── */
+.transfer-relay {
+  --fone-ancho: 300px;
+  --fone-alto: 610px;
+  --app-estado: 42px;
+  position: relative;
+  min-height: 980px;
+  overflow: hidden;
+  color: var(--sobre-noche);
+  background:
+    linear-gradient(90deg, rgb(2 12 20 / .72), rgb(2 13 21 / .34) 58%, rgb(2 13 21 / .12)),
+    url("/images/pacific-higgsfield.webp") center / cover no-repeat;
+}
+.transfer-relay__inner { padding-top: clamp(96px, 10vw, 150px); padding-bottom: 90px; }
+.transfer-relay__copy { position: relative; z-index: 3; max-width: 760px; }
+.transfer-relay__copy .tag { color: rgb(255 255 255 / .58); }
+.transfer-relay__copy h2 { margin: var(--s-16) 0 0; max-width: 13ch; color: #fff; font-size: clamp(42px, 5.2vw, 74px); line-height: 1.02; letter-spacing: var(--track-display); text-wrap: balance; }
+.transfer-relay__stage { position: relative; min-height: 670px; margin-top: -42px; }
+.transfer-relay__routes { position: absolute; z-index: 1; inset: 0; width: 100%; height: 100%; overflow: visible; }
+.transfer-relay__guide { fill: none; stroke: rgb(255 255 255 / .2); stroke-width: 2; stroke-dasharray: 3 11; }
+.transfer-relay__flow { fill: none; stroke: url("#relay-flow"); stroke-width: 4; stroke-linecap: round; filter: drop-shadow(0 0 7px rgb(var(--rgb-acento) / .62)); }
+.transfer-relay__particles { fill: none; stroke: #fff0c9; stroke-width: 2.4; stroke-linecap: round; stroke-dasharray: 1 18; animation: relay-drift 1.6s linear infinite; }
+.transfer-relay__particles--out { animation-delay: -.7s; }
+.transfer-relay__pulse { fill: #fff0c9; }
+.transfer-relay__pulse--out { fill: var(--senal); }
+@keyframes relay-drift { to { stroke-dashoffset: -38; } }
+.transfer-relay__phone { position: absolute; z-index: 2; left: 50%; top: 12px; width: var(--fone-ancho); transform: translateX(-50%); }
+.transfer-relay__phone .fone__marco { box-shadow: 0 34px 55px rgb(0 0 0 / .46), 0 8px 18px rgb(0 0 0 / .32); }
+.relay-screen { position: relative; height: 100%; padding: calc(var(--app-estado) + 34px) 24px 28px; display: flex; flex-direction: column; align-items: center; text-align: center; background: radial-gradient(circle at 50% 26%, rgb(var(--rgb-acento) / .13), transparent 34%); }
+.relay-screen .app__marca { align-self: flex-start; }
+.relay-screen__check { width: 66px; height: 66px; margin: 48px 0 28px; border: 1px solid rgb(var(--rgb-acento) / .62); border-radius: 50%; background: rgb(var(--rgb-acento) / .12); }
+.relay-screen__check::after { content: ""; display: block; width: 24px; height: 12px; margin: 22px auto 0; border-left: 3px solid var(--acento); border-bottom: 3px solid var(--acento); transform: rotate(-45deg); }
+.relay-screen .app__titulo { margin-bottom: 10px; }
+.relay-screen__amount { font: 650 28px/1.05 var(--sans); letter-spacing: -.04em; color: var(--tinta); font-variant-numeric: tabular-nums; }
+.relay-screen__from { margin: 10px 0 30px; color: var(--tinta-58); font-size: 13px; }
+.relay-screen__rule { width: 100%; height: 1px; margin-bottom: 22px; background: var(--filete); }
+
+@media (max-width: 700px) {
+  .transfer-relay { --fone-ancho: 232px; --fone-alto: 472px; --app-estado: 33px; min-height: 820px; background-position: 58% center; }
+  .transfer-relay__inner { padding-top: 86px; padding-bottom: 60px; }
+  .transfer-relay__copy h2 { font-size: clamp(36px, 10.5vw, 48px); }
+  .transfer-relay__stage { min-height: 560px; margin-top: 26px; }
+  .transfer-relay__phone { top: 34px; }
+  .transfer-relay__routes { width: 158%; max-width: none; left: -29%; }
+  .relay-screen { padding: calc(var(--app-estado) + 24px) 18px 22px; }
+  .relay-screen__check { width: 52px; height: 52px; margin: 28px 0 20px; }
+  .relay-screen__check::after { width: 19px; height: 10px; margin-top: 17px; }
+  .relay-screen__amount { font-size: 22px; }
+}
+@media (prefers-reduced-motion: reduce) { .transfer-relay__particles { animation: none; } }
