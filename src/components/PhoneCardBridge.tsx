@@ -41,12 +41,21 @@ export function PhoneCardBridge({ label, phrase }: { label: string; phrase: stri
             </filter>
           </defs>
 
-          <motion.g style={{ opacity: reducedMotion ? 1 : phoneOpacity }}>
-            <rect className="product-bridge__device" x="80" y="48" width="150" height="280" rx="31" />
-            <rect className="product-bridge__screen" x="92" y="60" width="126" height="256" rx="23" />
-            <rect className="product-bridge__island" x="130" y="72" width="50" height="13" rx="7" />
-            <path className="product-bridge__ui" d="M115 126h80M115 151h54M115 205h80M115 230h63" />
-            <rect className="product-bridge__button" x="113" y="267" width="84" height="25" rx="13" />
+          <motion.g className="product-bridge__phone-photo" style={{ opacity: reducedMotion ? 1 : phoneOpacity }}>
+            <image
+              className="product-bridge__phone-image"
+              href="/images/phone-higgsfield.webp"
+              x="24"
+              y="18"
+              width="270"
+              height="320"
+              preserveAspectRatio="xMidYMid meet"
+            />
+            <g className="product-bridge__phone-ui">
+              <circle cx="159" cy="124" r="13" />
+              <path d="M147 148h24M126 177h66M126 191h44M126 222h66" />
+              <rect x="121" y="248" width="76" height="24" rx="12" />
+            </g>
           </motion.g>
 
           <path className="product-bridge__guide" d="M230 220 C350 220 365 118 455 118 C548 118 550 198 650 198" />
@@ -59,10 +68,8 @@ export function PhoneCardBridge({ label, phrase }: { label: string; phrase: stri
 
           <motion.g className="product-bridge__card-photo" style={{ opacity: reducedMotion ? 1 : cardOpacity, y: reducedMotion ? 0 : cardY, scale: reducedMotion ? 1 : cardScale }}>
             <motion.ellipse cx="790" cy="198" rx="196" ry="142" fill="url(#bridge-card-glow)" style={{ opacity: reducedMotion ? 0.7 : glowOpacity }} />
-            <image className="product-bridge__card-image" href="/images/nexmoni-card-photoreal.webp" x="610" y="64" width="370" height="247" preserveAspectRatio="xMidYMid meet" />
-            <text className="product-bridge__card-brand" x="706" y="128">NexMoni</text>
+            <image className="product-bridge__card-image" href="/images/card-higgsfield.webp" x="610" y="64" width="370" height="247" preserveAspectRatio="xMidYMid meet" />
             <text className="product-bridge__card-debit" x="872" y="129">DEBIT</text>
-            <text className="product-bridge__visa" x="842" y="250">VISA</text>
           </motion.g>
         </svg>
       </div>
