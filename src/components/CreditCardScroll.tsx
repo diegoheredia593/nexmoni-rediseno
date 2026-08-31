@@ -88,6 +88,11 @@ export function CreditCardScroll({ locale }: { locale: Locale }) {
   return (
     <section className="card-scroll" ref={section} aria-label={copy.aria}>
       <div className="card-scroll__sticky">
+        <svg className="card-scroll__arrival" viewBox="0 0 1000 600" aria-hidden="true">
+          <path className="card-scroll__arrival-guide" d="M800 -30 C800 105 790 180 760 270" />
+          <path className="card-scroll__arrival-flow" d="M800 -30 C800 105 790 180 760 270" />
+          <circle cx="760" cy="270" r="6" />
+        </svg>
         <div className="card-scroll__content wrap">
           <div className="card-scroll__copy">
             <span className="tag">{copy.eyebrow}</span>
