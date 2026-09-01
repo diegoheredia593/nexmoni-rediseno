@@ -8,10 +8,9 @@ import { StoryThread } from "@/components/StoryThread";
 import { EditorialBeat } from "@/components/EditorialBeat";
 import { TransferRelay } from "@/components/TransferRelay";
 import { Reveal } from "@/components/Reveal";
-import { LeadForm } from "@/components/LeadForm";
 import { FlowButton } from "@/components/ui/flow-button";
-import { AvatarPlaceholder, QrPlaceholder } from "@/components/Placeholders";
-import { StoreButtons } from "@/components/StoreButtons";
+import { WaitlistSection } from "@/components/WaitlistSection";
+import { AvatarPlaceholder } from "@/components/Placeholders";
 import { getDictionary, isLocale, locales } from "@/content/dictionary";
 import { href } from "@/content/routes";
 import { editorialCopy } from "@/content/editorial";
@@ -188,39 +187,7 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
         </div>
       </section>
 
-      {/* ── Descarga: el final del embudo ─────────────────────────────── */}
-      <section id="descargar" className="section rule">
-        <div className="wrap">
-          <Reveal className="head">
-            <span className="tag">{dict.download.eyebrow}</span>
-            <h2>{dict.download.title}</h2>
-            <p className="lead">{dict.download.lead}</p>
-          </Reveal>
-
-          <div className="download">
-            <div className="stack-24">
-              <StoreButtons dict={dict} />
-
-              {/* Desde el ordenador no se puede instalar: se envía el enlace. */}
-              <div
-                className="stack-16"
-                style={{ paddingTop: "var(--s-32)", borderTop: "1px solid var(--hairline)" }}
-              >
-                <h4>{dict.download.deskTitle}</h4>
-                <p className="body-s" style={{ maxWidth: "42ch" }}>
-                  {dict.download.deskNote}
-                </p>
-                <LeadForm dict={dict} />
-              </div>
-            </div>
-
-            <div className="stack-16">
-              <span className="tag">{dict.download.qrNote}</span>
-              <QrPlaceholder brief={dict.download.qrBrief} />
-            </div>
-          </div>
-        </div>
-      </section>
+      <WaitlistSection locale={locale} />
 
     </>
   );
