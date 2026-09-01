@@ -34,7 +34,7 @@ export const pt: Dictionary = {
   nav: [
     { label: "Como funciona", href: "/#como" },
     { label: "Conta", href: "/#cuenta" },
-    { label: "Planos", href: "/#precios" },
+    { label: "Planos", href: "/precios" },
     { label: "Tarifas", href: "/tarifas" },
     { label: "Segurança", href: "/#seguridad" },
   ],
@@ -296,7 +296,7 @@ export const pt: Dictionary = {
         title: "PRODUTOS",
         links: [
           { label: "Funcionalidades", href: "/#cuenta" },
-          { label: "Planos", href: "/#precios" },
+          { label: "Planos", href: "/precios" },
           { label: "Comissões", href: "/tarifas" },
           { label: "Segurança", href: "/#seguridad" },
         ],

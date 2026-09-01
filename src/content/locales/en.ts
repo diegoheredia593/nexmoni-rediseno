@@ -30,7 +30,7 @@ export const en: Dictionary = {
   nav: [
     { label: "How it works", href: "/#como" },
     { label: "Account", href: "/#cuenta" },
-    { label: "Plans", href: "/#precios" },
+    { label: "Plans", href: "/precios" },
     { label: "Fees", href: "/tarifas" },
     { label: "Security", href: "/#seguridad" },
   ],
@@ -286,7 +286,7 @@ export const en: Dictionary = {
         title: "PRODUCTS",
         links: [
           { label: "Features", href: "/#cuenta" },
-          { label: "Plans", href: "/#precios" },
+          { label: "Plans", href: "/precios" },
           { label: "Fees", href: "/tarifas" },
           { label: "Security", href: "/#seguridad" },
         ],

@@ -3,6 +3,7 @@ import { notFound, permanentRedirect } from "next/navigation";
 import { AboutPage } from "@/components/pages/AboutPage";
 import { FaqPage } from "@/components/pages/FaqPage";
 import { FeesPage } from "@/components/pages/FeesPage";
+import { PricingPage } from "@/components/pages/PricingPage";
 import { defaultLocale, getDictionary, isLocale, locales } from "@/content/dictionary";
 import { allRoutes, pathFor, resolveSlug, slugFor, type RouteKey } from "@/content/routes";
 import { robotsPolicy } from "@/lib/site-url";
@@ -23,7 +24,7 @@ export function generateStaticParams() {
 }
 
 /** Qué clave del diccionario describe cada página. */
-const metaKey: Record<RouteKey, "fees" | "about" | "faq"> = {
+const metaKey: Record<Exclude<RouteKey, "pricing">, "fees" | "about" | "faq"> = {
   fees: "fees",
   about: "about",
   faq: "faq",
@@ -41,7 +42,9 @@ export async function generateMetadata({
   if (!resolved) return {};
 
   const dict = getDictionary(locale);
-  const page = dict.pages[metaKey[resolved.key]];
+  const page = resolved.key === "pricing"
+    ? { title: dict.pricing.title, description: dict.pricing.lead }
+    : dict.pages[metaKey[resolved.key]];
 
   return {
     robots: robotsPolicy,
@@ -77,6 +80,8 @@ export default async function LocalisedPage({
   const dict = getDictionary(locale);
 
   switch (resolved.key) {
+    case "pricing":
+      return <PricingPage locale={locale} dict={dict} />;
     case "fees":
       return <FeesPage locale={locale} dict={dict} />;
     case "about":

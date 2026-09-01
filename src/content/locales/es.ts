@@ -30,7 +30,7 @@ export const es = {
   nav: [
     { label: "Cómo funciona", href: "/#como" },
     { label: "Cuenta", href: "/#cuenta" },
-    { label: "Precios", href: "/#precios" },
+    { label: "Precios", href: "/precios" },
     { label: "Tarifas", href: "/tarifas" },
     { label: "Seguridad", href: "/#seguridad" },
   ],
@@ -304,7 +304,7 @@ export const es = {
         title: "PRODUCTOS",
         links: [
           { label: "Funciones", href: "/#cuenta" },
-          { label: "Precios", href: "/#precios" },
+          { label: "Precios", href: "/precios" },
           { label: "Comisiones", href: "/tarifas" },
           { label: "Seguridad", href: "/#seguridad" },
         ],

@@ -15,10 +15,16 @@ import { locales, type Locale } from "./dictionary";
  * viejo a `legacySlugs` para que siga redirigiendo.
  */
 
-export const routeKeys = ["fees", "about", "faq"] as const;
+export const routeKeys = ["pricing", "fees", "about", "faq"] as const;
 export type RouteKey = (typeof routeKeys)[number];
 
 export const slugs: Record<RouteKey, Record<Locale, string>> = {
+  pricing: {
+    es: "precios",
+    en: "plans",
+    pt: "planos",
+    lt: "planai",
+  },
   fees: {
     es: "tarifas",
     en: "fees",
@@ -108,7 +114,7 @@ export function allRoutes(): { locale: Locale; key: RouteKey; path: string }[] {
  * clave canónica; aquí se cambia por el slug del idioma:
  *
  *   href("en", "/")                  → "/en"
- *   href("en", "/#precios")          → "/en#precios"
+ *   href("en", "/precios")           → "/en/plans"
  *   href("en", "/tarifas")           → "/en/fees"
  *   href("lt", "/acerca#contacto")   → "/lt/apie-mus#contacto"
  *

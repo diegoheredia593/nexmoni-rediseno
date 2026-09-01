@@ -85,7 +85,7 @@ export function FeesPage({ locale, dict }: { locale: Locale; dict: Dictionary })
           </Reveal>
 
           <p className="caption" style={{ marginTop: "var(--s-24)" }}>
-            <Link href={href(locale, "/#precios")} className="link">
+            <Link href={href(locale, "/precios")} className="link">
               {t.plansLink}
             </Link>
           </p>

@@ -40,7 +40,7 @@ export const lt: Dictionary = {
   nav: [
     { label: "Kaip veikia", href: "/#como" },
     { label: "Sąskaita", href: "/#cuenta" },
-    { label: "Planai", href: "/#precios" },
+    { label: "Planai", href: "/precios" },
     { label: "Įkainiai", href: "/tarifas" },
     { label: "Saugumas", href: "/#seguridad" },
   ],
@@ -302,7 +302,7 @@ export const lt: Dictionary = {
         title: "PRODUKTAI",
         links: [
           { label: "Funkcijos", href: "/#cuenta" },
-          { label: "Planai", href: "/#precios" },
+          { label: "Planai", href: "/precios" },
           { label: "Mokesčiai", href: "/tarifas" },
           { label: "Saugumas", href: "/#seguridad" },
         ],

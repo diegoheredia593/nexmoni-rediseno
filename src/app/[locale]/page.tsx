@@ -9,7 +9,6 @@ import { EditorialBeat } from "@/components/EditorialBeat";
 import { TransferRelay } from "@/components/TransferRelay";
 import { Reveal } from "@/components/Reveal";
 import { LeadForm } from "@/components/LeadForm";
-import { GlowCard } from "@/components/ui/spotlight-card";
 import { FlowButton } from "@/components/ui/flow-button";
 import { AvatarPlaceholder, QrPlaceholder } from "@/components/Placeholders";
 import { StoreButtons } from "@/components/StoreButtons";
@@ -21,7 +20,6 @@ export function generateStaticParams() {
   return locales.map((locale) => ({ locale }));
 }
 
-const FEATURED_PLAN = "Plus";
 const calculatorCta = {
   es: {
     eyebrow: "CALCULA TU ENVÍO",
@@ -158,56 +156,6 @@ export default async function Home({ params }: { params: Promise<{ locale: strin
               </div>
             ))}
           </Reveal>
-        </div>
-      </section>
-
-      {/* ── Precios ───────────────────────────────────────────────────── */}
-      <section id="precios" className="section chapter chapter--pricing">
-        <div className="wrap">
-          <Reveal className="head">
-            <span className="tag">{dict.pricing.eyebrow}</span>
-            <h2>{dict.pricing.title}</h2>
-            <p className="lead">{dict.pricing.lead}</p>
-          </Reveal>
-
-          <Reveal className="plans plans--glow" escalonado>
-            {dict.pricing.plans.map((plan) => {
-              const featured = plan.name === FEATURED_PLAN;
-              return (
-                <GlowCard key={plan.name} customSize glowColor="rust" className="plan-glow">
-                <div className={`plan${featured ? " plan--featured" : ""}`}>
-                  <span className="tag tag--strong">
-                    {plan.name}
-                    {featured ? ` · ${dict.pricing.popular}` : ""}
-                  </span>
-                  <div className="plan__price">{plan.price}</div>
-                  <p className="body-s">{plan.pitch}</p>
-                  <ul>
-                    {plan.items.map((item) => (
-                      <li key={item}>
-                        <span>{withTerms(item)}</span>
-                      </li>
-                    ))}
-                  </ul>
-                  {/* Solo el plan destacado lleva la acción en óxido */}
-                  <FlowButton
-                    text={plan.cta}
-                    href={href(locale, "/#descargar")}
-                    variant={featured ? "accent" : "default"}
-                    block
-                  />
-                </div>
-                </GlowCard>
-              );
-            })}
-          </Reveal>
-
-          <p className="caption" style={{ marginTop: "var(--s-24)" }}>
-            {dict.pricing.feesNote}{" "}
-            <Link href={href(locale, "/tarifas")} className="link">
-              {dict.pricing.feesLink}
-            </Link>
-          </p>
         </div>
       </section>
 
